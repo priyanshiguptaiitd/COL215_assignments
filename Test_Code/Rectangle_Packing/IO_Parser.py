@@ -40,7 +40,10 @@ def parse_Output_Rectangles(optimal_w,optimal_h,rec_data):
 if(__name__ == "__main__"):
     fp = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\SW Assignments\SW_Assignment_1\SW_Assignment_1_Files\Test_Cases\input.txt"
     rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(fp)
-    print(parse_Rec_Data_Readable(rec_data)) 
+    rdv,cells_p,check_pack = Pack_by_Pixel(rec_data,7,6)
+    if(check_pack is not None):
+        print(parse_Rec_Data_Ouput(rdv),f"Packing Efficiency : {cells_p/(7*6) : .4f}")
+        parse_Output_Rectangles(6,7,parse_Rec_Data_Ouput(rdv)) 
     
     
         
