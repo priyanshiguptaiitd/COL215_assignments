@@ -1,5 +1,6 @@
 from Rect import *
-        
+from Pack_by_Pixels import *
+  
 def parse_Input_Rectangles(fpath):
     
     rec_data,rec_total_area= list(),0
@@ -24,6 +25,10 @@ def parse_Rec_Data_Readable(rec_data):
     rec_data_readable = [(rec.index,rec.width,rec.height) for rec in rec_data]
     return rec_data_readable
 
+def parse_Rec_Data_Ouput(rec_data):
+    rec_data_output = [(rec.index,rec.x,rec.y) for rec in rec_data]
+    return rec_data_output
+
 def parse_Output_Rectangles(optimal_w,optimal_h,rec_data):
     
     with open(r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\SW Assignments\SW_Assignment_1\SW_Assignment_1_Files\Output_Test_Cases\output.txt",'w') as file:
@@ -37,14 +42,25 @@ def parse_Output_Rectangles(optimal_w,optimal_h,rec_data):
     return 1
 
 
+def Rec_Data_Analysis(rec_data):
+    aspect_ratio,w_avg,h_avg,freq = 0,0,0,len(rec_data)
+    assert (freq>0), "Don't pass empty Set of Rectangles"
+    for rec in rec_data:
+        aspect_ratio += rec.width/rec.height
+        w_avg += rec.width
+        h_avg += rec.height
+    return aspect_ratio/freq,w_avg/freq,h_avg/freq          
+
 if(__name__ == "__main__"):
     fp = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\SW Assignments\SW_Assignment_1\SW_Assignment_1_Files\Test_Cases\input.txt"
     rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(fp)
-    rdv,cells_p,check_pack = Pack_by_Pixel(rec_data,7,6)
+    avg_asp,w_avg,h_avg = Rec_Data_Analysis(rec_data)
+    print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} " )
+    rdv,pack_data,check_pack = Pack_by_Pixel(rec_data,80,175)
     if(check_pack is not None):
-        print(parse_Rec_Data_Ouput(rdv),f"Packing Efficiency : {cells_p/(7*6) : .4f}")
-        parse_Output_Rectangles(6,7,parse_Rec_Data_Ouput(rdv)) 
-    
+        print(parse_Rec_Data_Ouput(rdv),f"\n Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n , {pack_data[1]} rows and {pack_data[2]} cols were used")
+        print(f"Total area of Gates used and total area of Image: {rec_tot_area} , {pack_data[1]*pack_data[2]}")
+        parse_Output_Rectangles(pack_data[2],pack_data[1],parse_Rec_Data_Ouput(rdv))
     
         
     
