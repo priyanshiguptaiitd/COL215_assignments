@@ -1,6 +1,7 @@
 from Rect import *
 from time import time
 import numpy as np
+from itertools import count 
 
 def time_it(func): 
     # This function shows the execution time of  
@@ -53,10 +54,13 @@ def Pack_by_Pixel(rec_data,Im_Width,Im_Height):
                         # print("Might be possible at x,y",y,x)
                         isvalid = True
                         for r in range(y,y+rec_data[i].height):
-                            for c in range(x,x+rec_data[i].width):
-                                if(Im_Data[r][c] == 1):
-                                    isvalid = False
-                                    break
+                            if(isvalid):
+                                for c in range(x,x+rec_data[i].width):
+                                    if(Im_Data[r][c] == 1):
+                                        isvalid = False
+                                        break
+                            else:
+                                break
                         if(isvalid):
                             for r in range(y,y+rec_data[i].height):
                                 for c in range(x,x+rec_data[i].width):
@@ -78,33 +82,69 @@ def Pack_by_Pixel(rec_data,Im_Width,Im_Height):
     else:
         return -1,None,None
 
-# Doesn't provide any runtime benefit (Since both took 360 secs to run the largest test case)
+
 @time_it
-def Pack_by_Pixel_numpy(rec_data,Im_Width,Im_Height):
+def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
     cells_packed,max_rows_used,max_cols_used = 0,1,1
-    Im_Data = np.zeros((Im_Height,Im_Width),dtype=int)
+    Im_Data = [[0]*Im_Width for r in range(Im_Height)]
+    # Im_Data_R_index = [[0]*Im_Width for r in range(Im_Height)]
+    Im_Rec_Data = {rec_data[i].index : rec_data[i] for i in range(len(rec_data))}
+    # print(Im_Data)
     
     for i in range(len(rec_data)):
         rec_done = False
-        for y in range(Im_Height):
-            if(y+rec_data[i].height > Im_Height or rec_done):
+        x,y = 0,0
+        for _infit in count(0,1):
+            if (y + rec_data[i].height > Im_Height or rec_done):
                 break
             else:
-                for x in range(Im_Width):
-                    if(x+rec_data[i].width > Im_Width):
-                        break
-                    if(Im_Data[y,x] == 0 and Im_Data[y+rec_data[i].height-1,x+rec_data[i].width-1] == 0):
-                        subgrid = Im_Data[y:y+rec_data[i].height,x:x+rec_data[i].width]
-                        t_boolm =   np.zeros((rec_data[i].height,rec_data[i].width),dtype=bool) 
-                        t_subgrid = np.isin(subgrid,1)
-                        if((t_boolm == t_subgrid).all()):
-                            Im_Data[y:y+rec_data[i].height,x:x+rec_data[i].width] = np.ones((rec_data[i].height,rec_data[i].width),dtype=int)
-                            max_rows_used,max_cols_used = max(max_rows_used,y+rec_data[i].height),max(max_cols_used,x+rec_data[i].width)
-                            rec_done = True
-                            rec_data[i].packed()
-                            rec_data[i].set_pos(x,y)
-                            break
-                        
+                if(x + rec_data[i].width > Im_Width):
+                    x,y = 0,y+1
+                    continue
+                else:
+                    if(Im_Data[y][x] == 0):
+                        if(Im_Data[y+rec_data[i].height-1][x+rec_data[i].width-1] == 0):
+                            isvalid = True
+                            for r in range(y,y+rec_data[i].height):
+                                if(isvalid):
+                                    for c in range(x,x+rec_data[i].width):
+                                        if(Im_Data[r][c] != 0):
+                                            isvalid = False
+                                            row_notvalid,col_notvalid = r,c
+                                            break
+                                            
+                                else:
+                                    break
+                                
+                            if(isvalid):
+                                rec_data[i].packed()
+                                rec_data[i].set_pos(x,y)
+                                max_rows_used,max_cols_used = max(max_rows_used,y+rec_data[i].height),max(max_cols_used,x+rec_data[i].width)
+                                rec_done = True
+                                for r in range(y,y+rec_data[i].height):
+                                    for c in range(x,x+rec_data[i].width):
+                                        cells_packed += 1
+                                        Im_Data[r][c] = rec_data[i].index
+                                break
+                            else:
+                                # print(f"Index checking : {Im_Data[r][c]} at {r}, {c}")
+                                w_enc,x_enc = Im_Rec_Data[Im_Data[row_notvalid][col_notvalid]].width, Im_Rec_Data[Im_Data[row_notvalid][col_notvalid]].x
+                                x = x_enc + w_enc 
+                                continue        
+                        else:
+                            x = x + rec_data[i].width
+                            continue
+                    else:
+                        w_enc,x_enc = Im_Rec_Data[Im_Data[y][x]].width, Im_Rec_Data[Im_Data[y][x]].x 
+                        x = x_enc + w_enc
+                        continue
+                    
+        if(not rec_done):
+            return -1,None,None                    
+        # for r in Im_Data:
+        #     print(r)
+        # print()
+    
     if(All_Rec_Packed(rec_data)):    
         return rec_data,[cells_packed,max_rows_used,max_cols_used],True
     else:
