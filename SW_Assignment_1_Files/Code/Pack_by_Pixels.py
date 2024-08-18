@@ -3,8 +3,6 @@ from time import time
 import numpy as np
 from itertools import count 
 
-INT_HI = 10**16
-
 def time_it(func): 
     # This function shows the execution time of  
     # the function object passed 
