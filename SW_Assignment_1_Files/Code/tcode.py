@@ -57,7 +57,7 @@ if(__name__ == "__main__"):
     rec_freq = len(rec_data)
     print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} " )
     print(f"Total Cell Area : {rec_tot_area} , Approx Width / height of Diagram : {int(1.1*(rec_tot_area**0.5))} across {rec_freq} gates")
-    rdv,pack_data,check_pack = Pack_by_Pixel_v2(rec_data,5650,5650)
+    rdv,pack_data,check_pack = Pack_by_Pixel_v1(rec_data,1729,1729)
     if(check_pack is not None):
         print(parse_Rec_Data_Ouput(rdv),f"\n Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n , {pack_data[1]} rows and {pack_data[2]} cols were used")
         print(f"Total area of Gates used and total area of Image: {rec_tot_area} , {pack_data[1]*pack_data[2]}")

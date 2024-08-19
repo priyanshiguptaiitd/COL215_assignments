@@ -21,7 +21,7 @@ def All_Rec_Packed(rec_data):
     return True
 
 @time_it
-def Pack_by_Pixel(rec_data,Im_Width,Im_Height):
+def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
     """
     Naive algorithm that scans every possible pixel and checks wether
     a given rectangle can fit in the grid
