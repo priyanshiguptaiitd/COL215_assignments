@@ -1,19 +1,8 @@
 from Rect import *
-from time import time
-import numpy as np
+from code_timer import *
 from itertools import count 
 
-def time_it(func): 
-    # This function shows the execution time of  
-    # the function object passed 
-    def wrap_func(*args, **kwargs): 
-        t_start = time() 
-        result = func(*args, **kwargs) 
-        t_end = time() 
-        print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s and produced outpute :{result[2]}') 
-        return result 
-    return wrap_func 
-
+ 
 def All_Rec_Packed(rec_data):
     for rec in rec_data:
         if(not rec.is_packed):
@@ -27,9 +16,8 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
     a given rectangle can fit in the grid
     
     TODO - Determine how to change dimensions effciently to check if possible or not
-    TODO - Implement this in Numpy and use better slicing and assignment features for faster runtime
-    
-    Can be improve if step size of gridscanning is taken as per rectangle dimensions
+           (Can be improve if step size of gridscanning is taken as per rectangle dimensions ?) 
+           (Done now in V2)
 
     Args:
         rec_data (List of Rec objects): The Gates as Rec Objects in a list 
@@ -77,14 +65,38 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
         #     print(r)
         # print()
     
-    if(All_Rec_Packed(rec_data)):    
-        return rec_data,[cells_packed,max_rows_used,max_cols_used],True
-    else:
-        return -1,None,None
+    return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+
+    # if(All_Rec_Packed(rec_data)):    
+    #     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+    # else:
+    #     return -1,None,None
 
 
 @time_it
 def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
+    """ Pack_by_Pixel_v2 
+    
+    Improved Version of v1 - Better grid scanning for potential possible positions of 
+                             placing rectangles by taking into account the cells where a rectangle is already placed
+                             
+                             Visually skips to the right most edge + 1 of the rectangle encompassing the current region
+                             In case the current row becomes insufficient then jumps to the next row. Breaks out of loop
+                             if the remaining rows are insufficient 
+                             
+                             Smartly tackles the case of finding a filled cell while scanning subgrid of a potential postion
+                             for placing a rectangle 
+    
+    TODO - Figure out a way to capitalise on smaller runtimes buy smartly generating initial guesses 
+           and working the way around from there to achieve max efficiency
+
+    Args:
+        rec_data (List of Rec objects): The Gates as Rec Objects in a list 
+        Im_Width (_type_): Image Width in which we try to fit the gates
+        Im_Height (_type_): Image Height in which we try to fit the gates
+    """
+    
+    
     cells_packed,max_rows_used,max_cols_used = 0,1,1
     Im_Data = [[0]*Im_Width for r in range(Im_Height)]
     # Im_Data_R_index = [[0]*Im_Width for r in range(Im_Height)]
@@ -145,7 +157,8 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
         #     print(r)
         # print()
     
-    if(All_Rec_Packed(rec_data)):    
-        return rec_data,[cells_packed,max_rows_used,max_cols_used],True
-    else:
-        return -1,None,None    
+    return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+    # if(All_Rec_Packed(rec_data)):    
+    #     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+    # else:
+    #     return -1,None,None    
