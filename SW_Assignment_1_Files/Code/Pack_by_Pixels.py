@@ -131,7 +131,8 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                             if(isvalid):
                                 rec_data[i].packed()
                                 rec_data[i].set_pos(x,y)
-                                max_rows_used,max_cols_used = max(max_rows_used,y+rec_data[i].height),max(max_cols_used,x+rec_data[i].width)
+                                max_rows_used = max_rows_used if (max_rows_used >= y+rec_data[i].height) else y+rec_data[i].height
+                                max_cols_used = max_cols_used if(max_cols_used >= x+rec_data[i].width) else x+rec_data[i].width
                                 rec_done = True
                                 for r in range(y,y+rec_data[i].height):
                                     for c in range(x,x+rec_data[i].width):

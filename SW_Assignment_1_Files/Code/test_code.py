@@ -22,14 +22,14 @@ def FP_MULTI_CASES_OUT(i=None,gate_freq=None):
 
 @ time_it_no_out
 def write_single_case(gatefreq,fpath):
-    assert gatefreq in [50,100,500,1000], "Please give a valid test case size"
+    assert gatefreq in [10,50,100,500,1000], "Please give a valid test case size"
     with open(fpath,"w") as file:
         for i in range(1,gatefreq+1):
             file.write(f"g{i} {randint(1,100)} {randint(1,100)}\n")
 
 @ time_it_no_out    
 def write_multi_cases(gatefreq,tc_freq):
-    assert gatefreq in [50,100,500,1000], "Please give a valid test case size"
+    assert gatefreq in [10,50,100,500,1000], "Please give a valid test case size"
     for i in range(1,tc_freq+1):
         with open(FP_MULTI_CASES_IN(i,gatefreq), "w") as file:
             for j in range(1,gatefreq+1):
@@ -37,7 +37,7 @@ def write_multi_cases(gatefreq,tc_freq):
 
 @ time_it_no_out
 def remove_multi_cases(gatefreq,tc_freq):
-    assert gatefreq in [50,100,500,1000], "Please give a valid test case size"
+    assert gatefreq in [10,50,100,500,1000], "Please give a valid test case size"
     for i in range(1,tc_freq+1):
         try: 
             del_file_at(FP_MULTI_CASES_IN(i,gatefreq)) 
@@ -53,10 +53,14 @@ def test_single_case(fpath_in,fpath_out):
     avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
     rec_freq = len(rec_data)
     
-    print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} " )
-    print(f"Total Cell Area : {rec_tot_area} , Approx Width / height of Diagram : {int(1.1*(rec_tot_area**0.5))} across {rec_freq} gates")
+    alpha_margin = 1.1 if(rec_freq >= 100) else (1.3 if(rec_freq <= 20) else 1.2)
     
-    PBP_out = Pack_by_Pixel_v2(rec_data,1650,1650,supress_time_out=False) 
+    print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} " )
+    print(f"Total Cell Area : {rec_tot_area} , Approx Width / height of Diagram : {int(alpha_margin*(rec_tot_area**0.5))} across {rec_freq} gates")
+    
+    icols = int(alpha_margin*(rec_tot_area**0.5))
+    irows = int(alpha_margin*(rec_tot_area**0.5)) if (int(alpha_margin*(rec_tot_area**0.5)) > rec_tot_area//icols + 1) else rec_tot_area//icols + 1 
+    PBP_out = Pack_by_Pixel_v2(rec_data,180,240,supress_time_out=False) 
     packed_recs,pack_data,check_pack = PBP_out[0]
     tc_runtime = PBP_out[1]
      
@@ -68,7 +72,7 @@ def test_single_case(fpath_in,fpath_out):
 @ time_it_no_out
 def test_multi_cases(gatefreq,tc_freq):
     
-    assert gatefreq in [50,100,500,1000], "Please give a valid test case size"
+    assert gatefreq in [10,50,100,500,1000], "Please give a valid test case size"
     assert tc_freq > 0, "Please give non zero number of test cases"
     
     success_packs,fail_packs,tc_runtime_avg, pack_eff_avg = 0,0,0,0
@@ -80,11 +84,15 @@ def test_multi_cases(gatefreq,tc_freq):
     for tc in range(1,tc_freq+1):
         rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(FP_MULTI_CASES_IN(tc,gatefreq))
         avg_asp,w_avg,h_avg = Rec_Data_Analysis(rec_data)
-        rec_freq = len(rec_data)    
+        rec_freq = len(rec_data)
+        
+        alpha_margin = 1.1 if(rec_freq >= 100) else (1.3 if(rec_freq <= 20) else 1.2)    
         # print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} ")
         # print(f"Total Cell Area : {rec_tot_area} , Approx Width / height of Diagram : {int(1.1*(rec_tot_area**0.5))} across {rec_freq} gates")
         
-        PBP_out = Pack_by_Pixel_v2(rec_data,int(1.1*(rec_tot_area**0.5)),int(1.1*(rec_tot_area**0.5)),supress_time_out=True) 
+        icols = int(alpha_margin*(rec_tot_area**0.5))
+        irows = int(alpha_margin*(rec_tot_area**0.5)) if (int(alpha_margin*(rec_tot_area**0.5)) > rec_tot_area//icols + 1) else rec_tot_area//icols + 1
+        PBP_out = Pack_by_Pixel_v2(rec_data,icols,irows,supress_time_out=False) 
         packed_recs,pack_data,check_pack = PBP_out[0]
         tc_runtime = PBP_out[1]
         tc_runtime_avg += round(tc_runtime,8)
@@ -119,9 +127,9 @@ def test_multi_cases(gatefreq,tc_freq):
             file.write(f"\n")
     
 if(__name__ == "__main__"): 
-    test_multi_cases(100,100)
+    test_multi_cases(1000,100)
     # test_single_case(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT)
-    # write_single_case(1000,FP_SINGLE_CASE_IN)
-    # write_multi_cases(100,100)
+    # write_single_case(10,FP_SINGLE_CASE_IN)
+    # write_multi_cases(1000,100)
     # remove_multi_cases(100,20)
         
