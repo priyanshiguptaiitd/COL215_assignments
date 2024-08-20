@@ -2,13 +2,20 @@ from Rect import *
 from code_timer import *
 from itertools import count 
 
- 
-def All_Rec_Packed(rec_data):
-    for rec in rec_data:
-        if(not rec.is_packed):
-            return False
-    return True
-
+@time_it
+def Pack_by_Pixel_v0(rec_data,h_max):
+   
+    x,y = 0,0
+    cells_packed, max_rows_used, max_cols_used = 0, h_max, 0
+    for i in range(len(rec_data)):
+        rec_data[i].set_pos(x,y)
+        rec_data[i].packed()
+        x += rec_data[i].width
+        cells_packed += (rec_data[i].width)*(rec_data[i].height)
+    max_cols_used = x
+    
+    return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+        
 @time_it
 def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
     """
@@ -52,8 +59,8 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
                         if(isvalid):
                             for r in range(y,y+rec_data[i].height):
                                 for c in range(x,x+rec_data[i].width):
-                                    cells_packed += 1
                                     Im_Data[r][c] = 1
+                            cells_packed += (rec_data[i].height)*(rec_data[i].width) 
                             max_rows_used,max_cols_used = max(max_rows_used,y+rec_data[i].height),max(max_cols_used,x+rec_data[i].width)
                             rec_data[i].packed()
                             rec_data[i].set_pos(x,y)
@@ -71,7 +78,6 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
     #     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
     # else:
     #     return -1,None,None
-
 
 @time_it
 def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
@@ -129,6 +135,7 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                                     break
                                 
                             if(isvalid):
+                                cells_packed += (rec_data[i].height)*(rec_data[i].width) 
                                 rec_data[i].packed()
                                 rec_data[i].set_pos(x,y)
                                 max_rows_used = max_rows_used if (max_rows_used >= y+rec_data[i].height) else y+rec_data[i].height
@@ -136,7 +143,6 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                                 rec_done = True
                                 for r in range(y,y+rec_data[i].height):
                                     for c in range(x,x+rec_data[i].width):
-                                        cells_packed += 1
                                         Im_Data[r][c] = rec_data[i].index
                                 break
                             else:

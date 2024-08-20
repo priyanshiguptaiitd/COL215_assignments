@@ -14,8 +14,9 @@ def parse_Input_Rectangles(fpath):
             height_sum+= int(rdata[2])
             width_sum += int(rdata[1])
             rec_total_area += int(rdata[1])*int(rdata[2])
-            max_width,max_height = max(max_width,int(rdata[1])),max(max_height,int(rdata[1])) 
-    
+            max_width = max_width if(max_width >= int(rdata[1])) else int(rdata[1])
+            max_height = max_height if(max_height >= int(rdata[2])) else int(rdata[2])
+            
     rec_data.sort(reverse=True,key= lambda t: (t.height,t.width))
     
     return rec_data,rec_total_area,max_width,max_height,width_sum,height_sum
@@ -40,11 +41,3 @@ def parse_Output_Rectangles(optimal_w,optimal_h,rec_data,fpath):
     
     return 1
 
-def Rec_Data_Analysis(rec_data):
-    aspect_ratio,w_avg,h_avg,freq = 0,0,0,len(rec_data)
-    assert (freq>0), "Don't pass empty Set of Rectangles"
-    for rec in rec_data:
-        aspect_ratio += rec.width/rec.height
-        w_avg += rec.width
-        h_avg += rec.height
-    return aspect_ratio/freq,w_avg/freq,h_avg/freq 
