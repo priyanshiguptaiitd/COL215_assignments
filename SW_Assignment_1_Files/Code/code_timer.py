@@ -11,7 +11,7 @@ def time_it(func):
         result = func(*args) 
         t_end = time()
         if(not kwargs["supress_time_out"]): 
-            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s and produced outpute : {result[2]}') 
+            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s and produced output : {result[2]}') 
         return result,(t_end-t_start) 
     return wrap_func
 

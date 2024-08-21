@@ -13,7 +13,5 @@ with open("yo.txt", "a") as file:
     
 with open("yo.txt", "a+") as file:
     file.write(f"COL215 SW A1 is fun\n")
-    
-
 
 print("Done")
