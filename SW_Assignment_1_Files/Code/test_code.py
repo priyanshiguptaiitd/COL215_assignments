@@ -471,7 +471,7 @@ def testing_mp_sp():
     For testing the difference between multi pack iteration and single pack iteration
     """
     for g in range(5,1001,5):
-        write_single_case(g, FP_SINGLE_CASE_IN,supress_time_out = False)
+        write_single_case(g, FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
         test_single_case_sp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)
         test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)        
 
@@ -480,9 +480,9 @@ if(__name__ == "__main__"):
     # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
       
     # write_single_case(150,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
-    # write_multi_cases(1000,100,"normal_hi",supress_time_out = False)
+    write_multi_cases(1000,100,"normal_lo",supress_time_out = False)
     # test_multi_cases_sp(50,100,supress_time_out = False)
-    # test_multi_cases_mp(1000,100,supress_time_out = False)
+    test_multi_cases_mp(1000,100,supress_time_out = False)
     # testing_mp_sp(supress_time_out=True)
     
     # test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
@@ -490,6 +490,6 @@ if(__name__ == "__main__"):
     # remove_multi_cases(1000,250,supress_time_out = False)
     # testing_at_25_sp()
     
-    # for gf in ALLOWED_GATE_FREQ:
+    # for gf in [10]:
     #     remove_multi_cases(gf,100,supress_time_out = False)
-    pass
+    # pass
