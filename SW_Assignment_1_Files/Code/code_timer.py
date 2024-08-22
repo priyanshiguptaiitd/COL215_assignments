@@ -6,14 +6,14 @@ def time_it(func):
     Args:
         func (_type_): The function we want to pass to our timing wrapper
     """
-    def wrap_func(*args, **kwargs): 
+    def wrap_func_timeit(*args, **kwargs): 
         t_start = time() 
         result = func(*args) 
         t_end = time()
         if(not kwargs["supress_time_out"]): 
             print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s and produced output : {result[2]}') 
         return result,(t_end-t_start) 
-    return wrap_func
+    return wrap_func_timeit
 
 def time_it_no_out(func): 
     """ time_it_no_out - Wrapper for timing function exectution (No Output Shown)
@@ -21,10 +21,12 @@ def time_it_no_out(func):
     Args:
         func (_type_): The function we want to pass to our timing wrapper
     """
-    def wrap_func(*args, **kwargs): 
+    def wrap_func_timeit_no_out(*args, **kwargs): 
+        print(args,kwargs,func.__name__)
         t_start = time() 
-        result = func(*args, **kwargs) 
+        result = func(*args) 
         t_end = time() 
-        print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s ') 
+        if(not kwargs["supress_time_out"]): 
+            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s ') 
         return result,(t_end-t_start)
-    return wrap_func
+    return wrap_func_timeit_no_out

@@ -4,14 +4,24 @@ from itertools import count
 
 @time_it
 def Pack_by_Pixel_v0(rec_data,h_max):
-   
+    """
+    A very Naive algorithm that just fits the rectangles adjacent to one another
+
+    TODO - Find a bettter algorithm (Done in V1)
+
+    Args:
+        rec_data (List of Rec objects): The Gates as Rec Objects in a list 
+        h_max (Maximum height of Gates): The height of the diagram we will be using
+    """
     x,y = 0,0
     cells_packed, max_rows_used, max_cols_used = 0, h_max, 0
+    
     for i in range(len(rec_data)):
         rec_data[i].set_pos(x,y)
         rec_data[i].packed()
         x += rec_data[i].width
         cells_packed += (rec_data[i].width)*(rec_data[i].height)
+    
     max_cols_used = x
     
     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
@@ -31,12 +41,10 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
         Im_Width (_type_): Image Width in which we try to fit the gates
         Im_Height (_type_): Image Height in which we try to fit the gates
     """
-    cells_packed,max_rows_used,max_cols_used = 0,1,1
+    cells_packed, max_rows_used, max_cols_used = 0, 0, 0
     Im_Data = [[0]*Im_Width for r in range(Im_Height)]
-    # print(Im_Data)
     
     for i in range(len(rec_data)):
-        # print(rec_data[i].index,rec_data[i].width,rec_data[i].height)
         rec_done = False
         for y in range(Im_Height):
             if(y+rec_data[i].height > Im_Height or rec_done):
@@ -46,7 +54,6 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
                     if(x+rec_data[i].width > Im_Width):
                         break
                     if(Im_Data[y][x] == 0 and Im_Data[y+rec_data[i].height-1][x+rec_data[i].width-1] == 0):
-                        # print("Might be possible at x,y",y,x)
                         isvalid = True
                         for r in range(y,y+rec_data[i].height):
                             if(isvalid):
@@ -68,16 +75,8 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
                             break
         if(not rec_done):
             return -1,None,None                    
-        # for r in Im_Data:
-        #     print(r)
-        # print()
     
     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
-
-    # if(All_Rec_Packed(rec_data)):    
-    #     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
-    # else:
-    #     return -1,None,None
 
 @time_it
 def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
@@ -112,7 +111,7 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
     for i in range(len(rec_data)):
         rec_done = False
         x,y = 0,0
-        for _infit in count(0,1):
+        for _inf_it in count(0,1):
             if (y + rec_data[i].height > Im_Height or rec_done):
                 break
             else:
@@ -129,8 +128,7 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                                         if(Im_Data[r][c] != 0):
                                             isvalid = False
                                             row_notvalid,col_notvalid = r,c
-                                            break
-                                            
+                                            break                                            
                                 else:
                                     break
                                 
@@ -146,7 +144,6 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                                         Im_Data[r][c] = rec_data[i].index
                                 break
                             else:
-                                # print(f"Index checking : {Im_Data[r][c]} at {r}, {c}")
                                 w_enc,x_enc = Im_Rec_Data[Im_Data[row_notvalid][col_notvalid]].width, Im_Rec_Data[Im_Data[row_notvalid][col_notvalid]].x
                                 x = x_enc + w_enc 
                                 continue        
@@ -160,12 +157,7 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                     
         if(not rec_done):
             return -1,None,None                    
-        # for r in Im_Data:
-        #     print(r)
-        # print()
+
     
     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
-    # if(All_Rec_Packed(rec_data)):    
-    #     return rec_data,[cells_packed,max_rows_used,max_cols_used],True
-    # else:
-    #     return -1,None,None    
+   
