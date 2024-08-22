@@ -1,0 +1,3 @@
+Gate Freq : 35
+Runtime : 0.00447941
+Packing Efficiency :  0.95238095
