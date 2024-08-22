@@ -22,7 +22,6 @@ def time_it_no_out(func):
         func (_type_): The function we want to pass to our timing wrapper
     """
     def wrap_func_timeit_no_out(*args, **kwargs): 
-        print(args,kwargs,func.__name__)
         t_start = time() 
         result = func(*args) 
         t_end = time() 

@@ -1,6 +1,7 @@
 from Rect import *
 from code_timer import *
 from itertools import count 
+from copy import deepcopy
 
 @time_it
 def Pack_by_Pixel_v0(rec_data,h_max):
@@ -15,16 +16,17 @@ def Pack_by_Pixel_v0(rec_data,h_max):
     """
     x,y = 0,0
     cells_packed, max_rows_used, max_cols_used = 0, h_max, 0
+    rdata = deepcopy(rec_data)
     
-    for i in range(len(rec_data)):
-        rec_data[i].set_pos(x,y)
-        rec_data[i].packed()
-        x += rec_data[i].width
-        cells_packed += (rec_data[i].width)*(rec_data[i].height)
+    for i in range(len(rdata)):
+        rdata[i].set_pos(x,y)
+        rdata[i].packed()
+        x += rdata[i].width
+        cells_packed += (rdata[i].width)*(rdata[i].height)
     
     max_cols_used = x
     
-    return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+    return rdata,[cells_packed,max_rows_used,max_cols_used],True
         
 @time_it
 def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
@@ -41,42 +43,44 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
         Im_Width (_type_): Image Width in which we try to fit the gates
         Im_Height (_type_): Image Height in which we try to fit the gates
     """
+    
+    rdata = deepcopy(rec_data)
     cells_packed, max_rows_used, max_cols_used = 0, 0, 0
     Im_Data = [[0]*Im_Width for r in range(Im_Height)]
     
-    for i in range(len(rec_data)):
+    for i in range(len(rdata)):
         rec_done = False
         for y in range(Im_Height):
-            if(y+rec_data[i].height > Im_Height or rec_done):
+            if(y+rdata[i].height > Im_Height or rec_done):
                 break
             else:
                 for x in range(Im_Width):
-                    if(x+rec_data[i].width > Im_Width):
+                    if(x+rdata[i].width > Im_Width):
                         break
-                    if(Im_Data[y][x] == 0 and Im_Data[y+rec_data[i].height-1][x+rec_data[i].width-1] == 0):
+                    if(Im_Data[y][x] == 0 and Im_Data[y+rdata[i].height-1][x+rdata[i].width-1] == 0):
                         isvalid = True
-                        for r in range(y,y+rec_data[i].height):
+                        for r in range(y,y+rdata[i].height):
                             if(isvalid):
-                                for c in range(x,x+rec_data[i].width):
+                                for c in range(x,x+rdata[i].width):
                                     if(Im_Data[r][c] == 1):
                                         isvalid = False
                                         break
                             else:
                                 break
                         if(isvalid):
-                            for r in range(y,y+rec_data[i].height):
-                                for c in range(x,x+rec_data[i].width):
+                            for r in range(y,y+rdata[i].height):
+                                for c in range(x,x+rdata[i].width):
                                     Im_Data[r][c] = 1
-                            cells_packed += (rec_data[i].height)*(rec_data[i].width) 
-                            max_rows_used,max_cols_used = max(max_rows_used,y+rec_data[i].height),max(max_cols_used,x+rec_data[i].width)
-                            rec_data[i].packed()
-                            rec_data[i].set_pos(x,y)
+                            cells_packed += (rdata[i].height)*(rdata[i].width) 
+                            max_rows_used,max_cols_used = max(max_rows_used,y+rdata[i].height),max(max_cols_used,x+rdata[i].width)
+                            rdata[i].packed()
+                            rdata[i].set_pos(x,y)
                             rec_done = True
                             break
         if(not rec_done):
             return -1,None,None                    
     
-    return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+    return rdata,[cells_packed,max_rows_used,max_cols_used],True
 
 @time_it
 def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
@@ -91,6 +95,9 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                              
                              Smartly tackles the case of finding a filled cell while scanning subgrid of a potential postion
                              for placing a rectangle 
+                             
+    IMP - Using a deepcopy of rec_data - Since these functions were written way before we implemented test_code.py 
+          To prevent clash with the Original Rec_Data passed in test_code, we mutate a deepcopy of the Rec_Data
     
     TODO - Figure out a way to capitalise on smaller runtimes buy smartly generating initial guesses 
            and working the way around from there to achieve max efficiency
@@ -101,30 +108,30 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
         Im_Height (_type_): Image Height in which we try to fit the gates
     """
     
-    
-    cells_packed,max_rows_used,max_cols_used = 0,1,1
+    rdata = deepcopy(rec_data)
+    cells_packed,max_rows_used,max_cols_used = 0,0,0
     Im_Data = [[0]*Im_Width for r in range(Im_Height)]
     # Im_Data_R_index = [[0]*Im_Width for r in range(Im_Height)]
-    Im_Rec_Data = {rec_data[i].index : rec_data[i] for i in range(len(rec_data))}
+    Im_Rec_Data = {rdata[i].index : rdata[i] for i in range(len(rdata))}
     # print(Im_Data)
     
-    for i in range(len(rec_data)):
+    for i in range(len(rdata)):
         rec_done = False
         x,y = 0,0
         for _inf_it in count(0,1):
-            if (y + rec_data[i].height > Im_Height or rec_done):
+            if (y + rdata[i].height > Im_Height or rec_done):
                 break
             else:
-                if(x + rec_data[i].width > Im_Width):
+                if(x + rdata[i].width > Im_Width):
                     x,y = 0,y+1
                     continue
                 else:
                     if(Im_Data[y][x] == 0):
-                        if(Im_Data[y+rec_data[i].height-1][x+rec_data[i].width-1] == 0):
+                        if(Im_Data[y+rdata[i].height-1][x+rdata[i].width-1] == 0):
                             isvalid = True
-                            for r in range(y,y+rec_data[i].height):
+                            for r in range(y,y+rdata[i].height):
                                 if(isvalid):
-                                    for c in range(x,x+rec_data[i].width):
+                                    for c in range(x,x+rdata[i].width):
                                         if(Im_Data[r][c] != 0):
                                             isvalid = False
                                             row_notvalid,col_notvalid = r,c
@@ -133,22 +140,22 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
                                     break
                                 
                             if(isvalid):
-                                cells_packed += (rec_data[i].height)*(rec_data[i].width) 
-                                rec_data[i].packed()
-                                rec_data[i].set_pos(x,y)
-                                max_rows_used = max_rows_used if (max_rows_used >= y+rec_data[i].height) else y+rec_data[i].height
-                                max_cols_used = max_cols_used if(max_cols_used >= x+rec_data[i].width) else x+rec_data[i].width
+                                cells_packed += (rdata[i].height)*(rdata[i].width) 
+                                rdata[i].packed()
+                                rdata[i].set_pos(x,y)
+                                max_rows_used = max_rows_used if (max_rows_used >= y+rdata[i].height) else y+rdata[i].height
+                                max_cols_used = max_cols_used if(max_cols_used >= x+rdata[i].width) else x+rdata[i].width
                                 rec_done = True
-                                for r in range(y,y+rec_data[i].height):
-                                    for c in range(x,x+rec_data[i].width):
-                                        Im_Data[r][c] = rec_data[i].index
+                                for r in range(y,y+rdata[i].height):
+                                    for c in range(x,x+rdata[i].width):
+                                        Im_Data[r][c] = rdata[i].index
                                 break
                             else:
                                 w_enc,x_enc = Im_Rec_Data[Im_Data[row_notvalid][col_notvalid]].width, Im_Rec_Data[Im_Data[row_notvalid][col_notvalid]].x
                                 x = x_enc + w_enc 
                                 continue        
                         else:
-                            x = x + rec_data[i].width
+                            x = x + rdata[i].width
                             continue
                     else:
                         w_enc,x_enc = Im_Rec_Data[Im_Data[y][x]].width, Im_Rec_Data[Im_Data[y][x]].x 
@@ -159,5 +166,5 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
             return -1,None,None                    
 
     
-    return rec_data,[cells_packed,max_rows_used,max_cols_used],True
+    return rdata,[cells_packed,max_rows_used,max_cols_used],True
    

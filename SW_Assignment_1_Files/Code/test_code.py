@@ -45,6 +45,7 @@ def single_pack_iter(rec_data,cols,rows):
         
         if(check_pack is None):
             cols = int(DIM_INC_FAILTC*cols)
+
         else:
             cells_packed,max_peff_cols, max_peff_rows =  pack_data[0], pack_data[2], pack_data[1] 
             max_packeff = round(pack_data[0]/(pack_data[1]*pack_data[2]),8)
@@ -53,7 +54,6 @@ def single_pack_iter(rec_data,cols,rows):
         
     return max_peff_rect,[cells_packed,max_peff_rows,max_peff_cols],True
 
-# multi_pack_iter -
 @ time_it
 def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
     # Docstring - Function Description (Long)
@@ -95,7 +95,7 @@ def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
     """
     
     tc_total_runtime, max_packeff = 0, 0
-    max_peff_cols, max_peff_rows, max_peff_rect = 0, 0, 0, None
+    max_peff_cols, max_peff_rows, max_peff_rect =  0, 0, None
     its_took = 0
     
     for i in count(0,1):
@@ -113,9 +113,10 @@ def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
             max_peff_rect  = packed_recs
             its_took += 1                
             break
-
+        
     if(max_packeff > PACK_EFF_BOUND or round(tc_total_runtime,8) > TC_RUNTIME_BOUND):
         print(f"Iterations took = {its_took}")
+        
         return max_peff_rect,[cells_packed,max_peff_rows,max_peff_cols],True
     else:
         if(tc_runtime < 0.1): max_iterations = MAX_IT_BOUND
@@ -124,6 +125,7 @@ def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
         if(max_iterations%2==1): max_iterations += 1
         
         cols_rows_iter = set()
+        print(cols_rows_iter)
         
         for i in range(1,max_iterations//2+1):
             cols_l = int(max_peff_cols*(1+DIM_DELTA_PEFF*i))
@@ -138,7 +140,7 @@ def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
             PBP_out = Pack_by_Pixel_v2(rec_data,t[0],t[1],supress_time_out=True)
             packed_recs, pack_data, check_pack = PBP_out[0]
             tc_runtime = PBP_out[1]
-            
+    
             if(check_pack is not None):
                 curr_packeff = round(pack_data[0]/(pack_data[1]*pack_data[2]),8)
                  
@@ -147,10 +149,12 @@ def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
                     max_packeff, max_peff_rect = curr_packeff, packed_recs                          
                 
                 if(max_packeff > PACK_EFF_BOUND):
+                    
                     print(f"Iterations took = {its_took}")
                     return max_peff_rect,[cells_packed,max_peff_rows,max_peff_cols],True
         
         print(f"Iterations took = {its_took}")
+        
         return max_peff_rect,[cells_packed,max_peff_rows,max_peff_cols],True
     
 @ time_it_no_out
@@ -162,12 +166,15 @@ def test_single_case_sp(fpath_in,fpath_out):
         fpath_in (FilePath): Passed to IO_Parser to read rectangle Data
         fpath_out (FilePath): Passed to IO_Parser to write rectangle Data
     """
+    with open("comparison_single_tc_sp.txt","w") as file:
+        pass
+    
     rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(fpath_in)
     avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
     rec_freq = len(rec_data)
     
     alpha_margin = ALPHA_MARGIN_DIM
-    print(mh)
+
     print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} " )
     print(f"Total Cell Area : {rec_tot_area} , Approx Width / height of Diagram : {int(alpha_margin*(rec_tot_area**0.5))} across {rec_freq} gates")
     
@@ -181,9 +188,9 @@ def test_single_case_sp(fpath_in,fpath_out):
     packed_recs,pack_data,pack_check= SPI_out[0]
     tc_runtime = SPI_out[1] 
 
-    with open("comparison_single_tc_spitr.txt","a") as file:
+    with open("comparison_single_tc_sp.txt","a") as file:
         file.write(f"Gate Freq : {rec_freq}\n")
-        file.write(f"Runtime : {tc_runtime}\n")
+        file.write(f"Runtime : {tc_runtime :.8f}\n")
         file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")
 
     print(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}, {pack_data[2]} cols and  {pack_data[1]} rows were used")
@@ -265,7 +272,7 @@ def test_multi_cases_sp(gatefreq,tc_freq):
 
 @ time_it_no_out
 def testing_at_25_sp():
-    """Tests code at 25 frequency interval of gates (from [25,1000])
+    """Tests code at 25 frequency interval of gates (from [25,1000]) using Single Pack Iteration
        Used for graph analysis of the impact of number of gates on runtime 
        and packing efficiency
     """
@@ -290,7 +297,7 @@ def testing_at_25_sp():
         # packed_recs,pack_data,check_pack = PBP_out[0]
         # tc_runtime = PBP_out[1]
         
-        SPI_out = multi_pack_iter(rec_data,icols,irows,rec_tot_area,supress_time_out=True)
+        SPI_out = single_pack_iter(rec_data,icols,irows,rec_tot_area,supress_time_out=True)
         packed_recs,pack_data,pack_check= SPI_out[0]
         tc_runtime = SPI_out[1]
         
@@ -318,6 +325,9 @@ def test_single_case_mp(fpath_in,fpath_out):
         fpath_in (FilePath): Passed to IO_Parser to read rectangle Data
         fpath_out (FilePath): Passed to IO_Parser to write rectangle Data
     """
+    with open("comparison_single_tc_mp.txt","w") as file:
+        pass
+    
     rec_data,rec_tot_area,maxw,maxh,ws,hs = parse_Input_Rectangles(fpath_in)
     avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
     rec_freq = len(rec_data)
@@ -337,9 +347,9 @@ def test_single_case_mp(fpath_in,fpath_out):
     packed_recs,pack_data,pack_check= MPI_out[0]
     tc_runtime = MPI_out[1] 
     
-    with open("comparison_single_tc_mpitr","a") as file:
+    with open("comparison_single_tc_mp.txt","a") as file:
         file.write(f"Gate Freq : {rec_freq}\n")
-        file.write(f"Runtime : {tc_runtime}\n")
+        file.write(f"Runtime : {tc_runtime:.8f}\n")
         file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")
 
     
@@ -417,22 +427,73 @@ def test_multi_cases_mp(gatefreq,tc_freq):
             file.write(f"\n")
 
 @ time_it_no_out
+def testing_at_25_mp():
+    """Tests code at 25 frequency interval of gates (from [25,1000]) using Single Pack Iteration
+       Used for graph analysis of the impact of number of gates on runtime 
+       and packing efficiency
+    """
+    
+    with open("report_tc_analysis.txt","w") as file:
+        pass
+    for g in range(25,2001,25):
+        write_single_case(g,FP_SINGLE_CASE_IN)
+        
+        rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(FP_SINGLE_CASE_IN)
+        avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
+        rec_freq = len(rec_data)
+        
+        alpha_margin = ALPHA_MARGIN_DIM
+        
+        print(f"Average Aspect Ratio : {avg_asp :.4f}, Average Width : {w_avg :.4f}, Average Height : {h_avg :.4f} " )
+        print(f"Total Cell Area : {rec_tot_area} , Approx Width / height of Diagram : {int(alpha_margin*(rec_tot_area**0.5))} across {rec_freq} gates")
+        
+        icols = int(alpha_margin*(rec_tot_area**0.5))
+        irows = int(alpha_margin*(rec_tot_area**0.5)) if (int(alpha_margin*(rec_tot_area**0.5)) > rec_tot_area//icols + 1) else rec_tot_area//icols + 1 
+        # PBP_out = Pack_by_Pixel_v2(rec_data,icols,irows,supress_time_out=False) 
+        # packed_recs,pack_data,check_pack = PBP_out[0]
+        # tc_runtime = PBP_out[1]
+        
+        MPI_out = multi_pack_iter(rec_data,icols,irows,rec_tot_area,supress_time_out=True)
+        packed_recs,pack_data,pack_check= MPI_out[0]
+        tc_runtime = MPI_out[1]
+        
+        if(pack_check is not None):
+            with open("report_tc_analysis.txt","a") as file:
+                file.write(f"No. of Gates : {rec_freq}\n")
+                file.write(f"Time to Run Code : {tc_runtime : .6f}\n")
+                file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .6f}\n")
+                print(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}, {pack_data[2]} cols and  {pack_data[1]} rows were used")
+                print(f"Total area of Gates used and total area of Image: {rec_tot_area} , {pack_data[1]*pack_data[2]}")
+                parse_Output_Rectangles(pack_data[2],pack_data[1],parse_Rec_Data_Output(packed_recs),FP_SINGLE_CASE_OUT)
+        
+        else:
+            with open("report_tc_analysis.txt","a") as file:
+                file.writeline(f"No. of Gates : {rec_freq}\n")
+                file.writeline(f"Time to Run Code : NA\n")
+                file.writeline(f"Packing Efficiency : NA\n")  
+
+@ time_it_no_out
 def testing_mp_sp():
-    for g in range(5,251,5):
+    """
+    For testing the difference between multi pack iteration and single pack iteration
+    """
+    for g in range(5,501,5):
         write_single_case(g, FP_SINGLE_CASE_IN,supress_time_out = False)
         test_single_case_sp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)
         test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)        
 
 
-if(__name__ == "__main__"): 
+if(__name__ == "__main__"):
+    # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
+      
     # write_single_case(5,FP_SINGLE_CASE_IN,"normal_hi")
-    # write_multi_cases(50,100)
-    # test_multi_cases_sp(50,100)
-    # test_multi_cases_mp(50,100)
+    # write_multi_cases(50,100,supress_time_out = False)
+    # test_multi_cases_sp(50,100,supress_time_out = False)
+    # test_multi_cases_mp(50,100,supress_time_out = False)
     # testing_mp_sp()
     
-    # test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT)
-    test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
+    test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
+    # test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
     # remove_multi_cases(100,20)
     # testing_at_25_sp()
     pass

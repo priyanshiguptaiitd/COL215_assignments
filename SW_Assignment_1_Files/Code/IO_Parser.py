@@ -9,6 +9,9 @@ def parse_Input_Rectangles(fpath):
         c = 1
         for l in file.readlines():
             rdata = l.split()
+            # Breaks if encounters empty line , Hopefully doesnt
+            if(len(rdata)==0):
+                break
             rec_data.append(Rect(c,int(rdata[1]),int(rdata[2])))
             c += 1
             height_sum+= int(rdata[2])

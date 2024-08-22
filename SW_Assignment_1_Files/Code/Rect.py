@@ -14,6 +14,10 @@ class Rect():
         
     def packed(self):
         self.is_packed = True
+        
+    def restore(self):
+        self.is_packed = False
+        self.x,self.y = None,None
 
 def All_Rec_Packed(rec_data):
     for rec in rec_data:
@@ -28,4 +32,6 @@ def Rec_Data_Analysis(rec_data):
         aspect_ratio += rec.width/rec.height
         w_avg += rec.width
         h_avg += rec.height
-    return aspect_ratio/freq,w_avg/freq,h_avg/freq 
+    return aspect_ratio/freq,w_avg/freq,h_avg/freq
+
+
