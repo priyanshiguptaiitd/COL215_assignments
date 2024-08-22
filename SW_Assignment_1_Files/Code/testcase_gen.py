@@ -65,7 +65,8 @@ def remove_multi_cases(gatefreq,tc_freq):
     assert gatefreq in ALLOWED_GATE_FREQ, "Please give a valid test case size"
     for i in range(1,tc_freq+1):
         try: 
-            del_file_at(FP_MULTI_CASES_IN(i,gatefreq)) 
+            del_file_at(FP_MULTI_CASES_IN(i,gatefreq))
+            del_file_at(FP_MULTI_CASES_OUT(i,gatefreq)) 
         except OSError as error:  
             print("File path invalid or Can't be removed, Terminating File Deletion operation")
             return

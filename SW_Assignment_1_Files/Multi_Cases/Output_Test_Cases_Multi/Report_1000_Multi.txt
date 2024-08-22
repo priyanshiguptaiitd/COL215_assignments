@@ -1,0 +1,5 @@
+Test Case 1 
+Total area of Gates used and total area of Image: 2560273 , 2588960 
+Packing Efficiency :  0.98891949, 1760 cols and  1471 rows were used 
+Time to run Code : 5.70858312
+

@@ -125,7 +125,7 @@ def multi_pack_iter(rec_data,cols,rows,rec_tot_area,w_max,h_max):
         if(max_iterations%2==1): max_iterations += 1
         
         cols_rows_iter = set()
-        print(cols_rows_iter)
+        
         
         for i in range(1,max_iterations//2+1):
             cols_l = int(max_peff_cols*(1+DIM_DELTA_PEFF*i))
@@ -166,8 +166,6 @@ def test_single_case_sp(fpath_in,fpath_out):
         fpath_in (FilePath): Passed to IO_Parser to read rectangle Data
         fpath_out (FilePath): Passed to IO_Parser to write rectangle Data
     """
-    with open("comparison_single_tc_sp.txt","w") as file:
-        pass
     
     rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(fpath_in)
     avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
@@ -213,9 +211,6 @@ def test_multi_cases_sp(gatefreq,tc_freq):
     
     success_packs,fail_packs,tc_runtime_avg, pack_eff_avg = 0,0,0,0
     multi_tc_report_fpath = FP_MULTI_CASES_OUT(gate_freq=gatefreq)
-    
-    with open(multi_tc_report_fpath,"w") as file:
-        pass
     
     for tc in range(1,tc_freq+1):
         rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(FP_MULTI_CASES_IN(tc,gatefreq))
@@ -325,8 +320,6 @@ def test_single_case_mp(fpath_in,fpath_out):
         fpath_in (FilePath): Passed to IO_Parser to read rectangle Data
         fpath_out (FilePath): Passed to IO_Parser to write rectangle Data
     """
-    with open("comparison_single_tc_mp.txt","w") as file:
-        pass
     
     rec_data,rec_tot_area,maxw,maxh,ws,hs = parse_Input_Rectangles(fpath_in)
     avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
@@ -477,7 +470,7 @@ def testing_mp_sp():
     """
     For testing the difference between multi pack iteration and single pack iteration
     """
-    for g in range(5,501,5):
+    for g in range(5,1001,5):
         write_single_case(g, FP_SINGLE_CASE_IN,supress_time_out = False)
         test_single_case_sp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)
         test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)        
@@ -486,14 +479,17 @@ def testing_mp_sp():
 if(__name__ == "__main__"):
     # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
       
-    # write_single_case(5,FP_SINGLE_CASE_IN,"normal_hi")
-    # write_multi_cases(50,100,supress_time_out = False)
+    # write_single_case(150,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
+    # write_multi_cases(1000,100,"normal_hi",supress_time_out = False)
     # test_multi_cases_sp(50,100,supress_time_out = False)
-    # test_multi_cases_mp(50,100,supress_time_out = False)
-    # testing_mp_sp()
+    # test_multi_cases_mp(1000,100,supress_time_out = False)
+    # testing_mp_sp(supress_time_out=True)
     
-    test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
+    # test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
     # test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
-    # remove_multi_cases(100,20)
+    # remove_multi_cases(1000,250,supress_time_out = False)
     # testing_at_25_sp()
+    
+    # for gf in ALLOWED_GATE_FREQ:
+    #     remove_multi_cases(gf,100,supress_time_out = False)
     pass
