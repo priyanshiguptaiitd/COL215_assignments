@@ -1,0 +1,5 @@
+Gate Freq : 32
+Cols Used : 256
+Rows Used : 408
+Runtime : 0.23752785
+Packing Efficiency :  0.92561849

@@ -1,0 +1,1876 @@
+Gate Width : 108
+Gate Height : 12312
+Runtime : 1.28521633
+Packing Efficiency :  0.93402251
+Gate Width : 113
+Gate Height : 11557
+Runtime : 1.20396852
+Packing Efficiency :  0.95101234
+Gate Width : 118
+Gate Height : 11061
+Runtime : 1.19973302
+Packing Efficiency :  0.95155371
+Gate Width : 123
+Gate Height : 10597
+Runtime : 1.29035783
+Packing Efficiency :  0.95284369
+Gate Width : 128
+Gate Height : 10172
+Runtime : 1.35593724
+Packing Efficiency :  0.95387922
+Gate Width : 133
+Gate Height : 9772
+Runtime : 1.29979253
+Packing Efficiency :  0.95559663
+Gate Width : 138
+Gate Height : 9473
+Runtime : 1.36786819
+Packing Efficiency :  0.95004261
+Gate Width : 143
+Gate Height : 9087
+Runtime : 1.71498585
+Packing Efficiency :  0.95576944
+Gate Width : 148
+Gate Height : 8785
+Runtime : 1.80309439
+Packing Efficiency :  0.95522620
+Gate Width : 153
+Gate Height : 8538
+Runtime : 1.46501589
+Packing Efficiency :  0.95074079
+Gate Width : 158
+Gate Height : 8242
+Runtime : 1.77676797
+Packing Efficiency :  0.95371807
+Gate Width : 163
+Gate Height : 8076
+Runtime : 2.06619716
+Packing Efficiency :  0.94346500
+Gate Width : 168
+Gate Height : 7707
+Runtime : 1.91246891
+Packing Efficiency :  0.95921302
+Gate Width : 173
+Gate Height : 7523
+Runtime : 1.88940930
+Packing Efficiency :  0.95427279
+Gate Width : 178
+Gate Height : 7359
+Runtime : 1.94019437
+Packing Efficiency :  0.94813658
+Gate Width : 183
+Gate Height : 7104
+Runtime : 1.87464690
+Packing Efficiency :  0.95533495
+Gate Width : 188
+Gate Height : 6932
+Runtime : 1.82798243
+Packing Efficiency :  0.95300088
+Gate Width : 193
+Gate Height : 6709
+Runtime : 2.01870012
+Packing Efficiency :  0.95916783
+Gate Width : 198
+Gate Height : 6560
+Runtime : 1.98169136
+Packing Efficiency :  0.95618225
+Gate Width : 203
+Gate Height : 6356
+Runtime : 2.59029317
+Packing Efficiency :  0.96256437
+Gate Width : 208
+Gate Height : 6226
+Runtime : 1.94262719
+Packing Efficiency :  0.95904118
+Gate Width : 213
+Gate Height : 6079
+Runtime : 2.20419669
+Packing Efficiency :  0.95917524
+Gate Width : 218
+Gate Height : 5937
+Runtime : 1.52410984
+Packing Efficiency :  0.95959100
+Gate Width : 223
+Gate Height : 5784
+Runtime : 1.42361379
+Packing Efficiency :  0.96288974
+Gate Width : 228
+Gate Height : 5701
+Runtime : 1.46588016
+Packing Efficiency :  0.95548488
+Gate Width : 233
+Gate Height : 5544
+Runtime : 1.58610559
+Packing Efficiency :  0.96145855
+Gate Width : 238
+Gate Height : 5408
+Runtime : 1.51752067
+Packing Efficiency :  0.96493057
+Gate Width : 243
+Gate Height : 5308
+Runtime : 1.48294878
+Packing Efficiency :  0.96288078
+Gate Width : 248
+Gate Height : 5212
+Runtime : 1.45104980
+Packing Efficiency :  0.96084563
+Gate Width : 253
+Gate Height : 5136
+Runtime : 1.48164487
+Packing Efficiency :  0.95579372
+Gate Width : 258
+Gate Height : 4973
+Runtime : 1.37124157
+Packing Efficiency :  0.96799150
+Gate Width : 263
+Gate Height : 4890
+Runtime : 1.39848995
+Packing Efficiency :  0.96570638
+Gate Width : 268
+Gate Height : 4786
+Runtime : 1.45128846
+Packing Efficiency :  0.96828280
+Gate Width : 273
+Gate Height : 4702
+Runtime : 1.36027241
+Packing Efficiency :  0.96752999
+Gate Width : 278
+Gate Height : 4611
+Runtime : 1.47231531
+Packing Efficiency :  0.96887955
+Gate Width : 283
+Gate Height : 4559
+Runtime : 1.47875094
+Packing Efficiency :  0.96261734
+Gate Width : 288
+Gate Height : 4462
+Runtime : 1.53824496
+Packing Efficiency :  0.96646839
+Gate Width : 293
+Gate Height : 4369
+Runtime : 1.47198772
+Packing Efficiency :  0.97019726
+Gate Width : 298
+Gate Height : 4296
+Runtime : 1.49396682
+Packing Efficiency :  0.97012829
+Gate Width : 303
+Gate Height : 4227
+Runtime : 1.47091246
+Packing Efficiency :  0.96969427
+Gate Width : 308
+Gate Height : 4155
+Runtime : 1.50707269
+Packing Efficiency :  0.97048307
+Gate Width : 313
+Gate Height : 4090
+Runtime : 1.60874104
+Packing Efficiency :  0.97015709
+Gate Width : 318
+Gate Height : 4034
+Runtime : 1.62022328
+Packing Efficiency :  0.96815901
+Gate Width : 323
+Gate Height : 3955
+Runtime : 1.64480567
+Packing Efficiency :  0.97221137
+Gate Width : 328
+Gate Height : 3896
+Runtime : 1.54472494
+Packing Efficiency :  0.97188956
+Gate Width : 333
+Gate Height : 3862
+Runtime : 1.66204119
+Packing Efficiency :  0.96572440
+Gate Width : 338
+Gate Height : 3800
+Runtime : 1.86659575
+Packing Efficiency :  0.96696201
+Gate Width : 343
+Gate Height : 3725
+Runtime : 1.96338534
+Packing Efficiency :  0.97205158
+Gate Width : 348
+Gate Height : 3697
+Runtime : 1.96614957
+Packing Efficiency :  0.96534158
+Gate Width : 353
+Gate Height : 3620
+Runtime : 1.65573025
+Packing Efficiency :  0.97191085
+Gate Width : 358
+Gate Height : 3578
+Runtime : 1.62080383
+Packing Efficiency :  0.96958602
+Gate Width : 363
+Gate Height : 3538
+Runtime : 1.81726718
+Packing Efficiency :  0.96704181
+Gate Width : 368
+Gate Height : 3480
+Runtime : 1.75161815
+Packing Efficiency :  0.96980104
+Gate Width : 373
+Gate Height : 3422
+Runtime : 1.69708872
+Packing Efficiency :  0.97301799
+Gate Width : 378
+Gate Height : 3375
+Runtime : 1.54625726
+Packing Efficiency :  0.97351832
+Gate Width : 383
+Gate Height : 3341
+Runtime : 1.44336271
+Packing Efficiency :  0.97058697
+Gate Width : 388
+Gate Height : 3286
+Runtime : 1.38700461
+Packing Efficiency :  0.97411543
+Gate Width : 393
+Gate Height : 3241
+Runtime : 1.45999789
+Packing Efficiency :  0.97507523
+Gate Width : 398
+Gate Height : 3210
+Runtime : 1.52012444
+Packing Efficiency :  0.97212386
+Gate Width : 403
+Gate Height : 3172
+Runtime : 1.49084473
+Packing Efficiency :  0.97156415
+Gate Width : 408
+Gate Height : 3141
+Runtime : 1.62924719
+Packing Efficiency :  0.96912904
+Gate Width : 413
+Gate Height : 3083
+Runtime : 1.43034244
+Packing Efficiency :  0.97540759
+Gate Width : 418
+Gate Height : 3058
+Runtime : 1.69173837
+Packing Efficiency :  0.97161888
+Gate Width : 423
+Gate Height : 3011
+Runtime : 1.48240399
+Packing Efficiency :  0.97512117
+Gate Width : 428
+Gate Height : 2973
+Runtime : 1.47278762
+Packing Efficiency :  0.97604767
+Gate Width : 433
+Gate Height : 2937
+Runtime : 1.87842607
+Packing Efficiency :  0.97660257
+Gate Width : 438
+Gate Height : 2904
+Runtime : 1.87977433
+Packing Efficiency :  0.97642521
+Gate Width : 443
+Gate Height : 2873
+Runtime : 1.54331350
+Packing Efficiency :  0.97582144
+Gate Width : 448
+Gate Height : 2843
+Runtime : 1.96427560
+Packing Efficiency :  0.97511275
+Gate Width : 453
+Gate Height : 2804
+Runtime : 1.84756947
+Packing Efficiency :  0.97776277
+Gate Width : 458
+Gate Height : 2786
+Runtime : 2.05842113
+Packing Efficiency :  0.97333674
+Gate Width : 463
+Gate Height : 2742
+Runtime : 2.63741374
+Packing Efficiency :  0.97827570
+Gate Width : 468
+Gate Height : 2720
+Runtime : 2.52406025
+Packing Efficiency :  0.97565202
+Gate Width : 473
+Gate Height : 2681
+Runtime : 2.65227079
+Packing Efficiency :  0.97938118
+Gate Width : 478
+Gate Height : 2652
+Runtime : 2.62834549
+Packing Efficiency :  0.97973425
+Gate Width : 483
+Gate Height : 2631
+Runtime : 2.16279340
+Packing Efficiency :  0.97733112
+Gate Width : 488
+Gate Height : 2599
+Runtime : 2.78348494
+Packing Efficiency :  0.97922751
+Gate Width : 493
+Gate Height : 2576
+Runtime : 2.43366814
+Packing Efficiency :  0.97795063
+Gate Width : 498
+Gate Height : 2557
+Runtime : 2.35989118
+Packing Efficiency :  0.97532563
+Gate Width : 503
+Gate Height : 2523
+Runtime : 2.29102707
+Packing Efficiency :  0.97864340
+Gate Width : 508
+Gate Height : 2501
+Runtime : 2.67377496
+Packing Efficiency :  0.97753497
+Gate Width : 513
+Gate Height : 2480
+Runtime : 2.13995409
+Packing Efficiency :  0.97620418
+Gate Width : 518
+Gate Height : 2458
+Runtime : 2.80419302
+Packing Efficiency :  0.97543440
+Gate Width : 523
+Gate Height : 2428
+Runtime : 2.14182329
+Packing Efficiency :  0.97804612
+Gate Width : 528
+Gate Height : 2408
+Runtime : 2.22476864
+Packing Efficiency :  0.97683070
+Gate Width : 533
+Gate Height : 2392
+Runtime : 2.34403515
+Packing Efficiency :  0.97413988
+Gate Width : 538
+Gate Height : 2368
+Runtime : 2.30915022
+Packing Efficiency :  0.97486782
+Gate Width : 543
+Gate Height : 2345
+Runtime : 2.29381561
+Packing Efficiency :  0.97536469
+Gate Width : 548
+Gate Height : 2318
+Runtime : 2.30982924
+Packing Efficiency :  0.97772274
+Gate Width : 553
+Gate Height : 2299
+Runtime : 2.30824780
+Packing Efficiency :  0.97688987
+Gate Width : 558
+Gate Height : 2274
+Runtime : 2.13347936
+Packing Efficiency :  0.97877991
+Gate Width : 563
+Gate Height : 2263
+Runtime : 2.15003991
+Packing Efficiency :  0.97480278
+Gate Width : 568
+Gate Height : 2242
+Runtime : 1.99195194
+Packing Efficiency :  0.97527202
+Gate Width : 573
+Gate Height : 2223
+Runtime : 2.11773038
+Packing Efficiency :  0.97502471
+Gate Width : 578
+Gate Height : 2194
+Runtime : 2.43342948
+Packing Efficiency :  0.97936650
+Gate Width : 583
+Gate Height : 2182
+Runtime : 2.04843950
+Packing Efficiency :  0.97630701
+Gate Width : 588
+Gate Height : 2159
+Runtime : 2.03478098
+Packing Efficiency :  0.97831731
+Gate Width : 593
+Gate Height : 2151
+Runtime : 2.11723471
+Packing Efficiency :  0.97367631
+Gate Width : 598
+Gate Height : 2125
+Runtime : 2.07221651
+Packing Efficiency :  0.97734881
+Gate Width : 603
+Gate Height : 2108
+Runtime : 2.05640340
+Packing Efficiency :  0.97706125
+Gate Width : 608
+Gate Height : 2095
+Runtime : 2.21454048
+Packing Efficiency :  0.97503925
+Gate Width : 613
+Gate Height : 2079
+Runtime : 2.59091806
+Packing Efficiency :  0.97452895
+Gate Width : 618
+Gate Height : 2061
+Runtime : 2.38839674
+Packing Efficiency :  0.97508672
+Gate Width : 623
+Gate Height : 2037
+Runtime : 2.26365495
+Packing Efficiency :  0.97865728
+Gate Width : 628
+Gate Height : 2024
+Runtime : 2.48869514
+Packing Efficiency :  0.97710122
+Gate Width : 633
+Gate Height : 2013
+Runtime : 2.42099094
+Packing Efficiency :  0.97468038
+Gate Width : 638
+Gate Height : 1990
+Runtime : 2.29205561
+Packing Efficiency :  0.97821868
+Gate Width : 643
+Gate Height : 1975
+Runtime : 2.47873259
+Packing Efficiency :  0.97798374
+Gate Width : 648
+Gate Height : 1962
+Runtime : 2.43507457
+Packing Efficiency :  0.97686758
+Gate Width : 653
+Gate Height : 1948
+Runtime : 2.21407104
+Packing Efficiency :  0.97635459
+Gate Width : 658
+Gate Height : 1929
+Runtime : 2.13466787
+Packing Efficiency :  0.97847917
+Gate Width : 663
+Gate Height : 1915
+Runtime : 2.22690201
+Packing Efficiency :  0.97819942
+Gate Width : 668
+Gate Height : 1901
+Runtime : 2.18269515
+Packing Efficiency :  0.97802764
+Gate Width : 673
+Gate Height : 1886
+Runtime : 2.35589790
+Packing Efficiency :  0.97848226
+Gate Width : 678
+Gate Height : 1875
+Runtime : 2.30717802
+Packing Efficiency :  0.97696441
+Gate Width : 683
+Gate Height : 1862
+Runtime : 2.44552183
+Packing Efficiency :  0.97658337
+Gate Width : 688
+Gate Height : 1843
+Runtime : 2.16524339
+Packing Efficiency :  0.97948081
+Gate Width : 693
+Gate Height : 1829
+Runtime : 2.27558804
+Packing Efficiency :  0.97985715
+Gate Width : 698
+Gate Height : 1814
+Runtime : 2.17981148
+Packing Efficiency :  0.98088253
+Gate Width : 703
+Gate Height : 1810
+Runtime : 2.51450205
+Packing Efficiency :  0.97605841
+Gate Width : 708
+Gate Height : 1794
+Runtime : 2.27479959
+Packing Efficiency :  0.97780896
+Gate Width : 713
+Gate Height : 1781
+Runtime : 2.52951980
+Packing Efficiency :  0.97803919
+Gate Width : 718
+Gate Height : 1772
+Runtime : 2.35470653
+Packing Efficiency :  0.97616121
+Gate Width : 723
+Gate Height : 1749
+Runtime : 2.30871844
+Packing Efficiency :  0.98215855
+Gate Width : 728
+Gate Height : 1743
+Runtime : 2.30632210
+Packing Efficiency :  0.97877066
+Gate Width : 733
+Gate Height : 1732
+Runtime : 2.22760892
+Packing Efficiency :  0.97826799
+Gate Width : 738
+Gate Height : 1717
+Runtime : 2.27792168
+Packing Efficiency :  0.98012857
+Gate Width : 743
+Gate Height : 1702
+Runtime : 2.19938111
+Packing Efficiency :  0.98211272
+Gate Width : 748
+Gate Height : 1695
+Runtime : 2.16710210
+Packing Efficiency :  0.97957661
+Gate Width : 753
+Gate Height : 1683
+Runtime : 2.11993098
+Packing Efficiency :  0.98001024
+Gate Width : 758
+Gate Height : 1671
+Runtime : 2.21246433
+Packing Efficiency :  0.98053715
+Gate Width : 763
+Gate Height : 1665
+Runtime : 2.72482944
+Packing Efficiency :  0.97762192
+Gate Width : 768
+Gate Height : 1652
+Runtime : 2.49989629
+Packing Efficiency :  0.97890026
+Gate Width : 773
+Gate Height : 1644
+Runtime : 2.12287354
+Packing Efficiency :  0.97730113
+Gate Width : 778
+Gate Height : 1638
+Runtime : 1.71244454
+Packing Efficiency :  0.97457712
+Gate Width : 783
+Gate Height : 1616
+Runtime : 1.66432452
+Packing Efficiency :  0.98153680
+Gate Width : 788
+Gate Height : 1613
+Runtime : 1.89932299
+Packing Efficiency :  0.97712274
+Gate Width : 793
+Gate Height : 1601
+Runtime : 1.57974124
+Packing Efficiency :  0.97823948
+Gate Width : 798
+Gate Height : 1592
+Runtime : 1.51932120
+Packing Efficiency :  0.97760576
+Gate Width : 803
+Gate Height : 1583
+Runtime : 2.13902259
+Packing Efficiency :  0.97704203
+Gate Width : 808
+Gate Height : 1568
+Runtime : 2.00757456
+Packing Efficiency :  0.98028484
+Gate Width : 813
+Gate Height : 1562
+Runtime : 2.11717653
+Packing Efficiency :  0.97799837
+Gate Width : 818
+Gate Height : 1553
+Runtime : 2.14772725
+Packing Efficiency :  0.97765347
+Gate Width : 823
+Gate Height : 1541
+Runtime : 2.16334295
+Packing Efficiency :  0.97928078
+Gate Width : 828
+Gate Height : 1532
+Runtime : 2.21058059
+Packing Efficiency :  0.97908547
+Gate Width : 833
+Gate Height : 1528
+Runtime : 2.25781488
+Packing Efficiency :  0.97575627
+Gate Width : 838
+Gate Height : 1510
+Runtime : 2.10012293
+Packing Efficiency :  0.98149647
+Gate Width : 843
+Gate Height : 1504
+Runtime : 2.12854433
+Packing Efficiency :  0.97956734
+Gate Width : 848
+Gate Height : 1496
+Runtime : 2.11637211
+Packing Efficiency :  0.97899903
+Gate Width : 853
+Gate Height : 1484
+Runtime : 2.06775904
+Packing Efficiency :  0.98113050
+Gate Width : 858
+Gate Height : 1479
+Runtime : 2.22486687
+Packing Efficiency :  0.97871049
+Gate Width : 863
+Gate Height : 1474
+Runtime : 2.52700877
+Packing Efficiency :  0.97634078
+Gate Width : 868
+Gate Height : 1461
+Runtime : 2.19798779
+Packing Efficiency :  0.97935414
+Gate Width : 873
+Gate Height : 1461
+Runtime : 2.22709179
+Packing Efficiency :  0.97374501
+Gate Width : 878
+Gate Height : 1448
+Runtime : 2.21088576
+Packing Efficiency :  0.97689217
+Gate Width : 883
+Gate Height : 1439
+Runtime : 2.55750799
+Packing Efficiency :  0.97743573
+Gate Width : 888
+Gate Height : 1430
+Runtime : 2.19537330
+Packing Efficiency :  0.97804920
+Gate Width : 893
+Gate Height : 1427
+Runtime : 2.25799441
+Packing Efficiency :  0.97461766
+Gate Width : 898
+Gate Height : 1418
+Runtime : 2.24020791
+Packing Efficiency :  0.97534248
+Gate Width : 903
+Gate Height : 1406
+Runtime : 2.41728616
+Packing Efficiency :  0.97822022
+Gate Width : 908
+Gate Height : 1403
+Runtime : 2.25839972
+Packing Efficiency :  0.97491373
+Gate Width : 913
+Gate Height : 1390
+Runtime : 2.23124623
+Packing Efficiency :  0.97864263
+Gate Width : 918
+Gate Height : 1380
+Runtime : 2.11335969
+Packing Efficiency :  0.98036532
+Gate Width : 923
+Gate Height : 1377
+Runtime : 2.98432851
+Packing Efficiency :  0.97717887
+Gate Width : 928
+Gate Height : 1371
+Runtime : 2.84008098
+Packing Efficiency :  0.97616735
+Gate Width : 933
+Gate Height : 1358
+Runtime : 1.75452900
+Packing Efficiency :  0.98023068
+Gate Width : 938
+Gate Height : 1355
+Runtime : 1.62855101
+Packing Efficiency :  0.97716426
+Gate Width : 943
+Gate Height : 1348
+Runtime : 1.55640411
+Packing Efficiency :  0.97703050
+Gate Width : 948
+Gate Height : 1342
+Runtime : 1.82711434
+Packing Efficiency :  0.97622259
+Gate Width : 953
+Gate Height : 1336
+Runtime : 1.79708815
+Packing Efficiency :  0.97546198
+Gate Width : 958
+Gate Height : 1324
+Runtime : 1.61505222
+Packing Efficiency :  0.97916575
+Gate Width : 963
+Gate Height : 1321
+Runtime : 1.74276042
+Packing Efficiency :  0.97629396
+Gate Width : 968
+Gate Height : 1319
+Runtime : 2.07580829
+Packing Efficiency :  0.97272383
+Gate Width : 973
+Gate Height : 1302
+Runtime : 2.27488232
+Packing Efficiency :  0.98036068
+Gate Width : 978
+Gate Height : 1300
+Runtime : 2.36799216
+Packing Efficiency :  0.97684914
+Gate Width : 983
+Gate Height : 1295
+Runtime : 2.32300305
+Packing Efficiency :  0.97563286
+Gate Width : 988
+Gate Height : 1286
+Runtime : 2.32066727
+Packing Efficiency :  0.97748881
+Gate Width : 993
+Gate Height : 1279
+Runtime : 2.08550453
+Packing Efficiency :  0.97788979
+Gate Width : 998
+Gate Height : 1272
+Runtime : 2.17955160
+Packing Efficiency :  0.97834505
+Gate Width : 1003
+Gate Height : 1266
+Runtime : 2.63582397
+Packing Efficiency :  0.97808155
+Gate Width : 1008
+Gate Height : 1255
+Runtime : 2.64087987
+Packing Efficiency :  0.98176026
+Gate Width : 1013
+Gate Height : 1252
+Runtime : 2.11150646
+Packing Efficiency :  0.97925530
+Gate Width : 1018
+Gate Height : 1243
+Runtime : 2.07687378
+Packing Efficiency :  0.98150112
+Gate Width : 1023
+Gate Height : 1242
+Runtime : 2.10181808
+Packing Efficiency :  0.97749035
+Gate Width : 1028
+Gate Height : 1233
+Runtime : 2.30984855
+Packing Efficiency :  0.97983628
+Gate Width : 1033
+Gate Height : 1229
+Runtime : 2.35367846
+Packing Efficiency :  0.97826722
+Gate Width : 1038
+Gate Height : 1224
+Runtime : 2.19766521
+Packing Efficiency :  0.97753189
+Gate Width : 1043
+Gate Height : 1220
+Runtime : 2.33858275
+Packing Efficiency :  0.97603540
+Gate Width : 1048
+Gate Height : 1215
+Runtime : 2.27639127
+Packing Efficiency :  0.97537618
+Gate Width : 1053
+Gate Height : 1205
+Runtime : 2.17954373
+Packing Efficiency :  0.97880074
+Gate Width : 1058
+Gate Height : 1200
+Runtime : 2.26077366
+Packing Efficiency :  0.97823409
+Gate Width : 1063
+Gate Height : 1198
+Runtime : 2.19785285
+Packing Efficiency :  0.97525823
+Gate Width : 1068
+Gate Height : 1192
+Runtime : 2.32540059
+Packing Efficiency :  0.97557845
+Gate Width : 1073
+Gate Height : 1185
+Runtime : 2.30664563
+Packing Efficiency :  0.97676848
+Gate Width : 1078
+Gate Height : 1176
+Runtime : 2.70322585
+Packing Efficiency :  0.97967861
+Gate Width : 1083
+Gate Height : 1172
+Runtime : 2.56018281
+Packing Efficiency :  0.97848380
+Gate Width : 1088
+Gate Height : 1167
+Runtime : 2.23143625
+Packing Efficiency :  0.97816013
+Gate Width : 1093
+Gate Height : 1166
+Runtime : 2.24831581
+Packing Efficiency :  0.97452053
+Gate Width : 1098
+Gate Height : 1156
+Runtime : 2.13326430
+Packing Efficiency :  0.97847455
+Gate Width : 1103
+Gate Height : 1151
+Runtime : 2.19794297
+Packing Efficiency :  0.97827030
+Gate Width : 1108
+Gate Height : 1145
+Runtime : 2.16539669
+Packing Efficiency :  0.97895890
+Gate Width : 1113
+Gate Height : 1142
+Runtime : 2.15145898
+Packing Efficiency :  0.97712121
+Gate Width : 1118
+Gate Height : 1141
+Runtime : 2.32316923
+Packing Efficiency :  0.97360380
+Gate Width : 1123
+Gate Height : 1133
+Runtime : 2.33804774
+Packing Efficiency :  0.97611287
+Gate Width : 1128
+Gate Height : 1127
+Runtime : 2.41724443
+Packing Efficiency :  0.97695979
+Gate Width : 1133
+Gate Height : 1125
+Runtime : 2.55851364
+Packing Efficiency :  0.97437756
+Gate Width : 1138
+Gate Height : 1116
+Runtime : 2.40296555
+Packing Efficiency :  0.97791982
+Gate Width : 1143
+Gate Height : 1110
+Runtime : 2.78182077
+Packing Efficiency :  0.97890489
+Gate Width : 1148
+Gate Height : 1108
+Runtime : 2.27801228
+Packing Efficiency :  0.97640065
+Gate Width : 1153
+Gate Height : 1099
+Runtime : 2.46707368
+Packing Efficiency :  0.98012780
+Gate Width : 1158
+Gate Height : 1097
+Runtime : 2.68671775
+Packing Efficiency :  0.97767502
+Gate Width : 1163
+Gate Height : 1092
+Runtime : 2.48170495
+Packing Efficiency :  0.97792906
+Gate Width : 1168
+Gate Height : 1089
+Runtime : 2.40065932
+Packing Efficiency :  0.97642521
+Gate Width : 1173
+Gate Height : 1082
+Runtime : 2.51299906
+Packing Efficiency :  0.97855318
+Gate Width : 1178
+Gate Height : 1080
+Runtime : 2.65601420
+Packing Efficiency :  0.97620418
+Gate Width : 1183
+Gate Height : 1075
+Runtime : 2.37201381
+Packing Efficiency :  0.97659950
+Gate Width : 1188
+Gate Height : 1067
+Runtime : 2.53285480
+Packing Efficiency :  0.97978062
+Gate Width : 1193
+Gate Height : 1067
+Runtime : 2.49815392
+Packing Efficiency :  0.97567425
+Gate Width : 1198
+Gate Height : 1059
+Runtime : 2.52543402
+Packing Efficiency :  0.97894193
+Gate Width : 1203
+Gate Height : 1061
+Runtime : 1.72910213
+Packing Efficiency :  0.97303552
+Gate Width : 1208
+Gate Height : 1052
+Runtime : 1.84855413
+Packing Efficiency :  0.97729805
+Gate Width : 1213
+Gate Height : 1046
+Runtime : 1.93514943
+Packing Efficiency :  0.97885243
+Gate Width : 1218
+Gate Height : 1044
+Runtime : 1.58504081
+Packing Efficiency :  0.97670165
+Gate Width : 1223
+Gate Height : 1040
+Runtime : 1.52456379
+Packing Efficiency :  0.97644978
+Gate Width : 1228
+Gate Height : 1038
+Runtime : 1.64341640
+Packing Efficiency :  0.97434775
+Gate Width : 1233
+Gate Height : 1030
+Runtime : 1.61565161
+Packing Efficiency :  0.97793368
+Gate Width : 1238
+Gate Height : 1030
+Runtime : 1.60329437
+Packing Efficiency :  0.97398403
+Gate Width : 1243
+Gate Height : 1027
+Runtime : 1.65523863
+Packing Efficiency :  0.97289985
+Gate Width : 1248
+Gate Height : 1024
+Runtime : 1.60658002
+Packing Efficiency :  0.97184088
+Gate Width : 1253
+Gate Height : 1017
+Runtime : 1.59388828
+Packing Efficiency :  0.97462530
+Gate Width : 1258
+Gate Height : 1018
+Runtime : 1.59117460
+Packing Efficiency :  0.96979801
+Gate Width : 1263
+Gate Height : 1009
+Runtime : 1.59675241
+Packing Efficiency :  0.97457483
+Gate Width : 1268
+Gate Height : 998
+Runtime : 1.61050296
+Packing Efficiency :  0.98143132
+Gate Width : 1273
+Gate Height : 998
+Runtime : 1.75655270
+Packing Efficiency :  0.97757652
+Gate Width : 1278
+Gate Height : 995
+Runtime : 1.72625470
+Packing Efficiency :  0.97668782
+Gate Width : 1283
+Gate Height : 991
+Runtime : 1.83875751
+Packing Efficiency :  0.97680842
+Gate Width : 1288
+Gate Height : 986
+Runtime : 2.35183215
+Packing Efficiency :  0.97795063
+Gate Width : 1293
+Gate Height : 981
+Runtime : 1.86189246
+Packing Efficiency :  0.97913410
+Gate Width : 1298
+Gate Height : 981
+Runtime : 2.00902843
+Packing Efficiency :  0.97536239
+Gate Width : 1303
+Gate Height : 979
+Runtime : 2.15114617
+Packing Efficiency :  0.97360456
+Gate Width : 1308
+Gate Height : 977
+Runtime : 1.67029929
+Packing Efficiency :  0.97186826
+Gate Width : 1313
+Gate Height : 970
+Runtime : 1.88735056
+Packing Efficiency :  0.97515409
+Gate Width : 1318
+Gate Height : 965
+Runtime : 1.65551925
+Packing Efficiency :  0.97648816
+Gate Width : 1323
+Gate Height : 960
+Runtime : 1.87646747
+Packing Efficiency :  0.97786439
+Gate Width : 1328
+Gate Height : 958
+Runtime : 1.87518859
+Packing Efficiency :  0.97621645
+Gate Width : 1333
+Gate Height : 954
+Runtime : 1.68809128
+Packing Efficiency :  0.97663252
+Gate Width : 1338
+Gate Height : 954
+Runtime : 1.69840670
+Packing Efficiency :  0.97298292
+Gate Width : 1343
+Gate Height : 950
+Runtime : 2.20691967
+Packing Efficiency :  0.97344202
+Gate Width : 1348
+Gate Height : 945
+Runtime : 2.13975239
+Packing Efficiency :  0.97496271
+Gate Width : 1353
+Gate Height : 939
+Runtime : 2.16024899
+Packing Efficiency :  0.97756652
+Gate Width : 1358
+Gate Height : 936
+Runtime : 2.25199628
+Packing Efficiency :  0.97708892
+Gate Width : 1363
+Gate Height : 933
+Runtime : 2.37652278
+Packing Efficiency :  0.97663483
+Gate Width : 1368
+Gate Height : 933
+Runtime : 2.96825075
+Packing Efficiency :  0.97306526
+Gate Width : 1373
+Gate Height : 926
+Runtime : 2.73180318
+Packing Efficiency :  0.97685068
+Gate Width : 1378
+Gate Height : 922
+Runtime : 2.54092646
+Packing Efficiency :  0.97752882
+Gate Width : 1383
+Gate Height : 921
+Runtime : 2.22539806
+Packing Efficiency :  0.97505227
+Gate Width : 1388
+Gate Height : 916
+Runtime : 2.14902711
+Packing Efficiency :  0.97684300
+Gate Width : 1393
+Gate Height : 912
+Runtime : 2.24350476
+Packing Efficiency :  0.97760576
+Gate Width : 1398
+Gate Height : 911
+Runtime : 2.14648056
+Packing Efficiency :  0.97517859
+Gate Width : 1403
+Gate Height : 903
+Runtime : 2.14928913
+Packing Efficiency :  0.98031192
+Gate Width : 1408
+Gate Height : 907
+Runtime : 2.19649673
+Packing Efficiency :  0.97252274
+Gate Width : 1413
+Gate Height : 900
+Runtime : 2.17445636
+Packing Efficiency :  0.97661870
+Gate Width : 1418
+Gate Height : 897
+Runtime : 2.66734099
+Packing Efficiency :  0.97642982
+Gate Width : 1423
+Gate Height : 894
+Runtime : 2.69870734
+Packing Efficiency :  0.97626403
+Gate Width : 1428
+Gate Height : 894
+Runtime : 2.20024252
+Packing Efficiency :  0.97284574
+Gate Width : 1433
+Gate Height : 886
+Runtime : 1.52751040
+Packing Efficiency :  0.97820481
+Gate Width : 1438
+Gate Height : 888
+Runtime : 1.59280920
+Packing Efficiency :  0.97260804
+Gate Width : 1443
+Gate Height : 883
+Runtime : 1.64094543
+Packing Efficiency :  0.97472627
+Gate Width : 1448
+Gate Height : 880
+Runtime : 1.56172991
+Packing Efficiency :  0.97467196
+Gate Width : 1453
+Gate Height : 875
+Runtime : 1.77413559
+Packing Efficiency :  0.97686835
+Gate Width : 1458
+Gate Height : 873
+Runtime : 1.64369726
+Packing Efficiency :  0.97574861
+Gate Width : 1463
+Gate Height : 871
+Runtime : 1.51920319
+Packing Efficiency :  0.97464672
+Gate Width : 1468
+Gate Height : 864
+Runtime : 1.50785279
+Packing Efficiency :  0.97919663
+Gate Width : 1473
+Gate Height : 865
+Runtime : 1.55393028
+Packing Efficiency :  0.97474463
+Gate Width : 1478
+Gate Height : 865
+Runtime : 1.63191557
+Packing Efficiency :  0.97144712
+Gate Width : 1483
+Gate Height : 858
+Runtime : 1.51862288
+Packing Efficiency :  0.97607068
+Gate Width : 1488
+Gate Height : 856
+Runtime : 1.80080271
+Packing Efficiency :  0.97506375
+Gate Width : 1493
+Gate Height : 856
+Runtime : 1.64142346
+Packing Efficiency :  0.97179830
+Gate Width : 1498
+Gate Height : 847
+Runtime : 1.53943515
+Packing Efficiency :  0.97884625
+Gate Width : 1503
+Gate Height : 848
+Runtime : 1.52819943
+Packing Efficiency :  0.97443949
+Gate Width : 1508
+Gate Height : 841
+Runtime : 1.59600806
+Packing Efficiency :  0.97929237
+Gate Width : 1513
+Gate Height : 839
+Runtime : 1.65881085
+Packing Efficiency :  0.97838282
+Gate Width : 1518
+Gate Height : 837
+Runtime : 1.72106099
+Packing Efficiency :  0.97749035
+Gate Width : 1523
+Gate Height : 836
+Runtime : 1.84520984
+Packing Efficiency :  0.97544666
+Gate Width : 1528
+Gate Height : 835
+Runtime : 1.74306178
+Packing Efficiency :  0.97341913
+Gate Width : 1533
+Gate Height : 831
+Runtime : 1.66646028
+Packing Efficiency :  0.97491450
+Gate Width : 1538
+Gate Height : 824
+Runtime : 1.58363795
+Packing Efficiency :  0.98000019
+Gate Width : 1543
+Gate Height : 823
+Runtime : 1.54186964
+Packing Efficiency :  0.97801146
+Gate Width : 1548
+Gate Height : 820
+Runtime : 1.62782097
+Packing Efficiency :  0.97841905
+Gate Width : 1553
+Gate Height : 818
+Runtime : 1.71309352
+Packing Efficiency :  0.97765347
+Gate Width : 1558
+Gate Height : 817
+Runtime : 1.48485589
+Packing Efficiency :  0.97570874
+Gate Width : 1563
+Gate Height : 814
+Runtime : 1.91244531
+Packing Efficiency :  0.97617195
+Gate Width : 1568
+Gate Height : 811
+Runtime : 1.73538494
+Packing Efficiency :  0.97665864
+Gate Width : 1573
+Gate Height : 809
+Runtime : 1.57742119
+Packing Efficiency :  0.97596100
+Gate Width : 1578
+Gate Height : 804
+Runtime : 1.60439634
+Packing Efficiency :  0.97891878
+Gate Width : 1583
+Gate Height : 803
+Runtime : 1.65650344
+Packing Efficiency :  0.97704203
+Gate Width : 1588
+Gate Height : 798
+Runtime : 1.53519917
+Packing Efficiency :  0.98006824
+Gate Width : 1593
+Gate Height : 796
+Runtime : 1.54758501
+Packing Efficiency :  0.97944683
+Gate Width : 1598
+Gate Height : 795
+Runtime : 1.54208946
+Packing Efficiency :  0.97761038
+Gate Width : 1603
+Gate Height : 796
+Runtime : 1.62513709
+Packing Efficiency :  0.97333674
+Gate Width : 1608
+Gate Height : 791
+Runtime : 1.58188176
+Packing Efficiency :  0.97644364
+Gate Width : 1613
+Gate Height : 790
+Runtime : 1.52905297
+Packing Efficiency :  0.97464901
+Gate Width : 1618
+Gate Height : 784
+Runtime : 1.60860109
+Packing Efficiency :  0.97907312
+Gate Width : 1623
+Gate Height : 783
+Runtime : 1.53268528
+Packing Efficiency :  0.97730343
+Gate Width : 1628
+Gate Height : 782
+Runtime : 1.71546149
+Packing Efficiency :  0.97554780
+Gate Width : 1633
+Gate Height : 779
+Runtime : 1.73328018
+Packing Efficiency :  0.97630624
+Gate Width : 1638
+Gate Height : 778
+Runtime : 1.57697248
+Packing Efficiency :  0.97457712
+Gate Width : 1643
+Gate Height : 774
+Runtime : 1.56952262
+Packing Efficiency :  0.97663252
+Gate Width : 1648
+Gate Height : 775
+Runtime : 1.85318160
+Packing Efficiency :  0.97241309
+Gate Width : 1653
+Gate Height : 772
+Runtime : 1.58089614
+Packing Efficiency :  0.97323911
+Gate Width : 1658
+Gate Height : 771
+Runtime : 1.60552239
+Packing Efficiency :  0.97156263
+Gate Width : 1663
+Gate Height : 767
+Runtime : 1.65081835
+Packing Efficiency :  0.97369310
+Gate Width : 1668
+Gate Height : 764
+Runtime : 1.50577021
+Packing Efficiency :  0.97458630
+Gate Width : 1673
+Gate Height : 761
+Runtime : 1.69010472
+Packing Efficiency :  0.97550412
+Gate Width : 1678
+Gate Height : 754
+Runtime : 2.03260970
+Packing Efficiency :  0.98162679
+Gate Width : 1683
+Gate Height : 756
+Runtime : 1.58286047
+Packing Efficiency :  0.97612131
+Gate Width : 1688
+Gate Height : 750
+Runtime : 1.53017068
+Packing Efficiency :  0.98101580
+Gate Width : 1693
+Gate Height : 750
+Runtime : 1.53948998
+Packing Efficiency :  0.97811853
+Gate Width : 1698
+Gate Height : 747
+Runtime : 1.51175237
+Packing Efficiency :  0.97915494
+Gate Width : 1703
+Gate Height : 747
+Runtime : 1.53392506
+Packing Efficiency :  0.97628015
+Gate Width : 1708
+Gate Height : 744
+Runtime : 1.53673649
+Packing Efficiency :  0.97734727
+Gate Width : 1713
+Gate Height : 741
+Runtime : 1.60283613
+Packing Efficiency :  0.97843986
+Gate Width : 1718
+Gate Height : 740
+Runtime : 1.56816220
+Packing Efficiency :  0.97691061
+Gate Width : 1723
+Gate Height : 736
+Runtime : 1.52570868
+Packing Efficiency :  0.97936959
+Gate Width : 1728
+Gate Height : 736
+Runtime : 1.63998389
+Packing Efficiency :  0.97653577
+Gate Width : 1733
+Gate Height : 735
+Runtime : 1.53982401
+Packing Efficiency :  0.97504308
+Gate Width : 1738
+Gate Height : 730
+Runtime : 1.53763270
+Packing Efficiency :  0.97889717
+Gate Width : 1743
+Gate Height : 730
+Runtime : 1.73481321
+Packing Efficiency :  0.97608909
+Gate Width : 1748
+Gate Height : 728
+Runtime : 1.66818500
+Packing Efficiency :  0.97597097
+Gate Width : 1753
+Gate Height : 727
+Runtime : 1.55002904
+Packing Efficiency :  0.97452589
+Gate Width : 1758
+Gate Height : 726
+Runtime : 1.67750525
+Packing Efficiency :  0.97309270
+Gate Width : 1763
+Gate Height : 724
+Runtime : 1.55286026
+Packing Efficiency :  0.97301342
+Gate Width : 1768
+Gate Height : 718
+Runtime : 1.58444571
+Packing Efficiency :  0.97836972
+Gate Width : 1773
+Gate Height : 719
+Runtime : 1.61324263
+Packing Efficiency :  0.97425374
+Gate Width : 1778
+Gate Height : 714
+Runtime : 1.56612873
+Packing Efficiency :  0.97831731
+Gate Width : 1783
+Gate Height : 713
+Runtime : 1.54092026
+Packing Efficiency :  0.97694212
+Gate Width : 1788
+Gate Height : 712
+Runtime : 1.53020859
+Packing Efficiency :  0.97557845
+Gate Width : 1793
+Gate Height : 711
+Runtime : 1.63666487
+Packing Efficiency :  0.97422623
+Gate Width : 1798
+Gate Height : 711
+Runtime : 1.58146787
+Packing Efficiency :  0.97151703
+Gate Width : 1803
+Gate Height : 710
+Runtime : 1.61359286
+Packing Efficiency :  0.97018740
+Gate Width : 1808
+Gate Height : 705
+Runtime : 1.65249348
+Packing Efficiency :  0.97436610
+Gate Width : 1813
+Gate Height : 702
+Runtime : 1.54312134
+Packing Efficiency :  0.97583140
+Gate Width : 1818
+Gate Height : 700
+Runtime : 1.55472016
+Packing Efficiency :  0.97592802
+Gate Width : 1823
+Gate Height : 700
+Runtime : 1.65253019
+Packing Efficiency :  0.97325131
+Gate Width : 1828
+Gate Height : 695
+Runtime : 1.48381639
+Packing Efficiency :  0.97757190
+Gate Width : 1833
+Gate Height : 695
+Runtime : 1.54107618
+Packing Efficiency :  0.97490531
+Gate Width : 1838
+Gate Height : 692
+Runtime : 1.61086392
+Packing Efficiency :  0.97646820
+Gate Width : 1843
+Gate Height : 691
+Runtime : 1.66941667
+Packing Efficiency :  0.97522836
+Gate Width : 1848
+Gate Height : 692
+Runtime : 1.69020963
+Packing Efficiency :  0.97118428
+Gate Width : 1853
+Gate Height : 686
+Runtime : 1.56193447
+Packing Efficiency :  0.97703511
+Gate Width : 1858
+Gate Height : 686
+Runtime : 1.59573269
+Packing Efficiency :  0.97440585
+Gate Width : 1863
+Gate Height : 687
+Runtime : 1.66116929
+Packing Efficiency :  0.97037615
+Gate Width : 1868
+Gate Height : 682
+Runtime : 1.68424177
+Packing Efficiency :  0.97487394
+Gate Width : 1873
+Gate Height : 681
+Runtime : 1.70843291
+Packing Efficiency :  0.97369921
+Gate Width : 1878
+Gate Height : 679
+Runtime : 1.61741257
+Packing Efficiency :  0.97396723
+Gate Width : 1883
+Gate Height : 676
+Runtime : 1.55861330
+Packing Efficiency :  0.97569188
+Gate Width : 1888
+Gate Height : 675
+Runtime : 1.65515375
+Packing Efficiency :  0.97454959
+Gate Width : 1893
+Gate Height : 674
+Runtime : 1.55292559
+Packing Efficiency :  0.97341760
+Gate Width : 1898
+Gate Height : 672
+Runtime : 1.59412527
+Packing Efficiency :  0.97374272
+Gate Width : 1903
+Gate Height : 668
+Runtime : 1.63032866
+Packing Efficiency :  0.97699976
+Gate Width : 1908
+Gate Height : 669
+Runtime : 1.60160398
+Packing Efficiency :  0.97298292
+Gate Width : 1913
+Gate Height : 668
+Runtime : 1.55491567
+Packing Efficiency :  0.97189260
+Gate Width : 1918
+Gate Height : 666
+Runtime : 1.82892108
+Packing Efficiency :  0.97226998
+Gate Width : 1923
+Gate Height : 664
+Runtime : 2.02273917
+Packing Efficiency :  0.97266288
+Gate Width : 1928
+Gate Height : 663
+Runtime : 1.84343433
+Packing Efficiency :  0.97160367
+Gate Width : 1933
+Gate Height : 662
+Runtime : 1.79352927
+Packing Efficiency :  0.97055436
+Gate Width : 1938
+Gate Height : 661
+Runtime : 1.74281120
+Packing Efficiency :  0.96951487
+Gate Width : 1943
+Gate Height : 659
+Runtime : 1.62993383
+Packing Efficiency :  0.96995479
+Gate Width : 1948
+Gate Height : 654
+Runtime : 1.69028163
+Packing Efficiency :  0.97486169
+Gate Width : 1953
+Gate Height : 656
+Runtime : 1.57293200
+Packing Efficiency :  0.96940136
+Gate Width : 1958
+Gate Height : 653
+Runtime : 1.62463427
+Packing Efficiency :  0.97136810
+Gate Width : 1963
+Gate Height : 647
+Runtime : 1.59455967
+Packing Efficiency :  0.97787902
+Gate Width : 1968
+Gate Height : 645
+Runtime : 1.54608870
+Packing Efficiency :  0.97841905
+Gate Width : 1973
+Gate Height : 646
+Runtime : 1.54811120
+Packing Efficiency :  0.97442878
+Gate Width : 1978
+Gate Height : 645
+Runtime : 1.65940237
+Packing Efficiency :  0.97347254
+Gate Width : 1983
+Gate Height : 643
+Runtime : 1.52571392
+Packing Efficiency :  0.97403827
+Gate Width : 1988
+Gate Height : 641
+Runtime : 1.53558874
+Packing Efficiency :  0.97461995
+Gate Width : 1993
+Gate Height : 640
+Runtime : 1.58729267
+Packing Efficiency :  0.97369387
+Gate Width : 1998
+Gate Height : 637
+Runtime : 1.55831552
+Packing Efficiency :  0.97583140
+Gate Width : 2003
+Gate Height : 635
+Runtime : 1.55361199
+Packing Efficiency :  0.97646129
+Gate Width : 2008
+Gate Height : 633
+Runtime : 1.70404100
+Packing Efficiency :  0.97710737
+Gate Width : 2013
+Gate Height : 629
+Runtime : 1.89597082
+Packing Efficiency :  0.98087866
+Gate Width : 2018
+Gate Height : 631
+Runtime : 1.53531623
+Packing Efficiency :  0.97534707
+Gate Width : 2022
+Gate Height : 629
+Runtime : 1.97577310
+Packing Efficiency :  0.97651273
+Gate Width : 2028
+Gate Height : 628
+Runtime : 2.51567197
+Packing Efficiency :  0.97517400
+Gate Width : 2033
+Gate Height : 625
+Runtime : 2.67102098
+Packing Efficiency :  0.97744496
+Gate Width : 2038
+Gate Height : 625
+Runtime : 2.04058623
+Packing Efficiency :  0.97504691
+Gate Width : 2043
+Gate Height : 623
+Runtime : 2.10356236
+Packing Efficiency :  0.97578310
+Gate Width : 2048
+Gate Height : 621
+Runtime : 2.24534893
+Packing Efficiency :  0.97653577
+Gate Width : 2053
+Gate Height : 617
+Runtime : 2.21300650
+Packing Efficiency :  0.98047290
+Gate Width : 2058
+Gate Height : 617
+Runtime : 2.80166030
+Packing Efficiency :  0.97809080
+Gate Width : 2063
+Gate Height : 617
+Runtime : 2.43309188
+Packing Efficiency :  0.97572024
+Gate Width : 2068
+Gate Height : 616
+Runtime : 2.62468314
+Packing Efficiency :  0.97494128
+Gate Width : 2073
+Gate Height : 613
+Runtime : 2.52756095
+Packing Efficiency :  0.97734958
+Gate Width : 2078
+Gate Height : 613
+Runtime : 2.18030214
+Packing Efficiency :  0.97499792
+Gate Width : 2083
+Gate Height : 612
+Runtime : 2.25896263
+Packing Efficiency :  0.97424686
+Gate Width : 2088
+Gate Height : 611
+Runtime : 2.11553049
+Packing Efficiency :  0.97350459
+Gate Width : 2093
+Gate Height : 612
+Runtime : 2.22696424
+Packing Efficiency :  0.96959207
+Gate Width : 2098
+Gate Height : 612
+Runtime : 2.80830359
+Packing Efficiency :  0.96728132
+Gate Width : 2103
+Gate Height : 612
+Runtime : 2.39587259
+Packing Efficiency :  0.96498155
+Gate Width : 2108
+Gate Height : 605
+Runtime : 2.16426158
+Packing Efficiency :  0.97383129
+Gate Width : 2113
+Gate Height : 606
+Runtime : 2.24440217
+Packing Efficiency :  0.96992373
+Gate Width : 2118
+Gate Height : 604
+Runtime : 2.84146214
+Packing Efficiency :  0.97083810
+Gate Width : 2123
+Gate Height : 603
+Runtime : 2.14788628
+Packing Efficiency :  0.97015785
+Gate Width : 2128
+Gate Height : 602
+Runtime : 2.24267030
+Packing Efficiency :  0.96948611
+Gate Width : 2133
+Gate Height : 596
+Runtime : 2.05362630
+Packing Efficiency :  0.97695057
+Gate Width : 2138
+Gate Height : 596
+Runtime : 2.22619224
+Packing Efficiency :  0.97466584
+Gate Width : 2143
+Gate Height : 595
+Runtime : 2.22669101
+Packing Efficiency :  0.97402605
+Gate Width : 2148
+Gate Height : 598
+Runtime : 2.21131349
+Packing Efficiency :  0.96688372
+Gate Width : 2153
+Gate Height : 591
+Runtime : 2.19484377
+Packing Efficiency :  0.97606378
+Gate Width : 2158
+Gate Height : 592
+Runtime : 2.14698529
+Packing Efficiency :  0.97215734
+Gate Width : 2163
+Gate Height : 590
+Runtime : 2.20813584
+Packing Efficiency :  0.97319793
+Gate Width : 2168
+Gate Height : 590
+Runtime : 2.57186270
+Packing Efficiency :  0.97095347
+Gate Width : 2173
+Gate Height : 589
+Runtime : 2.25809193
+Packing Efficiency :  0.97036402
+Gate Width : 2178
+Gate Height : 587
+Runtime : 2.13257933
+Packing Efficiency :  0.97143496
+Gate Width : 2183
+Gate Height : 584
+Runtime : 2.14698482
+Packing Efficiency :  0.97418878
+Gate Width : 2188
+Gate Height : 583
+Runtime : 2.19537020
+Packing Efficiency :  0.97362975
+Gate Width : 2193
+Gate Height : 582
+Runtime : 2.17987847
+Packing Efficiency :  0.97307898
+Gate Width : 2198
+Gate Height : 582
+Runtime : 2.36800766
+Packing Efficiency :  0.97086542
+Gate Width : 2203
+Gate Height : 579
+Runtime : 2.33920884
+Packing Efficiency :  0.97368089
+Gate Width : 2208
+Gate Height : 579
+Runtime : 2.30975485
+Packing Efficiency :  0.97147600
+Gate Width : 2213
+Gate Height : 575
+Runtime : 2.46111298
+Packing Efficiency :  0.97602389
+Gate Width : 2218
+Gate Height : 573
+Runtime : 1.85710692
+Packing Efficiency :  0.97722269
+Gate Width : 2223
+Gate Height : 572
+Runtime : 1.55192995
+Packing Efficiency :  0.97672930
+Gate Width : 2228
+Gate Height : 573
+Runtime : 1.52930713
+Packing Efficiency :  0.97283659
+Gate Width : 2233
+Gate Height : 572
+Runtime : 1.65067434
+Packing Efficiency :  0.97235523
+Gate Width : 2238
+Gate Height : 569
+Runtime : 1.60369539
+Packing Efficiency :  0.97529806
+Gate Width : 2243
+Gate Height : 568
+Runtime : 1.57178879
+Packing Efficiency :  0.97483721
+Gate Width : 2248
+Gate Height : 571
+Runtime : 1.87940741
+Packing Efficiency :  0.96755863
+Gate Width : 2253
+Gate Height : 565
+Runtime : 1.54080796
+Packing Efficiency :  0.97566352
+Gate Width : 2258
+Gate Height : 566
+Runtime : 1.53417397
+Packing Efficiency :  0.97178309
+Gate Width : 2263
+Gate Height : 565
+Runtime : 1.69519138
+Packing Efficiency :  0.97135215
+Gate Width : 2268
+Gate Height : 563
+Runtime : 1.54502273
+Packing Efficiency :  0.97265374
+Gate Width : 2273
+Gate Height : 561
+Runtime : 1.57742906
+Packing Efficiency :  0.97397410
+Gate Width : 2278
+Gate Height : 564
+Runtime : 1.68906283
+Packing Efficiency :  0.96666698
+Gate Width : 2283
+Gate Height : 561
+Runtime : 1.75499010
+Packing Efficiency :  0.96970790
+Gate Width : 2288
+Gate Height : 560
+Runtime : 1.67045617
+Packing Efficiency :  0.96931662
+Gate Width : 2293
+Gate Height : 559
+Runtime : 1.84166527
+Packing Efficiency :  0.96893322
+Gate Width : 2298
+Gate Height : 560
+Runtime : 2.08632374
+Packing Efficiency :  0.96509853
+Gate Width : 2303
+Gate Height : 560
+Runtime : 1.95490074
+Packing Efficiency :  0.96300323
+Gate Width : 2308
+Gate Height : 556
+Runtime : 2.01478481
+Packing Efficiency :  0.96783007
+Gate Width : 2313
+Gate Height : 554
+Runtime : 1.85330176
+Packing Efficiency :  0.96922433
+Gate Width : 2318
+Gate Height : 557
+Runtime : 1.87988400
+Packing Efficiency :  0.96192471
+Gate Width : 2323
+Gate Height : 554
+Runtime : 1.80239177
+Packing Efficiency :  0.96505204
+Gate Width : 2328
+Gate Height : 552
+Runtime : 1.71030426
+Packing Efficiency :  0.96646839
+Gate Width : 2333
+Gate Height : 552
+Runtime : 1.62316680
+Packing Efficiency :  0.96439709
+Gate Width : 2338
+Gate Height : 551
+Runtime : 1.96063280
+Packing Efficiency :  0.96408117
+Gate Width : 2343
+Gate Height : 548
+Runtime : 1.80933070
+Packing Efficiency :  0.96729036
+Gate Width : 2348
+Gate Height : 544
+Runtime : 1.68115544
+Packing Efficiency :  0.97232783
+Gate Width : 2353
+Gate Height : 546
+Runtime : 1.58110213
+Packing Efficiency :  0.96670761
+Gate Width : 2358
+Gate Height : 546
+Runtime : 1.68751121
+Packing Efficiency :  0.96465776
+Gate Width : 2363
+Gate Height : 541
+Runtime : 1.62365723
+Packing Efficiency :  0.97151323
+Gate Width : 2368
+Gate Height : 540
+Runtime : 1.64166307
+Packing Efficiency :  0.97125719
+Gate Width : 2373
+Gate Height : 537
+Runtime : 1.53538775
+Packing Efficiency :  0.97462530
+Gate Width : 2378
+Gate Height : 536
+Runtime : 1.51417613
+Packing Efficiency :  0.97439056
+Gate Width : 2383
+Gate Height : 535
+Runtime : 1.61847568
+Packing Efficiency :  0.97416357
+Gate Width : 2388
+Gate Height : 536
+Runtime : 1.53450871
+Packing Efficiency :  0.97031020
+Gate Width : 2393
+Gate Height : 534
+Runtime : 1.52671123
+Packing Efficiency :  0.97190933
+Gate Width : 2398
+Gate Height : 533
+Runtime : 1.62426734
+Packing Efficiency :  0.97170250
+Gate Width : 2403
+Gate Height : 533
+Runtime : 1.55691791
+Packing Efficiency :  0.96968064
+Gate Width : 2408
+Gate Height : 533
+Runtime : 1.53558874
+Packing Efficiency :  0.96766719
+Gate Width : 2413
+Gate Height : 530
+Runtime : 1.64489555
+Packing Efficiency :  0.97112809
+Gate Width : 2418
+Gate Height : 528
+Runtime : 1.57097578
+Packing Efficiency :  0.97279087
+Gate Width : 2423
+Gate Height : 529
+Runtime : 1.54122233
+Packing Efficiency :  0.96894833
+Gate Width : 2428
+Gate Height : 527
+Runtime : 1.70512414
+Packing Efficiency :  0.97062262
+Gate Width : 2433
+Gate Height : 525
+Runtime : 1.74082112
+Packing Efficiency :  0.97231793
+Gate Width : 2438
+Gate Height : 524
+Runtime : 1.64775395
+Packing Efficiency :  0.97217560
+Gate Width : 2443
+Gate Height : 524
+Runtime : 1.54422235
+Packing Efficiency :  0.97018589
+Gate Width : 2448
+Gate Height : 523
+Runtime : 1.64459801
+Packing Efficiency :  0.97005555

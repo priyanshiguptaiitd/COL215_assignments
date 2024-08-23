@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-xdata = []
-ydata_t = []
-ydata_peff = []
+
 
 def hola():
+    xdata = []
+    ydata_t = []
+    ydata_peff = []
     with open("report_tc_analysis.txt","r") as file:
         fdata = file.readlines()
         for i in range(0,len(fdata),3):
@@ -87,5 +88,38 @@ def bhola():
     plt.legend(loc="lower right")
     plt.title("Packing Efficiency of Multi-Iteration & Single-Iteration VS Number of Gates")
     plt.show()
+
+def chola():
+    tot_data = dict()
+    with open("peff_teff_width.txt","r") as file:
+        fdata = file.readlines()
+        for i in range(0,len(fdata),4):
+            gw = int(fdata[i].split()[-1])
+            gh = int(fdata[i+1].split()[-1])
+            t =  float(fdata[i+2].split()[-1])
+            p_eff = float(fdata[i+3].split()[-1])
+            tot_data[gw] = [t,p_eff]
+    # print(tot_data)
+    
+    x_data = list(sorted(tot_data.keys()))
+    ydata_t = [tot_data[gw][0] for gw in x_data]
+    ydata_peff = [tot_data[gw][1] for gw in x_data]
+    
+    plt.subplot(2,1,1)
+    plt.xticks(np.arange(0, 1200, 200))
+    plt.plot(x_data,ydata_t,color="b",label = "Run Time")
+    plt.legend(loc="lower right")
+    plt.ylabel("Runtime for Iteration (In Seconds)")
+    plt.title("Runtime and Packing Efficiency Variation V.S. Initial Width Guess [500 Gates]")
+    
+    
+    plt.subplot(2,1,2)
+    plt.xticks(np.arange(0, 1200, 200))
+    plt.xlabel("Testing Width for Iteration")
+    plt.ylabel("Packing Efficiency for Iteration")
+    plt.plot(x_data,ydata_peff,color="r", label = "Packing Efficiency")
+    plt.legend(loc = "lower right")
+    plt.show()
+    
 if(__name__ == "__main__"):
-    bhola()
+    chola()

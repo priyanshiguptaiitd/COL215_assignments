@@ -22,9 +22,9 @@ def single_pack_iter(rec_data,cols,rows):
         If a successful packing is found then the algorithm returns that otherwise we increase the 
         Number of Columns to 1.5 times the original till a packing is found
         
-        (Note that if we ensure that our rows are more than the max height of gates then this process will
-        terminate after finite steps since a feasible upper bound on the number of columns is the sum of widths 
-        of all the gates (Which is what the V0 algorithm uses))
+            (Note that if we ensure that our rows are more than the max height of gates then this process will
+            terminate after finite steps since a feasible upper bound on the number of columns is the sum of widths 
+            of all the gates (Which is what the V0 algorithm uses))
 
     Args:
         rec_data (List of Rec objects): The Gates as Rec Objects in a list 
@@ -473,22 +473,59 @@ def testing_mp_sp():
     for g in range(5,1001,5):
         write_single_case(g, FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
         test_single_case_sp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)
-        test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)        
+        test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT, supress_time_out = False)
+
+@ time_it_no_out        
+def testing_peff_time():
+    """
+    For testing the difference between the packing efficiency and time taken for multiple widths
+    """
+    # write_single_case(32, FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
+    with open("peff_teff_width.txt","w") as file:
+        pass
+    rec_data,rec_tot_area,mw,mh,ws,hs = parse_Input_Rectangles(FP_SINGLE_CASE_IN)
+    avg_asp,w_avg,h_avg= Rec_Data_Analysis(rec_data)
+    rec_freq = len(rec_data)
+    
+    alpha_margin = ALPHA_MARGIN_DIM
+    
+    icols = int(alpha_margin*(rec_tot_area**0.5))
+    irows = int(alpha_margin*(rec_tot_area**0.5)) if (int(alpha_margin*(rec_tot_area**0.5)) > rec_tot_area//icols + 1) else rec_tot_area//icols + 1 
+    
+    if(icols < mw): icols = int(1.5*mw)
+    if(irows < mh): irows = int(1.5*mh)
+    
+    for c_cols in range(int(1.1*mw),2*icols,2):
+        r_rows = int(ALPHA_MARGIN_DIM*rec_tot_area/c_cols)
+        if(r_rows < mh): r_rows = int(1.5*mh)
+        
+        SPI_out = single_pack_iter(rec_data,c_cols,r_rows,supress_time_out = False)
+        packed_recs,pack_data,pack_check= SPI_out[0]
+        tc_runtime = SPI_out[1]
+        
+        if(pack_check):
+            with open("peff_teff_width.txt","a") as file:
+                file.write(f"Gate Width : {pack_data[2]}\n")
+                file.write(f"Gate Height : {pack_data[1]}\n")
+                file.write(f"Runtime : {tc_runtime :.8f}\n")
+                file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")    
+    
+                
 
 
 if(__name__ == "__main__"):
     # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
       
     # write_single_case(150,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
-    write_multi_cases(1000,100,"normal_lo",supress_time_out = False)
+    # write_multi_cases(1000,100,"normal_lo",supress_time_out = False)
     # test_multi_cases_sp(50,100,supress_time_out = False)
-    test_multi_cases_mp(1000,100,supress_time_out = False)
-    # testing_mp_sp(supress_time_out=True)
-    
+    # test_multi_cases_mp(1000,100,supress_time_out = False)
+    # testing_mp_sp(supress_time_out=True)             
     # test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
-    # test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
+    test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
     # remove_multi_cases(1000,250,supress_time_out = False)
     # testing_at_25_sp()
+    # testing_peff_time(supress_time_out = False)
     
     # for gf in [10]:
     #     remove_multi_cases(gf,100,supress_time_out = False)
