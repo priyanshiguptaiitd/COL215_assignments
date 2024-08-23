@@ -511,8 +511,6 @@ def testing_peff_time():
                 file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")    
     
                 
-
-
 if(__name__ == "__main__"):
     # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
       

@@ -38,7 +38,7 @@ def bhola():
     
     xdata_sp,ydata_peff_sp,ydata_t_sp = list(),list(),list()
     
-    with open("comparison_single_tc_sp.txt","r") as file:
+    with open("comparison_single_sp_msp.txt","r") as file:
         fdata = file.readlines()
         for i in range(0,len(fdata),3):
             g = int(fdata[i].split()[-1])
@@ -49,16 +49,12 @@ def bhola():
             ydata_peff_sp.append(p_eff)
 
     print("hi")
-    # model = np.poly1d(np.polyfit(xdata,ydata_t,2))
-    # polyline = np.linspace(0,2000,10)
-    # # # plt.subplot(2,1,1)
-    # plt.plot(xdata,ydata_t)
-    # plt.plot(polyline,model(polyline))
+   
     
     
     xdata_mp,ydata_peff_mp,ydata_t_mp = list(),list(),list()
     
-    with open("comparison_single_tc_mp.txt","r") as file:
+    with open("comparison_single_mp_msp.txt","r") as file:
         fdata = file.readlines()
         for i in range(0,len(fdata),3):
             g = int(fdata[i].split()[-1])
@@ -68,26 +64,35 @@ def bhola():
             ydata_t_mp.append(t)
             ydata_peff_mp.append(p_eff)
     
-    plt.subplot(1,2,1)
-    plt.xticks(np.arange(0, 10001, 200))
-    plt.plot(xdata_sp,ydata_t_sp,color = 'g',label = "Single-Iteration Method")
-    plt.plot(xdata_mp,ydata_t_mp,color = 'b',label = "Multi-Iteration Method")
-    plt.xlabel("Number of Gates [Generated using Normal Distribution with Mean = 50 , SD = 25]")
-    plt.ylabel("Packing Efficiency")
-    plt.legend(loc="lower right")
-    plt.title("Run Time of Multi-Iteration & Single-Iteration VS Number of Gates")
+    model = np.poly1d(np.polyfit(xdata_sp,ydata_t_sp,2))
+    print(model)
+    polyline = np.linspace(0,1001,10)
+    # # # plt.subplot(2,1,1)
+    # plt.plot(xdata,ydata_t)
     
     
     
-    plt.subplot(1,2,2)
-    plt.xticks(np.arange(0, 10001, 200))
-    plt.plot(xdata_sp,ydata_peff_sp,color = 'g',label = "Single-Iteration Method")
-    plt.plot(xdata_mp,ydata_peff_mp,color = 'b',label = "Multi-Iteration Method")
-    plt.xlabel("Number of Gates [Generated using Normal Distribution with Mean = 50 , SD = 25]")
-    plt.ylabel("Packing Efficiency")
-    plt.legend(loc="lower right")
-    plt.title("Packing Efficiency of Multi-Iteration & Single-Iteration VS Number of Gates")
-    plt.show()
+    # # plt.subplot(1,2,1)
+    # plt.xticks(np.arange(0, 10001, 200))
+    # plt.plot(polyline,model(polyline),color="r",linewidth=4.0)
+    # plt.plot(xdata_sp,ydata_t_sp,color = 'g',label = "Single-Iteration Method")
+    # plt.plot(xdata_mp,ydata_t_mp,color = 'b',label = "Multi-Iteration Method")
+    # plt.xlabel("Number of Gates [Generated using Normal Distribution with Mean = 50 , SD = 25]")
+    # plt.ylabel("Run Time (in Seconds)")
+    # plt.legend(loc="lower right")
+    # plt.title("Run Time (in Seconds) of Multi-Iteration & Single-Iteration VS Number of Gates")
+    
+    
+    
+    # plt.subplot(1,2,2)
+    # plt.xticks(np.arange(0, 10001, 200))
+    # plt.plot(xdata_sp,ydata_peff_sp,color = 'g',label = "Single-Iteration Method")
+    # plt.plot(xdata_mp,ydata_peff_mp,color = 'b',label = "Multi-Iteration Method")
+    # plt.xlabel("Number of Gates [Generated using Normal Distribution with Mean = 50 , SD = 25]")
+    # plt.ylabel("Packing Efficiency")
+    # plt.legend(loc="lower right")
+    # plt.title("Packing Efficiency of Multi-Iteration & Single-Iteration VS Number of Gates")
+    # plt.show()
 
 def chola():
     tot_data = dict()
@@ -122,4 +127,4 @@ def chola():
     plt.show()
     
 if(__name__ == "__main__"):
-    chola()
+    bhola()
