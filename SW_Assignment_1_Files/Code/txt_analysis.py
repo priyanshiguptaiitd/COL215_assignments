@@ -1,9 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-
-def hola():
+def tanalysis1():
     xdata = []
     ydata_t = []
     ydata_peff = []
@@ -33,8 +31,7 @@ def hola():
     # plt.plot(xdata,ydata_peff)
     plt.show()
 
-
-def bhola():
+def tanalysis2():
     
     xdata_sp,ydata_peff_sp,ydata_t_sp = list(),list(),list()
     
@@ -94,7 +91,7 @@ def bhola():
     # plt.title("Packing Efficiency of Multi-Iteration & Single-Iteration VS Number of Gates")
     # plt.show()
 
-def chola():
+def tanalysis3():
     tot_data = dict()
     with open("peff_teff_width.txt","r") as file:
         fdata = file.readlines()
@@ -126,10 +123,10 @@ def chola():
     plt.legend(loc = "lower right")
     plt.show()
 
-def soja():
+def tanalysis4():
     x_data,ydata_t_v1,ydata_t_v2 = list(),list(),list()
     
-    with open("v1v2_comp.txt","r") as file:
+    with open("v1v2_comp_final.txt","r") as file:
         fdata = file.readlines()
         for i in range(0,len(fdata),6):
             x_data.append(int(fdata[i].split()[-1]))
@@ -141,10 +138,10 @@ def soja():
     plt.ylabel("Run Time for Algorithm")
     plt.plot(x_data,ydata_t_v1,color="r", label = "Pixel Scan", marker = 'o')
     plt.plot(x_data,ydata_t_v2,color="b", label = "Predictive Pixel Scan",marker = 'o')
+    plt.title("Comparison of Run Time of Pixel Scan and Predictive Pixel Scan V.S Number of Gates")
     plt.legend(loc = "upper left")
     plt.show()
     
-    
-
 if(__name__ == "__main__"):
-    soja()
+    # tanalysis1()
+    pass

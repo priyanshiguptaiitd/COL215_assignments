@@ -186,8 +186,9 @@ def test_single_case_sp(fpath_in,fpath_out):
     packed_recs,pack_data,pack_check= SPI_out[0]
     tc_runtime = SPI_out[1] 
 
-    with open("comparison_single_tc_sp.txt","a") as file:
+    with open("comparison_single_tc_sp.txt","w") as file:
         file.write(f"Gate Freq : {rec_freq}\n")
+        file.write(f"Bounding Width, Height : {pack_data[2]} {pack_data[1]}\n")
         file.write(f"Runtime : {tc_runtime :.8f}\n")
         file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")
 
@@ -340,8 +341,9 @@ def test_single_case_mp(fpath_in,fpath_out):
     packed_recs,pack_data,pack_check= MPI_out[0]
     tc_runtime = MPI_out[1] 
     
-    with open("comparison_single_mp_msp.txt","a") as file:
+    with open("comparison_single_mp_msp.txt","w") as file:
         file.write(f"Gate Freq : {rec_freq}\n")
+        file.write(f"Bounding Width, Height : {pack_data[2]} {pack_data[1]}\n")
         file.write(f"Runtime : {tc_runtime:.8f}\n")
         file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")
 
@@ -517,21 +519,6 @@ def testing_v1_v2():
         test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT,supress_time_out = False)
         test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT,supress_time_out = False)
 
-if(__name__ == "__main__"):
-    # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
-    # testing_v1_v2(supress_time_out = False)
-      
-    write_single_case(150,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
-    # write_multi_cases(1000,100,"normal_lo",supress_time_out = False)
-    # test_multi_cases_sp(50,100,supress_time_out = False)
-    # test_multi_cases_mp(1000,100,supress_time_out = False)
-    # testing_mp_sp(supress_time_out=True)             
+if(__name__ == "__main__"):          
     test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
-    test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
-    # remove_multi_cases(1000,250,supress_time_out = False)
-    # testing_at_25_sp()
-    # testing_peff_time(supress_time_out = False)
-    
-    # for gf in [10]:
-    #     remove_multi_cases(gf,100,supress_time_out = False)
-    # pass
+    pass
