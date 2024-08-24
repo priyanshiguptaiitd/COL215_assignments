@@ -2,8 +2,8 @@
 Storing Constants / Literals that are being Used across the programmes
     
 """
-FP_SINGLE_CASE_IN = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\SW Assignments\SW_Assignment_1\input.txt"
-FP_SINGLE_CASE_OUT =  r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\SW Assignments\SW_Assignment_1\output.txt"
+FP_SINGLE_CASE_IN = r"input.txt"
+FP_SINGLE_CASE_OUT =  r"output.txt"
 ALLOWED_GATE_FREQ = [10,25,50,100,250,500,1000]
 MEAN_GATE_DIM = 50
 VAR_GATE_DIM_LO = 10
