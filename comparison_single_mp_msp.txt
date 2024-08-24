@@ -598,3 +598,6 @@ Packing Efficiency :  0.98841341
 Gate Freq : 1000
 Runtime : 5.87625432
 Packing Efficiency :  0.98711320
+Gate Freq : 150
+Runtime : 2.05122566
+Packing Efficiency :  0.94270367

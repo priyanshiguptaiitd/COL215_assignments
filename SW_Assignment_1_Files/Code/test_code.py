@@ -340,7 +340,7 @@ def test_single_case_mp(fpath_in,fpath_out):
     packed_recs,pack_data,pack_check= MPI_out[0]
     tc_runtime = MPI_out[1] 
     
-    with open("comparison_single_tc_mp.txt","a") as file:
+    with open("comparison_single_mp_msp.txt","a") as file:
         file.write(f"Gate Freq : {rec_freq}\n")
         file.write(f"Runtime : {tc_runtime:.8f}\n")
         file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")
@@ -510,16 +510,23 @@ def testing_peff_time():
                 file.write(f"Runtime : {tc_runtime :.8f}\n")
                 file.write(f"Packing Efficiency : {pack_data[0]/(pack_data[1]*pack_data[2]) : .8f}\n")    
     
-                
+# @ time_it_no_out
+def testing_v1_v2():
+    for g in range(25,501,25):
+        write_single_case(g,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
+        test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT,supress_time_out = False)
+        test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT,supress_time_out = False)
+
 if(__name__ == "__main__"):
     # supress_time_out is kwarg to timer wrapper that supresses it outputing the runtime of a function call
+    # testing_v1_v2(supress_time_out = False)
       
-    # write_single_case(150,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
+    write_single_case(150,FP_SINGLE_CASE_IN,"normal_hi",supress_time_out = False)
     # write_multi_cases(1000,100,"normal_lo",supress_time_out = False)
     # test_multi_cases_sp(50,100,supress_time_out = False)
     # test_multi_cases_mp(1000,100,supress_time_out = False)
     # testing_mp_sp(supress_time_out=True)             
-    # test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
+    test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
     test_single_case_sp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
     # remove_multi_cases(1000,250,supress_time_out = False)
     # testing_at_25_sp()

@@ -85,14 +85,14 @@ def bhola():
     
     
     # plt.subplot(1,2,2)
-    plt.xticks(np.arange(0, 10001, 100))
-    plt.plot(xdata_sp,ydata_peff_sp,color = 'g',label = "Single-Iteration Method")
-    plt.plot(xdata_mp,ydata_peff_mp,color = 'b',label = "Multi-Iteration Method")
-    plt.xlabel("Number of Gates [Generated using Normal Distribution with Mean = 50 , SD = 25]")
-    plt.ylabel("Packing Efficiency")
-    plt.legend(loc="lower right")
-    plt.title("Packing Efficiency of Multi-Iteration & Single-Iteration VS Number of Gates")
-    plt.show()
+    # plt.xticks(np.arange(0, 10001, 100))
+    # plt.plot(xdata_sp,ydata_peff_sp,color = 'g',label = "Single-Iteration Method")
+    # plt.plot(xdata_mp,ydata_peff_mp,color = 'b',label = "Multi-Iteration Method")
+    # plt.xlabel("Number of Gates [Generated using Normal Distribution with Mean = 50 , SD = 25]")
+    # plt.ylabel("Packing Efficiency")
+    # plt.legend(loc="lower right")
+    # plt.title("Packing Efficiency of Multi-Iteration & Single-Iteration VS Number of Gates")
+    # plt.show()
 
 def chola():
     tot_data = dict()
@@ -125,6 +125,26 @@ def chola():
     plt.plot(x_data,ydata_peff,color="r", label = "Packing Efficiency")
     plt.legend(loc = "lower right")
     plt.show()
+
+def soja():
+    x_data,ydata_t_v1,ydata_t_v2 = list(),list(),list()
     
+    with open("v1v2_comp.txt","r") as file:
+        fdata = file.readlines()
+        for i in range(0,len(fdata),6):
+            x_data.append(int(fdata[i].split()[-1]))
+            ydata_t_v1.append(float(fdata[i+1].split()[-1]))
+            ydata_t_v2.append(float(fdata[i+4].split()[-1]))
+    
+    plt.xticks(np.arange(0, 1200, 50))
+    plt.xlabel("Number of Gates")
+    plt.ylabel("Run Time for Algorithm")
+    plt.plot(x_data,ydata_t_v1,color="r", label = "Pixel Scan", marker = 'o')
+    plt.plot(x_data,ydata_t_v2,color="b", label = "Predictive Pixel Scan",marker = 'o')
+    plt.legend(loc = "upper left")
+    plt.show()
+    
+    
+
 if(__name__ == "__main__"):
-    bhola()
+    soja()

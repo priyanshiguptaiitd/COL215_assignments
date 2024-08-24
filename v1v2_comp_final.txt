@@ -1,0 +1,126 @@
+Gate Freq : 25
+Runtime : 0.86453390
+Packing Efficiency :  0.87697537
+Gate Freq : 25
+Runtime : 0.14117050
+Packing Efficiency :  0.87697537
+Gate Freq : 25
+Runtime : 1.01254916
+Packing Efficiency :  0.88584433
+Gate Freq : 25
+Runtime : 0.14281988
+Packing Efficiency :  0.88584433
+Gate Freq : 50
+Runtime : 1.64164567
+Packing Efficiency :  0.91949832
+Gate Freq : 50
+Runtime : 0.47843742
+Packing Efficiency :  0.91949832
+Gate Freq : 75
+Runtime : 1.58639193
+Packing Efficiency :  0.92543494
+Gate Freq : 75
+Runtime : 0.97008681
+Packing Efficiency :  0.93382891
+Gate Freq : 100
+Runtime : 2.46474099
+Packing Efficiency :  0.93216299
+Gate Freq : 100
+Runtime : 1.46743107
+Packing Efficiency :  0.94716393
+Gate Freq : 125
+Runtime : 1.16433406
+Packing Efficiency :  0.93257426
+Gate Freq : 125
+Runtime : 1.08830833
+Packing Efficiency :  0.95107782
+Gate Freq : 150
+Runtime : 1.75623369
+Packing Efficiency :  0.94463625
+Gate Freq : 150
+Runtime : 0.99320173
+Packing Efficiency :  0.95327095
+Gate Freq : 175
+Runtime : 2.78214025
+Packing Efficiency :  0.94495122
+Gate Freq : 175
+Runtime : 1.88463092
+Packing Efficiency :  0.94495122
+Gate Freq : 200
+Runtime : 3.12587547
+Packing Efficiency :  0.95661141
+Gate Freq : 200
+Runtime : 0.30486012
+Packing Efficiency :  0.95661141
+Gate Freq : 225
+Runtime : 4.10740662
+Packing Efficiency :  0.95662813
+Gate Freq : 225
+Runtime : 0.31385469
+Packing Efficiency :  0.95662813
+Gate Freq : 250
+Runtime : 5.29006147
+Packing Efficiency :  0.96188848
+Gate Freq : 250
+Runtime : 0.44671130
+Packing Efficiency :  0.96188848
+Gate Freq : 275
+Runtime : 6.44577169
+Packing Efficiency :  0.96250526
+Gate Freq : 275
+Runtime : 0.46399522
+Packing Efficiency :  0.96250526
+Gate Freq : 300
+Runtime : 7.30745912
+Packing Efficiency :  0.96610942
+Gate Freq : 300
+Runtime : 0.60323071
+Packing Efficiency :  0.96610942
+Gate Freq : 325
+Runtime : 8.19125891
+Packing Efficiency :  0.96989379
+Gate Freq : 325
+Runtime : 0.62979889
+Packing Efficiency :  0.96989379
+Gate Freq : 350
+Runtime : 10.03468847
+Packing Efficiency :  0.97114453
+Gate Freq : 350
+Runtime : 0.71325779
+Packing Efficiency :  0.97114453
+Gate Freq : 375
+Runtime : 11.76610017
+Packing Efficiency :  0.97358443
+Gate Freq : 375
+Runtime : 0.83275437
+Packing Efficiency :  0.97358443
+Gate Freq : 400
+Runtime : 13.45110106
+Packing Efficiency :  0.96913828
+Gate Freq : 400
+Runtime : 1.07038474
+Packing Efficiency :  0.96913828
+Gate Freq : 425
+Runtime : 14.96966791
+Packing Efficiency :  0.97260430
+Gate Freq : 425
+Runtime : 1.08629799
+Packing Efficiency :  0.97260430
+Gate Freq : 450
+Runtime : 17.05049753
+Packing Efficiency :  0.97210253
+Gate Freq : 450
+Runtime : 1.16523314
+Packing Efficiency :  0.97210253
+Gate Freq : 475
+Runtime : 19.25788236
+Packing Efficiency :  0.96999774
+Gate Freq : 475
+Runtime : 1.39910531
+Packing Efficiency :  0.96999774
+Gate Freq : 500
+Runtime : 21.30572701
+Packing Efficiency :  0.97388127
+Gate Freq : 500
+Runtime : 1.54942060
+Packing Efficiency :  0.97388127

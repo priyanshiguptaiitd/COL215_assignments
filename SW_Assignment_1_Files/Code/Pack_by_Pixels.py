@@ -3,6 +3,7 @@ from code_timer import *
 from itertools import count 
 from copy import deepcopy
 
+
 @time_it
 def Pack_by_Pixel_v0(rec_data,h_max):
     """
@@ -82,6 +83,7 @@ def Pack_by_Pixel_v1(rec_data,Im_Width,Im_Height):
     
     return rdata,[cells_packed,max_rows_used,max_cols_used],True
 
+    
 @time_it
 def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
     """ Pack_by_Pixel_v2 
@@ -107,14 +109,11 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
         Im_Width (_type_): Image Width in which we try to fit the gates
         Im_Height (_type_): Image Height in which we try to fit the gates
     """
-    
     rdata = deepcopy(rec_data)
     cells_packed,max_rows_used,max_cols_used = 0,0,0
     Im_Data = [[0]*Im_Width for r in range(Im_Height)]
-    # Im_Data_R_index = [[0]*Im_Width for r in range(Im_Height)]
     Im_Rec_Data = {rdata[i].index : rdata[i] for i in range(len(rdata))}
-    # print(Im_Data)
-    
+        
     for i in range(len(rdata)):
         rec_done = False
         x,y = 0,0
@@ -165,6 +164,5 @@ def Pack_by_Pixel_v2(rec_data,Im_Width,Im_Height):
         if(not rec_done):
             return -1,None,None                    
 
-    
     return rdata,[cells_packed,max_rows_used,max_cols_used],True
    
