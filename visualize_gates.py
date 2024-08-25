@@ -46,8 +46,8 @@ class draw_gate_packing(Tk):
         screen_height = self.winfo_screenheight()
         
         # Set the canvas size based on the screen size
-        canvas_width = int(screen_width * 0.9)
-        canvas_height = int(screen_height * 0.9)
+        canvas_width = int(screen_width * 1.2)
+        canvas_height = int(screen_height * 1.2)
     
         row_size, column_size = grid_dimensions
         grid_size_x = canvas_width // column_size
@@ -74,7 +74,7 @@ class draw_gate_packing(Tk):
                 y2 = self.shift-self.scale*sz[1]
                 print(x1,y1,x2,y2)
                 self.create_rectangle(x1, y1, x2, y2, outline = 'black', fill=color, width=1, alpha=0.5)
-                self.canvas.create_text(x1+(x2-x1)/2, y1+(y2-y1)/2, font=("Arial", int(0.20*grid_size)), text=g)
+                self.canvas.create_text(x1+(x2-x1)/2, y1+(y2-y1)/2, font=("Arial", int(0.10*grid_size)), text=g)
         
         self.canvas.pack()
 
