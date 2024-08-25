@@ -12,3 +12,5 @@ It has the following specifications at the time of submission :
 
 FP_SINGLE_CASE_IN = r"input.txt"
 FP_SINGLE_CASE_OUT =  r"output.txt"
+
+Generates a txt file - comparison_single_mp_msp.txt containing statistics about the packing made
