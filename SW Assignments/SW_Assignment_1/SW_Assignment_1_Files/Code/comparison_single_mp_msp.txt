@@ -1,0 +1,4 @@
+Gate Freq : 4
+Bounding Width, Height : 2 2
+Runtime : 0.00000000
+Packing Efficiency :  1.00000000
