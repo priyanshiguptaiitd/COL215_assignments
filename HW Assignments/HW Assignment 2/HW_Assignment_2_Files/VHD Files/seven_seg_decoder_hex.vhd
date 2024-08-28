@@ -12,7 +12,7 @@ architecture Behavioral of seven_seg_decoder_hex is
     signal A, B, C, D : std_logic;
 
 begin
-    Seg_Decoder_HEX : process(input)
+    Seg_Decoder_HEX : process(dec_in)
     begin
         D <= dec_in(0);
         C <= dec_in(1);
@@ -22,7 +22,7 @@ begin
         -- a b c d e f g
         -- Basys 3 board uses Active Low Pins hence the values are inverted 
         -- from actual reduced expression using K-map (Sum of Min terms method)
-        dec_out(0) <= not ((not A and not B and not C and D) or (not A and B and not C not D) 
+        dec_out(0) <= not ((not A and not B and not C and D) or (not A and B and not C and not D) 
                          or (A and B and not C and D) or (A and not B and C and D));
         dec_out(1) <= not ((not A and not C and D) or (A and C and D) or (A and B and not D) or (B and C and not D));
         dec_out(2) <= not ((not A and not B and C and not D) or (A and B and not D) or (A and B and C));

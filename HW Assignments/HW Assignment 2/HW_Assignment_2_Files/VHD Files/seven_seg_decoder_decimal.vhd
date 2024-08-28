@@ -18,17 +18,21 @@ begin
         C <= dec_in(1);
         B <= dec_in(2);
         A <= dec_in(3);
-        -- 0 1 2 3 4 5 6  
-        -- a b c d e f g
-        -- Basys 3 board uses Active Low Pins hence the values are inverted 
-        -- from actual reduced expression using K-map (Sum of Min terms method)
+        
+        -- Segment a
         dec_out(0) <= not (A or C or (B and D) or (not B and not D));
+        -- Segment b
         dec_out(1) <= not (not B or (not C and not D) and (C and D));
+        -- Segment c
         dec_out(2) <= not (B or not C or D);
+        -- Segment d
         dec_out(3) <= not ((not B and not D) or (C and not D) or (B and not C and D) or (not B and C) or A);
+        -- Segment e
         dec_out(4) <= not ((not B and not D) or (C and not D));
+        -- Segment f
         dec_out(5) <= not (A or (not C and not D) or (B and not C) or (B and not D));
+        -- Segment g
         dec_out(6) <= not (A or (B and not C) or (not B and C) or (C and not D));
-         
+        
     end process;
 end Behavioral;
