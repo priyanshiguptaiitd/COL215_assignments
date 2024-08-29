@@ -246,4 +246,4 @@ This VHDL module implements a 7-segment display controller that takes a 100 MHz 
 
 `=================================================================================================================`
 
-# Made by 2023CS50334 
+### Made by 2023CS50334 & 2023CS10106
