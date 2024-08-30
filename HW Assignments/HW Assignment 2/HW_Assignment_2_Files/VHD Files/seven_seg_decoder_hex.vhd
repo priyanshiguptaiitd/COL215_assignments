@@ -22,15 +22,20 @@ begin
         -- a b c d e f g
         -- Basys 3 board uses Active Low Pins hence the values are inverted 
         -- from actual reduced expression using K-map (Sum of Min terms method)
-        dec_out(0) <= not ((not A and not B and not C and D) or (not A and B and not C and not D) 
-                         or (A and B and not C and D) or (A and not B and C and D));
-        dec_out(1) <= not ((not A and not C and D) or (A and C and D) or (A and B and not D) or (B and C and not D));
-        dec_out(2) <= not ((not A and not B and C and not D) or (A and B and not D) or (A and B and C));
-        dec_out(3) <= not ((not A and not B and not C and D) or (not A and B and not C and not D) or (B and C and D)
-                         or (A and not B and C and not D));
-        dec_out(4) <= not ((not A and D) or (not A and B and not C) or (not B and not C and D));
-        dec_out(5) <= not ((not A and not B and D) or (not A and not B and C) or (not A and C and D) or (A and B and not C and D));
-        dec_out(6) <= not ((not A and not B and not C) or (A and B and not C and not D) or (not A and B and C and D));
+        dec_out(0) <= not ((not A and not B and not D) or (not A and B and D) or (A and not C and not D)
+                           or (A and not B and not C) or (not A and C) or (B and C) or (C and not D));
+        dec_out(1) <= not ((not A and not C and not D) or (not A and C and D) or (A and not C and D)
+                           or (A and not B and not D) or (not A and not B));
+        dec_out(2) <= not ((not A and C and D) or (not A and not C) or (not A and B) or (not C and D)
+                           or (A and not B));
+        dec_out(3) <= not ((not A and not B and not D) or (not B and C and D) or (B and not C and D)
+                           or (B and C and not D) or (A and not C and not D));
+        dec_out(4) <= not ((not B and not C and not D) or (A and B) or (C and not D) or (A and C));
+
+        dec_out(5) <= not ((not A and B and not C) or (B and C and not D) or (not C and not D)
+                           or (A and not B) or (A and C));
+        dec_out(6) <= not ((not A and not B and C) or (not A and B and not C) or (C and not D)
+                           or (A and not B) or (A and D));
          
     end process;
 end Behavioral;
