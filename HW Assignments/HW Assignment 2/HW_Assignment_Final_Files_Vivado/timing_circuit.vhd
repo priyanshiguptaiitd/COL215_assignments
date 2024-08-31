@@ -46,10 +46,12 @@ begin
         mux_select <= mux_select_counter;
     end process;
     --Process 3 for anode signal
-    ANODE_select: process(mux_select_counter)
+    ANODE_select: process(mux_select_counter,reset)
     begin
         -- Might need to drive anode to high instead of low
-        if(mux_select_counter  = "00") then
+        if(reset = '1') then
+            anodes_tout <= "1110";
+        elsif(mux_select_counter  = "00") then
             anodes_tout <= "1110";
         elsif (mux_select_counter  = "01") then
             anodes_tout <= "1101";
