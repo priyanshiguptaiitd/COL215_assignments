@@ -20,7 +20,7 @@ architecture Behavioral of Timing_block is
 begin
 --Process 1 for dividing the clock from 100 Mhz to 1Khz - 60hz
     -- Gives rise to a clock with t = 10.24 ms or f = 97.65625 Hz
-    NEW_CLK: process(clk_in, reset)
+    CLK_PROC: process(clk_in, reset)
     begin
         if(reset = '1') then
             counter <= 0;
@@ -36,7 +36,7 @@ begin
                         
     end process;
     --Process 2 for mux select signal
-    MUX_select: process(new_clk, reset)
+    MUX_PROC: process(new_clk, reset)
     begin
         if(reset = '1') then
             mux_select_counter <= "00";
@@ -46,16 +46,18 @@ begin
         mux_select <= mux_select_counter;
     end process;
     --Process 3 for anode signal
-    ANODE_select: process(mux_select)
+    ANODE_select: process(mux_select_counter,reset)
     begin
         -- Might need to drive anode to high instead of low
-        if(mux_select = "00") then
+        if(reset = '1') then
             anodes_tout <= "1110";
-        elsif (mux_select = "01") then
+        elsif(mux_select_counter  = "00") then
+            anodes_tout <= "1110";
+        elsif (mux_select_counter  = "01") then
             anodes_tout <= "1101";
-        elsif (mux_select = "10") then
+        elsif (mux_select_counter  = "10") then
             anodes_tout <= "1011";
-        elsif (mux_select = "11") then
+        elsif (mux_select_counter  = "11") then
             anodes_tout <= "0111";
         end if;
     end process;
