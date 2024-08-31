@@ -48,6 +48,7 @@ begin
     --Process 3 for anode signal
     ANODE_select: process(mux_select)
     begin
+        -- Might need to drive anode to high instead of low
         if(mux_select = "00") then
             anodes_tout <= "1110";
         elsif (mux_select = "01") then
