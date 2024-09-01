@@ -50,7 +50,7 @@ begin
     begin
         -- Might need to drive anode to high instead of low
         if(reset = '1') then
-            anodes_tout <= "1110";
+            anodes_tout <= "1111";
         elsif(mux_select_counter  = "00") then
             anodes_tout <= "1110";
         elsif (mux_select_counter  = "01") then
