@@ -23,7 +23,7 @@ architecture tb of tb_timing_circuit is
 
 begin
     uut: Timing_block port map (clk_in => clk_in, reset => reset, mux_select => mux_select, anodes_tout => anodes_tout);
-    clk_proc: process
+    clk_proc: process -- Using this to drive our clock signal
     begin
         while now < 20000 ns loop
             clk_in_tb <= '0';
@@ -33,5 +33,7 @@ begin
         end loop;
         wait;
     end process;
+
+    reset <= 0, 1 after 10000 ns, 0 after 12000 ns;
 
 end tb;

@@ -14,18 +14,28 @@ entity tb_MUX_4BIT is
 end tb_MUX_4BIT;
 
 architecture tb of tb_MUX_4BIT is
-    component seven_seg_decoder_hex is
-        port (
-            dec_in : in std_logic_vector(3 downto 0);
-            dec_out : out std_logic_vector(6 downto 0)
+    component MUX_4BIT is
+        port(
+            mux_s : in std_logic_vector(1 downto 0);
+            mux_d0 : in std_logic_vector(3 downto 0);
+            mux_d1 : in std_logic_vector(3 downto 0);
+            mux_d2 : in std_logic_vector(3 downto 0);
+            mux_d3 : in std_logic_vector(3 downto 0);
+            mux_out_to : out std_logic_vector(3 downto 0)
         );
     end component;
-    signal dec_in: std_logic_vector(3 downto 0);
-    signal dec_out : std_logic_vector(6 downto 0);
+    signal mux_s : std_logic_vector(1 downto 0);
+    signal mux_d0 : std_logic_vector(3 downto 0);
+    signal mux_d1 : std_logic_vector(3 downto 0);
+    signal mux_d2 : std_logic_vector(3 downto 0);
+    signal mux_d3 : std_logic_vector(3 downto 0);
+    signal mux_out_to : std_logic_vector(3 downto 0);
+
 begin
-    UUT : seven_seg_decoder_hex port map (dec_in=>dec_in,dec_out=>dec_out);
-    dec_in  <= '0000', '0001' after 20 ns, '0010' after 40 ns, '0011' after 80 ns ,
-               '0100' after 100 ns, '0101' after 120 ns, '0110' after 140 ns, '0111' after 160 ns,
-               '1000' after 180 ns, '1001' after 200 ns, '1010' after 220 ns, '1011' after 240 ns,
-               '1100' after 260 ns, '1101' after 280 ns, '1110' after 300 ns, '1111' after 320 ns;
+    UUT : MUX_4BIT port map (mux_s=>mux_s,mux_d0=>mux_d0,mux_d1=>mux_d1,mux_d2=>mux_d2,mux_d3=>mux_d3);
+    mux_s <= "00", "01" after 80 ns, "10" after 160 ns, "11" after 240 ns;
+    mux_d0 <= "0000", "0010" after 20 ns, "0100" after 40 ns, "0110" after 60 ns, "0000" after 80 ns;
+    mux_d1 <= "0000", "0001" after 80 ns, "0011" after 100 ns, "0101" after 120 ns, "0111" after 140 ns , "0000" after 160 ns;
+    mux_d2 <= "0000", "1000" after 160 ns , "1010" after 180 ns, "1100" after 200 ns, "1110" after 220 ns, "0000" after 240 ns;
+    mux_d3 <= "0000", "1001" after 240 ns, "1011" after 260 ns, "1101" after 280 ns, "1111" after 300 ns, "0000" after 320 ns;    
 end tb;
