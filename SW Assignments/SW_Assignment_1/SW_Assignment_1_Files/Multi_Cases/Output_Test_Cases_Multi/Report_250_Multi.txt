@@ -1,0 +1,507 @@
+Test Case 1 
+Total area of Gates used and total area of Image: 571667 , 592503 
+Packing Efficiency :  0.96483393, 831 cols and  713 rows were used 
+Time to run Code : 0.79634309
+
+Test Case 2 
+Total area of Gates used and total area of Image: 623726 , 652276 
+Packing Efficiency :  0.95623018, 911 cols and  716 rows were used 
+Time to run Code : 2.37471581
+
+Test Case 3 
+Total area of Gates used and total area of Image: 653109 , 686884 
+Packing Efficiency :  0.95082867, 932 cols and  737 rows were used 
+Time to run Code : 1.76103544
+
+Test Case 4 
+Total area of Gates used and total area of Image: 569731 , 594280 
+Packing Efficiency :  0.95869119, 830 cols and  716 rows were used 
+Time to run Code : 0.72819495
+
+Test Case 5 
+Total area of Gates used and total area of Image: 594451 , 626672 
+Packing Efficiency :  0.94858395, 848 cols and  739 rows were used 
+Time to run Code : 1.84235287
+
+Test Case 6 
+Total area of Gates used and total area of Image: 633818 , 658996 
+Packing Efficiency :  0.96179339, 874 cols and  754 rows were used 
+Time to run Code : 0.64334750
+
+Test Case 7 
+Total area of Gates used and total area of Image: 580445 , 601684 
+Packing Efficiency :  0.96470074, 838 cols and  718 rows were used 
+Time to run Code : 0.58086157
+
+Test Case 8 
+Total area of Gates used and total area of Image: 616497 , 645524 
+Packing Efficiency :  0.95503343, 863 cols and  748 rows were used 
+Time to run Code : 0.64625883
+
+Test Case 9 
+Total area of Gates used and total area of Image: 643514 , 673848 
+Packing Efficiency :  0.95498391, 882 cols and  764 rows were used 
+Time to run Code : 0.62153387
+
+Test Case 10 
+Total area of Gates used and total area of Image: 588534 , 612018 
+Packing Efficiency :  0.96162858, 843 cols and  726 rows were used 
+Time to run Code : 0.81790924
+
+Test Case 11 
+Total area of Gates used and total area of Image: 628590 , 656616 
+Packing Efficiency :  0.95731752, 872 cols and  753 rows were used 
+Time to run Code : 0.79838991
+
+Test Case 12 
+Total area of Gates used and total area of Image: 596384 , 621918 
+Packing Efficiency :  0.95894314, 891 cols and  698 rows were used 
+Time to run Code : 1.55537009
+
+Test Case 13 
+Total area of Gates used and total area of Image: 649746 , 683106 
+Packing Efficiency :  0.95116424, 886 cols and  771 rows were used 
+Time to run Code : 0.97034574
+
+Test Case 14 
+Total area of Gates used and total area of Image: 604638 , 635973 
+Packing Efficiency :  0.95072904, 897 cols and  709 rows were used 
+Time to run Code : 1.76747036
+
+Test Case 15 
+Total area of Gates used and total area of Image: 592998 , 615769 
+Packing Efficiency :  0.96302022, 847 cols and  727 rows were used 
+Time to run Code : 0.96671033
+
+Test Case 16 
+Total area of Gates used and total area of Image: 607472 , 636548 
+Packing Efficiency :  0.95432238, 814 cols and  782 rows were used 
+Time to run Code : 1.58088517
+
+Test Case 17 
+Total area of Gates used and total area of Image: 603279 , 627690 
+Packing Efficiency :  0.96110978, 854 cols and  735 rows were used 
+Time to run Code : 0.71002316
+
+Test Case 18 
+Total area of Gates used and total area of Image: 632912 , 664125 
+Packing Efficiency :  0.95300132, 875 cols and  759 rows were used 
+Time to run Code : 0.89772892
+
+Test Case 19 
+Total area of Gates used and total area of Image: 623425 , 652736 
+Packing Efficiency :  0.95509517, 868 cols and  752 rows were used 
+Time to run Code : 0.89756703
+
+Test Case 20 
+Total area of Gates used and total area of Image: 604242 , 632700 
+Packing Efficiency :  0.95502134, 855 cols and  740 rows were used 
+Time to run Code : 0.90419436
+
+Test Case 21 
+Total area of Gates used and total area of Image: 628687 , 659232 
+Packing Efficiency :  0.95366578, 872 cols and  756 rows were used 
+Time to run Code : 0.85590982
+
+Test Case 22 
+Total area of Gates used and total area of Image: 660470 , 693861 
+Packing Efficiency :  0.95187653, 893 cols and  777 rows were used 
+Time to run Code : 0.98736048
+
+Test Case 23 
+Total area of Gates used and total area of Image: 629374 , 660976 
+Packing Efficiency :  0.95218888, 872 cols and  758 rows were used 
+Time to run Code : 1.03785515
+
+Test Case 24 
+Total area of Gates used and total area of Image: 599902 , 619528 
+Packing Efficiency :  0.96832104, 851 cols and  728 rows were used 
+Time to run Code : 0.78689003
+
+Test Case 25 
+Total area of Gates used and total area of Image: 610742 , 638237 
+Packing Efficiency :  0.95692039, 859 cols and  743 rows were used 
+Time to run Code : 0.89713645
+
+Test Case 26 
+Total area of Gates used and total area of Image: 601102 , 631332 
+Packing Efficiency :  0.95211711, 852 cols and  741 rows were used 
+Time to run Code : 0.98609853
+
+Test Case 27 
+Total area of Gates used and total area of Image: 660756 , 691062 
+Packing Efficiency :  0.95614576, 894 cols and  773 rows were used 
+Time to run Code : 0.91907859
+
+Test Case 28 
+Total area of Gates used and total area of Image: 648687 , 682335 
+Packing Efficiency :  0.95068698, 885 cols and  771 rows were used 
+Time to run Code : 0.84891129
+
+Test Case 29 
+Total area of Gates used and total area of Image: 629607 , 656616 
+Packing Efficiency :  0.95886637, 872 cols and  753 rows were used 
+Time to run Code : 0.76155519
+
+Test Case 30 
+Total area of Gates used and total area of Image: 586844 , 615230 
+Packing Efficiency :  0.95386116, 799 cols and  770 rows were used 
+Time to run Code : 1.72674704
+
+Test Case 31 
+Total area of Gates used and total area of Image: 633057 , 663250 
+Packing Efficiency :  0.95447720, 875 cols and  758 rows were used 
+Time to run Code : 0.93033290
+
+Test Case 32 
+Total area of Gates used and total area of Image: 618726 , 648750 
+Packing Efficiency :  0.95372023, 865 cols and  750 rows were used 
+Time to run Code : 0.81424832
+
+Test Case 33 
+Total area of Gates used and total area of Image: 600038 , 624516 
+Packing Efficiency :  0.96080485, 852 cols and  733 rows were used 
+Time to run Code : 0.87355399
+
+Test Case 34 
+Total area of Gates used and total area of Image: 621236 , 651984 
+Packing Efficiency :  0.95283933, 867 cols and  752 rows were used 
+Time to run Code : 0.89316726
+
+Test Case 35 
+Total area of Gates used and total area of Image: 656990 , 685179 
+Packing Efficiency :  0.95885893, 891 cols and  769 rows were used 
+Time to run Code : 0.87707520
+
+Test Case 36 
+Total area of Gates used and total area of Image: 615444 , 646500 
+Packing Efficiency :  0.95196288, 862 cols and  750 rows were used 
+Time to run Code : 0.85673809
+
+Test Case 37 
+Total area of Gates used and total area of Image: 604484 , 632700 
+Packing Efficiency :  0.95540382, 855 cols and  740 rows were used 
+Time to run Code : 0.89066243
+
+Test Case 38 
+Total area of Gates used and total area of Image: 650788 , 682990 
+Packing Efficiency :  0.95285143, 887 cols and  770 rows were used 
+Time to run Code : 1.01152778
+
+Test Case 39 
+Total area of Gates used and total area of Image: 663198 , 696310 
+Packing Efficiency :  0.95244647, 895 cols and  778 rows were used 
+Time to run Code : 0.71734977
+
+Test Case 40 
+Total area of Gates used and total area of Image: 594312 , 619888 
+Packing Efficiency :  0.95874093, 848 cols and  731 rows were used 
+Time to run Code : 0.58357167
+
+Test Case 41 
+Total area of Gates used and total area of Image: 629186 , 659232 
+Packing Efficiency :  0.95442272, 872 cols and  756 rows were used 
+Time to run Code : 0.58164787
+
+Test Case 42 
+Total area of Gates used and total area of Image: 634851 , 664884 
+Packing Efficiency :  0.95482971, 876 cols and  759 rows were used 
+Time to run Code : 0.61655045
+
+Test Case 43 
+Total area of Gates used and total area of Image: 666742 , 694154 
+Packing Efficiency :  0.96051020, 898 cols and  773 rows were used 
+Time to run Code : 0.60010147
+
+Test Case 44 
+Total area of Gates used and total area of Image: 621021 , 646036 
+Packing Efficiency :  0.96127925, 866 cols and  746 rows were used 
+Time to run Code : 0.58409977
+
+Test Case 45 
+Total area of Gates used and total area of Image: 587619 , 612018 
+Packing Efficiency :  0.96013353, 843 cols and  726 rows were used 
+Time to run Code : 0.58287835
+
+Test Case 46 
+Total area of Gates used and total area of Image: 618044 , 647136 
+Packing Efficiency :  0.95504500, 864 cols and  749 rows were used 
+Time to run Code : 0.62859273
+
+Test Case 47 
+Total area of Gates used and total area of Image: 584151 , 614040 
+Packing Efficiency :  0.95132402, 840 cols and  731 rows were used 
+Time to run Code : 0.73336363
+
+Test Case 48 
+Total area of Gates used and total area of Image: 604506 , 634410 
+Packing Efficiency :  0.95286329, 855 cols and  742 rows were used 
+Time to run Code : 0.79290271
+
+Test Case 49 
+Total area of Gates used and total area of Image: 627837 , 655863 
+Packing Efficiency :  0.95726851, 871 cols and  753 rows were used 
+Time to run Code : 0.84340858
+
+Test Case 50 
+Total area of Gates used and total area of Image: 614208 , 637880 
+Packing Efficiency :  0.96288957, 862 cols and  740 rows were used 
+Time to run Code : 0.76709914
+
+Test Case 51 
+Total area of Gates used and total area of Image: 647979 , 672600 
+Packing Efficiency :  0.96339429, 885 cols and  760 rows were used 
+Time to run Code : 0.88856959
+
+Test Case 52 
+Total area of Gates used and total area of Image: 627634 , 657465 
+Packing Efficiency :  0.95462724, 827 cols and  795 rows were used 
+Time to run Code : 1.65175176
+
+Test Case 53 
+Total area of Gates used and total area of Image: 603539 , 628544 
+Packing Efficiency :  0.96021758, 854 cols and  736 rows were used 
+Time to run Code : 0.81831717
+
+Test Case 54 
+Total area of Gates used and total area of Image: 615706 , 641209 
+Packing Efficiency :  0.96022670, 863 cols and  743 rows were used 
+Time to run Code : 0.96085930
+
+Test Case 55 
+Total area of Gates used and total area of Image: 635130 , 667512 
+Packing Efficiency :  0.95148851, 876 cols and  762 rows were used 
+Time to run Code : 0.96553206
+
+Test Case 56 
+Total area of Gates used and total area of Image: 598550 , 624584 
+Packing Efficiency :  0.95831786, 808 cols and  773 rows were used 
+Time to run Code : 1.84615326
+
+Test Case 57 
+Total area of Gates used and total area of Image: 639484 , 671216 
+Packing Efficiency :  0.95272461, 922 cols and  728 rows were used 
+Time to run Code : 2.43374991
+
+Test Case 58 
+Total area of Gates used and total area of Image: 623259 , 654472 
+Packing Efficiency :  0.95230812, 868 cols and  754 rows were used 
+Time to run Code : 0.70128560
+
+Test Case 59 
+Total area of Gates used and total area of Image: 637673 , 665524 
+Packing Efficiency :  0.95815177, 878 cols and  758 rows were used 
+Time to run Code : 0.78080869
+
+Test Case 60 
+Total area of Gates used and total area of Image: 627903 , 652379 
+Packing Efficiency :  0.96248193, 871 cols and  749 rows were used 
+Time to run Code : 0.88817072
+
+Test Case 61 
+Total area of Gates used and total area of Image: 609142 , 638352 
+Packing Efficiency :  0.95424155, 858 cols and  744 rows were used 
+Time to run Code : 0.80349183
+
+Test Case 62 
+Total area of Gates used and total area of Image: 592151 , 616734 
+Packing Efficiency :  0.96014003, 846 cols and  729 rows were used 
+Time to run Code : 0.84276867
+
+Test Case 63 
+Total area of Gates used and total area of Image: 613606 , 642979 
+Packing Efficiency :  0.95431733, 817 cols and  787 rows were used 
+Time to run Code : 1.83826256
+
+Test Case 64 
+Total area of Gates used and total area of Image: 645226 , 675840 
+Packing Efficiency :  0.95470230, 880 cols and  768 rows were used 
+Time to run Code : 1.03429341
+
+Test Case 65 
+Total area of Gates used and total area of Image: 592107 , 621810 
+Packing Efficiency :  0.95223139, 846 cols and  735 rows were used 
+Time to run Code : 0.92294455
+
+Test Case 66 
+Total area of Gates used and total area of Image: 629829 , 657488 
+Packing Efficiency :  0.95793231, 872 cols and  754 rows were used 
+Time to run Code : 0.81116581
+
+Test Case 67 
+Total area of Gates used and total area of Image: 619653 , 644425 
+Packing Efficiency :  0.96155953, 865 cols and  745 rows were used 
+Time to run Code : 0.78038812
+
+Test Case 68 
+Total area of Gates used and total area of Image: 605827 , 633440 
+Packing Efficiency :  0.95640787, 856 cols and  740 rows were used 
+Time to run Code : 0.78172779
+
+Test Case 69 
+Total area of Gates used and total area of Image: 652248 , 681984 
+Packing Efficiency :  0.95639780, 888 cols and  768 rows were used 
+Time to run Code : 0.89477158
+
+Test Case 70 
+Total area of Gates used and total area of Image: 622419 , 657186 
+Packing Efficiency :  0.94709717, 867 cols and  758 rows were used 
+Time to run Code : 1.00598979
+
+Test Case 71 
+Total area of Gates used and total area of Image: 614737 , 644776 
+Packing Efficiency :  0.95341173, 862 cols and  748 rows were used 
+Time to run Code : 0.95723629
+
+Test Case 72 
+Total area of Gates used and total area of Image: 551717 , 572717 
+Packing Efficiency :  0.96333268, 817 cols and  701 rows were used 
+Time to run Code : 0.71110296
+
+Test Case 73 
+Total area of Gates used and total area of Image: 649776 , 679562 
+Packing Efficiency :  0.95616883, 886 cols and  767 rows were used 
+Time to run Code : 0.86039376
+
+Test Case 74 
+Total area of Gates used and total area of Image: 599155 , 627187 
+Packing Efficiency :  0.95530520, 851 cols and  737 rows were used 
+Time to run Code : 0.94575286
+
+Test Case 75 
+Total area of Gates used and total area of Image: 614291 , 638742 
+Packing Efficiency :  0.96172007, 862 cols and  741 rows were used 
+Time to run Code : 0.92713451
+
+Test Case 76 
+Total area of Gates used and total area of Image: 626474 , 654240 
+Packing Efficiency :  0.95755992, 870 cols and  752 rows were used 
+Time to run Code : 0.68545270
+
+Test Case 77 
+Total area of Gates used and total area of Image: 632759 , 666750 
+Packing Efficiency :  0.94901987, 875 cols and  762 rows were used 
+Time to run Code : 1.90353703
+
+Test Case 78 
+Total area of Gates used and total area of Image: 614784 , 643914 
+Packing Efficiency :  0.95476104, 862 cols and  747 rows were used 
+Time to run Code : 0.59596920
+
+Test Case 79 
+Total area of Gates used and total area of Image: 620649 , 646036 
+Packing Efficiency :  0.96070343, 866 cols and  746 rows were used 
+Time to run Code : 0.58046079
+
+Test Case 80 
+Total area of Gates used and total area of Image: 646461 , 675376 
+Packing Efficiency :  0.95718681, 884 cols and  764 rows were used 
+Time to run Code : 0.61413193
+
+Test Case 81 
+Total area of Gates used and total area of Image: 615604 , 643798 
+Packing Efficiency :  0.95620676, 863 cols and  746 rows were used 
+Time to run Code : 0.75520134
+
+Test Case 82 
+Total area of Gates used and total area of Image: 635119 , 664008 
+Packing Efficiency :  0.95649299, 876 cols and  758 rows were used 
+Time to run Code : 0.89891267
+
+Test Case 83 
+Total area of Gates used and total area of Image: 630662 , 652131 
+Packing Efficiency :  0.96707870, 873 cols and  747 rows were used 
+Time to run Code : 0.78107667
+
+Test Case 84 
+Total area of Gates used and total area of Image: 624371 , 649143 
+Packing Efficiency :  0.96183892, 869 cols and  747 rows were used 
+Time to run Code : 0.84061527
+
+Test Case 85 
+Total area of Gates used and total area of Image: 693811 , 729399 
+Packing Efficiency :  0.95120915, 961 cols and  759 rows were used 
+Time to run Code : 1.76731992
+
+Test Case 86 
+Total area of Gates used and total area of Image: 648839 , 679562 
+Packing Efficiency :  0.95479000, 886 cols and  767 rows were used 
+Time to run Code : 0.90792418
+
+Test Case 87 
+Total area of Gates used and total area of Image: 594940 , 625670 
+Packing Efficiency :  0.95088465, 890 cols and  703 rows were used 
+Time to run Code : 1.81602478
+
+Test Case 88 
+Total area of Gates used and total area of Image: 610238 , 634801 
+Packing Efficiency :  0.96130598, 859 cols and  739 rows were used 
+Time to run Code : 0.82575941
+
+Test Case 89 
+Total area of Gates used and total area of Image: 611012 , 636519 
+Packing Efficiency :  0.95992735, 859 cols and  741 rows were used 
+Time to run Code : 0.80516315
+
+Test Case 90 
+Total area of Gates used and total area of Image: 615842 , 648113 
+Packing Efficiency :  0.95020776, 863 cols and  751 rows were used 
+Time to run Code : 0.79432321
+
+Test Case 91 
+Total area of Gates used and total area of Image: 615581 , 642072 
+Packing Efficiency :  0.95874139, 863 cols and  744 rows were used 
+Time to run Code : 0.83387589
+
+Test Case 92 
+Total area of Gates used and total area of Image: 596698 , 621468 
+Packing Efficiency :  0.96014276, 849 cols and  732 rows were used 
+Time to run Code : 0.85421538
+
+Test Case 93 
+Total area of Gates used and total area of Image: 624363 , 651750 
+Packing Efficiency :  0.95797929, 869 cols and  750 rows were used 
+Time to run Code : 0.88176513
+
+Test Case 94 
+Total area of Gates used and total area of Image: 577201 , 602870 
+Packing Efficiency :  0.95742200, 835 cols and  722 rows were used 
+Time to run Code : 0.88576579
+
+Test Case 95 
+Total area of Gates used and total area of Image: 638099 , 667280 
+Packing Efficiency :  0.95626873, 878 cols and  760 rows were used 
+Time to run Code : 1.00660801
+
+Test Case 96 
+Total area of Gates used and total area of Image: 655196 , 684410 
+Packing Efficiency :  0.95731506, 890 cols and  769 rows were used 
+Time to run Code : 0.88866329
+
+Test Case 97 
+Total area of Gates used and total area of Image: 613602 , 640584 
+Packing Efficiency :  0.95787906, 861 cols and  744 rows were used 
+Time to run Code : 0.94930148
+
+Test Case 98 
+Total area of Gates used and total area of Image: 614028 , 640584 
+Packing Efficiency :  0.95854408, 861 cols and  744 rows were used 
+Time to run Code : 0.94463682
+
+Test Case 99 
+Total area of Gates used and total area of Image: 610981 , 635660 
+Packing Efficiency :  0.96117579, 859 cols and  740 rows were used 
+Time to run Code : 0.91508913
+
+Test Case 100 
+Total area of Gates used and total area of Image: 622095 , 644181 
+Packing Efficiency :  0.96571461, 867 cols and  743 rows were used 
+Time to run Code : 0.69472384
+
+Final Report of All Test Cases -
+Total Number of Test Cases = 100
+No of failures = 0
+No of Succeses = 100
+Average Packing Efficiency : 0.95673614
+Average Time to run Code : 0.96326792
+

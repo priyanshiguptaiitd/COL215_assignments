@@ -520,5 +520,7 @@ def testing_v1_v2():
         test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT,supress_time_out = False)
 
 if(__name__ == "__main__"):          
-    test_single_case_mp(FP_SINGLE_CASE_IN,FP_SINGLE_CASE_OUT,supress_time_out = False)
+    test_single_case_mp(FP_SINGLE_CASE_IN, FP_SINGLE_CASE_OUT,supress_time_out = False)
+    # test_multi_cases_mp(1000,100,supress_time_out = False)
+    # write_multi_cases(1000,100,"normal_hi",supress_time_out = False)
     pass

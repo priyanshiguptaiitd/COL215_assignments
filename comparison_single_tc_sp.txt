@@ -1,0 +1,4 @@
+Gate Freq : 250
+Bounding Width, Height : 882 780
+Runtime : 0.78742909
+Packing Efficiency :  0.93595267
