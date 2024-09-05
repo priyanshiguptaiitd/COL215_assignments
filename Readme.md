@@ -1,4 +1,4 @@
-# COL215 Assignments Repository
+# COL215 (24-25 Sem I) Assignments Repository
 
 ## Table of Contents
 
