@@ -13,7 +13,7 @@ entity Timing_block is
 end Timing_block;
 
 architecture Behavioral of Timing_block is
-    constant N : integer := 511;-- <need to select correct value>
+    constant N : integer := 5120000;-- <need to select correct value>
     signal counter: integer := 0;
     signal mux_select_counter : STD_LOGIC_VECTOR (1 downto 0) := "00";
     signal new_clk : STD_LOGIC := '0';
