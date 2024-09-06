@@ -39,7 +39,7 @@ begin
                                       d0 => d0, d1 => d1, d2 => d2, d3 => d3, an => an, seg => seg);
     clock_proc: process
     begin
-        while now < 250000 ns loop
+        while now < 250000000 ns loop
             clock_in <= '0';
             wait for 5 ns;
             clock_in <= '1';
