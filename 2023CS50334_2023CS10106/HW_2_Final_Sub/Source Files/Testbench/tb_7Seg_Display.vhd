@@ -39,7 +39,7 @@ begin
                                       d0 => d0, d1 => d1, d2 => d2, d3 => d3, an => an, seg => seg);
     clock_proc: process
     begin
-        while now < 250000 ns loop
+        while now < 250000000 ns loop
             clock_in <= '0';
             wait for 5 ns;
             clock_in <= '1';
@@ -49,9 +49,9 @@ begin
     end process;
     reset_timer <= '0';
     
-    d0 <= "0000", "0100" after 1024 ns, "1000" after 5120 ns,"1100" after 9216 ns;
-    d1 <= "0001", "0101" after 2048 ns, "1001" after 6144 ns,"1101" after 10240 ns; 
-    d2 <= "0010", "0110" after 3072 ns, "1010" after 7168 ns,"1110" after 11264 ns; 
-    d3 <= "0011", "0111" after 4096 ns, "1011" after 8192 ns,"1111" after 12288 ns;
+    d0 <= "0000", "0100" after 1024000 ns, "1000" after 5120000 ns,"1100" after 9216000 ns;
+    d1 <= "0001", "0101" after 2048000 ns, "1001" after 6144000 ns,"1101" after 1024000 ns; 
+    d2 <= "0010", "0110" after 3072000 ns, "1010" after 7168000 ns,"1110" after 11264000 ns; 
+    d3 <= "0011", "0111" after 4096000 ns, "1011" after 8192000 ns,"1111" after 12288000 ns;
 
     end tb;

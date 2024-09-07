@@ -25,7 +25,7 @@ begin
     uut: Timing_block port map (clk_in => clk_in, reset => reset, mux_select => mux_select, anodes_tout => anodes_tout);
     clk_proc: process -- Using this to drive our clock signal
     begin
-        while now < 250000 ns loop
+        while now < 250000000 ns loop
             clk_in <= '0';
             wait for 5 ns;
             clk_in <= '1';
