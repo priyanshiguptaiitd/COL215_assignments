@@ -1,46 +1,39 @@
 from gates_pins import *
 
-def parse_Input_Rectangles(fpath):
-    
-    rec_data,rec_total_area= list(),0
-    max_width,max_height,width_sum,height_sum = 0,0,0,0 
-    
+def parse_Input_Gates(fpath):
+    g_data = Gate_Data() 
     with open(fpath,'r') as file:
-        c = 1
+        cgate,cwire = 1,1
         for l in file.readlines():
-            rdata = l.split()
+            rdata = (l.strip()).split()
             # Breaks if encounters empty line , Hopefully doesnt
             if(len(rdata)==0):
                 break
-            rec_data.append(Rect(c,int(rdata[1]),int(rdata[2])))
-            c += 1
-            height_sum+= int(rdata[2])
-            width_sum += int(rdata[1])
-            rec_total_area += int(rdata[1])*int(rdata[2])
-            max_width = max_width if(max_width >= int(rdata[1])) else int(rdata[1])
-            max_height = max_height if(max_height >= int(rdata[2])) else int(rdata[2])
-            
-    rec_data.sort(reverse=True,key= lambda t: (t.height,t.width))
-    
-    return rec_data,rec_total_area,max_width,max_height,width_sum,height_sum
+            if(rdata[0].startswith('g')):
+                g_data.set_gate(cgate,int(rdata[1]),int(rdata[2]))
+                cgate += 1
+            elif(rdata[0]=='pins'):
+                gindex = int(rdata[1][1:])
+                pin_freq = (len(rdata)-2)//2
+                for i in range(1,pin_freq+1):
+                    g_data.get_gate(gindex).set_pin(i,int(rdata[2*i]),int(rdata[2*i+1]))
+            elif(rdata[0]=='wire'):
+                gp1 = rdata[1].split('.')
+                gp2 = rdata[2].split('.')
+                g1,p1 = int(gp1[0][1:]),int(gp1[1][1:])
+                g2,p2 = int(gp2[0][1:]),int(gp2[1][1:])
+                g_data.set_wire(cwire,g1,p1,g2,p2)
+                cwire += 1
+    return g_data
 
-def parse_Rec_Data_Readable(rec_data):
-    rec_data_readable = [(rec.index,rec.width,rec.height) for rec in rec_data]
-    return rec_data_readable
-
-def parse_Rec_Data_Output(rec_data):
-    rec_data_output = [(rec.index,rec.x,rec.y) for rec in rec_data]
-    return rec_data_output
-
-def parse_Output_Rectangles(optimal_w,optimal_h,rec_data,fpath):
-     
+def parse_Output_Gates(g_data : Gate_Data,fpath):
+    optimal_w, optimal_h = g_data.get_bbox()
+    rec_data = g_data.get_gate_data() 
     with open(fpath,'w') as file:
         lines_output = list()
         lines_output.append(f"bounding_box {optimal_w} {optimal_h} \n")
-        c = 1
         for rdata in rec_data:
             lines_output.append(f"g{rdata[0]} {rdata[1]} {rdata[2]} \n")
         file.writelines(lines_output)
     
-    return 1
 

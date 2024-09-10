@@ -33,7 +33,6 @@ def parse_Rec_Data_Output(rec_data):
     return rec_data_output
 
 def parse_Output_Rectangles(optimal_w,optimal_h,rec_data,fpath):
-     
     with open(fpath,'w') as file:
         lines_output = list()
         lines_output.append(f"bounding_box {optimal_w} {optimal_h} \n")
