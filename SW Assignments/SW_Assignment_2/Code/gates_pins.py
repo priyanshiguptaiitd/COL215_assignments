@@ -1,5 +1,11 @@
 from typing import Any
 
+class Graph():
+    def __init__(self):
+        self.graph = dict()
+    def __str__(self):
+        return str(self.graph)
+
 class Gate_Data():
     def __init__(self):
         self.gates = dict()
@@ -14,6 +20,11 @@ class Gate_Data():
         
     def set_gate(self, index, width, height):
         self.gates[index] = Gate(index, width, height)
+        self.max_height = self.max_height if self.max_height > height else height   
+        self.max_width = self.max_width if self.max_width > width else width
+        self.width_sum += width
+        self.height_sum += height
+        self.gate_total_area += width*height
 
     def get_gate(self,index):
         return self.gates.get(index,None)

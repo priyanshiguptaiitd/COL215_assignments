@@ -18,7 +18,7 @@ architecture Behavioral of Timing_block is
     signal mux_select_counter : STD_LOGIC_VECTOR (1 downto 0) := "00";
     signal new_clk : STD_LOGIC := '0';
 begin
---Process 1 for dividing the clock from 100 Mhz to 1Khz - 60hz
+    --Process 1 for dividing the clock from 100 Mhz to 1Khz - 60hz
     -- Gives rise to a clock with t = 10.24 ms or f = 97.65625 Hz
     CLK_PROC: process(clk_in, reset)
     begin

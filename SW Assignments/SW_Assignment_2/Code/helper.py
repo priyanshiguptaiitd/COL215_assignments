@@ -8,4 +8,5 @@ FP_SINGLE_OUT = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Prac
 gd = parse_Input_Gates(FP_SINGLE_IN)
 
 parse_Output_Gates(gd,FP_SINGLE_OUT)
+
 print(gd)
