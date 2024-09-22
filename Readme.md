@@ -4,7 +4,7 @@
 
 - [HW Assignments](https://github.com/priyanshiguptaiitd/COL215_assignments/tree/main/HW%20Assignments)
 - [SW Assignments](https://github.com/priyanshiguptaiitd/COL215_assignments/tree/main/SW%20Assignments)
-- [2023CS50334_2023CS10106](https://github.com/priyanshiguptaiitd/COL215_assignments/tree/main/2023CS50334_2023CS10106)
+- [2023CS50334_2023CS10106 - Final Submissions ](https://github.com/priyanshiguptaiitd/COL215_assignments/tree/main/2023CS50334_2023CS10106)
 
 ## Description
 
