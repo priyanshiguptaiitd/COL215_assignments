@@ -1,3 +1,4 @@
 bounding_box None None 
 g1 None None 
 g2 None None 
+wire_length None
