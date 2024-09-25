@@ -2,6 +2,7 @@ from oops import *
 from time import time
 from itertools import count
 from math import *
+from secrets import randbits
 import numpy as np
 
 '''
@@ -28,6 +29,17 @@ VAR_GATE_DIM_HI  = 25
 MEAN_PIN_POS = 0.5
 VAR_PIN_POS_LO = 0.1
 VAR_PIN_POS_HI = 0.25
+MAX_PINS = 40_000
+KW_MANUAL = {
+            "gate_freq":6,
+            "mode": "uniform",
+            "br_prob":0.50,
+            "dim_lo":1,
+            "dim_hi":11,
+            "pin_density":0.90,
+            "max_pin_freq":4,
+            "override_specs":True
+            }
 
 # PACK_EFF_BOUND = 0.95
 # DIM_INC_FAILTC = 1.5
@@ -83,7 +95,7 @@ def FP_MULTI_CASES_OUT(gate_freq,i=None):
 
 # --------------------------------- Test Case Generation ---------------------------------------- #
 
-def generate_dimensions(mode="normal_hi",dim_lo=1,dim_hi =11):
+def generate_dimensions(mode="normal_hi",dim_lo=1,dim_hi =101):
     if(mode == "uniform"):
         return floor(np.random.uniform(dim_lo,dim_hi)),floor(np.random.uniform(dim_lo,dim_hi))
     elif(mode == "normal_lo"):
@@ -97,38 +109,120 @@ def generate_dimensions(mode="normal_hi",dim_lo=1,dim_hi =11):
             if(dim_lo <= gw <= dim_hi and dim_lo <= gh <= dim_hi):
                 return gw,gh
 
-def generate_pin_positions(gw,gh,min_pin_freq=3,max_pin_freq = 5,mode="normal_hi"):
-    assert mode in ["uniform","normal_lo","normal_hi"], "Please give a valid testcase generator type"
-    pin_freq = np.random.randint(min_pin_freq,max_pin_freq+1)
-    pins = []
-    for i in range(1,pin_freq+1):
-        if(mode == "uniform"):
-            eta = np.random.uniform(0,1)
-        elif(mode == "normal_lo"):
-            eta = np.random.normal(MEAN_PIN_POS,VAR_PIN_POS_LO)
-        elif(mode == "normal_hi"):
-            eta = np.random.normal(MEAN_PIN_POS,VAR_PIN_POS_HI)
-        
-        gate_side = np.random.randint(1,5)  # 1: Bottom, 2: Right, 3: Top, 4: Left
-        
-        if(gate_side == 1):                     # Bottom Side
-            pins.append((floor(gw*eta),0))
-        elif(gate_side == 2):                   # Right Side
-            pins.append((gw,floor(gh*eta)))
-        elif(gate_side == 3):                   # Top Side
-            pins.append((floor(gw*eta),gh))
-        elif(gate_side == 4):                   # Left Side
-            pins.append((0,floor(gh*eta)))
+def generate_pin_positions(gh,gate_freq,pin_density = 0.75,max_pin_freq = 6,override_specs = False):
+    max_pin_freq_2 = (pin_density*MAX_PINS)//gate_freq
+    rng_l = np.random.default_rng(randbits(128))
+    rng_r = np.random.default_rng(randbits(128))
+    arr = np.arange(1,gh+1)
+    pin_freq_left =  max(rng_l.integers(0,gh+1),1)
+    pin_freq_right = max(1,rng_r.integers(0,gh+1))
     
-    return pins
+    if(override_specs):
+        pin_freq_left =  min(max_pin_freq//2,pin_freq_left)
+        pin_freq_right = min(max_pin_freq//2,pin_freq_right)
+    else:
+        pin_freq_left =  min(max_pin_freq_2//2,pin_freq_left)
+        pin_freq_right = min(max_pin_freq_2//2,pin_freq_right)    
+    
+    arr_left = rng_l.choice(arr,int(pin_freq_left),replace=False,shuffle=False)
+    arr_right = rng_r.choice(arr,int(pin_freq_right),replace=False,shuffle=False)
+    return arr_left, arr_right
 
-def write_single_case(gate_freq,fpath,mode="normal_hi"):
-    
+def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2)):
+    atleast_one,wire_data,count_atleast_one = {i:False for i in range(1,gate_freq+1)},{},0
+    rng = np.random.default_rng(randbits(128))
+    rng_break = np.random.default_rng(randbits(128))
+    while True:
+        g1 = rng.integers(1,gate_freq+1)
+        g2 = rng.integers(1,gate_freq+1)
+        if(g1 == g2):
+            continue
+        else:
+            p1 = rng.integers(0,len(gate_pins[g1]))
+            p2 = rng.integers(0,len(gate_pins[g2]))
+            if(gate_pins[g1][p1][0] != 0 and gate_pins[g2][p2][0] != 0):
+                wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
+                if(not atleast_one[g1]):
+                    atleast_one[g1] = True
+                    count_atleast_one += 1
+                if(not atleast_one[g2]):
+                    atleast_one[g2] = True
+                    count_atleast_one += 1
+                if(count_atleast_one == gate_freq):
+                    if(rng_break.random() < br_prob):
+                        break                    
+            elif(gate_pins[g1][p1][0] == 0 and gate_pins[g2][p2][0] != 0):
+                if(not left_edge_data[(g1,0,gate_pins[g1][p1][1])]):
+                    left_edge_data[(g1,0,gate_pins[g1][p1][1])] = True
+                    wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
+                    if(not atleast_one[g1]):
+                        atleast_one[g1] = True
+                        count_atleast_one += 1
+                    if(not atleast_one[g2]):
+                        atleast_one[g2] = True
+                        count_atleast_one += 1
+                    if(count_atleast_one == gate_freq):
+                        if(rng_break.random() < br_prob):
+                            break                   
+            elif(gate_pins[g1][p1][0] != 0 and gate_pins[g2][p2][0] == 0):
+                if(not left_edge_data[(g2,0,gate_pins[g2][p2][1])]):
+                    left_edge_data[(g2,0,gate_pins[g2][p2][1])] = True
+                    wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
+                    if(not atleast_one[g1]):
+                        atleast_one[g1] = True
+                        count_atleast_one += 1
+                    if(not atleast_one[g2]):
+                        atleast_one[g2] = True
+                        count_atleast_one += 1
+                    if(count_atleast_one == gate_freq):
+                        if(rng_break.random() < br_prob):
+                            break
+            else:
+                if(not (left_edge_data[(g1,0,gate_pins[g1][p1][1])] or left_edge_data[(g2,0,gate_pins[g2][p2][1])])):
+                    left_edge_data[(g1,0,gate_pins[g1][p1][1])] = True
+                    left_edge_data[(g2,0,gate_pins[g2][p2][1])] = True
+                    wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
+                    if(not atleast_one[g1]):
+                        atleast_one[g1] = True
+                        count_atleast_one += 1
+                    if(not atleast_one[g2]):
+                        atleast_one[g2] = True
+                        count_atleast_one += 1
+                    if(count_atleast_one == gate_freq):
+                        if(rng_break.random() < br_prob):
+                            break
+    print(f"Total Wires Generated : {len(wire_data)}")
+    return wire_data.keys()
+
+def write_single_case(gate_freq,fpath,kw):
     # assert gatefreq%25 == 0 or gatefreq == 10, "Please give a valid test case size"
-    assert mode in ["uniform","normal_lo","normal_hi"], "Please give a valid testcase generator type"
+    assert kw["mode"] in ["uniform","normal_lo","normal_hi"], "Please give a valid testcase generator type"
     
     with open(fpath,"w") as file:
-        pass  
+        gate_pins = {i:[] for i in range(1,gate_freq+1)}
+        left_edge = {} 
+        pins_gen = 0
+        for i in range(1,gate_freq+1):
+            gw,gh = generate_dimensions(kw["mode"],kw["dim_lo"],kw["dim_hi"])
+            file.write(f"g{i} {gw} {gh} \n")
+            file.write(f"pins g{i} ")
+            pin_left,pin_right = generate_pin_positions(gh,gate_freq,kw["pin_density"],kw["max_pin_freq"],kw["override_specs"])
+            pins_gen += len(pin_left) + len(pin_right)
+            for j in range(len(pin_left)):
+                file.write(f"{0} {pin_left[j]} ")
+                gate_pins[i].append((0,pin_left[j]))
+                left_edge[(i,0,pin_left[j])] = False
+            for j in range(len(pin_right)):
+                file.write(f"{gw} {pin_right[j]} ")
+                gate_pins[i].append((gw,pin_right[j]))
+            file.write("\n")
+        # print(gate_pins)
+        wire_data = generate_wires(gate_freq,gate_pins,left_edge,kw["br_prob"])
+        
+        for wire in wire_data:
+            file.write(wire + "\n")
+            
+        print(f"Total Pins Generated : {pins_gen}")
 
 # ============================ Helper Functions for I/O Parsing ================================= #
 
@@ -167,12 +261,18 @@ def Parse_Output(gate_data ,fpath):
             file.write(f"g{gate_index} {gate_x} {gate_y} \n")
         file.write(f"wire_length {gate_data.wire_length}")
       
-        
 # ============================ Helper Functions for I/O Parsing ================================= #        
         
 if(__name__ == "__main__"):
-    for i in range(8):
-        gw,gh = generate_dimensions(mode="uniform")
-        print(gw,gh)    
-        print(generate_pin_positions(gw,gh,mode="uniform"))
-        print()
+    kw = {
+          "gate_freq":1000,
+          "mode": "normal_hi",
+          "br_prob":5*10**(-4),
+          "dim_lo":1,
+          "dim_hi":101,
+          "pin_density":1.0,
+          "max_pin_freq":4,
+          "override_specs":False
+          }
+    write_single_case(kw["gate_freq"],FP_SINGLE_IN,kw)
+    print("Done")
