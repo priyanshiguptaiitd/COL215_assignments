@@ -261,8 +261,8 @@ def Parse_Output(gate_data ,fpath):
             file.write(f"g{gate_index} {gate_x} {gate_y} \n")
         file.write(f"wire_length {gate_data.wire_length}")
       
-# ============================ Helper Functions for I/O Parsing ================================= #        
-        
+# ======================== Helper Functions for Simulated Annealing ============================= #        
+
 if(__name__ == "__main__"):
     kw = {
           "gate_freq":1000,

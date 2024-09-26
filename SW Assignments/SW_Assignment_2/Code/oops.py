@@ -1,4 +1,5 @@
-
+from math import ceil,sqrt,log10,exp
+import random
 # ========================== Implement the Class Structures used to Store Data ========================== #
 
 class Gate_Data():
@@ -16,7 +17,7 @@ class Gate_Data():
 
     def add_gate(self,gate_index,width,height):
         self.gates[gate_index] = Gate_Env(gate_index,width,height)
-        self.max_height = self.max_height if(self.max_height > height) else height
+        self.max_width = self.max_width if(self.max_width > width) else width
         self.max_height = self.max_height if(self.max_height > height) else height
         
     def get_gate(self,gate_index):
@@ -40,6 +41,10 @@ class Gate_Data():
     
     def get_bbox(self):
         return self.bbox[0],self.bbox[1]
+    
+    def set_gate_env(self):
+        for i in self.gates:
+            self.gates[i].set_env(self.max_width,self.max_height)
     
     def __str__(self):
         base_s = f"No of Gates = {len(self.gates)} || Bounding Box Dimensions : ({self.bbox[0]},{self.bbox[1]}) \n"
@@ -85,8 +90,8 @@ class Gate_Env():
         self.envelope_x,self.envelope_y = env_x,env_y 
         
     def set_coord_rel_env(self,Delta_x,Delta_y):
-        assert 0 <= Delta_x <= self.envelope_width-self.width, "Gate goes out of Envelope (X Direction)"
-        assert 0 <= Delta_y <= self.envelope_height-self.height, "Gate goes out of Envelope (X Direction)"
+        assert 0 <= Delta_x <= self.envelope_width-self.width, f"Gate goes out of Envelope (X Direction) : {Delta_x} , {self.envelope_width} , {self.width}"
+        assert 0 <= Delta_y <= self.envelope_height-self.height, f"Gate goes out of Envelope (Y Direction) : : {Delta_y} , {self.envelope_height} , {self.height}"
 
         self.x_relative_env,self.y_relative_env = Delta_x,Delta_y
         self.x = self.envelope_x + Delta_x
@@ -136,4 +141,41 @@ class Pin():
         
         return base_s
 
+class Simulated_Annealing():
+    def __init__(self, gate_data , initial_temp, cooling_rate, min_temp):
+        self.gate_data = gate_data
+        self.temp = initial_temp
+        self.initial_temp = initial_temp
+        self.cooling_rate = cooling_rate
+        self.min_temp = min_temp
+        self.wire_cost = None
     
+    def wire_cost_function(self):
+        total_wire_length = 0
+        for (g_i, p_i), (g_j, p_j) in self.gate_data.wires.items():
+            x_i, y_i = self.gate_data.get_gate(g_i).get_global_coord_pin(p_i)
+            x_j, y_j = self.gate_data.get_gate(g_j).get_global_coord_pin(p_j)
+            total_wire_length += abs(x_i - x_j) + abs(y_i - y_j)
+        return total_wire_length
+    
+    def update_cost_function(self):
+        pass
+    
+    def gen_init_packing(self):
+        # Calculate the number of rows and columns in the grid
+        gate_freq = len(self.gate_data.gates)
+        bb_grid_dim,bb_grid_width,bb_grid_height = ceil(sqrt(gate_freq)), self.gate_data.max_width, self.gate_data.max_height
+        # Shuffle the grid positions to ensure a random initial placement
+        # Place each gate in a unique grid cell
+        
+        for i in range(1,len(self.gate_data.gates)+1):
+            if(i%bb_grid_dim==0):
+                self.gate_data.gates[i].set_coord_env(((i-1)%bb_grid_dim)*bb_grid_width,(i//bb_grid_dim-1)*bb_grid_height)
+                self.gate_data.gates[i].set_coord_rel_env((bb_grid_width-self.gate_data.gates[i].width)//2,(bb_grid_height-self.gate_data.gates[i].height)//2)
+            else:
+                self.gate_data.gates[i].set_coord_env(((i-1)%bb_grid_dim)*bb_grid_width,(i//bb_grid_dim)*bb_grid_height)
+                self.gate_data.gates[i].set_coord_rel_env((bb_grid_width-self.gate_data.gates[i].width)//2,(bb_grid_height-self.gate_data.gates[i].height)//2)
+
+        total_wire_length = self.wire_cost_function()
+        self.gate_data.bbox = (bb_grid_dim*bb_grid_width,bb_grid_dim*bb_grid_height)
+        self.gate_data.wire_length = self.wire_cost = total_wire_length = total_wire_length    

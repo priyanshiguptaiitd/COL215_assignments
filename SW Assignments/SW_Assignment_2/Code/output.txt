@@ -1,4 +1,8 @@
-bounding_box None None 
-g1 None None 
-g2 None None 
-wire_length None
+bounding_box 27 30 
+g1 2 1 
+g2 9 3 
+g3 18 3 
+g4 0 10 
+g5 13 12 
+g6 20 12 
+wire_length 99
