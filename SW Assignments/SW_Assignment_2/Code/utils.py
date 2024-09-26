@@ -1,4 +1,4 @@
-from oops import *
+from oops import Gate_Data
 from time import time
 from itertools import count
 from math import *
@@ -253,7 +253,8 @@ def Parse_Input(fpath):
     return gate_data
 
 def Parse_Output(gate_data ,fpath):
-    bounding_box_x,bounding_box_y = gate_data.get_bbox() 
+    bounding_box_x,bounding_box_y = gate_data.get_bbox()
+    gate_data.correction_wire_length() 
     with open(fpath,'w') as file:
         file.write(f"bounding_box {bounding_box_x} {bounding_box_y} \n")
         for i in range(1,len(gate_data.gates)+1):
@@ -263,9 +264,12 @@ def Parse_Output(gate_data ,fpath):
       
 # ======================== Helper Functions for Simulated Annealing ============================= #        
 
+def random_seed_128():
+    return randbits(128)
+
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq":1000,
+          "gate_freq":100,
           "mode": "normal_hi",
           "br_prob":5*10**(-4),
           "dim_lo":1,

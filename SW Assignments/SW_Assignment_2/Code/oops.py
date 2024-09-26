@@ -1,4 +1,5 @@
-from math import ceil,sqrt,log10,exp
+from math import ceil,sqrt,exp
+from secrets import randbits
 import random
 # ========================== Implement the Class Structures used to Store Data ========================== #
 
@@ -33,9 +34,16 @@ class Gate_Data():
         p_i_ref,p_j_ref = self.gates[g_i].pins[p_i],self.gates[g_i].pins[p_i]
         p_i_ref.connected_to(g_j,p_j)
         p_j_ref.connected_to(g_i,p_i)
-
-        self.wires[(g_i,p_i)] = (g_j,p_j)
+        if((g_i,p_i) not in self.wires):
+            self.wires[(g_i,p_i)] = [(g_j,p_j)]
+        else:
+            self.wires[(g_i,p_i)].append((g_j,p_j))
         
+        if((g_j,p_j) not in self.wires):
+            self.wires[(g_j,p_j)] = [(g_i,p_i)]
+        else:
+            self.wires[(g_j,p_j)].append((g_i,p_i))
+    
     def set_bbox(self,x,y):
         self.bbox = (x,y)
     
@@ -46,23 +54,28 @@ class Gate_Data():
         for i in self.gates:
             self.gates[i].set_env(self.max_width,self.max_height)
     
-    def __str__(self):
-        base_s = f"No of Gates = {len(self.gates)} || Bounding Box Dimensions : ({self.bbox[0]},{self.bbox[1]}) \n"
-        gate_s = []
+    def correction_wire_length(self):
+        self.wire_length = self.wire_length//2
+    
+    def print(self):
+        base_s = f"No of Gates = {len(self.gates)} || Bounding Box Dimensions : ({self.bbox[0]},{self.bbox[1]})"
+        print(base_s)
+        #  gate_s = []
         for i in range(1,len(self.gates)+1):
-            gate_s.append(str(self.gates[i]))
+            print(str(self.gates[i]))
             
-        wire_s = []
+        # wire_s = []
         
-        for i in self.wires:
-            g_i,p_i = i
-            g_j,p_j = i[0], i[1]
-            wire_s.append(f"Wire || g{g_i},p{p_i} ===== > g{g_j},p{p_j}")            
+        # for i in self.wires:
+        #     g_i,p_i = i
+        #     gp = self.wires[i]
+        #     for j in range(len(gp)):
+        #         print(f"Wire || g{g_i},p{p_i} ===== > g{gp[j][0]},p{gp[j][1]}")            
                     
-        if(len(gate_s)>0):
-            return base_s + "\n".join(gate_s) + '\n' + "\n".join(wire_s)
-        else:
-            return base_s + "No gate added Yet !!!"
+        # if(len(gate_s)>0):
+        #     return base_s + "\n".join(gate_s) + '\n' + "\n".join(wire_s)
+        # else:
+        #     return base_s + "No gate added Yet !!!"
         
 class Gate_Env():
     def __init__(self,gate_index,width,height) -> None:
@@ -150,17 +163,65 @@ class Simulated_Annealing():
         self.min_temp = min_temp
         self.wire_cost = None
     
+    def acceptance_probability(self, old_cost, new_cost):
+        if new_cost < old_cost:
+            return True
+        else:
+            probability = pow(10,(old_cost - new_cost) / self.temp)
+            return random.random() < probability
+    
     def wire_cost_function(self):
         total_wire_length = 0
-        for (g_i, p_i), (g_j, p_j) in self.gate_data.wires.items():
-            x_i, y_i = self.gate_data.get_gate(g_i).get_global_coord_pin(p_i)
-            x_j, y_j = self.gate_data.get_gate(g_j).get_global_coord_pin(p_j)
-            total_wire_length += abs(x_i - x_j) + abs(y_i - y_j)
+        for (g_i, p_i),gp in self.gate_data.wires.items():
+            for g_j,p_j in gp:
+                x_i, y_i = self.gate_data.get_gate(g_i).get_global_coord_pin(p_i)
+                x_j, y_j = self.gate_data.get_gate(g_j).get_global_coord_pin(p_j)
+                total_wire_length += abs(x_i - x_j) + abs(y_i - y_j)
+        self.wire_cost = total_wire_length
+        self.gate_data.wire_length = total_wire_length
         return total_wire_length
     
-    def update_cost_function(self):
-        pass
-    
+    def cost_delta_function(self,g1,g2,old_coord):
+        
+        g1_ref,g2_ref = self.gate_data.gates[g1],self.gate_data.gates[g2]
+        g1_old_x,g1_old_y,g2_old_x,g2_old_y = old_coord
+        new_wire_cost_delta = 0
+        
+        for i in range(1,len(g1_ref.pins)+1):
+            # print(f"Gate = {g1}, Pin Index = {i}")
+            p_i_g1 = g1_ref.pins[i]
+            pins_con_p_i_g1 = p_i_g1.connected_pins.items()
+            for g_j,pj in pins_con_p_i_g1:
+                for p_j in pj:
+                    # print(self.gate_data.gates[g_j].pins[p_j])
+                    x_i, y_i = g1_ref.get_global_coord_pin(i)
+                    x_j, y_j = self.gate_data.gates[g_j].get_global_coord_pin(p_j)
+                    new_wire_cost_delta += abs(x_i - x_j) + abs(y_i - y_j) if(g_j == g2) else 2*(abs(x_i - x_j) + abs(y_i - y_j))
+                    # print(f"Current Delta = {new_wire_cost_delta}")
+                    old_x_i,old_y_i = H_global_coord_pin(g1_ref,i,(g1_old_x,g1_old_y),g1_ref.height)
+                    new_wire_cost_delta -= abs(old_x_i - x_j) + abs(old_y_i - y_j) if(g_j == g2) else 2*(abs(old_x_i - x_j) + abs(old_y_i - y_j))
+                    # print(f"Current Delta = {new_wire_cost_delta}")
+
+        for i in range(1,len(g2_ref.pins)+1):
+            # print(f"Gate = {g2}, Pin Index = {i}")
+            p_i_g2 = g2_ref.pins[i]
+            pins_con_p_i_g2 = p_i_g2.connected_pins.items()
+            for g_j,pj in pins_con_p_i_g2:
+                pass
+                for p_j in pj:
+                    # print(self.gate_data.gates[g_j].pins[p_j])
+                    x_i, y_i = g2_ref.get_global_coord_pin(i)
+                    x_j, y_j = self.gate_data.gates[g_j].get_global_coord_pin(p_j)
+                    new_wire_cost_delta += abs(x_i - x_j) + abs(y_i - y_j) if(g_j == g1) else 2*(abs(x_i - x_j) + abs(y_i - y_j))
+                    # print(f"Current Delta = {new_wire_cost_delta}")
+                    old_x_i,old_y_i = H_global_coord_pin(g2_ref,i,(g2_old_x,g2_old_y),g2_ref.height)
+                    new_wire_cost_delta -= abs(old_x_i - x_j) + abs(old_y_i - y_j) if(g_j == g1) else 2*(abs(old_x_i - x_j) + abs(old_y_i - y_j))
+                    # print(f"Current Delta = {new_wire_cost_delta}")
+                    
+        # print(f"New Wire Delta =  {new_wire_cost_delta}")
+            
+        return new_wire_cost_delta
+
     def gen_init_packing(self):
         # Calculate the number of rows and columns in the grid
         gate_freq = len(self.gate_data.gates)
@@ -178,4 +239,61 @@ class Simulated_Annealing():
 
         total_wire_length = self.wire_cost_function()
         self.gate_data.bbox = (bb_grid_dim*bb_grid_width,bb_grid_dim*bb_grid_height)
-        self.gate_data.wire_length = self.wire_cost = total_wire_length = total_wire_length    
+        self.gate_data.wire_length = self.wire_cost = total_wire_length    
+    
+    def perturb_packing_swap(self):
+        # Randomly select a gate and swap / Move within the bounding box it to a new position
+        # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
+        # If the move is accepted, update the wire length and repeat
+        # If the move is rejected, repeat the process
+        random.seed(randbits(128))
+        g1,g2 = random.randint(1,len(self.gate_data.gates)),random.randint(1,len(self.gate_data.gates))
+        
+        while(g1==g2):
+            g1,g2 = random.randint(1,len(self.gate_data.gates)),random.randint(1,len(self.gate_data.gates))
+        
+        g1_ref,g2_ref = self.gate_data.gates[g1],self.gate_data.gates[g2]
+        
+        g1_old_env_x,g1_old_env_y,g1_old_x,g1_old_y =  g1_ref.envelope_x, g1_ref.envelope_y , g1_ref.x, g1_ref.y
+        g2_old_env_x,g2_old_env_y,g2_old_x,g2_old_y =  g2_ref.envelope_x, g2_ref.envelope_y , g2_ref.x, g2_ref.y
+        # print(f"Old Config : g1 = {g1} , g2 = {g2} , g1_old_x = {g1_old_x} , g1_old_y = {g1_old_y} , g2_old_x = {g2_old_x} , g2_old_y = {g2_old_y}") 
+        old_coord = (g1_old_x,g1_old_y,g2_old_x,g2_old_y)
+        
+        g1_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
+        g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
+        g2_ref.set_coord_env(g1_old_env_x,g1_old_env_y)
+        g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+        
+        # print(f"New Config : g1 = {g1} , g2 = {g2} , g1_new_x = {g1_ref.x} , g1_new_y = {g1_ref.y} , g2_new_x = {g2_ref.x} , g2_new_y = {g2_ref.y}")
+        old_wire_cost = self.wire_cost
+        new_wire_cost = self.wire_cost_function()
+
+        
+        if(self.acceptance_probability(old_wire_cost,new_wire_cost)):
+            self.wire_cost = new_wire_cost
+            # print(f"Accepting Config : Old Cost {old_wire_cost} ---> New Cost {new_wire_cost}")
+            return
+        else:
+            g1_ref.set_coord_env(g1_old_env_x,g1_old_env_y)
+            g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
+            g2_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
+            g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+            self.wire_cost = old_wire_cost
+            # print(f"Rejecting Config")
+
+    def anneal_to_pack(self):
+        self.gen_init_packing()
+        it_er = 0
+        while self.temp > self.min_temp and it_er < IT_BOUND:
+            self.perturb_packing_swap()
+            self.temp *= self.cooling_rate
+            it_er += 1
+        print("Exiting Annealing Successfully !!")
+        
+# ========================= Generic Helpers for Simulated Annealing =================================== #
+IT_BOUND = 10**6
+
+def H_global_coord_pin(gate_ref,pin_index,old_coord, height):
+    pin_ref = gate_ref.pins[pin_index]
+    pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
+    return old_coord[0] + pin_rel_x, old_coord[1] + height-pin_rel_y
