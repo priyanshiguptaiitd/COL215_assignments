@@ -368,6 +368,9 @@ class Simulated_Annealing():
         self.wire_cost = None
         self.initial_wire_cost = None
     
+    def reset_temp(self,temp):
+        self.temp = temp
+    
     def acceptance_probability(self, old_cost, new_cost):
         if new_cost < old_cost:
             return True
@@ -390,59 +393,80 @@ class Simulated_Annealing():
         return total_wire_length
     
     def cost_delta_function(self, g1, g2, old_coord):
-        gate_1, gate_2, cost_delta = self.gate_data.gates[g1], self.gate_data.gates[g2], 0
-        g1_old_x, g1_old_y, g2_old_x, g2_old_y = old_coord
-        pin_data_gate1, pin_data_gate2 = gate_1.pins, gate_2.pins
-        
-        for i in range(1, len(pin_data_gate1) + 1):
-            pin_i_gate_1 = pin_data_gate1[i]
-            x_i, y_i = gate_1.get_global_coord_pin(i)
-            x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
-            pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
-            for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
-                for p_j in pins_g_i:
-                    # print(f"Called  by : g{g1} , p{i} || Connecttion : g{g_i} , p{p_j}")
-                    x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
-                    if g_i == g2:
-                        x_j_o, y_j_o = H_global_coord_pin(gate_2, p_j, (g2_old_x, g2_old_y), gate_2.height)
-                        # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
-                        # print(f"{x_i} {x_j} {y_i} {y_j}")
-                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                        cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
-                        cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
-                        # print(f"Cost Delta : {cost_delta}")
-                    else:
-                        # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
-                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                        cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
-                        cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
-                        # print(f"Cost Delta : {cost_delta}")
-        
-        for i in range(1, len(pin_data_gate2) + 1):
-            pin_i_gate_2 = pin_data_gate2[i]
-            x_i, y_i = gate_2.get_global_coord_pin(i)
-            x_i_old, y_i_old = H_global_coord_pin(gate_2, i, (g2_old_x, g2_old_y), gate_2.height)
-            pins_connected_to_i_gate_2 = pin_i_gate_2.connected_pins
-            for g_i, pins_g_i in pins_connected_to_i_gate_2.items():
-                for p_j in pins_g_i:
-                    # print(f"Called  by : g{g2} , p{i} || Connecttion : g{g_i} , p{p_j}")
-                    x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
-                    if g_i == g1:
-                        x_j_o, y_j_o = H_global_coord_pin(gate_1, p_j, (g1_old_x, g1_old_y), gate_1.height)
-                        # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
-                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                        cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
-                        cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
-                        # print(f"Cost Delta : {cost_delta}")
-                    else:
-                        # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
-                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                        cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
-                        cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
-                        # print(f"Cost Delta : {cost_delta}")
+        if(g2 is not None):
+            gate_1, gate_2, cost_delta = self.gate_data.gates[g1], self.gate_data.gates[g2], 0
+            g1_old_x, g1_old_y, g2_old_x, g2_old_y = old_coord
+            pin_data_gate1, pin_data_gate2 = gate_1.pins, gate_2.pins
+            
+            for i in range(1, len(pin_data_gate1) + 1):
+                pin_i_gate_1 = pin_data_gate1[i]
+                x_i, y_i = gate_1.get_global_coord_pin(i)
+                x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
+                pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
+                for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
+                    for p_j in pins_g_i:
+                        # print(f"Called  by : g{g1} , p{i} || Connecttion : g{g_i} , p{p_j}")
+                        x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+                        if g_i == g2:
+                            x_j_o, y_j_o = H_global_coord_pin(gate_2, p_j, (g2_old_x, g2_old_y), gate_2.height)
+                            # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
+                            # print(f"{x_i} {x_j} {y_i} {y_j}")
+                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                            cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
+                            cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
+                            # print(f"Cost Delta : {cost_delta}")
+                        else:
+                            # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                            cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+                            cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+                            # print(f"Cost Delta : {cost_delta}")
+            
+            for i in range(1, len(pin_data_gate2) + 1):
+                pin_i_gate_2 = pin_data_gate2[i]
+                x_i, y_i = gate_2.get_global_coord_pin(i)
+                x_i_old, y_i_old = H_global_coord_pin(gate_2, i, (g2_old_x, g2_old_y), gate_2.height)
+                pins_connected_to_i_gate_2 = pin_i_gate_2.connected_pins
+                for g_i, pins_g_i in pins_connected_to_i_gate_2.items():
+                    for p_j in pins_g_i:
+                        # print(f"Called  by : g{g2} , p{i} || Connecttion : g{g_i} , p{p_j}")
+                        x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+                        if g_i == g1:
+                            x_j_o, y_j_o = H_global_coord_pin(gate_1, p_j, (g1_old_x, g1_old_y), gate_1.height)
+                            # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
+                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                            cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
+                            cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
+                            # print(f"Cost Delta : {cost_delta}")
+                        else:
+                            # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                            cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+                            cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+                            # print(f"Cost Delta : {cost_delta}")
 
-        return cost_delta
-    
+            return cost_delta
+        else:
+            gate_1, cost_delta = self.gate_data.gates[g1], 0
+            g1_old_x, g1_old_y = old_coord
+            pin_data_gate1 = gate_1.pins
+            
+            for i in range(1, len(pin_data_gate1) + 1):
+                pin_i_gate_1 = pin_data_gate1[i]
+                x_i, y_i = gate_1.get_global_coord_pin(i)
+                x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
+                pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
+                for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
+                    for p_j in pins_g_i:
+                        x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+                        # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                        cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+                        cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+                        # print(f"Cost Delta : {cost_delta}")
+            
+            return cost_delta
+        
     @ time_it_no_out
     def gen_init_packing(self):
         # Calculate the number of rows and columns in the grid
@@ -554,20 +578,49 @@ class Simulated_Annealing():
             return
             # print(f"Rejecting Config")        
     
+    @ time_it_no_out
     def perturb_packing_move(self):
         # Randomly select a gate and move it within the bounding box to a new position
         # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
         # If the move is accepted, update the wire length and repeat
-        # If the move is rejected, repeat the process
-        pass    
-    
-    @ time_it_no_out
-    def anneal_to_pack(self,perturb_freq_per_iter = 5):
+        # If the move is rejected, repeat the processg
+        random.seed(random_seed_128())
         
+        g = random.randint(1,len(self.gate_data.gates))
+        
+        random.seed(random_seed_128())  
+        
+        gate_ref = self.gate_data.gates[g]
+        gate_old_x,gate_old_y,gate_old_delta_x,gate_old_delta_y =  gate_ref.x, gate_ref.y, gate_ref.x-gate_ref.envelope_x,  gate_ref.y-gate_ref.envelope_y
+        
+        gate_ref.set_coord_rel_env(random.randint(0,gate_ref.envelope_width-gate_ref.width),random.randint(0,gate_ref.envelope_height-gate_ref.height)) 
+        
+        old_coord = (gate_old_x,gate_old_y)
+        
+        old_wire_cost = self.wire_cost
+        
+        cost_delta = self.cost_delta_function(g,None,old_coord)
+        
+        new_wire_cost = old_wire_cost + cost_delta
+        
+        if(self.acceptance_probability(old_wire_cost,new_wire_cost)):
+            self.update_wire_cost(new_wire_cost)
+            # print(f"Accepting Config : Old Cost {old_wire_cost} ---> New Cost {new_wire_cost}")
+            return
+        else:
+            self.update_wire_cost(old_wire_cost)
+            gate_ref.set_coord_rel_env(gate_old_delta_x,gate_old_delta_y)
+            return
+            # print(f"Rejecting Config")
+        
+    @ time_it_no_out
+    def anneal_to_pack(self,perturb_freq_per_iter = 1):
+        # self.reset_temp(10**perturb_freq_per_iter)
         it_er = 0
         while self.temp > self.min_temp and it_er < IT_BOUND:
             for _ in range(perturb_freq_per_iter):
                 self.perturb_packing_swap_v2(supress_time_out=True)
+                self.perturb_packing_move(supress_time_out=True)
             self.temp *= cooling_rate(self.temp)
             it_er += 1
             
