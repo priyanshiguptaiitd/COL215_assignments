@@ -1,11 +1,5 @@
-from math import log
+import numpy as np
 
-print(log(10**(-8),0.99))
-
-d = {1:[],2:[],3:[],4:[],5:[]}
-
-a = d[5]
-a.append(1)
-a.append(2)
-
-# print(d)
+rng = np.random.default_rng()
+for i in range(10):
+    print(rng.integers(1, 10))

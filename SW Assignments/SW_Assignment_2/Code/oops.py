@@ -4,16 +4,65 @@ import random
 # ========================== Implement the Class Structures used to Store Data ========================== #
 
 class Gate_Data():
+    ''' Basic Description -
+    
+        Class to store the data of the gates and wires for a given input netlist.
+        One of the important backbones our entire implementation, derives the obejcts stored from Gate_Env and Pin classes.
+    '''
+    ''' Attributes:
+    
+            gates (dict): A dictionary where the key is the gate index and the value is an instance of the Gate_Env object.
+            wires (dict): A dictionary where the key is a tuple (Gate_Index, Pin_Index) and the value is a list of tuples (Gate_Index, Pin_Index) representing connected pins.
+                          Note that connections are stored twice because of implementation reasons and the actual answer of wire lenght
+                          is half of the calculated wire length (Updated by correction_wire_length() method).
+            
+            bbox (tuple): A tuple representing the bounding box dimensions (width, height).
+            
+            max_width (int): The maximum width of any gate, used for generating enevelopes of gates
+            max_height (int): The maximum height of any gate, used for generating enevelopes of gates
+            
+            wire_length (int): The total wire length of the current packing, updated by Simulate_Anneal class whenever packing is changed
+    '''
+    ''' Methods:
+            add_gate(gate_index, width, height):
+                Adds a gate to the gates dictionary and updates the maximum width and height.
+
+            get_gate(gate_index):
+                Returns the Gate_Env object for the given gate index.
+            
+            add_pin(gate_index, pin_index, pin_x, pin_y):
+                Adds a pin to the specified gate.
+            
+            get_pin(gate_index, pin_index):
+                Returns the Pin object for the given gate and pin index.
+            
+            add_wire(g_i, p_i, g_j, p_j):
+                Adds a wire connection between two pins, updating the connected pins for both pins 
+                and the wires dictionary ( Connections are considered both way !!).
+            
+            set_bbox(x, y):
+                Sets the bounding box dimensions.
+            
+            get_bbox():
+                Returns the bounding box dimensions.
+            
+            set_gate_env():
+                Sets the envelope dimensions for all gates.
+            
+            correction_wire_length():
+                Corrects the wire length by dividing it by 2.
+            
+            __str__ :
+            
+                Calls __str__ on the gate instances stored and handles appropriate formatting.
+    '''    
+    
     def __init__(self):
         self.gates = dict() # Gate_Index : Instance of Gate_Env Object
         self.wires = dict()  # (Gate_Index,Pin_Index) : Instance of Pin Object
         
         self.bbox = (None,None)
-
         self.max_width,self.max_height = 0,0
-        self.width_sum,self.height_sum = 0,0
-        self.total_gate_area = 0
-        
         self.wire_length = None
 
     def add_gate(self,gate_index,width,height):
@@ -58,27 +107,61 @@ class Gate_Data():
     def correction_wire_length(self):
         self.wire_length = self.wire_length//2
     
-    def print(self):
-        base_s = f"No of Gates = {len(self.gates)} || Bounding Box Dimensions : ({self.bbox[0]},{self.bbox[1]})"
-        print(base_s)
-        #  gate_s = []
-        for i in range(1,len(self.gates)+1):
-            print(str(self.gates[i]))
-            
-        # wire_s = []
-        
-        # for i in self.wires:
-        #     g_i,p_i = i
-        #     gp = self.wires[i]
-        #     for j in range(len(gp)):
-        #         print(f"Wire || g{g_i},p{p_i} ===== > g{gp[j][0]},p{gp[j][1]}")            
-                    
-        # if(len(gate_s)>0):
-        #     return base_s + "\n".join(gate_s) + '\n' + "\n".join(wire_s)
-        # else:
-        #     return base_s + "No gate added Yet !!!"
+    def __str__(self):
+        base_s = f"Gate Data || No of Gates = {len(self.gates)} || Bounding Box = ({self.bbox[0]},{self.bbox[1]})\n"
+        gates_s = []
+        for i in self.gates:
+            gates_s.append(str(self.gates[i]))
+        return base_s + "\n".join(gates_s)
         
 class Gate_Env():
+    ''' Basic Description - 
+        
+        Class to represent the environment of a gate, including the dimensions of it's envelope, 
+        relative positioning of gate, pins, and the pin objects themselves. Also stores relevant information
+        about the gate's dimensions and index.
+        
+    '''
+    ''' Attributes:
+    
+            width (int): The width of the gate.
+            height (int): The height of the gate.
+            gate_index (int): The index of the gate.
+            pins (dict): A dictionary where the key is the pin index and the value is an instance of the Pin object
+            envelope_width (int): The width of the envelope containing the gate.
+            envelope_height (int): The height of the envelope containing the gate.
+            envelope_x (int): The x-coordinate of the envelope.
+            envelope_y (int): The y-coordinate of the envelope.
+            x_relative_env (int): The x-coordinate of the gate relative to the envelope.
+            y_relative_env (int): The y-coordinate of the gate relative to the envelope.
+            x (int): The global x-coordinate of the gate.
+            y (int): The global y-coordinate of the gate.
+    
+    '''
+    ''' Methods:
+            set_env(env_w, env_h):
+                Sets the envelope dimensions for the gate.
+            
+            set_coord_env(env_x, env_y):
+                Sets the global coordinates of the envelope.
+            
+            set_coord_rel_env(Delta_x, Delta_y):
+                Sets the coordinates of the gate relative to the envelope and the global coordinates of the gate after calculations.
+                The default choice implemented throughout is to place the gate in the middle of the envelope as much as possible
+            
+            add_pin(pin_index, pin_x, pin_y):
+                Adds a pin to the gate, storing the pin object in the pins dictionary with the pin index as the key.
+            
+            get_global_coord():
+                Returns the global coordinates of the gate
+            
+            get_global_coord_pin(pin_index):
+                Returns the global coordinates of the specified pin
+                
+            __str__:
+                Calls handles appropriate formatting for the gate and pin objects stored and returns a string object containing the information.
+    '''
+    
     def __init__(self,gate_index,width,height) -> None:
         self.width = width
         self.height = height
@@ -94,8 +177,6 @@ class Gate_Env():
         self.y_relative_env = None        
         self.x = None
         self.y = None
-        
-        self.is_packed = False
         
     def set_env(self,env_w,env_h):
         self.envelope_width,self.envelope_height = env_w,env_h
@@ -139,6 +220,27 @@ class Gate_Env():
         return base_s+"\n"+"\n".join(pins_s)
 
 class Pin():
+    ''' Basic Description -
+        
+        Class to represent a pin on a gate, including its relative position to the gate and 
+        connections to other pins on different gates.
+
+    '''
+    ''' Attributes:
+            parent_gate_index (int): The index of the gate to which this pin belongs.
+            pin_index (int): The index of the pin.
+            pin_x (int): The x-coordinate of the pin relative to the gate.
+            pin_y (int): The y-coordinate of the pin relative to the gate.
+            connected_pins (dict): A dictionary where the key is the gate index and the value is a list of pin indices that this pin is connected to (of the givven gate ).
+    '''
+    ''' Methods:
+            connected_to(gate_ind, pin_ind):
+                Adds a connection from this pin to another pin on a specified gate.
+            
+            __str__():
+                Returns a string representation of the pin, including its relative position and connections.
+    '''
+    
     def __init__(self,gate_index,pin_index,pin_x,pin_y):
         self.parent_gate_index = gate_index
         self.pin_index = pin_index
@@ -146,6 +248,13 @@ class Pin():
         self.connected_pins = dict()
     
     def connected_to(self,gate_ind,pin_ind):
+        '''
+        Adds a connection from this pin to another pin on a specified gate.
+
+        Parameters:
+            gate_ind (int): The index of the gate to which the other pin belongs.
+            pin_ind (int): The index of the other pin.
+        '''
         # print(f"Connecting to : g{self.parent_gate_index} , p{self.pin_index} :: g{gate_ind} , p{pin_ind}")
         if gate_ind not in self.connected_pins:
             self.connected_pins[gate_ind] = [pin_ind]
@@ -153,6 +262,12 @@ class Pin():
             self.connected_pins[gate_ind].append(pin_ind)
     
     def __str__(self):
+        '''
+        Returns a string representation of the pin, including its position and connections.
+
+        Returns:
+            str: A string representation of the pin.
+        '''
         base_s = f"Pin No = {self.pin_index} || Parent Gate = g{self.parent_gate_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y}"
         further_s = []
         for i in self.connected_pins:
@@ -161,11 +276,94 @@ class Pin():
         return base_s + "\n" + "\n".join(further_s)
 
 class Simulated_Annealing():
-    def __init__(self, gate_data , initial_temp, cooling_rate, min_temp):
+    ''' Basic Description -
+    
+        Class to perform simulated annealing for optimizing gate placement to minimize wire length
+        At the heart, involves generating an deterministic initial packing of gates, perturbing the packing, and accepting or rejecting the perturbation 
+        based on the cost difference and temperature and an acceptance function.
+        
+        Since the probabilistic arguments are used, the packing and perturbing process is not entirely deterministic
+        but improves with the number of iterations, intial temperature, perturbations per annealing iteration
+        as well as cooling rate.
+        
+        Probablistic arguments require extensive testing on Test - Cases,
+        as well as tweaking of the parameters to get the best results.
+    '''
+    ''' Attributes:
+    
+            gate_data (Gate_Data): An instance of the Gate_Data class containing gate and wire information.
+            temp (float): The current temperature in the simulated annealing process.
+            initial_temp (float): The initial temperature for the simulated annealing process.
+            min_temp (float): The minimum temperature to stop the annealing process.
+            wire_cost (float): The current wire cost.
+            initial_wire_cost (float): The initial wire cost, generated after the initial packing.
+    '''
+    ''' Methods:
+    
+            acceptance_probability(old_cost, new_cost):
+                Calculates the acceptance probability of a new perturbef solution 
+                based on the cost difference and current temperature.
+                
+                If the new cost is less than the old cost, the new solution is always accepted.
+                Otherwise, the acceptance probability is calculated based on the cost difference and temperature.
+                
+                Returns a boolean indicating whether the new solution is accepted or not
+            
+            update_wire_cost(l):
+                Updates the current wire cost in the Annealing class instance as well as 
+                the gate_data attribute and returns it.
+            
+            wire_cost_function():
+                Calculates the total wire length for the current gate placement
+                Is expensive with respect to number of wires 
+                and should be called only when necessary.
+            
+            cost_delta_function(g1, g2, old_coord):
+                Calculates the change in wire length caused by swapping two gates.
+                Heart of the perturbation_v2 function, since we don't need to recalculate 
+                the wire length for all the wires.
+            
+            gen_init_packing():
+                Generates an deterministic initial packing (based on order of gates) of gates as 
+                well as the bounding box. Sets the initial wire cost and is called 
+                whenver a new annealing process is started.
+                
+            perturb_packing_swap():
+                Performs a perturbation by swapping two randomly selected gates and calculates the new wire cost
+                by the wire_cost_function method.
+                
+                Accepts or rejects the perturbation based on the acceptance_probability method.
+                If rejected then the gates environments are reset to the old values. 
+            
+            perturb_packing_swap_v2():
+                Performs a perturbation by swapping two randomly selected gates and 
+                calculates the delta wire cost using cost_delta_function.
+
+                Accepts or rejects the perturbation based on the acceptance_probability method.
+                If rejected then the gates environments are reset to the old values.
+                
+                ---- Significantly faster than perturb_packing_swap ----
+                
+            perturb_packing_move():
+                Performs a perturbation by moving a randomly selected gate to a new position.
+                Not Yet Implemented.
+                
+            anneal_to_pack(perturb_freq_per_iter=5):
+                Performs the simulated annealing process to optimize gate placement.
+                Implements the core logic mentioned in the description.
+            
+            anneal_routine():
+                A routine to perform the annealing process.
+                Determines how to call the annealing function based on one call to the anneal_to_pack
+                method using perturb_freq_per_iter, estimating the runtime and deciding the number of iterations
+                depending on the time available for packing optimization.
+                
+    '''
+    
+    def __init__(self, gate_data , initial_temp, min_temp):
         self.gate_data = gate_data
         self.temp = initial_temp
         self.initial_temp = initial_temp
-        self.cooling_rate = cooling_rate
         self.min_temp = min_temp
         self.wire_cost = None
         self.initial_wire_cost = None
@@ -190,9 +388,6 @@ class Simulated_Annealing():
                 x_j, y_j = self.gate_data.get_gate(g_j).get_global_coord_pin(p_j)
                 total_wire_length += abs(x_i - x_j) + abs(y_i - y_j)
         return total_wire_length
-    
-    ## TODO - Fix this Function
-    ## Fix This Buggy Function
     
     def cost_delta_function(self, g1, g2, old_coord):
         gate_1, gate_2, cost_delta = self.gate_data.gates[g1], self.gate_data.gates[g2], 0
@@ -248,6 +443,7 @@ class Simulated_Annealing():
 
         return cost_delta
     
+    @ time_it_no_out
     def gen_init_packing(self):
         # Calculate the number of rows and columns in the grid
         gate_freq = len(self.gate_data.gates)
@@ -268,6 +464,7 @@ class Simulated_Annealing():
         self.update_wire_cost(total_wire_length)
         self.initial_wire_cost = total_wire_length    
     
+    @ time_it_no_out
     def perturb_packing_swap(self):
         # Randomly select a gate and swap / Move within the bounding box it to a new position
         # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
@@ -309,8 +506,10 @@ class Simulated_Annealing():
             g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
             g2_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
             g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+            return
             # print(f"Rejecting Config")
 
+    @ time_it_no_out
     def perturb_packing_swap_v2(self):
         # Randomly select a gate and swap / Move within the bounding box it to a new position
         # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
@@ -352,6 +551,7 @@ class Simulated_Annealing():
             g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
             g2_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
             g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+            return
             # print(f"Rejecting Config")        
     
     def perturb_packing_move(self):
@@ -361,21 +561,20 @@ class Simulated_Annealing():
         # If the move is rejected, repeat the process
         pass    
     
+    @ time_it_no_out
     def anneal_to_pack(self,perturb_freq_per_iter = 5):
-        self.gen_init_packing()
+        
         it_er = 0
         while self.temp > self.min_temp and it_er < IT_BOUND:
             for _ in range(perturb_freq_per_iter):
-                self.perturb_packing_swap()
+                self.perturb_packing_swap_v2(supress_time_out=True)
             self.temp *= cooling_rate(self.temp)
             it_er += 1
+            
+            if(self.wire_cost == 0):                # If the wire cost is 0, then we have definitely reached the optimal solution
+                break
         self.wire_cost_function()
-        print("Exiting Annealing Successfully !!")
-        
-# ========================= Generic Helpers for Simulated Annealing =================================== #
-IT_BOUND = 10**6
-
-def H_global_coord_pin(gate_ref,pin_index,old_coord, height):
-    pin_ref = gate_ref.pins[pin_index]
-    pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
-    return old_coord[0] + pin_rel_x, old_coord[1] + height - pin_rel_y
+        # print("Exiting Annealing Successfully !!")
+    
+    def anneal_routine(self):
+        pass 
