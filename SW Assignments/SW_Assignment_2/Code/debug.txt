@@ -1,0 +1,59 @@
+Old Config : g1 = 5 , g2 = 1 , g1_old_x = 13 , g1_old_y = 12 , g2_old_x = 2 , g2_old_y = 1
+New Config : g1 = 5 , g2 = 1 , g1_new_x = 4 , g1_new_y = 2 , g2_new_x = 11 , g2_new_y = 11
+Gate = 5, Pin Index = 1
+Called by :Gate = 5, Pin Index = 1
+Fixing : Pin No = 1 || Parent Gate = g4 || Pin_x = 0 || Pin_y = 7
+Connected to : g5 , p1
+Current Delta = 24
+Current Delta = -6
+Gate = 5, Pin Index = 2
+Called by :Gate = 5, Pin Index = 2
+Fixing : Pin No = 4 || Parent Gate = g1 || Pin_x = 4 || Pin_y = 6
+Connected to : g6 , p3
+Connected to : g5 , p2
+Connected to : g2 , p2
+Current Delta = 16
+Current Delta = 13
+Gate = 5, Pin Index = 3
+Called by :Gate = 5, Pin Index = 3
+Fixing : Pin No = 2 || Parent Gate = g2 || Pin_x = 9 || Pin_y = 1
+Connected to : g6 , p1
+Connected to : g5 , p3
+Connected to : g1 , p4
+Current Delta = 41
+Current Delta = 15
+Gate = 5, Pin Index = 4
+Called by :Gate = 5, Pin Index = 4
+Fixing : Pin No = 1 || Parent Gate = g3 || Pin_x = 0 || Pin_y = 2
+Connected to : g5 , p4
+Current Delta = 45
+Current Delta = 13
+Called by :Gate = 5, Pin Index = 4
+Fixing : Pin No = 2 || Parent Gate = g3 || Pin_x = 0 || Pin_y = 1
+Connected to : g5 , p4
+Current Delta = 41
+Current Delta = 11
+Gate = 1, Pin Index = 1
+Gate = 1, Pin Index = 2
+Gate = 1, Pin Index = 3
+Gate = 1, Pin Index = 4
+Fixing : Pin No = 3 || Parent Gate = g6 || Pin_x = 4 || Pin_y = 1
+Connected to : g1 , p4
+Current Delta = 37
+Current Delta = -27
+Fixing : Pin No = 2 || Parent Gate = g5 || Pin_x = 0 || Pin_y = 5
+Connected to : g1 , p4
+Current Delta = -5
+Current Delta = -8
+Fixing : Pin No = 2 || Parent Gate = g2 || Pin_x = 9 || Pin_y = 1
+Connected to : g6 , p1
+Connected to : g5 , p3
+Connected to : g1 , p4
+Current Delta = 12
+Current Delta = -18
+New Wire Delta =  -18
+Accepting Config : Old Cost 294 ---> New Cost 276
+Current_cost 250
+Done 0.0246s
+Older Wire Length: 294
+Wire Length: 250

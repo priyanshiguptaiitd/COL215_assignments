@@ -1,6 +1,6 @@
 from math import log
 
-print(log(10**(-6),0.99))
+print(log(10**(-8),0.99))
 
 d = {1:[],2:[],3:[],4:[],5:[]}
 

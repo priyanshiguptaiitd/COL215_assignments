@@ -1,7 +1,6 @@
-from oops import Gate_Data
 from time import time
 from itertools import count
-from math import *
+from math import floor
 from secrets import randbits
 import numpy as np
 
@@ -223,55 +222,23 @@ def write_single_case(gate_freq,fpath,kw):
             file.write(wire + "\n")
             
         print(f"Total Pins Generated : {pins_gen}")
-
-# ============================ Helper Functions for I/O Parsing ================================= #
-
-def Parse_Input(fpath):
-    '''
-    Returns a object of Gate_Data type
-    '''
-    gate_data = Gate_Data()
-    with open(fpath,'r') as file:
-        for line in file.readlines():
-            line_data = (line.strip()).split()
-            if(len(line_data)==0):              # If any unexpected blank line is encountered
-                continue
-            if(line_data[0].startswith('g')):
-                gate_index,gate_width,gate_height = int(line_data[0][1:]),int(line_data[1]),int(line_data[2])
-                gate_data.add_gate(gate_index,gate_width,gate_height)
-            elif(line_data[0] == "pins"):
-                gate_index = int(line_data[1][1:])
-                for i in range(2,len(line_data),2):
-                    pin_index,pin_x,pin_y = i//2,int(line_data[i]),int(line_data[i+1])
-                    gate_data.add_pin(gate_index,pin_index,pin_x,pin_y)
-            elif(line_data[0] == "wire"):
-                gp_i,gp_j = line_data[1].split('.'),line_data[2].split('.') 
-                g_i,p_i = int(gp_i[0][1:]),int(gp_i[1][1:])
-                g_j,p_j = int(gp_j[0][1:]),int(gp_j[1][1:])
-                gate_data.add_wire(g_i,p_i,g_j,p_j)
-                
-    return gate_data
-
-def Parse_Output(gate_data ,fpath):
-    bounding_box_x,bounding_box_y = gate_data.get_bbox()
-    gate_data.correction_wire_length() 
-    with open(fpath,'w') as file:
-        file.write(f"bounding_box {bounding_box_x} {bounding_box_y} \n")
-        for i in range(1,len(gate_data.gates)+1):
-            gate_index,gate_x,gate_y = gate_data.gates[i].get_gate_tup()
-            file.write(f"g{gate_index} {gate_x} {gate_y} \n")
-        file.write(f"wire_length {gate_data.wire_length}")
       
 # ======================== Helper Functions for Simulated Annealing ============================= #        
 
 def random_seed_128():
     return randbits(128)
 
+def cooling_rate(T):
+    if(T>10**6 or T<10**3):
+        return 0.99
+    else:
+        return 0.90
+
 if(__name__ == "__main__"):
     kw = {
           "gate_freq":100,
-          "mode": "normal_hi",
-          "br_prob":5*10**(-4),
+          "mode": "uniform",
+          "br_prob":10**(-5),
           "dim_lo":1,
           "dim_hi":101,
           "pin_density":1.0,
