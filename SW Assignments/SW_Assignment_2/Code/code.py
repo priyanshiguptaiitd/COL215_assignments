@@ -48,11 +48,12 @@ if(__name__ == "__main__"):
     gd = Parse_Input(FP_SINGLE_IN)
     sma = Simulated_Annealing(gd,10**(8),0.99,0.1)
     sma.gen_init_packing()
-    # sma.anneal_to_pack(3)
+    sma.anneal_to_pack(3)
+    Parse_Output(sma.gate_data,FP_SINGLE_OUT)
     # sma.perturb_packing_swap_v2()
     # print(f"Current_cost {sma.update_wire_cost(sma.wire_cost_function())}")
-    for i in range(1,len(sma.gate_data.gates)+1):
-        print(sma.gate_data.gates[i])
+    # # for i in range(1,len(sma.gate_data.gates)+1):
+    # #     print(sma.gate_data.gates[i])
     t2 = time.time()
     print(f"Done {t2-t1:.4f}s")
     print(f"Older Wire Length: {sma.initial_wire_cost}")

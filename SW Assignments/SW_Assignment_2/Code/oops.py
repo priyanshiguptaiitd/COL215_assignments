@@ -194,9 +194,59 @@ class Simulated_Annealing():
     ## TODO - Fix this Function
     ## Fix This Buggy Function
     
-    def cost_delta_function(self,g1,g2,old_coord):
-        gate_1,gate_2 = self.gate_data.gates[g1],self.gate_data.gates[g2]
-    
+    def cost_delta_function(self, g1, g2, old_coord):
+        gate_1, gate_2, cost_delta = self.gate_data.gates[g1], self.gate_data.gates[g2], 0
+        g1_old_x, g1_old_y, g2_old_x, g2_old_y = old_coord
+        pin_data_gate1, pin_data_gate2 = gate_1.pins, gate_2.pins
+        
+        for i in range(1, len(pin_data_gate1) + 1):
+            pin_i_gate_1 = pin_data_gate1[i]
+            x_i, y_i = gate_1.get_global_coord_pin(i)
+            x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
+            pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
+            for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
+                for p_j in pins_g_i:
+                    # print(f"Called  by : g{g1} , p{i} || Connecttion : g{g_i} , p{p_j}")
+                    x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+                    if g_i == g2:
+                        x_j_o, y_j_o = H_global_coord_pin(gate_2, p_j, (g2_old_x, g2_old_y), gate_2.height)
+                        # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
+                        # print(f"{x_i} {x_j} {y_i} {y_j}")
+                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                        cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
+                        cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
+                        # print(f"Cost Delta : {cost_delta}")
+                    else:
+                        # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                        cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+                        cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+                        # print(f"Cost Delta : {cost_delta}")
+        
+        for i in range(1, len(pin_data_gate2) + 1):
+            pin_i_gate_2 = pin_data_gate2[i]
+            x_i, y_i = gate_2.get_global_coord_pin(i)
+            x_i_old, y_i_old = H_global_coord_pin(gate_2, i, (g2_old_x, g2_old_y), gate_2.height)
+            pins_connected_to_i_gate_2 = pin_i_gate_2.connected_pins
+            for g_i, pins_g_i in pins_connected_to_i_gate_2.items():
+                for p_j in pins_g_i:
+                    # print(f"Called  by : g{g2} , p{i} || Connecttion : g{g_i} , p{p_j}")
+                    x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+                    if g_i == g1:
+                        x_j_o, y_j_o = H_global_coord_pin(gate_1, p_j, (g1_old_x, g1_old_y), gate_1.height)
+                        # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
+                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                        cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
+                        cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
+                        # print(f"Cost Delta : {cost_delta}")
+                    else:
+                        # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+                        cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+                        cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+                        # print(f"Cost Delta : {cost_delta}")
+
+        return cost_delta
     
     def gen_init_packing(self):
         # Calculate the number of rows and columns in the grid
@@ -276,7 +326,7 @@ class Simulated_Annealing():
         
         g1_old_env_x,g1_old_env_y,g1_old_x,g1_old_y =  g1_ref.envelope_x, g1_ref.envelope_y , g1_ref.x, g1_ref.y
         g2_old_env_x,g2_old_env_y,g2_old_x,g2_old_y =  g2_ref.envelope_x, g2_ref.envelope_y , g2_ref.x, g2_ref.y
-        print(f"Old Config : g1 = {g1} , g2 = {g2} , g1_old_x = {g1_old_x} , g1_old_y = {g1_old_y} , g2_old_x = {g2_old_x} , g2_old_y = {g2_old_y}") 
+        # print(f"Old Config : g1 = {g1} , g2 = {g2} , g1_old_x = {g1_old_x} , g1_old_y = {g1_old_y} , g2_old_x = {g2_old_x} , g2_old_y = {g2_old_y}") 
         old_coord = (g1_old_x,g1_old_y,g2_old_x,g2_old_y)
         
         g1_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
@@ -284,7 +334,9 @@ class Simulated_Annealing():
         g2_ref.set_coord_env(g1_old_env_x,g1_old_env_y)
         g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
         
-        print(f"New Config : g1 = {g1} , g2 = {g2} , g1_new_x = {g1_ref.x} , g1_new_y = {g1_ref.y} , g2_new_x = {g2_ref.x} , g2_new_y = {g2_ref.y}")
+        # print(f"New Config : g1 = {g1} , g2 = {g2} , g1_new_x = {g1_ref.x} , g1_new_y = {g1_ref.y} , g2_new_x = {g2_ref.x} , g2_new_y = {g2_ref.y}")
+        # print(g1_ref)
+        # print(g2_ref)
         old_wire_cost = self.wire_cost
         
         cost_delta = self.cost_delta_function(g1,g2,old_coord)
@@ -292,7 +344,7 @@ class Simulated_Annealing():
         
         if(self.acceptance_probability(old_wire_cost,new_wire_cost)):
             self.update_wire_cost(new_wire_cost)
-            print(f"Accepting Config : Old Cost {old_wire_cost} ---> New Cost {new_wire_cost}")
+            # print(f"Accepting Config : Old Cost {old_wire_cost} ---> New Cost {new_wire_cost}")
             return
         else:
             self.update_wire_cost(old_wire_cost)
@@ -300,7 +352,7 @@ class Simulated_Annealing():
             g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
             g2_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
             g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
-            print(f"Rejecting Config")        
+            # print(f"Rejecting Config")        
     
     def perturb_packing_move(self):
         # Randomly select a gate and move it within the bounding box to a new position
@@ -314,7 +366,7 @@ class Simulated_Annealing():
         it_er = 0
         while self.temp > self.min_temp and it_er < IT_BOUND:
             for _ in range(perturb_freq_per_iter):
-                self.perturb_packing_swap_v2()
+                self.perturb_packing_swap()
             self.temp *= cooling_rate(self.temp)
             it_er += 1
         self.wire_cost_function()
