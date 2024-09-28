@@ -1,23 +1,41 @@
-# Test Case Generation Documentation
+Test Case Analysis :
 
-This document provides an overview of the keyword parameters required for generating test cases using the `write_single_case` function. Each section describes different parameters and their expected outputs.
 
-## Keyword Parameters
+Time Complexity Analysis :
 
-1. **gate_freq**: The frequency of the gate.
-2. **mode**: The mode of dimension generation. Can be "uniform", "normal_lo", or "normal_hi".
-3. **br_prob**: The probability of breaking out of the wire generation loop.
-4. **dim_lo**: The lower bound for the dimensions.
-5. **dim_hi**: The upper bound for the dimensions.
-6. **pin_density**: The density of the pins, based on how many pins we want per gate and MAX_PINS.
-7. **max_pin_freq**: The maximum frequency of the pins.
-8. **override_specs**: Whether to override the specifications for manual checking of test cases.
+1. Initial Packing - Depends linearly on the number of gates
+2. Annealing - Depends linealry on the number of pertubrations per iteration
+             - If the cooling rate is constant and the intial temperateure is fixed then the number of
+               iterations is fixed (By virture of the exponentials and logarithms involved)
+             - In a given perturbation procedure most of the operations are constant time
+             - Only recalculation of cost_delta takes time
+             - recalculation will take time of order of O(w_i + w_j) where w_i and w_j are the number of wires
+               connected to the gates i and j, which in worse case can be O(W) where n is the number of wires
+               in the circuit 
 
-## Example Test Cases -
+               (Imagine two gates and all the connections from g1--->g2 and g2--->g1)
 
-### Test Case 1
+             - In practice and practically predicting time Complexity is a complex task since the test case generationa
+               as well as the perturbation process are pseudo-random and can only be done by running multiple test cases
+               and observing the time taken 
 
-kw = 
-## Notes
-- Ensure that the file paths specified in the `FP_SINGLE_IN` and `FP_SINGLE_OUT` constants are correct and accessible.
-- Modify the parameters as needed to generate different test cases for various scenarios.
+
+
+Generate a lot of edge cases :
+
+1. Manually Generate a test case with gates where pins can be placed on top
+    of each other to give 0 output -- argue why our algorithm does based
+
+2. Manually Generate a test case where most of the wires emanate from a single gate and 
+    other gates have only one wire going into them 
+
+3. Manually Generate a test case where the number where the connections are circular / cyclic
+    and check the performance of our algorithm
+
+
+
+Paramters to Vary :
+
+1. Number of Gates , Number of Pins and ---Number of Wires---
+2. For a given large test cases , we can vary the number of pertubrations per iteration of annealing
+   and show the tradeoff of time vs reduced wirelength

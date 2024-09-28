@@ -60,7 +60,8 @@ class Gate_Data():
     def __init__(self):
         self.gates = dict() # Gate_Index : Instance of Gate_Env Object
         self.wires = dict()  # (Gate_Index,Pin_Index) : Instance of Pin Object
-        
+        self.total_wires_added = 0
+        self.total_pins_added = 0
         self.bbox = (None,None)
         self.max_width,self.max_height = 0,0
         self.wire_length = None
@@ -75,7 +76,8 @@ class Gate_Data():
     
     def add_pin(self,gate_index,pin_index,pin_x,pin_y):
         self.gates[gate_index].add_pin(pin_index,pin_x,pin_y)
-        
+        self.total_pins_added += 1
+    
     def get_pin(self,gate_index,pin_index):
         return self.gates[gate_index].pins[pin_index]
     
@@ -92,6 +94,7 @@ class Gate_Data():
             self.wires[(g_j,p_j)] = [(g_i,p_i)]
         else:
             self.wires[(g_j,p_j)].append((g_i,p_i))
+        self.total_wires_added += 1
         # print(self.wires)
         
     def set_bbox(self,x,y):
@@ -362,14 +365,15 @@ class Simulated_Annealing():
     
     def __init__(self, gate_data , initial_temp, min_temp):
         self.gate_data = gate_data
+        self.final_packed_data = gate_data
         self.temp = initial_temp
         self.initial_temp = initial_temp
         self.min_temp = min_temp
         self.wire_cost = None
         self.initial_wire_cost = None
     
-    def reset_temp(self,temp):
-        self.temp = temp
+    def reset_temp(self):
+        self.temp = self.initial_temp
     
     def acceptance_probability(self, old_cost, new_cost):
         if new_cost < old_cost:
@@ -377,6 +381,8 @@ class Simulated_Annealing():
         else:
             cost_pr = pow(10,(old_cost - new_cost) / self.temp)
             return random.random() < cost_pr
+    
+    # ============================ Methods for updating/Calculating wire Costs ================================= #
     
     def update_wire_cost(self,l):
         self.wire_cost = l
@@ -614,8 +620,10 @@ class Simulated_Annealing():
             # print(f"Rejecting Config")
         
     @ time_it_no_out
-    def anneal_to_pack(self,perturb_freq_per_iter = 1):
-        # self.reset_temp(10**perturb_freq_per_iter)
+    def anneal_to_pack(self,perturb_freq_per_iter = 1,call_init_pack = True):
+        if(call_init_pack):
+            self.gen_init_packing(supress_time_out=True)
+        
         it_er = 0
         while self.temp > self.min_temp and it_er < IT_BOUND:
             for _ in range(perturb_freq_per_iter):
@@ -626,8 +634,122 @@ class Simulated_Annealing():
             
             if(self.wire_cost == 0):                # If the wire cost is 0, then we have definitely reached the optimal solution
                 break
-        self.wire_cost_function()
-        # print("Exiting Annealing Successfully !!")
+        
     
+    @ time_it_no_out
     def anneal_routine(self):
-        pass 
+        '''
+        Determines the entire flow of how to perform the Annealing Function for the best results
+        '''
+        gate_freq,pin_freq,wire_freq = len(self.gate_data.gates),self.gate_data.total_pins_added,self.gate_data.total_wires_added
+        self.gen_init_packing(supress_time_out=True)
+        self.reset_temp()
+        
+        print(f"\nGate Frequency : {gate_freq} || Pin Frequency : {pin_freq} || Wire Frequency : {wire_freq}")
+        print(f"Wire Length of Initial Packing: {self.initial_wire_cost//2}")
+        
+        print(f"Calling one Annealing Iteration with perturb_freq_per_iter = {1}")
+        res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=1,call_init_pack=False,supress_time_out=True)
+        self.final_packed_data,var_useless = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+        print(f"Wire Length after First Trial Packing: {self.wire_cost//2}")
+        print(f"Time of One Call : {time_of_one_call :.6f} seconds, Determining optimal parameters for future calls")
+        
+        
+        no_of_calls = floor(( (TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC)- time_of_one_call) / time_of_one_call)   
+        old_wire_cost = self.wire_cost
+        estimated_run_time,iterations_ran,break_flag_count = time_of_one_call+var_useless,0,0 
+
+        if(no_of_calls < IDEAL_PERT_ITER_LO):
+            # self.gate_data.correction_wire_length()
+            print(f"Calling Annealing with perturb_freq_per_iter = {1}")
+            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
+                del_time = 0 
+                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=1,call_init_pack=False,supress_time_out=True)
+                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
+                self.reset_temp()
+                if(self.wire_cost < old_wire_cost):
+                    old_wire_cost = self.wire_cost
+                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+                    break_flag_count = 0
+                estimated_run_time += time_of_one_call + del_time
+                iterations_ran += 1
+                break_flag_count += 1
+                
+                if(break_flag_count > BREAK_FLAG_COUNT):
+                    break
+                
+            print(f"Total Iterations Ran of anneal_to_pack : {iterations_ran}")        
+            print(f"Wire Length of Final Packing : {self.final_packed_data[2]//2}")         
+            return  self.final_packed_data 
+        
+        print(f"Number of Estimated Calls that can be made : {no_of_calls}")
+        
+        no_of_perturb_calls_lo = no_of_calls // IDEAL_PERT_ITER_LO
+        no_of_perturb_calls_med = no_of_calls // IDEAL_PERT_ITER_MED
+        no_of_perturb_calls_hi = no_of_calls // IDEAL_PERT_ITER_HI
+        
+        if(no_of_perturb_calls_hi > 0):
+            call_mode = "HI"
+        elif(no_of_perturb_calls_med > 0):
+            call_mode = "MID"
+        elif(no_of_perturb_calls_lo > 0):
+            call_mode = "LO"
+        
+        if(call_mode == "HI"):
+            print(f"Calling Annealing with perturb_freq_per_iter = {IDEAL_PERT_ITER_HI}")
+            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
+                del_time = 0 
+                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=IDEAL_PERT_ITER_HI,call_init_pack=False,supress_time_out=True)
+                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
+                self.reset_temp()
+                if(self.wire_cost < old_wire_cost):
+                    old_wire_cost = self.wire_cost
+                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+                    break_flag_count = 0
+                estimated_run_time += time_of_one_call + del_time
+                iterations_ran += 1
+                break_flag_count += 1
+                if(break_flag_count > BREAK_FLAG_COUNT):
+                    break
+                
+        elif(call_mode == "MID"):
+            print(f"Calling Annealing with perturb_freq_per_iter = {IDEAL_PERT_ITER_MED}")
+            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
+                del_time = 0 
+                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=IDEAL_PERT_ITER_MED,call_init_pack=False,supress_time_out=True)
+                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
+                self.reset_temp()
+                if(self.wire_cost < old_wire_cost):
+                    old_wire_cost = self.wire_cost
+                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+                    break_flag_count = 0
+                estimated_run_time += time_of_one_call + del_time
+                iterations_ran += 1
+                break_flag_count += 1
+                
+                if(break_flag_count > BREAK_FLAG_COUNT):
+                    break
+                    
+        elif(call_mode == "LO"):
+            print(f"Calling Annealing with perturb_freq_per_iter = {IDEAL_PERT_ITER_LO}")
+            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
+                del_time = 0
+                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=IDEAL_PERT_ITER_LO,call_init_pack=False,supress_time_out=True)
+                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
+                self.reset_temp()
+                if(self.wire_cost < old_wire_cost):
+                    old_wire_cost = self.wire_cost
+                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+                    break_flag_count = 0
+                estimated_run_time += time_of_one_call + del_time
+                iterations_ran += 1
+                break_flag_count += 1
+                if(break_flag_count > BREAK_FLAG_COUNT):
+                    break
+        
+        print(f"Total Iterations Ran of anneal_to_pack : {iterations_ran}")        
+        print(f"Wire Length of Final Packing : {self.final_packed_data[2]//2}")         
+        return  self.final_packed_data
+    
+    
+     

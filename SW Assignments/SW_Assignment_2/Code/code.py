@@ -38,30 +38,28 @@ def Parse_Input(fpath):
     gate_data.set_gate_env()            
     return gate_data
 
-def Parse_Output(gate_data ,fpath):
-    bounding_box_x,bounding_box_y = gate_data.get_bbox()
-    gate_data.correction_wire_length() 
-    with open(fpath,'w') as file:
-        file.write(f"bounding_box {bounding_box_x} {bounding_box_y} \n")
-        for i in range(1,len(gate_data.gates)+1):
-            gate_index,gate_x,gate_y = gate_data.gates[i].get_gate_tup()
-            file.write(f"g{gate_index} {gate_x} {gate_y} \n")
-        file.write(f"wire_length {gate_data.wire_length}")
+def Parse_Output(gate_data ,fpath, is_pseudo_copy = False):
+    if(not is_pseudo_copy):
+        bounding_box_x,bounding_box_y = gate_data.get_bbox()
+        with open(fpath,'w') as file:
+            file.write(f"bounding_box {bounding_box_x} {bounding_box_y} \n")
+            for i in range(1,len(gate_data.gates)+1):
+                gate_index,gate_x,gate_y = gate_data.gates[i].get_gate_tup()
+                file.write(f"g{gate_index} {gate_x} {gate_y} \n")
+            file.write(f"wire_length {gate_data.wire_length//2}")
+    else:
+        bbox_width,bbox_height,wire_length,gate_packing_data = gate_data
+        with open(fpath,'w') as file:
+            file.write(f"bounding_box {bbox_width} {bbox_height} \n")
+            for i in range(len(gate_packing_data)):
+                file.write(f"g{gate_packing_data[i][0]} {gate_packing_data[i][1]} {gate_packing_data[i][2]} \n")
+            file.write(f"wire_length {wire_length//2}")
 
 # ====================================== Main Function ========================================== #
 
 if(__name__ == "__main__"):
     gd = Parse_Input(FP_SINGLE_IN)
     sma = Simulated_Annealing(gd,10**(8),0.1)
-    sma.gen_init_packing(supress_time_out=True)
-    sma.anneal_to_pack(6,supress_time_out=False)
-    # sma.anneal_to_pack(4,supress_time_out=False)
-    # sma.anneal_to_pack(2,supress_time_out=False)
-    # sma.anneal_to_pack(1,supress_time_out=False)
-    Parse_Output(sma.gate_data,FP_SINGLE_OUT)
-    # sma.perturb_packing_swap_v2()
-    # print(f"Current_cost {sma.update_wire_cost(sma.wire_cost_function())}")
-    # # for i in range(1,len(sma.gate_data.gates)+1):
-    # #     print(sma.gate_data.gates[i])
-    print(f"Older Wire Length: {sma.initial_wire_cost//2}")
-    print(f"New Wire Length: {sma.gate_data.wire_length}")
+    psd_gd,anneal_rotuine_time = sma.anneal_routine(supress_time_out = True)
+    print(f"Total Annealing Routine Time: {anneal_rotuine_time:.6f} seconds\n")
+    Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)

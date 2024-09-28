@@ -31,6 +31,15 @@ VAR_GATE_DIM_HI  = 25
 MEAN_PIN_POS = 0.5
 VAR_PIN_POS_LO = 0.1
 VAR_PIN_POS_HI = 0.25
+
+TIME_BOUND_TOTAL_SEC = 18
+TIME_BOUND_BUFFER_SEC = 2
+IDEAL_PERT_ITER_HI = 8
+IDEAL_PERT_ITER_MED = 6
+IDEAL_PERT_ITER_LO = 4
+CALL_BOUND_TOTAL = 20
+BREAK_FLAG_COUNT = 30
+
 MAX_PINS = 40_000
 KW_MANUAL = {
             "gate_freq":6,
@@ -64,7 +73,7 @@ def time_it(func):
         result = func(*args) 
         t_end = time()
         if(not kwargs["supress_time_out"]): 
-            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s and produced output : {result}') 
+            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s and produced output : {result} \n') 
         return result,(t_end-t_start) 
     return wrap_func_timeit
 
@@ -79,7 +88,7 @@ def time_it_no_out(func):
         result = func(*args) 
         t_end = time() 
         if(not kwargs["supress_time_out"]): 
-            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s ') 
+            print(f'Function {func.__name__!r} executed in {(t_end-t_start):.4f}s \n') 
         return result,(t_end-t_start)
     return wrap_func_timeit_no_out
 
@@ -284,11 +293,20 @@ def H_global_coord_pin(gate_ref,pin_index,old_coord, height):
     pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
     return old_coord[0] + pin_rel_x, old_coord[1] + height - pin_rel_y
 
+@ time_it
+def pseudo_copy_gate_data(gate_data):
+    bbox_width,bbox_height = gate_data.get_bbox()
+    wire_length = gate_data.wire_length
+    gate_packing_data = [gate_data.gates[i].get_gate_tup() for i in range(1,len(gate_data.gates)+1)]
+    
+    return bbox_width,bbox_height,wire_length,gate_packing_data
+
+
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq":1000,
+          "gate_freq":10,
           "mode": "uniform",
-          "br_prob": 10**(-5),
+          "br_prob": 10**(-4),
           "dim_lo":1,
           "dim_hi":101,
           "pin_density":1.5,
