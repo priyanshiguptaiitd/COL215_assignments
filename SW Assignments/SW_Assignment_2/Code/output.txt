@@ -1,12 +1,9 @@
-bounding_box 384 258 
-g1 195 31 
-g2 288 86 
-g3 96 86 
-g4 103 172 
-g5 1 86 
-g6 289 7 
-g7 14 9 
-g8 139 37 
-g9 13 173 
-g10 192 86 
-wire_length 420226
+bounding_box 21 21 
+g1 15 6 
+g2 14 7 
+g3 8 7 
+g4 3 3 
+g5 2 8 
+g6 1 14 
+g7 7 0 
+wire_length 30

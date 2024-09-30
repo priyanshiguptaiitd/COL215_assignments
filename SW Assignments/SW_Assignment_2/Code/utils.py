@@ -304,9 +304,9 @@ def pseudo_copy_gate_data(gate_data):
 
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq":10,
+          "gate_freq":1000,
           "mode": "uniform",
-          "br_prob": 10**(-4),
+          "br_prob": 10**(-6),
           "dim_lo":1,
           "dim_hi":101,
           "pin_density":1.5,

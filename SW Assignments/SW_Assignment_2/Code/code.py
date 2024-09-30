@@ -24,12 +24,12 @@ def Parse_Input(fpath):
             if(line_data[0].startswith('g')):
                 gate_index,gate_width,gate_height = int(line_data[0][1:]),int(line_data[1]),int(line_data[2])
                 gate_data.add_gate(gate_index,gate_width,gate_height)
-            elif(line_data[0] == "pins" or line_data[0] == "Pins"):
+            elif(line_data[0].lower() == "pins"):
                 gate_index = int(line_data[1][1:])
                 for i in range(2,len(line_data),2):
                     pin_index,pin_x,pin_y = i//2,int(line_data[i]),int(line_data[i+1])
                     gate_data.add_pin(gate_index,pin_index,pin_x,pin_y)
-            elif(line_data[0] == "wire"):
+            elif(line_data[0].lower() == "wire"):
                 gp_i,gp_j = line_data[1].split('.'),line_data[2].split('.') 
                 g_i,p_i = int(gp_i[0][1:]),int(gp_i[1][1:])
                 g_j,p_j = int(gp_j[0][1:]),int(gp_j[1][1:])
@@ -60,6 +60,8 @@ def Parse_Output(gate_data ,fpath, is_pseudo_copy = False):
 if(__name__ == "__main__"):
     gd = Parse_Input(FP_SINGLE_IN)
     sma = Simulated_Annealing(gd,10**(8),0.1)
+
     psd_gd,anneal_rotuine_time = sma.anneal_routine(supress_time_out = True)
     print(f"Total Annealing Routine Time: {anneal_rotuine_time:.6f} seconds\n")
     Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)
+    
