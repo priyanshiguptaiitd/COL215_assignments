@@ -1,0 +1,9 @@
+g1 1 1
+g2 1 1
+pins g1 0 0 0 1 1 0 1 1
+pins g2 0 0 0 1 1 0 1 1
+wire g1.p1 g2.p3
+wire g1.p2 g2.p4
+wire g1.p3 g2.p1
+wire g1.p4 g2.p2
+
