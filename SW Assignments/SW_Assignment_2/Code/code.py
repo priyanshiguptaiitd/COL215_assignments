@@ -115,7 +115,8 @@ if(__name__ == "__main__"):
     # test_testcase_single(8,supress_time_out = True)
     gd = Parse_Input(FP_SINGLE_IN)
     sma = Simulated_Annealing(gd,10**(8),0.1)
-    sma.gen_init_packing(supress_time_out = False)
+    # sma.gen_init_packing(supress_time_out = False)
+    
     # sma.gate_data.find_connected_components()
     # for i in range(1,len(sma.gate_data.gates)+1):
     #     print(gd.gates[i])
@@ -127,13 +128,11 @@ if(__name__ == "__main__"):
     # print(f"Total No. Of Connected Components : {len(sma.gate_data.connected_components)}")
     # for i in range(1,len(sma.gate_data.gates)+1):
     #     print(sma.gate_data.gates[i].affected_connected_components)
-    # psd_gd,anneal_routine_time = sma.anneal_routine(False,supress_time_out = True)
-    
-    print(f"Total wire cost: {sma.wire_cost}\n")
-    psd_gd,anneal_routine_time = sma.anneal_to_pack(2,True,supress_time_out = False)
-    print(f"Total wire cost: {sma.wire_cost}\n")
-    
-    # print(f"Total anneal_to_pack Time: {anneal_routine_time:.6f} seconds\n")
+    psd_gd,anneal_routine_time = sma.anneal_routine(False,supress_time_out = True)
+
+    # psd_gd,anneal_routine_time = sma.anneal_to_pack(1,True,supress_time_out = True)
+    print(f"Total wire cost after annealing: {sma.final_packed_data[2]}")
+    print(f"Total anneal_to_pack Time: {anneal_routine_time:.6f} seconds\n")
     # Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)
     
-    Parse_Output(sma.gate_data,FP_SINGLE_OUT,is_pseudo_copy = False)
+    # Parse_Output(sma.gate_data,FP_SINGLE_OUT,is_pseudo_copy = False)

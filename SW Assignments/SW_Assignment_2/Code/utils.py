@@ -37,11 +37,11 @@ VAR_PIN_POS_HI = 0.25
 
 TIME_BOUND_TOTAL_SEC = 20
 TIME_BOUND_BUFFER_SEC = 2
-IDEAL_PERT_ITER_HI = 10
-IDEAL_PERT_ITER_MED = 6
-IDEAL_PERT_ITER_LO = 4
+IDEAL_PERT_ITER_HI = 6
+IDEAL_PERT_ITER_MED = 4
+IDEAL_PERT_ITER_LO = 2
 CALL_BOUND_TOTAL = 20
-BREAK_FLAG_COUNT = 30
+BREAK_FLAG_COUNT = 20
 
 MAX_PINS = 40_000
 KW_MANUAL = {
@@ -241,7 +241,7 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2),ensure_
                     else:
                         if(rng_break.random() < br_prob):
                             break
-                    
+    print(f"Total Gates Generated : {gate_freq}")                
     print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
 
@@ -497,17 +497,17 @@ def visualize_test_case_5():
     
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq":15,
+          "gate_freq": 1000,
           "mode": "uniform",
           "br_prob": 10**(-5),
           "dim_lo":1,
           "dim_hi":101,
-          "pin_density":1.5,
+          "pin_density": 0.85,
           "max_pin_freq":6,
           "override_specs":False,
           "ensure_max_pins":False, ### May cause 40_000 pins overflow for larger gate frequencies
-          "ensure_wire_freq_bool": False,
-          "ensure_wire_freq": 1_00_000
+          "ensure_wire_freq_bool": True,
+          "ensure_wire_freq": 2_00_000
           }
     kw_multi =  {
                    "tc_count" : 10,
