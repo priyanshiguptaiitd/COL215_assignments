@@ -56,6 +56,8 @@ class Gate_Env():
         self.height = height
         self.gate_index = gate_index
         self.pins = dict()
+        self.affected_connected_components = set()
+        
         
         self.envelope_width = None
         self.envelope_height = None
@@ -64,9 +66,13 @@ class Gate_Env():
         
         self.x_relative_env = None
         self.y_relative_env = None        
+        
         self.x = None
         self.y = None
         
+    def get_connected_components(self):
+        return [self.pins[i].conneted_component for i in self.pins]
+    
     def set_env(self,env_w,env_h):
         self.envelope_width,self.envelope_height = env_w,env_h
             
@@ -91,7 +97,7 @@ class Gate_Env():
     def get_global_coord_pin(self,pin_index):
         pin_ref = self.pins[pin_index]
         pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
-        return self.x + pin_rel_x, self.y + self.height-pin_rel_y
+        return self.x + pin_rel_x, self.y + pin_rel_y
     
     def get_gate_tup(self):
         return self.gate_index,self.x,self.y
@@ -101,7 +107,7 @@ class Gate_Env():
         pins_s = []
         for i in range(1,len(self.pins)+1):
             p_xg,p_yg = self.get_global_coord_pin(i)
-            pins_s.append(f"Pin {i} || Parent Gate = {self.gate_index} || Pin_X_Global = {p_xg} || Pin_Y_Global = {p_yg}")
+            pins_s.append(f"Pin {i} || Parent Gate = {self.gate_index} || Pin_X_Global = {p_xg} || Pin_Y_Global = {p_yg} || Pin_Conncected_Component = {self.pins[i].connected_component}")
         
         if(len(pins_s)==0):
             return base_s+'\n'+"No Pins on this gate"
@@ -131,11 +137,13 @@ class Pin():
     '''
     
     def __init__(self,gate_index,pin_index,pin_x,pin_y):
+        
         self.parent_gate_index = gate_index
         self.pin_index = pin_index
         self.pin_x, self.pin_y = pin_x, pin_y
         self.connected_pins = dict()
-    
+        self.connected_component = None 
+        
     def connected_to(self,gate_ind,pin_ind):
         '''
         Adds a connection from this pin to another pin on a specified gate.
@@ -157,7 +165,7 @@ class Pin():
         Returns:
             str: A string representation of the pin.
         '''
-        base_s = f"Pin No = {self.pin_index} || Parent Gate = g{self.parent_gate_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y}"
+        base_s = f"Pin No = {self.pin_index} || Parent Gate = g{self.parent_gate_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y} || Connected Component : {self.connected_component}"
         further_s = []
         for i in self.connected_pins:
             for j in self.connected_pins[i]:
@@ -226,7 +234,10 @@ class Gate_Data():
         self.bbox = (None,None)
         self.max_width,self.max_height = 0,0
         self.wire_length = None
-
+        
+        self.connected_components = {}  # New attribute to store connected components
+        self.connected_components_data = {}  # New attribute to store connected components data
+        
     def add_gate(self,gate_index,width,height):
         self.gates[gate_index] = Gate_Env(gate_index,width,height)
         self.max_width = self.max_width if(self.max_width > width) else width
@@ -257,6 +268,35 @@ class Gate_Data():
             self.wires[(g_j,p_j)].append((g_i,p_i))
         self.total_wires_added += 1
         # print(self.wires)
+    
+    def find_connected_components(self):
+        ''' Finds and assigns connected components to each pin using DFS, and stores them. '''
+        
+        def dfs(gate_index, pin_index, component_id):
+            ''' Depth-first search to explore connected components '''
+            pin = self.gates[gate_index].pins[pin_index]
+            if pin.connected_component is not None:
+                return
+            # Assign the current connected component ID to this pin
+            pin.connected_component = component_id
+            self.gates[gate_index].affected_connected_components.add(component_id)
+            # Add the (gate_index, pin_index) to the connected component list
+            self.connected_components[component_id].append((gate_index, pin_index))
+            # Recursively visit all connected pins
+            if (gate_index, pin_index) in self.wires:
+                for g_j, p_j in self.wires[(gate_index, pin_index)]:
+                    dfs(g_j, p_j, component_id)
+        
+        component_id = 0  # To assign unique IDs to each component
+        self.connected_components = {}  # Resetting the dictionary
+        
+        for gate_index in self.gates:
+            for pin_index in self.gates[gate_index].pins:
+                pin = self.gates[gate_index].pins[pin_index]
+                if pin.connected_component is None:  # Start DFS if pin hasn't been visited yet
+                    component_id += 1
+                    self.connected_components[component_id] = []  # Initialize list for this component
+                    dfs(gate_index, pin_index, component_id)
         
     def set_bbox(self,x,y):
         self.bbox = (x,y)
@@ -388,92 +428,150 @@ class Simulated_Annealing():
         self.gate_data.wire_length = l
         return l
     
+    # def wire_cost_function(self):
+        # total_wire_length = 0
+        # for (g_i, p_i),gp in self.gate_data.wires.items():
+        #     for g_j,p_j in gp:
+        #         x_i, y_i = self.gate_data.get_gate(g_i).get_global_coord_pin(p_i)
+        #         x_j, y_j = self.gate_data.get_gate(g_j).get_global_coord_pin(p_j)
+        #         total_wire_length += abs(x_i - x_j) + abs(y_i - y_j)
+        # return total_wire_length
+    
+    # def cost_delta_function(self, g1, g2, old_coord):
+        # if(g2 is not None):
+        #     gate_1, gate_2, cost_delta = self.gate_data.gates[g1], self.gate_data.gates[g2], 0
+        #     g1_old_x, g1_old_y, g2_old_x, g2_old_y = old_coord
+        #     pin_data_gate1, pin_data_gate2 = gate_1.pins, gate_2.pins
+            
+        #     for i in range(1, len(pin_data_gate1) + 1):
+        #         pin_i_gate_1 = pin_data_gate1[i]
+        #         x_i, y_i = gate_1.get_global_coord_pin(i)
+        #         x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
+        #         pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
+        #         for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
+        #             for p_j in pins_g_i:
+        #                 # print(f"Called  by : g{g1} , p{i} || Connecttion : g{g_i} , p{p_j}")
+        #                 x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+        #                 if g_i == g2:
+        #                     x_j_o, y_j_o = H_global_coord_pin(gate_2, p_j, (g2_old_x, g2_old_y), gate_2.height)
+        #                     # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
+        #                     # print(f"{x_i} {x_j} {y_i} {y_j}")
+        #                     # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+        #                     cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
+        #                     cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
+        #                     # print(f"Cost Delta : {cost_delta}")
+        #                 else:
+        #                     # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+        #                     # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+        #                     cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+        #                     cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+        #                     # print(f"Cost Delta : {cost_delta}")
+            
+        #     for i in range(1, len(pin_data_gate2) + 1):
+        #         pin_i_gate_2 = pin_data_gate2[i]
+        #         x_i, y_i = gate_2.get_global_coord_pin(i)
+        #         x_i_old, y_i_old = H_global_coord_pin(gate_2, i, (g2_old_x, g2_old_y), gate_2.height)
+        #         pins_connected_to_i_gate_2 = pin_i_gate_2.connected_pins
+        #         for g_i, pins_g_i in pins_connected_to_i_gate_2.items():
+        #             for p_j in pins_g_i:
+        #                 # print(f"Called  by : g{g2} , p{i} || Connecttion : g{g_i} , p{p_j}")
+        #                 x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+        #                 if g_i == g1:
+        #                     x_j_o, y_j_o = H_global_coord_pin(gate_1, p_j, (g1_old_x, g1_old_y), gate_1.height)
+        #                     # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
+        #                     # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+        #                     cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
+        #                     cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
+        #                     # print(f"Cost Delta : {cost_delta}")
+        #                 else:
+        #                     # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+        #                     # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+        #                     cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+        #                     cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+        #                     # print(f"Cost Delta : {cost_delta}")
+
+        #     return cost_delta
+        # else:
+        #     gate_1, cost_delta = self.gate_data.gates[g1], 0
+        #     g1_old_x, g1_old_y = old_coord
+        #     pin_data_gate1 = gate_1.pins
+            
+        #     for i in range(1, len(pin_data_gate1) + 1):
+        #         pin_i_gate_1 = pin_data_gate1[i]
+        #         x_i, y_i = gate_1.get_global_coord_pin(i)
+        #         x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
+        #         pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
+        #         for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
+        #             for p_j in pins_g_i:
+        #                 x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
+        #                 # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
+        #                 # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
+        #                 cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
+        #                 cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
+        #                 # print(f"Cost Delta : {cost_delta}")
+            
+        #     return cost_delta
+    @ time_it_no_out
     def wire_cost_function(self):
         total_wire_length = 0
-        for (g_i, p_i),gp in self.gate_data.wires.items():
-            for g_j,p_j in gp:
+        for i in self.gate_data.connected_components:
+            # print(f"Entering loop {i}")
+            connected_component = self.gate_data.connected_components[i]
+            x_min, y_min, x_max, y_max = float('inf'), float('inf'), 0, 0
+            for (g_i, p_i) in connected_component:
                 x_i, y_i = self.gate_data.get_gate(g_i).get_global_coord_pin(p_i)
-                x_j, y_j = self.gate_data.get_gate(g_j).get_global_coord_pin(p_j)
-                total_wire_length += abs(x_i - x_j) + abs(y_i - y_j)
+                x_min, y_min = x_min if (x_min <= x_i) else x_i, y_min if (y_min <= y_i) else y_i
+                x_max, y_max = x_max if (x_max >= x_i) else x_i, y_max if (y_max >= y_i) else y_i
+            # print(f"Connected Component : {i} || x_min = {x_min} || y_min = {y_min} || x_max = {x_max} || y_max = {y_max}")
+            wire_length_connected_component = (x_max - x_min) + (y_max - y_min)
+            self.gate_data.connected_components_data[i] = (x_min, y_min, x_max, y_max, wire_length_connected_component) 
+            total_wire_length += wire_length_connected_component
+            
         return total_wire_length
     
-    def cost_delta_function(self, g1, g2, old_coord):
+    @ time_it_no_out
+    def cost_delta_function(self,g1,g2):
         if(g2 is not None):
-            gate_1, gate_2, cost_delta = self.gate_data.gates[g1], self.gate_data.gates[g2], 0
-            g1_old_x, g1_old_y, g2_old_x, g2_old_y = old_coord
-            pin_data_gate1, pin_data_gate2 = gate_1.pins, gate_2.pins
             
-            for i in range(1, len(pin_data_gate1) + 1):
-                pin_i_gate_1 = pin_data_gate1[i]
-                x_i, y_i = gate_1.get_global_coord_pin(i)
-                x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
-                pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
-                for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
-                    for p_j in pins_g_i:
-                        # print(f"Called  by : g{g1} , p{i} || Connecttion : g{g_i} , p{p_j}")
-                        x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
-                        if g_i == g2:
-                            x_j_o, y_j_o = H_global_coord_pin(gate_2, p_j, (g2_old_x, g2_old_y), gate_2.height)
-                            # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
-                            # print(f"{x_i} {x_j} {y_i} {y_j}")
-                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                            cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
-                            cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
-                            # print(f"Cost Delta : {cost_delta}")
-                        else:
-                            # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
-                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                            cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
-                            cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
-                            # print(f"Cost Delta : {cost_delta}")
+            connected_comps = self.gate_data.gates[g1].affected_connected_components.union(self.gate_data.gates[g2].affected_connected_components)
+            connected_comps_old_data = {c: self.gate_data.connected_components_data[c] for c in connected_comps} 
             
-            for i in range(1, len(pin_data_gate2) + 1):
-                pin_i_gate_2 = pin_data_gate2[i]
-                x_i, y_i = gate_2.get_global_coord_pin(i)
-                x_i_old, y_i_old = H_global_coord_pin(gate_2, i, (g2_old_x, g2_old_y), gate_2.height)
-                pins_connected_to_i_gate_2 = pin_i_gate_2.connected_pins
-                for g_i, pins_g_i in pins_connected_to_i_gate_2.items():
-                    for p_j in pins_g_i:
-                        # print(f"Called  by : g{g2} , p{i} || Connecttion : g{g_i} , p{p_j}")
-                        x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
-                        if g_i == g1:
-                            x_j_o, y_j_o = H_global_coord_pin(gate_1, p_j, (g1_old_x, g1_old_y), gate_1.height)
-                            # print(f"Old Value of connection : {abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)}")
-                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                            cost_delta += abs(x_i - x_j) + abs(y_i - y_j)
-                            cost_delta -= abs(x_i_old - x_j_o) + abs(y_i_old - y_j_o)
-                            # print(f"Cost Delta : {cost_delta}")
-                        else:
-                            # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
-                            # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                            cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
-                            cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
-                            # print(f"Cost Delta : {cost_delta}")
+            cost_delta = 0
+            for c in connected_comps:
+                x_min, y_min, x_max, y_max, wire_length_connected_component = self.gate_data.connected_components_data[c]
+                x_min_new, y_min_new, x_max_new, y_max_new = float('inf'), float('inf'), 0, 0
+                for (g_i, p_i) in self.gate_data.connected_components[c]:
+                    x_i, y_i = self.gate_data.gates[g_i].get_global_coord_pin(p_i)
+                    x_min_new, y_min_new = x_min_new if (x_min_new <= x_i) else x_i, y_min_new if (y_min_new <= y_i) else y_i
+                    x_max_new, y_max_new = x_max_new if (x_max_new >= x_i) else x_i, y_max_new if (y_max_new >= y_i) else y_i
+                wire_length_connected_component_new = (x_max_new - x_min_new) + (y_max_new - y_min_new)
+                self.gate_data.connected_components_data[c] = (x_min_new, y_min_new, x_max_new, y_max_new, wire_length_connected_component_new)
+                cost_delta += wire_length_connected_component_new - wire_length_connected_component
 
-            return cost_delta
-        else:
-            gate_1, cost_delta = self.gate_data.gates[g1], 0
-            g1_old_x, g1_old_y = old_coord
-            pin_data_gate1 = gate_1.pins
-            
-            for i in range(1, len(pin_data_gate1) + 1):
-                pin_i_gate_1 = pin_data_gate1[i]
-                x_i, y_i = gate_1.get_global_coord_pin(i)
-                x_i_old, y_i_old = H_global_coord_pin(gate_1, i, (g1_old_x, g1_old_y), gate_1.height)
-                pins_connected_to_i_gate_1 = pin_i_gate_1.connected_pins
-                for g_i, pins_g_i in pins_connected_to_i_gate_1.items():
-                    for p_j in pins_g_i:
-                        x_j, y_j = self.gate_data.gates[g_i].get_global_coord_pin(p_j)
-                        # print(f"Old Value of connection : {abs(x_i_old - x_j) + abs(y_i_old - y_j)}")
-                        # print(f"New Value of connection : {abs(x_i - x_j) + abs(y_i - y_j)}")
-                        cost_delta += 2 * (abs(x_i - x_j) + abs(y_i - y_j))
-                        cost_delta -= 2 * (abs(x_i_old - x_j) + abs(y_i_old - y_j))
-                        # print(f"Cost Delta : {cost_delta}")
-            
-            return cost_delta
+            return cost_delta,connected_comps_old_data
         
+        else:
+            
+            connected_comps = self.gate_data.gates[g1].affected_connected_components
+            connected_comps_old_data = {c: self.gate_data.connected_components_data[c] for c in connected_comps} 
+            
+            cost_delta = 0
+            for c in connected_comps:
+                x_min, y_min, x_max, y_max, wire_length_connected_component = self.gate_data.connected_components_data[c]
+                x_min_new, y_min_new, x_max_new, y_max_new = float('inf'), float('inf'), 0, 0
+                for (g_i, p_i) in self.gate_data.connected_components[c]:
+                    x_i, y_i = self.gate_data.gates[g_i].get_global_coord_pin(p_i)
+                    x_min_new, y_min_new = x_min_new if (x_min_new <= x_i) else x_i, y_min_new if (y_min_new <= y_i) else y_i
+                    x_max_new, y_max_new = x_max_new if (x_max_new >= x_i) else x_i, y_max_new if (y_max_new >= y_i) else y_i
+                wire_length_connected_component_new = (x_max_new - x_min_new) + (y_max_new - y_min_new)
+                self.gate_data.connected_components_data[c] = (x_min_new, y_min_new, x_max_new, y_max_new, wire_length_connected_component_new)
+                cost_delta += wire_length_connected_component_new - wire_length_connected_component
+
+            return cost_delta,connected_comps_old_data
+                
     @ time_it_no_out
     def gen_init_packing(self):
+        
         # Calculate the number of rows and columns in the grid
         gate_freq = len(self.gate_data.gates)
         bb_grid_dim,bb_grid_width,bb_grid_height = ceil(sqrt(gate_freq)), self.gate_data.max_width, self.gate_data.max_height
@@ -487,14 +585,15 @@ class Simulated_Annealing():
             else:
                 self.gate_data.gates[i].set_coord_env(((i-1)%bb_grid_dim)*bb_grid_width,(i//bb_grid_dim)*bb_grid_height)
                 self.gate_data.gates[i].set_coord_rel_env((bb_grid_width-self.gate_data.gates[i].width)//2,(bb_grid_height-self.gate_data.gates[i].height)//2)
-
-        total_wire_length = self.wire_cost_function()
+        
+        total_wire_length,rtime_var = self.wire_cost_function(supress_time_out = False)
+        
         self.gate_data.bbox = (bb_grid_dim*bb_grid_width,(ceil(len(self.gate_data.gates)/bb_grid_dim))*bb_grid_height)
         self.update_wire_cost(total_wire_length)
         self.initial_wire_cost = total_wire_length    
         
     @ time_it_no_out
-    def perturb_packing_swap(self):
+    def perturb_packing_swap(self,force_better_packs = False):
         # Randomly select a gate and swap / Move within the bounding box it to a new position
         # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
         # If the move is accepted, update the wire length and repeat
@@ -522,10 +621,10 @@ class Simulated_Annealing():
         
         ## Redundant Calculation of Wire Cost
         ## TODO - Improve this part
-        new_wire_cost = self.wire_cost_function()
+        new_wire_cost,rt_var = self.wire_cost_function(supress_time_out = True)
 
         
-        if(self.acceptance_probability(old_wire_cost,new_wire_cost)):
+        if(self.acceptance_probability(old_wire_cost,new_wire_cost,force_better_packs)):
             self.update_wire_cost(new_wire_cost)
             # print(f"Accepting Config : Old Cost {old_wire_cost} ---> New Cost {new_wire_cost}")
             return
@@ -567,7 +666,9 @@ class Simulated_Annealing():
         # print(g2_ref)
         old_wire_cost = self.wire_cost
         
-        cost_delta = self.cost_delta_function(g1,g2,old_coord)
+        v = self.cost_delta_function(g1,g2,supress_time_out = True)
+        cost_delta,connected_comps_old_data = v[0]
+        
         new_wire_cost = old_wire_cost + cost_delta
         
         if(self.acceptance_probability(old_wire_cost,new_wire_cost,force_better_packs)):
@@ -580,12 +681,16 @@ class Simulated_Annealing():
             g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
             g2_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
             g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+            
+            for c in connected_comps_old_data:
+                self.gate_data.connected_components_data[c] = connected_comps_old_data[c]
+            
             return
             # print(f"Rejecting Config")        
     
     @ time_it_no_out
     def perturb_packing_move(self,force_better_packs = False):
-        # Randomly select a gate and move it within the bounding box to a new position
+        # Randomly select a gate and move it within the bounding box to a new position (Preferably near boundary of an envelope)
         # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
         # If the move is accepted, update the wire length and repeat
         # If the move is rejected, repeat the processg
@@ -597,14 +702,27 @@ class Simulated_Annealing():
         
         gate_ref = self.gate_data.gates[g]
         gate_old_x,gate_old_y,gate_old_delta_x,gate_old_delta_y =  gate_ref.x, gate_ref.y, gate_ref.x-gate_ref.envelope_x,  gate_ref.y-gate_ref.envelope_y
+        gdx_max = gate_ref.envelope_width - gate_ref.width
+        gdy_max = gate_ref.envelope_height - gate_ref.height
         
-        gate_ref.set_coord_rel_env(random.randint(0,gate_ref.envelope_width-gate_ref.width),random.randint(0,gate_ref.envelope_height-gate_ref.height)) 
+        possible_pos = [(0,0),(gdx_max//2,0),(gdx_max,0),
+                        (0,gdy_max//2),(gdx_max,gdy_max//2),
+                        (0,gdy_max),(gdx_max//2,gdy_max),(gdx_max,gdy_max)
+                        ]
+                        
+        choice_delta = random.choice(possible_pos)
+        
+        gate_ref.set_coord_rel_env(random.randint(0,gdx_max),random.randint(0,gdy_max)) 
+        # gate_ref.set_coord_rel_env(choice_delta[0],choice_delta[1])
         
         old_coord = (gate_old_x,gate_old_y)
         
         old_wire_cost = self.wire_cost
         
-        cost_delta = self.cost_delta_function(g,None,old_coord)
+        old_wire_cost = self.wire_cost
+        
+        v = self.cost_delta_function(g,None,supress_time_out = True)
+        cost_delta,connected_comps_old_data = v[0]
         
         new_wire_cost = old_wire_cost + cost_delta
         
@@ -615,13 +733,21 @@ class Simulated_Annealing():
         else:
             self.update_wire_cost(old_wire_cost)
             gate_ref.set_coord_rel_env(gate_old_delta_x,gate_old_delta_y)
+            
+            for c in connected_comps_old_data:
+                self.gate_data.connected_components_data[c] = connected_comps_old_data[c]
+            
             return
-            # print(f"Rejecting Config")
         
     @ time_it_no_out
-    def anneal_to_pack(self,perturb_freq_per_iter = 1,call_init_pack = True,force_better_packs = False):
+    def anneal_to_pack(self,perturb_freq_per_iter = 1,call_init_pack = True,force_better_packs = False, return_data = False):   
+        if(return_data):
+            iter_data = []
+        
         if(call_init_pack):
             self.gen_init_packing(supress_time_out=True)
+            if(return_data):
+                iter_data.append((0,self.wire_cost//2))
         
         it_er = 0
         while self. temp > self.min_temp and it_er < IT_BOUND:
@@ -630,128 +756,56 @@ class Simulated_Annealing():
                 self.perturb_packing_move(force_better_packs,supress_time_out=True)
             self.temp *= cooling_rate(self.temp)
             it_er += 1
+            if(return_data):
+                iter_data.append((it_er,self.wire_cost//2))
             
             if(self.wire_cost == 0):                # If the wire cost is 0, then we have definitely reached the optimal solution
                 break
         
+        if(return_data):
+            return iter_data
         # print(f"New_Cost = {self.wire_cost//2}")
         # self.update_wire_cost(self.wire_cost_function())
         # print(f"New_Cost_2 = {self.wire_cost//2}")
-    
+      
     @ time_it_no_out
-    def anneal_routine(self):
+    def anneal_routine(self,supress_out):
         '''
         Determines the entire flow of how to perform the Annealing Function for the best results
         '''
+        
         gate_freq,pin_freq,wire_freq = len(self.gate_data.gates),self.gate_data.total_pins_added,self.gate_data.total_wires_added
-        self.gen_init_packing(supress_time_out=True)
+        print(f"\nGate Frequency : {gate_freq} || Pin Frequency : {pin_freq} || Wire Frequency : {wire_freq}")
+
+        
+        
+        est_runtime = 0
+        res_timeit_no_out,t_func_call = self.gen_init_packing(supress_time_out=True)
+        est_runtime += t_func_call
+        print(f"Wire Length of Initial Packing: {self.initial_wire_cost//2}")
+        print(f"Calling one Annealing Iteration with perturb_freq_per_iter = {1}")
+        
+        res_timeit_no_out,time_of_one_call = self.anneal_to_pack(1,True,supress_time_out = True)
+        est_runtime += time_of_one_call
+        self.final_packed_data,var_useless = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
         self.reset_temp()
         
-        print(f"\nGate Frequency : {gate_freq} || Pin Frequency : {pin_freq} || Wire Frequency : {wire_freq}")
-        print(f"Wire Length of Initial Packing: {self.initial_wire_cost//2}")
-        
-        print(f"Calling one Annealing Iteration with perturb_freq_per_iter = {1}")
-        res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=1,call_init_pack=False,force_better_packs=False,supress_time_out=True)
-        self.final_packed_data,var_useless = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
         print(f"Wire Length after First Trial Packing: {self.wire_cost//2}")
         print(f"Time of One Call : {time_of_one_call :.6f} seconds, Determining optimal parameters for future calls")
+        old_wire_cost = self.final_packed_data[2]//2
         
+        perturb_freq = select_perturb_freq(time_of_one_call)
+        print(f"Calling Annealing with perturb_freq_per_iter = {perturb_freq}")
+        while(est_runtime <= TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
+            res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq,False,supress_time_out = True)
+            print(f"Best Wire length {old_wire_cost} || Wire Length after Current Iteration: {self.wire_cost//2}")
+            self.reset_temp()
+            est_runtime += time_of_one_call
+            if(old_wire_cost > self.wire_cost//2):
+                self.final_packed_data,var_t = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+                old_wire_cost = self.final_packed_data[2]//2
+                est_runtime += time_of_one_call
         
-        no_of_calls = floor(( (TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC)- time_of_one_call) / time_of_one_call)   
-        old_wire_cost = self.wire_cost
-        estimated_run_time,iterations_ran,break_flag_count = time_of_one_call+var_useless,0,0 
-
-        if(no_of_calls < IDEAL_PERT_ITER_LO):
-            # self.gate_data.correction_wire_length()
-            print(f"Calling Annealing with perturb_freq_per_iter = {1}")
-            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
-                del_time = 0 
-                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=1,call_init_pack=False,force_better_packs= True,supress_time_out=True)
-                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
-                self.reset_temp()
-                if(self.wire_cost < old_wire_cost):
-                    old_wire_cost = self.wire_cost
-                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
-                    break_flag_count = 0
-                estimated_run_time += time_of_one_call + del_time
-                iterations_ran += 1
-                break_flag_count += 1
-                
-                if(break_flag_count > BREAK_FLAG_COUNT):
-                    break
-                
-            print(f"Total Iterations Ran of anneal_to_pack : {1+iterations_ran}")        
-            print(f"Wire Length of Final Packing : {self.final_packed_data[2]//2}")         
-            return  self.final_packed_data 
-        
-        print(f"Number of Estimated Calls that can be made : {no_of_calls}")
-        
-        no_of_perturb_calls_lo = no_of_calls // IDEAL_PERT_ITER_LO
-        no_of_perturb_calls_med = no_of_calls // IDEAL_PERT_ITER_MED
-        no_of_perturb_calls_hi = no_of_calls // IDEAL_PERT_ITER_HI
-        
-        if(no_of_perturb_calls_hi > 0):
-            call_mode = "HI"
-        elif(no_of_perturb_calls_med > 0):
-            call_mode = "MID"
-        elif(no_of_perturb_calls_lo > 0):
-            call_mode = "LO"
-        
-        if(call_mode == "HI"):
-            print(f"Calling Annealing with perturb_freq_per_iter = {IDEAL_PERT_ITER_HI}")
-            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
-                del_time = 0 
-                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=IDEAL_PERT_ITER_HI,call_init_pack=False,force_better_packs= True,supress_time_out=True)
-                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
-                self.reset_temp()
-                if(self.wire_cost < old_wire_cost):
-                    old_wire_cost = self.wire_cost
-                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
-                    break_flag_count = 0
-                estimated_run_time += time_of_one_call + del_time
-                iterations_ran += 1
-                break_flag_count += 1
-                if(break_flag_count > BREAK_FLAG_COUNT):
-                    break
-                
-        elif(call_mode == "MID"):
-            print(f"Calling Annealing with perturb_freq_per_iter = {IDEAL_PERT_ITER_MED}")
-            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
-                del_time = 0 
-                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=IDEAL_PERT_ITER_MED,call_init_pack=False,force_better_packs= True,supress_time_out=True)
-                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
-                self.reset_temp()
-                if(self.wire_cost < old_wire_cost):
-                    old_wire_cost = self.wire_cost
-                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
-                    break_flag_count = 0
-                estimated_run_time += time_of_one_call + del_time
-                iterations_ran += 1
-                break_flag_count += 1
-                
-                if(break_flag_count > BREAK_FLAG_COUNT):
-                    break
-                    
-        elif(call_mode == "LO"):
-            print(f"Calling Annealing with perturb_freq_per_iter = {IDEAL_PERT_ITER_LO}")
-            while(estimated_run_time < TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
-                del_time = 0
-                res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq_per_iter=IDEAL_PERT_ITER_LO,call_init_pack=False,force_better_packs= True,supress_time_out=True)
-                print(f"Wire Length after Iteration : {self.wire_cost//2} , Current Best Wire Cost : {old_wire_cost//2}")
-                self.reset_temp()
-                if(self.wire_cost < old_wire_cost):
-                    old_wire_cost = self.wire_cost
-                    self.final_packed_data,del_time = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
-                    break_flag_count = 0
-                estimated_run_time += time_of_one_call + del_time
-                iterations_ran += 1
-                break_flag_count += 1
-                if(break_flag_count > BREAK_FLAG_COUNT):
-                    break
-        
-        print(f"Total Iterations Ran of anneal_to_pack : {1+iterations_ran}")        
-        print(f"Wire Length of Final Packing : {self.final_packed_data[2]//2}")         
-        return  self.final_packed_data
+        return self.final_packed_data
     
     
-     

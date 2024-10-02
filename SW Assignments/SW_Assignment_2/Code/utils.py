@@ -3,7 +3,7 @@ from itertools import count
 from math import floor
 from secrets import randbits
 import numpy as np
-
+from matplotlib import pyplot as plt
 ''' READ ME - utils.py
 
 This is the utility module, it clubs the funcitonality of multiple of our older implementations of Python Projects
@@ -24,6 +24,9 @@ FP_SINGLE_IN = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Pract
 FP_SINGLE_OUT = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output.txt"
 FP_MULTI_IN = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Test_Cases\Auto\Multi_Cases\Input_Test_Cases_Multi"
 FP_MULTI_OUT = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Test_Cases\Auto\Multi_Cases\Output_Test_Cases_Multi"
+
+CUST_FP_PATH = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Test_Cases\Analysis"
+
 ALLOWED_GATE_FREQ = [10,25,50,100,250,500,1000]
 MEAN_GATE_DIM = 50
 VAR_GATE_DIM_LO = 10
@@ -32,9 +35,9 @@ MEAN_PIN_POS = 0.5
 VAR_PIN_POS_LO = 0.1
 VAR_PIN_POS_HI = 0.25
 
-TIME_BOUND_TOTAL_SEC = 18
+TIME_BOUND_TOTAL_SEC = 20
 TIME_BOUND_BUFFER_SEC = 2
-IDEAL_PERT_ITER_HI = 8
+IDEAL_PERT_ITER_HI = 10
 IDEAL_PERT_ITER_MED = 6
 IDEAL_PERT_ITER_LO = 4
 CALL_BOUND_TOTAL = 20
@@ -171,7 +174,8 @@ def generate_pin_positions(gh,gate_freq,pin_density = 0.75,max_pin_freq = 6,over
     arr_right = rng_r.choice(arr,int(pin_freq_right),replace=False,shuffle=False)
     return arr_left, arr_right
 
-def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2)):
+def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2),ensure_wire_freq_bool=False,
+          ensure_wire_freq = 50_000):
     """
     Generates wires between gates based on the problem Statement specifications.
     
@@ -187,7 +191,7 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2)):
     Returns:
         wire_data.keys: The keys of the wire data dictionary.
     """
-    atleast_one,wire_data,count_atleast_one = {i:False for i in range(1,gate_freq+1)},{},0
+    atleast_one,wire_data,count_atleast_one,wires_generated = {i:False for i in range(1,gate_freq+1)},{},0,0
     rng = np.random.default_rng(randbits(128))
     rng_break = np.random.default_rng(randbits(128))
     
@@ -223,6 +227,7 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2)):
 
             if(meets_wire_gen_criteria):
                 wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
+                wires_generated += 1
                 if(not atleast_one[g1]):
                     atleast_one[g1] = True
                     count_atleast_one += 1
@@ -230,8 +235,12 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2)):
                     atleast_one[g2] = True
                     count_atleast_one += 1
                 if(count_atleast_one == gate_freq):
-                    if(rng_break.random() < br_prob):
-                        break
+                    if(ensure_wire_freq_bool):
+                        if(len(wire_data) >= ensure_wire_freq):
+                            break
+                    else:
+                        if(rng_break.random() < br_prob):
+                            break
                     
     print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
@@ -271,13 +280,47 @@ def write_single_case(gate_freq,fpath,kw):
                 gate_pins[i].append((gw,pin_right[j]))
             file.write("\n")
         # print(gate_pins)
-        wire_data = generate_wires(gate_freq,gate_pins,left_edge,kw["br_prob"])
+        wire_data = generate_wires(gate_freq,gate_pins,left_edge,kw["br_prob"],kw["ensure_wire_freq_bool"],kw["ensure_wire_freq"])
         
         for wire in wire_data:
             file.write(wire + "\n")
             
         print(f"Total Pins Generated : {pins_gen}")
-      
+
+    return [gate_freq,pins_gen,len(wire_data)]
+    
+@ time_it_no_out
+def write_multi_case(kw,kw_multi):
+    """
+    Writes multiple test cases to a file using generate_dimensions, generate_pin_positions,
+    and generate_wires methods on input parameters.
+
+    Args:
+        gate_freq (int): The frequency of the gate.
+        tc_count (int): The number of test cases to generate.
+        fpath (str): The file path to write the test cases.
+        kw (dict): A dictionary containing the parameters for test case generation.
+
+    Returns:
+        None
+    """
+    if(kw_multi["force_different_wires"]):
+        with open(FP_MULTI_IN+f"\\Special_Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
+            file.write(f"Test Cases for {kw["gate_freq"]} frequency of Gates || Varying Wires\n")
+            tc_count = 0
+            for b in [-2,-3,-4,-5,-6]:
+                for a in [9,8,7,6,5,4,3,2,1]:
+                    kw["br_prob"] = a*(10**b)
+                    tc_count += 1
+                    tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],tc_count),kw,supress_time_out = True)
+                    file.write(f"Test Case {tc_count} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+    else:   
+        with open(FP_MULTI_IN+f"\\Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
+            file.write(f"Generating {kw_multi["tc_count"]} Test Cases for {kw["gate_freq"]} frequency of Gates\n")
+            for i in range(1,kw_multi["tc_count"]+1):
+                tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],i),kw,supress_time_out = True)
+                file.write(f"Test Case {i} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+                
 # ======================== Helper Functions for Simulated Annealing ============================= #        
 
 IT_BOUND = 10**6
@@ -293,6 +336,18 @@ def H_global_coord_pin(gate_ref,pin_index,old_coord, height):
     pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
     return old_coord[0] + pin_rel_x, old_coord[1] + height - pin_rel_y
 
+def select_perturb_freq(t):
+    if(t < 0.5): 
+        return IDEAL_PERT_ITER_HI
+    elif(t < 2):
+        return IDEAL_PERT_ITER_MED
+    elif(t <= 5):
+        return IDEAL_PERT_ITER_LO
+    else:
+        if(t<10):
+            return 2
+        else:
+            return 1
 @ time_it
 def pseudo_copy_gate_data(gate_data):
     bbox_width,bbox_height = gate_data.get_bbox()
@@ -301,18 +356,170 @@ def pseudo_copy_gate_data(gate_data):
     
     return bbox_width,bbox_height,wire_length,gate_packing_data
 
+# ======================== Helper Functions for Test Case Analysis ============================== #
 
+def visualize_test_case(fpath):
+    
+    # Initialize lists to store data
+    data = []
+
+    # Read the file and extract data
+    with open(fpath, "r") as file:
+        lines = file.readlines()
+        # print(lines)
+        for i in range(0,len(lines),5):
+            g_freq= int((lines[i+1].strip()).split()[-1])
+            w_freq  = int((lines[i+3].strip()).split()[-1])
+            r_time = float((lines[i+4].strip()).split()[-2])
+            data.append((w_freq,r_time))
+    data.sort(key=lambda x: x[0])
+    
+    num_wires = [x[0] for x in data][30:41]
+    runtimes = [x[1] for x in data][30:41]
+    
+    # Plot the data
+    print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(num_wires, runtimes, marker='o', linestyle='-', color='b')
+    plt.xlabel('Number of Wires in Netlist')
+    plt.ylabel('Runtime of one anneal_pack call (seconds)')
+    plt.title('Runtime vs Number of Wires - For 100 Gates')
+    plt.grid(True)
+    plt.show()
+
+def visualize_test_case_2(fpath):
+    data = []
+    with open(fpath,"r") as file:
+        lines = file.readlines()    
+        for i in range(0,len(lines)):
+            line_data = (lines[i].strip()).split()
+            data.append((int(line_data[-2]),int(line_data[-1])))
+    print(data)
+    
+    num_ITERATIONS = [x[0] for x in data]
+    System_Cost = [x[1] for x in data]
+    
+    # Plot the data
+    print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(num_ITERATIONS, System_Cost, marker='o', linestyle='-', color='b')
+    plt.xlabel('Number of Iterations ran inside a single anneal_pack call')
+    plt.ylabel('Wire Cost of the Packing')
+    plt.title('Evolution of Wire Cost by anneal_pack')
+    plt.grid(True)
+    plt.show()
+
+def visualize_test_case_3(fpath):
+    fpaths = [r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output1.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output2.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output3.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output4.txt"]
+    data = [list() for _ in range(5)]
+    
+    for j in [0,1,2,3,4]:
+        with open(fpaths[j],"r") as file:
+            lines = file.readlines()    
+            for i in range(0,len(lines)):
+                line_data = (lines[i].strip()).split()
+                data[j].append((int(line_data[-2]),int(line_data[-1])))
+
+    
+    n0, c0 = [x[0] for x in data[0]], [x[1] for x in data[0]]
+    n1, c1 = [x[0] for x in data[1]], [x[1] for x in data[1]]
+    n2, c2 = [x[0] for x in data[2]], [x[1] for x in data[3]]
+    n3, c3 = [x[0] for x in data[3]], [x[1] for x in data[3]]
+    n4, c4 = [x[0] for x in data[4]], [x[1] for x in data[4]]    
+    # Plot the data
+    print(data)
+    plt.figure(figsize=(10, 6))
+    
+    plt.plot(n0,c0, marker='o', linestyle='-', color='b',label="p = 2")
+    plt.plot(n1,c1, marker='o', linestyle='-', color='g',label="p = 4")    
+    plt.plot(n2,c2, marker='o', linestyle='-', color='r',label="p = 8")
+    # plt.plot(n3,c3, marker='o', linestyle='-', color='c')
+    plt.plot(n4,c4, marker='o', linestyle='-', color='m',label="p = 10")
+    
+    plt.xlabel('Number of Iterations ran inside a single anneal_pack call')
+    plt.ylabel('Wire Cost of the Packing')
+    plt.title('Evolution of Wire Cost by anneal_pack for different values of perturb_freq')
+    plt.legend(loc="lower left")
+    plt.grid(True)
+    plt.show()
+
+def visualize_test_case_4():
+    fpath = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output5.txt"
+    data = []
+    with open(fpath,"r") as file:
+        lines = file.readlines()    
+        for i in range(0,len(lines)):
+            line_data = (lines[i].strip()).split()
+            data.append((int(line_data[-2]),float(line_data[-1])))
+    print(data)
+    
+    xdata = [x[0] for x in data]
+    ydata = [x[1] for x in data]
+    
+    # Plot the data
+    print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(xdata, ydata, marker='o', linestyle='-', color='r')
+    plt.xlabel('Value of perturb_freq parameter for anneal_pack') 
+    plt.ylabel('Runtime of one anneal_pack call (seconds)')
+    plt.title('Evolution of Wire Cost by anneal_pack')
+    plt.grid(True)
+    plt.show()
+
+def visualize_test_case_5():
+    fpath = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Test_Cases\Analysis\Special_Report_Inverse.txt"
+    data = []
+    
+    with open(fpath,"r") as file:
+        lines = file.readlines()    
+        for i in range(0,len(lines)):
+            line_data = (lines[i].strip()).split()
+            data.append((int(line_data[-2]),float(line_data[-1])))
+    
+    print(data)
+    
+    xdata = [x[0] for x in data]
+    ydata = [x[1] for x in data]
+    
+    # Plot the data
+    # print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(xdata, ydata, marker='o', linestyle='-', color='b')
+    plt.xlabel('Frequency of Gates') 
+    plt.ylabel('Runtime of one anneal_pack call (seconds)')
+    plt.title('Variation of Runtime of one anneal_pack call - Fixed Number of Wires (1_00_000)')
+    plt.grid(True)
+    plt.show()
+    
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq":1000,
+          "gate_freq":15,
           "mode": "uniform",
-          "br_prob": 10**(-6),
+          "br_prob": 10**(-5),
           "dim_lo":1,
           "dim_hi":101,
           "pin_density":1.5,
-          "max_pin_freq":4,
+          "max_pin_freq":6,
           "override_specs":False,
-          "ensure_max_pins":False ### May cause 40_000 pins overflow for larger gate frequencies
+          "ensure_max_pins":False, ### May cause 40_000 pins overflow for larger gate frequencies
+          "ensure_wire_freq_bool": False,
+          "ensure_wire_freq": 1_00_000
           }
+    kw_multi =  {
+                   "tc_count" : 10,
+                   "force_different_wires" : False                
+                }
+    
     write_single_case(kw["gate_freq"],FP_SINGLE_IN,kw,supress_time_out=False)
+    # for gfreq in range(50,1001,50):
+    #     kw["gate_freq"] = gfreq
+    #     write_single_case(kw["gate_freq"],CUST_FP_PATH+f"\\tc_{gfreq}.txt",kw,supress_time_out=False)
+    # write_single_case(kw["gate_freq"],FP_SINGLE_IN,kw,supress_time_out=False)
+    # visualize_test_case_5()
     print("Done")
+    
+    

@@ -3,4 +3,3 @@ g2 1 1
 pins g1 0 1 
 pins g2 1 1
 wire g1.p1 g2.p1
-
