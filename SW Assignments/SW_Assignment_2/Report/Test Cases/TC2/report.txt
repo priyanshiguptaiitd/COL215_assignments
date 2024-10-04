@@ -1,0 +1,1 @@
+Gate Frequency : 50 || Pin Frequency : 3032 || Wire Frequency : 20000 || Connected Components : 230

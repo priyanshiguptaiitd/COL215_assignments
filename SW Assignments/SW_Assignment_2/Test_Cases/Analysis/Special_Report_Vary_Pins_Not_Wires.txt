@@ -1,0 +1,102 @@
+Done with test case 1
+No of Gates : 1000
+No of Pins : 3883
+No of Wires : 100000
+Total wire cost after annealing: 366978
+Total anneal routine Time: 3.322134 seconds
+Done with test case 2
+No of Gates : 1000
+No of Pins : 7382
+No of Wires : 100000
+Total wire cost after annealing: 767442
+Total anneal routine Time: 10.743479 seconds
+Done with test case 3
+No of Gates : 1000
+No of Pins : 10707
+No of Wires : 100000
+Total wire cost after annealing: 1216733
+Total anneal routine Time: 12.917754 seconds
+Done with test case 4
+No of Gates : 1000
+No of Pins : 13755
+No of Wires : 100000
+Total wire cost after annealing: 1585338
+Total anneal routine Time: 29.739969 seconds
+Done with test case 5
+No of Gates : 1000
+No of Pins : 16586
+No of Wires : 100000
+Total wire cost after annealing: 1984886
+Total anneal routine Time: 34.022982 seconds
+Done with test case 6
+No of Gates : 1000
+No of Pins : 19465
+No of Wires : 100000
+Total wire cost after annealing: 2233322
+Total anneal routine Time: 30.069652 seconds
+Done with test case 7
+No of Gates : 1000
+No of Pins : 21988
+No of Wires : 100000
+Total wire cost after annealing: 2559093
+Total anneal routine Time: 32.859742 seconds
+Done with test case 8
+No of Gates : 1000
+No of Pins : 23688
+No of Wires : 100000
+Total wire cost after annealing: 2758519
+Total anneal routine Time: 45.555801 seconds
+Done with test case 9
+No of Gates : 1000
+No of Pins : 26632
+No of Wires : 100000
+Total wire cost after annealing: 3284889
+Total anneal routine Time: 48.946293 seconds
+Done with test case 10
+No of Gates : 1000
+No of Pins : 27252
+No of Wires : 100000
+Total wire cost after annealing: 3028086
+Total anneal routine Time: 48.424241 seconds
+Done with test case 11
+No of Gates : 1000
+No of Pins : 30714
+No of Wires : 100000
+Total wire cost after annealing: 3796711
+Total anneal routine Time: 56.525630 seconds
+Done with test case 12
+No of Gates : 1000
+No of Pins : 33062
+No of Wires : 100000
+Total wire cost after annealing: 3667273
+Total anneal routine Time: 60.344857 seconds
+Done with test case 13
+No of Gates : 1000
+No of Pins : 33384
+No of Wires : 100000
+Total wire cost after annealing: 3832425
+Total anneal routine Time: 61.757075 seconds
+Done with test case 14
+No of Gates : 1000
+No of Pins : 34878
+No of Wires : 100000
+Total wire cost after annealing: 4088952
+Total anneal routine Time: 64.493137 seconds
+Done with test case 15
+No of Gates : 1000
+No of Pins : 36528
+No of Wires : 100000
+Total wire cost after annealing: 4158061
+Total anneal routine Time: 92.974493 seconds
+Done with test case 16
+No of Gates : 1000
+No of Pins : 36883
+No of Wires : 100000
+Total wire cost after annealing: 4319431
+Total anneal routine Time: 106.805534 seconds
+Done with test case 17
+No of Gates : 1000
+No of Pins : 38753
+No of Wires : 100000
+Total wire cost after annealing: 4442515
+Total anneal routine Time: 78.919314 seconds

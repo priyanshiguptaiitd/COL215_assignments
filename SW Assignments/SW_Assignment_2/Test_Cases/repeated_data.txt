@@ -1,0 +1,533 @@
+
+======================================================================================================
+
+Here I am testing the difference in time if we drop the moving logic for higher Pins
+and how it afffects packing time. The results are as follows:
+
+
+======================================= Test Case 1 ==================================================
+
+Total Gates Generated : 100
+Total Wires Generated : 94642
+Total Pins Generated : 5272
+Function 'write_single_case' executed in 3.5398s
+
+Gate Frequency : 100 || Pin Frequency : 5272 || Wire Frequency : 94642 || Connected Components : 331
+Wire Length of Initial Packing: 225460
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 133210
+Time of One Call : 5.180898 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 2
+Best Wire length: 133210 || Wire Length after Current Iteration: 125331
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 125331
+Total anneal_to_pack Time: 15.549768 seconds
+
+Gate Frequency : 100 || Pin Frequency : 5272 || Wire Frequency : 94642 || Connected Components : 331
+Wire Length of Initial Packing: 225460
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 137371
+Time of One Call : 2.545190 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 2
+Best Wire length: 137371 || Wire Length after Current Iteration: 130561
+Best Wire length: 130561 || Wire Length after Current Iteration: 132294
+Best Wire length: 130561 || Wire Length after Current Iteration: 133822
+Exiting Routine, Total Calls made to Annealing = 4
+Total wire cost after annealing: 130561
+Total anneal_to_pack Time: 17.656167 seconds
+
+======================================= Test Case 2 ==================================================
+
+Total Gates Generated : 200
+Total Wires Generated : 216259
+Total Pins Generated : 10386
+Function 'write_single_case' executed in 7.2486s
+
+Gate Frequency : 200 || Pin Frequency : 10386 || Wire Frequency : 216259 || Connected Components : 653
+Wire Length of Initial Packing: 609185
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 398692
+Time of One Call : 10.353696 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Best Wire length: 398692 || Wire Length after Current Iteration: 403082
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 398692
+Total anneal_to_pack Time: 20.537565 seconds
+
+Gate Frequency : 200 || Pin Frequency : 10386 || Wire Frequency : 216259 || Connected Components : 653
+Wire Length of Initial Packing: 609185
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 416430
+Time of One Call : 5.146433 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 2
+Best Wire length: 416430 || Wire Length after Current Iteration: 378242
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 378242
+Total anneal_to_pack Time: 15.509238 seconds
+
+======================================= Test Case 3 ==================================================
+
+Total Gates Generated : 300
+Total Wires Generated : 142434
+Total Pins Generated : 15300
+Function 'write_single_case' executed in 4.5360s
+
+Gate Frequency : 300 || Pin Frequency : 15300 || Wire Frequency : 142434 || Connected Components : 955
+Wire Length of Initial Packing: 1101007
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 750044
+Time of One Call : 16.370204 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Best Wire length: 750044 || Wire Length after Current Iteration: 783760
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 750044
+Total anneal_to_pack Time: 32.403312 seconds
+
+======================================= Test Case 4 ==================================================
+
+Total Gates Generated : 400
+Total Wires Generated : 187957
+Total Pins Generated : 20767
+Function 'write_single_case' executed in 6.5150s
+
+Gate Frequency : 400 || Pin Frequency : 20767 || Wire Frequency : 187957 || Connected Components : 1288
+Wire Length of Initial Packing: 1703879
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 1262585
+Time of One Call : 31.800236 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 1262585
+Total anneal_to_pack Time: 31.813739 seconds
+
+Gate Frequency : 400 || Pin Frequency : 20767 || Wire Frequency : 187957 || Connected Components : 1288
+Wire Length of Initial Packing: 1703879
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 1273197
+Time of One Call : 14.962068 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Best Wire length: 1273197 || Wire Length after Current Iteration: 1272099
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 1272099
+Total anneal_to_pack Time: 29.078915 seconds
+
+======================================= Test Case 5 ==================================================
+
+Total Gates Generated : 500
+Total Wires Generated : 204646
+Total Pins Generated : 26065
+Function 'write_single_case' executed in 6.9671s
+
+Gate Frequency : 500 || Pin Frequency : 26065 || Wire Frequency : 204646 || Connected Components : 1531
+Wire Length of Initial Packing: 2292542
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 1733616
+Time of One Call : 59.199782 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 1733616
+Total anneal_to_pack Time: 59.219877 seconds
+
+Gate Frequency : 500 || Pin Frequency : 26065 || Wire Frequency : 204646 || Connected Components : 1531
+Wire Length of Initial Packing: 2292542
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 1741943
+Time of One Call : 36.530525 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 1741943
+Total anneal_to_pack Time: 36.549577 seconds
+
+======================================= Test Case 6 ==================================================
+
+Total Gates Generated : 600
+Total Wires Generated : 251452
+Total Pins Generated : 29556
+Function 'write_single_case' executed in 14.0668s
+
+Gate Frequency : 600 || Pin Frequency : 29556 || Wire Frequency : 251452 || Connected Components : 1881
+Wire Length of Initial Packing: 3059355
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2335845
+Time of One Call : 82.388265 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2335845
+Total anneal_to_pack Time: 82.406817 seconds
+
+Gate Frequency : 600 || Pin Frequency : 29556 || Wire Frequency : 251452 || Connected Components : 1881
+Wire Length of Initial Packing: 3059355
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2360715
+Time of One Call : 36.768688 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2360715
+Total anneal_to_pack Time: 36.808775 seconds
+
+======================================= Test Case 7 ==================================================
+
+Total Gates Generated : 700
+Total Wires Generated : 302567
+Total Pins Generated : 32221
+Function 'write_single_case' executed in 11.0936s 
+
+Gate Frequency : 700 || Pin Frequency : 32221 || Wire Frequency : 302567 || Connected Components : 2120
+Wire Length of Initial Packing: 3711161
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2901742
+Time of One Call : 76.713420 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2901742
+Total anneal_to_pack Time: 76.740660 seconds
+
+Gate Frequency : 700 || Pin Frequency : 32221 || Wire Frequency : 302567 || Connected Components : 2120
+Wire Length of Initial Packing: 3711161
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2978416
+Time of One Call : 62.366028 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2978416
+Total anneal_to_pack Time: 62.400288 seconds
+
+======================================= Test Case 8 ==================================================
+
+Total Gates Generated : 800
+Total Wires Generated : 355211
+Total Pins Generated : 34139
+Function 'write_single_case' executed in 18.1697s
+
+Gate Frequency : 800 || Pin Frequency : 34139 || Wire Frequency : 355211 || Connected Components : 2311
+Wire Length of Initial Packing: 4487280
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3486429
+Time of One Call : 116.193082 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3486429
+Total anneal_to_pack Time: 116.232654 seconds
+
+Gate Frequency : 800 || Pin Frequency : 34139 || Wire Frequency : 355211 || Connected Components : 2311
+Wire Length of Initial Packing: 4487280
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3472855
+Time of One Call : 47.083520 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3472855
+Total anneal_to_pack Time: 47.123407 seconds
+
+======================================= Test Case 9 ==================================================
+
+Total Gates Generated : 900
+Total Wires Generated : 411116
+Total Pins Generated : 35469
+Function 'write_single_case' executed in 45.8992s
+
+Gate Frequency : 900 || Pin Frequency : 35469 || Wire Frequency : 411116 || Connected Components : 2389
+Wire Length of Initial Packing: 4795667
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3808336
+Time of One Call : 100.426445 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3808336
+Total anneal_to_pack Time: 100.465850 seconds
+
+Gate Frequency : 900 || Pin Frequency : 35469 || Wire Frequency : 411116 || Connected Components : 2389
+Wire Length of Initial Packing: 4795667
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3909514
+Time of One Call : 60.099833 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3909514
+Total anneal_to_pack Time: 60.137309 seconds
+
+======================================= Test Case 10 ==================================================
+
+Gate Frequency : 1000 || Pin Frequency : 38365 || Wire Frequency : 452111 || Connected Components : 2584
+Wire Length of Initial Packing: 5406698
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 4431972
+Time of One Call : 130.784275 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 4431972
+Total anneal_to_pack Time: 130.823531 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 38365 || Wire Frequency : 452111 || Connected Components : 2584
+Wire Length of Initial Packing: 5406698
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 4496950
+Time of One Call : 63.612356 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 4496950
+Total anneal_to_pack Time: 63.650489 seconds
+
+======================================================================================================
+
+The results show that the time taken to pack the circuit is significantly 
+reduced when we drop the moving logic for higher Pins so we might as well implement this change.
+
+======================================================================================================
+
+Now I will be testing for 1000 gates how it varies as a function of the number of pins and wires.
+
+======================================= Test Case 1 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 50000
+Total Pins Generated : 25001
+Function 'write_single_case' executed in 2.3474s
+
+Gate Frequency : 1000 || Pin Frequency : 25001 || Wire Frequency : 50000 || Connected Components : 1858
+Wire Length of Initial Packing: 3789879
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3022918
+Time of One Call : 61.402072 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3022918
+Total anneal_to_pack Time: 61.426601 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 25001 || Wire Frequency : 50000 || Connected Components : 1858
+Wire Length of Initial Packing: 3789879
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2943135
+Time of One Call : 25.635183 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2943135
+Total anneal_to_pack Time: 25.649114 seconds
+
+======================================= Test Case 2 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 50000
+Total Pins Generated : 30853
+Function 'write_single_case' executed in 2.0974s
+
+Gate Frequency : 1000 || Pin Frequency : 30853 || Wire Frequency : 50000 || Connected Components : 2679
+Wire Length of Initial Packing: 4672026
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3809288
+Time of One Call : 78.480659 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3809288
+Total anneal_to_pack Time: 78.515849 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 30853 || Wire Frequency : 50000 || Connected Components : 2679
+Wire Length of Initial Packing: 4672026
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3734130
+Time of One Call : 35.552260 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3734130
+Total anneal_to_pack Time: 35.583947 seconds
+
+======================================= Test Case 3 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 50000
+Total Pins Generated : 35678
+Function 'write_single_case' executed in 2.0590s
+
+Gate Frequency : 1000 || Pin Frequency : 35678 || Wire Frequency : 50000 || Connected Components : 4049
+Wire Length of Initial Packing: 5976666
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 5001950
+Time of One Call : 97.421055 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 5001950
+Total anneal_to_pack Time: 97.465763 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 35678 || Wire Frequency : 50000 || Connected Components : 4049
+Wire Length of Initial Packing: 5976666
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 4881075
+Time of One Call : 55.110336 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 4881075
+Total anneal_to_pack Time: 55.152645 seconds
+
+======================================= Test Case 4 ==================================================
+
+Total Wires Generated : 50000
+Total Pins Generated : 39860
+Function 'write_single_case' executed in 2.1610s
+
+Gate Frequency : 1000 || Pin Frequency : 39860 || Wire Frequency : 50000 || Connected Components : 5556
+Wire Length of Initial Packing: 7823139
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 6571631
+Time of One Call : 117.818464 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 6571631
+Total anneal_to_pack Time: 117.858493 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 39860 || Wire Frequency : 50000 || Connected Components : 5556
+Wire Length of Initial Packing: 7823139
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 6388365
+Time of One Call : 47.707616 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 6388365
+Total anneal_to_pack Time: 47.742059 seconds
+
+
+======================================================================================================
+
+As is visible from the results, the time taken to pack the circuit increases as the number of pins increases
+While keeping the number of wires constant
+
+Now I will try to fix pins and vary Wires
+======================================================================================================
+
+======================================= Test Case 1 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 50000
+Total Pins Generated : 25243
+Function 'write_single_case' executed in 1.6814s 
+
+Gate Frequency : 1000 || Pin Frequency : 25243 || Wire Frequency : 50000 || Connected Components : 2044
+Wire Length of Initial Packing: 4173717
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3322983
+Time of One Call : 71.079121 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3322983
+Total anneal_to_pack Time: 71.093216 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 25243 || Wire Frequency : 50000 || Connected Components : 2044
+Wire Length of Initial Packing: 4173717
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3324517
+Time of One Call : 28.936499 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3324517
+Total anneal_to_pack Time: 28.952613 seconds
+
+======================================= Test Case 2 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 100000
+Total Pins Generated : 25063
+Function 'write_single_case' executed in 3.3057s
+
+Gate Frequency : 1000 || Pin Frequency : 25063 || Wire Frequency : 100000 || Connected Components : 1728
+Wire Length of Initial Packing: 3632234
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2897784
+Time of One Call : 65.069626 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2897784
+Total anneal_to_pack Time: 65.088161 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 25063 || Wire Frequency : 100000 || Connected Components : 1728
+Wire Length of Initial Packing: 3632234
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 2841743
+Time of One Call : 29.687784 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 2841743
+Total anneal_to_pack Time: 29.700805 seconds
+
+======================================= Test Case 3 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 150000
+Total Pins Generated : 25390
+
+Gate Frequency : 1000 || Pin Frequency : 25390 || Wire Frequency : 150000 || Connected Components : 1864
+Wire Length of Initial Packing: 3971875
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3154352
+Time of One Call : 50.755414 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3154352
+Total anneal_to_pack Time: 50.773439 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 25390 || Wire Frequency : 150000 || Connected Components : 1864
+Wire Length of Initial Packing: 3971875
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3137358
+Time of One Call : 23.480682 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3137358
+Total anneal_to_pack Time: 23.507397 seconds
+
+======================================= Test Case 4 ==================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 200000
+Total Pins Generated : 25415
+Function 'write_single_case' executed in 7.5776s
+
+Gate Frequency : 1000 || Pin Frequency : 25415 || Wire Frequency : 200000 || Connected Components : 1866
+Wire Length of Initial Packing: 3933895
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3154115
+Time of One Call : 45.515250 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3154115
+Total anneal_to_pack Time: 45.530258 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 25415 || Wire Frequency : 200000 || Connected Components : 1866
+Wire Length of Initial Packing: 3933895
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3139020
+Time of One Call : 36.256259 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3139020
+Total anneal_to_pack Time: 36.272310 seconds
+
+======================================== Test Case 5 =================================================
+
+Total Gates Generated : 1000
+Total Wires Generated : 250000
+Total Pins Generated : 25370
+Function 'write_single_case' executed in 14.3871s
+
+Gate Frequency : 1000 || Pin Frequency : 25370 || Wire Frequency : 250000 || Connected Components : 1833
+Wire Length of Initial Packing: 3906580
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3098193
+Time of One Call : 47.697387 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3098193
+Total anneal_to_pack Time: 47.714900 seconds
+
+Gate Frequency : 1000 || Pin Frequency : 25370 || Wire Frequency : 250000 || Connected Components : 1833
+Wire Length of Initial Packing: 3906580
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 3067420
+Time of One Call : 35.777790 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 1
+Exiting Routine, Total Calls made to Annealing = 1
+Total wire cost after annealing: 3067420
+Total anneal_to_pack Time: 35.794308 seconds
+
+======================================================================================================
+
+As is visible from the results, the time taken to doesnt vary much as the number of wires increases
+Rather it seems to be a strong function of number of pins (Expected since we now only care about connected subcomponents)

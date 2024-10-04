@@ -1,0 +1,27 @@
+============================== Test Case 1 ==============================
+
+Gate Frequency : 1000 || Pin Frequency : 3886 || Wire Frequency : 25000 || Connected Components : 287
+Wire Length of Initial Packing: 603917
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 354708
+Time of One Call : 5.065250 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 2
+Best Wire length: 354708 || Wire Length after Current Iteration: 266687
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 266687
+Total anneal routine Time: 14.514258 seconds
+
+============================== Test Case 2 ==============================
+
+Gate Frequency : 1000 || Pin Frequency : 7507 || Wire Frequency : 50000 || Connected Components : 574
+Wire Length of Initial Packing: 1198757
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 834947
+Time of One Call : 9.841516 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 2
+Best Wire length: 834947 || Wire Length after Current Iteration: 698292
+Exiting Routine, Total Calls made to Annealing = 2
+Total wire cost after annealing: 698292
+Total anneal routine Time: 27.995608 seconds
+
+============================== Test Case 3 ==============================

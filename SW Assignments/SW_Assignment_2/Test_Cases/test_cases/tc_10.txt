@@ -27,6 +27,3 @@ wire g7.p1 g8.p1
 wire g8.p1 g9.p1 
 wire g9.p1 g10.p1
 wire g10.p1 g1.p1
-
-
-

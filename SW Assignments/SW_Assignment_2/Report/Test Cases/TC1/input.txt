@@ -1,0 +1,20 @@
+g1 1 1
+g2 2 2 
+g3 3 3
+g4 4 4 
+g5 5 5
+g6 6 6 
+g7 7 7
+pins g1 1 0
+pins g2 2 1
+pins g3 3 1
+pins g4 4 2 
+pins g5 5 2
+pins g6 6 3 
+pins g7 7 3
+wire g1.p1 g2.p1
+wire g2.p1 g3.p1
+wire g3.p1 g4.p1
+wire g4.p1 g5.p1
+wire g5.p1 g6.p1
+wire g7.p1 g1.p1

@@ -1,5 +1,3 @@
-import numpy as np
+import math as m
 
-rng = np.random.default_rng()
-for i in range(10):
-    print(rng.integers(1,10))
+print(m.log(10**-5,0.99))

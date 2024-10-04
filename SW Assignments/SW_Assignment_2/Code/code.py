@@ -3,7 +3,7 @@ from utils import *
 import sys
 
 # ============================ Helper Functions for I/O Parsing ================================= #
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(5*10**6)
 
 ''' READ ME Regarding Coordinate System Used -
     
@@ -88,33 +88,55 @@ def test_testcase_single(perturb_freq):
     
     with open(fpath,"w") as file:
         gd = Parse_Input(FP_SINGLE_IN)
-        sma = Simulated_Annealing(gd,10**(8),0.1)
-        anneal_data,vd = sma.anneal_to_pack(perturb_freq,True,False,True,supress_time_out = True)
-        for t in anneal_data:
-            file.write(f"Iteration & Cost : {t[0]} {t[1]}\n")
+        sma = Simulated_Annealing(gd,10**(5),0.1)
+        anneal_data,vd = sma.anneal_to_pack(perturb_freq,True,True,True,supress_time_out = False)
+        # for t in anneal_data:
+        #     file.write(f"Iteration & Cost : {t[0]} {t[1]}\n")
     print("Done with test case")
 
 @ time_it_no_out
 def test_testcase_multi():
-    with open(CUST_FP_PATH+f"\\Special_Report_Inverse.txt",'w') as file:
-        for gfreq in range(50,1001,50):
-            fpath = CUST_FP_PATH+f"\\tc_{gfreq}.txt"
-            gd = Parse_Input(fpath)
-            # print(len(gd.gates))
-            sma = Simulated_Annealing(gd,10**(8),0.1)
-            anneal_data,vd = sma.anneal_to_pack(4,True,False,True,supress_time_out = True)
-            file.write(f"Gate_Frequency & Runtime : {gfreq} {vd:.6f}\n")
-            print(f"Done with tc_{gfreq}")
-    print("Done with test case")
+    with open(CUST_FP_PATH+f"\\Special_Report_Vary_Pins_Not_Wires.txt",'w') as file:
+        for i in range(1,18):
+            gd = Parse_Input(FP_MULTI_CASES_IN(1000,i))
+            sma = Simulated_Annealing(gd,10**(5),0.1)
+            psd_gd,anneal_routine_time = sma.anneal_to_pack(1,True,False,True,supress_time_out = True)
+            print(f"Done with test case {i}")
+            file.write(f"Done with test case {i}\n")
+            file.write(f"No of Gates : {len(gd.gates)}\n")
+            file.write(f"No of Pins : {gd.total_pins_added}\n")
+            file.write(f"No of Wires : {gd.total_wires_added}\n")
+            file.write(f"Total wire cost after annealing: {sma.wire_cost}\n")
+            file.write(f"Total anneal routine Time: {anneal_routine_time:.6f} seconds\n")
+            Parse_Output(sma.gate_data,FP_MULTI_CASES_OUT(1000,i),is_pseudo_copy = False)
             
-
+@ time_it_no_out
+def test_testcase_multi_2():
+    with open(CUST_FP_PATH+f"\\Special_Report_Vary_Wires_Fix_Pins.txt", "w") as file:
+        for i in range(1,21):
+            gd = Parse_Input(FP_MULTI_CASES_IN(500,i))
+            sma = Simulated_Annealing(gd,10**(5),0.1)
+            psd_gd,anneal_routine_time = sma.anneal_to_pack(1,True,False,True,supress_time_out = True)
+            print(f"Done with test case {i}")
+            file.write(f"Done with test case {i}\n")
+            file.write(f"No of Gates : {len(gd.gates)}\n")
+            file.write(f"No of Pins : {gd.total_pins_added}\n")
+            file.write(f"No of Wires : {gd.total_wires_added}\n")
+            file.write(f"Total wire cost after annealing: {sma.wire_cost}\n")
+            file.write(f"Total anneal routine Time: {anneal_routine_time:.6f} seconds\n")
+            Parse_Output(sma.gate_data,FP_MULTI_CASES_OUT(500,i),is_pseudo_copy = False)
+        
 # ====================================== Main Function ========================================== #
+
+if(__name__ == "1__main__"):
+    test_testcase_multi_2(supress_time_out = True)
+    
 
 if(__name__ == "__main__"):
     # test_testcase_multi()
     # test_testcase_single(8,supress_time_out = True)
     gd = Parse_Input(FP_SINGLE_IN)
-    sma = Simulated_Annealing(gd,10**(8),0.1)
+    sma = Simulated_Annealing(gd,10**(5),0.1)
     # sma.gen_init_packing(supress_time_out = False)
     
     # sma.gate_data.find_connected_components()
@@ -123,7 +145,7 @@ if(__name__ == "__main__"):
     # for i in sma.gate_data.connected_components:
     #     print(i," : ",sma.gate_data.connected_components[i])
     
-    
+    # sma.perturb_packing_swap_v2(supress_time_out = True)
     
     # print(f"Total No. Of Connected Components : {len(sma.gate_data.connected_components)}")
     # for i in range(1,len(sma.gate_data.gates)+1):
@@ -132,7 +154,7 @@ if(__name__ == "__main__"):
 
     # psd_gd,anneal_routine_time = sma.anneal_to_pack(1,True,supress_time_out = True)
     print(f"Total wire cost after annealing: {sma.final_packed_data[2]}")
-    print(f"Total anneal_to_pack Time: {anneal_routine_time:.6f} seconds\n")
-    # Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)
+    print(f"Total anneal routine Time: {anneal_routine_time:.6f} seconds\n")
+    Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)
     
     # Parse_Output(sma.gate_data,FP_SINGLE_OUT,is_pseudo_copy = False)

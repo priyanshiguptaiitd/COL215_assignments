@@ -1,0 +1,11 @@
+Generating 10 Test Cases for 10 frequency of Gates
+Test Case 1 | No of Gates = 10 | No. of Pins = 448 | No. of Wires = 3116
+Test Case 2 | No of Gates = 10 | No. of Pins = 525 | No. of Wires = 414
+Test Case 3 | No of Gates = 10 | No. of Pins = 579 | No. of Wires = 2493
+Test Case 4 | No of Gates = 10 | No. of Pins = 521 | No. of Wires = 169
+Test Case 5 | No of Gates = 10 | No. of Pins = 399 | No. of Wires = 843
+Test Case 6 | No of Gates = 10 | No. of Pins = 480 | No. of Wires = 135
+Test Case 7 | No of Gates = 10 | No. of Pins = 558 | No. of Wires = 3865
+Test Case 8 | No of Gates = 10 | No. of Pins = 298 | No. of Wires = 106
+Test Case 9 | No of Gates = 10 | No. of Pins = 450 | No. of Wires = 1149
+Test Case 10 | No of Gates = 10 | No. of Pins = 552 | No. of Wires = 389

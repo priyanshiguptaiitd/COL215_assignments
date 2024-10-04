@@ -1,0 +1,1 @@
+Gate Frequency : 7 || Pin Frequency : 7 || Wire Frequency : 6 || Connected Components : 1

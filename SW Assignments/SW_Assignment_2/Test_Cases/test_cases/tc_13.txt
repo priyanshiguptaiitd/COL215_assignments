@@ -12,11 +12,11 @@ pins g4 4 2
 pins g5 5 2
 pins g6 6 3 
 pins g7 7 3
-wire g1.p1 g2.p2
-wire g2.p1 g3.p2
-wire g3.p1 g4.p2
-wire g4.p1 g5.p2
-wire g5.p1 g6.p2
-wire g7.p1 g1.p2
+wire g1.p1 g2.p1
+wire g2.p1 g3.p1
+wire g3.p1 g4.p1
+wire g4.p1 g5.p1
+wire g5.p1 g6.p1
+wire g7.p1 g1.p1
 
 

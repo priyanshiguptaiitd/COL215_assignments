@@ -1,0 +1,225 @@
+Test Case 1 :
+No. of Gates : 100
+No. of Pins : 5041
+No. of Wires : 175
+Runtime : 0.344034 seconds
+Test Case 2 :
+No. of Gates : 100
+No. of Pins : 5604
+No. of Wires : 252
+Runtime : 0.482488 seconds
+Test Case 3 :
+No. of Gates : 100
+No. of Pins : 5195
+No. of Wires : 289
+Runtime : 0.387437 seconds
+Test Case 4 :
+No. of Gates : 100
+No. of Pins : 5113
+No. of Wires : 324
+Runtime : 0.330155 seconds
+Test Case 5 :
+No. of Gates : 100
+No. of Pins : 5609
+No. of Wires : 278
+Runtime : 0.332406 seconds
+Test Case 6 :
+No. of Gates : 100
+No. of Pins : 4751
+No. of Wires : 278
+Runtime : 0.312068 seconds
+Test Case 7 :
+No. of Gates : 100
+No. of Pins : 4922
+No. of Wires : 205
+Runtime : 0.320073 seconds
+Test Case 8 :
+No. of Gates : 100
+No. of Pins : 4997
+No. of Wires : 252
+Runtime : 0.321367 seconds
+Test Case 9 :
+No. of Gates : 100
+No. of Pins : 5714
+No. of Wires : 768
+Runtime : 0.561665 seconds
+Test Case 10 :
+No. of Gates : 100
+No. of Pins : 5631
+No. of Wires : 323
+Runtime : 0.398237 seconds
+Test Case 11 :
+No. of Gates : 100
+No. of Pins : 4826
+No. of Wires : 460
+Runtime : 0.394659 seconds
+Test Case 12 :
+No. of Gates : 100
+No. of Pins : 5235
+No. of Wires : 299
+Runtime : 0.366239 seconds
+Test Case 13 :
+No. of Gates : 100
+No. of Pins : 4822
+No. of Wires : 268
+Runtime : 0.379926 seconds
+Test Case 14 :
+No. of Gates : 100
+No. of Pins : 5060
+No. of Wires : 466
+Runtime : 0.355259 seconds
+Test Case 15 :
+No. of Gates : 100
+No. of Pins : 5460
+No. of Wires : 225
+Runtime : 0.458640 seconds
+Test Case 16 :
+No. of Gates : 100
+No. of Pins : 5016
+No. of Wires : 380
+Runtime : 0.329634 seconds
+Test Case 17 :
+No. of Gates : 100
+No. of Pins : 5689
+No. of Wires : 428
+Runtime : 0.378865 seconds
+Test Case 18 :
+No. of Gates : 100
+No. of Pins : 5110
+No. of Wires : 1124
+Runtime : 0.435865 seconds
+Test Case 19 :
+No. of Gates : 100
+No. of Pins : 4703
+No. of Wires : 1016
+Runtime : 0.400107 seconds
+Test Case 20 :
+No. of Gates : 100
+No. of Pins : 4452
+No. of Wires : 319
+Runtime : 0.294521 seconds
+Test Case 21 :
+No. of Gates : 100
+No. of Pins : 4711
+No. of Wires : 503
+Runtime : 0.319954 seconds
+Test Case 22 :
+No. of Gates : 100
+No. of Pins : 5551
+No. of Wires : 1516
+Runtime : 0.476895 seconds
+Test Case 23 :
+No. of Gates : 100
+No. of Pins : 5187
+No. of Wires : 760
+Runtime : 0.386510 seconds
+Test Case 24 :
+No. of Gates : 100
+No. of Pins : 5381
+No. of Wires : 3301
+Runtime : 0.690022 seconds
+Test Case 25 :
+No. of Gates : 100
+No. of Pins : 4492
+No. of Wires : 12927
+Runtime : 1.569932 seconds
+Test Case 26 :
+No. of Gates : 100
+No. of Pins : 4925
+No. of Wires : 9915
+Runtime : 1.231317 seconds
+Test Case 27 :
+No. of Gates : 100
+No. of Pins : 5396
+No. of Wires : 14167
+Runtime : 1.794902 seconds
+Test Case 28 :
+No. of Gates : 100
+No. of Pins : 5151
+No. of Wires : 2210
+Runtime : 0.550572 seconds
+Test Case 29 :
+No. of Gates : 100
+No. of Pins : 4987
+No. of Wires : 2696
+Runtime : 0.532402 seconds
+Test Case 30 :
+No. of Gates : 100
+No. of Pins : 4443
+No. of Wires : 38840
+Runtime : 3.609923 seconds
+Test Case 31 :
+No. of Gates : 100
+No. of Pins : 4689
+No. of Wires : 3456
+Runtime : 0.600136 seconds
+Test Case 32 :
+No. of Gates : 100
+No. of Pins : 5134
+No. of Wires : 36548
+Runtime : 3.663439 seconds
+Test Case 33 :
+No. of Gates : 100
+No. of Pins : 4957
+No. of Wires : 9859
+Runtime : 1.320247 seconds
+Test Case 34 :
+No. of Gates : 100
+No. of Pins : 5794
+No. of Wires : 18791
+Runtime : 2.032927 seconds
+Test Case 35 :
+No. of Gates : 100
+No. of Pins : 5099
+No. of Wires : 119488
+Runtime : 14.478417 seconds
+Test Case 36 :
+No. of Gates : 100
+No. of Pins : 5760
+No. of Wires : 230893
+Runtime : 32.647541 seconds
+Test Case 37 :
+No. of Gates : 100
+No. of Pins : 5208
+No. of Wires : 33520
+Runtime : 3.314076 seconds
+Test Case 38 :
+No. of Gates : 100
+No. of Pins : 5326
+No. of Wires : 22379
+Runtime : 2.301871 seconds
+Test Case 39 :
+No. of Gates : 100
+No. of Pins : 5469
+No. of Wires : 25490
+Runtime : 2.862978 seconds
+Test Case 40 :
+No. of Gates : 100
+No. of Pins : 4946
+No. of Wires : 329891
+Runtime : 29.514454 seconds
+Test Case 41 :
+No. of Gates : 100
+No. of Pins : 6005
+No. of Wires : 74203
+Runtime : 7.644859 seconds
+Test Case 42 :
+No. of Gates : 100
+No. of Pins : 5007
+No. of Wires : 699984
+Runtime : 92.572670 seconds
+Test Case 43 :
+No. of Gates : 100
+No. of Pins : 5420
+No. of Wires : 11982
+Runtime : 2.519974 seconds
+Test Case 44 :
+No. of Gates : 100
+No. of Pins : 5322
+No. of Wires : 441303
+Runtime : 85.677866 seconds
+Test Case 45 :
+No. of Gates : 100
+No. of Pins : 5886
+No. of Wires : 1547803
+Runtime : 169.684585 seconds

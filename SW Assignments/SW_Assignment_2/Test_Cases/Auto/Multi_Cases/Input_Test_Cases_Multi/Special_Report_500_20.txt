@@ -1,0 +1,21 @@
+Test Cases for 500 frequency of Gates || Varying Pins || Fixing Wires
+Test Case 1 | No of Gates = 500 | No. of Pins = 12204 | No. of Wires = 10000
+Test Case 2 | No of Gates = 500 | No. of Pins = 12165 | No. of Wires = 20000
+Test Case 3 | No of Gates = 500 | No. of Pins = 12179 | No. of Wires = 30000
+Test Case 4 | No of Gates = 500 | No. of Pins = 11882 | No. of Wires = 40000
+Test Case 5 | No of Gates = 500 | No. of Pins = 11778 | No. of Wires = 50000
+Test Case 6 | No of Gates = 500 | No. of Pins = 12119 | No. of Wires = 60000
+Test Case 7 | No of Gates = 500 | No. of Pins = 11933 | No. of Wires = 70000
+Test Case 8 | No of Gates = 500 | No. of Pins = 12164 | No. of Wires = 80000
+Test Case 9 | No of Gates = 500 | No. of Pins = 12027 | No. of Wires = 90000
+Test Case 10 | No of Gates = 500 | No. of Pins = 12069 | No. of Wires = 100000
+Test Case 11 | No of Gates = 500 | No. of Pins = 12154 | No. of Wires = 110000
+Test Case 12 | No of Gates = 500 | No. of Pins = 12246 | No. of Wires = 120000
+Test Case 13 | No of Gates = 500 | No. of Pins = 12283 | No. of Wires = 130000
+Test Case 14 | No of Gates = 500 | No. of Pins = 11684 | No. of Wires = 140000
+Test Case 15 | No of Gates = 500 | No. of Pins = 11915 | No. of Wires = 150000
+Test Case 16 | No of Gates = 500 | No. of Pins = 11858 | No. of Wires = 160000
+Test Case 17 | No of Gates = 500 | No. of Pins = 11822 | No. of Wires = 170000
+Test Case 18 | No of Gates = 500 | No. of Pins = 11900 | No. of Wires = 180000
+Test Case 19 | No of Gates = 500 | No. of Pins = 11952 | No. of Wires = 190000
+Test Case 20 | No of Gates = 500 | No. of Pins = 11790 | No. of Wires = 200000

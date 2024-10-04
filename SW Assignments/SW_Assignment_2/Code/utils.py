@@ -314,6 +314,16 @@ def write_multi_case(kw,kw_multi):
                     tc_count += 1
                     tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],tc_count),kw,supress_time_out = True)
                     file.write(f"Test Case {tc_count} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+    elif(kw_multi["vary_pins"]):
+        with open(FP_MULTI_IN+f"\\Special_Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
+            file.write(f"Test Cases for {kw["gate_freq"]} frequency of Gates || Varying Pins || Fixing Wires\n")
+            tc_count = 0
+            for a in range(1,21):
+                kw["ensure_wire_freq"] = 10_000*a
+                tc_count += 1
+                tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],tc_count),kw,supress_time_out = True)
+                file.write(f"Test Case {tc_count} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+
     else:   
         with open(FP_MULTI_IN+f"\\Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
             file.write(f"Generating {kw_multi["tc_count"]} Test Cases for {kw["gate_freq"]} frequency of Gates\n")
@@ -400,7 +410,7 @@ def visualize_test_case_2(fpath):
     System_Cost = [x[1] for x in data]
     
     # Plot the data
-    print(data)
+    # print(data)
     plt.figure(figsize=(10, 6))
     plt.plot(num_ITERATIONS, System_Cost, marker='o', linestyle='-', color='b')
     plt.xlabel('Number of Iterations ran inside a single anneal_pack call')
@@ -409,12 +419,12 @@ def visualize_test_case_2(fpath):
     plt.grid(True)
     plt.show()
 
-def visualize_test_case_3(fpath):
-    fpaths = [r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output.txt",
-              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output1.txt",
-              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output2.txt",
-              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output3.txt",
-              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Code\output4.txt"]
+def visualize_test_case_3():
+    fpaths = [r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Report\Graphs\TC_Anneal_Pack\output.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Report\Graphs\TC_Anneal_Pack\output1.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Report\Graphs\TC_Anneal_Pack\output2.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Report\Graphs\TC_Anneal_Pack\output3.txt",
+              r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Report\Graphs\TC_Anneal_Pack\output4.txt"]
     data = [list() for _ in range(5)]
     
     for j in [0,1,2,3,4]:
@@ -434,11 +444,11 @@ def visualize_test_case_3(fpath):
     print(data)
     plt.figure(figsize=(10, 6))
     
-    plt.plot(n0,c0, marker='o', linestyle='-', color='b',label="p = 2")
-    plt.plot(n1,c1, marker='o', linestyle='-', color='g',label="p = 4")    
-    plt.plot(n2,c2, marker='o', linestyle='-', color='r',label="p = 8")
-    # plt.plot(n3,c3, marker='o', linestyle='-', color='c')
-    plt.plot(n4,c4, marker='o', linestyle='-', color='m',label="p = 10")
+    plt.plot(n0,c0, marker='o', linestyle='-', color='b',label="p = 1")
+    plt.plot(n1,c1, marker='o', linestyle='-', color='g',label="p = 2")    
+    plt.plot(n2,c2, marker='o', linestyle='-', color='r',label="p = 3")
+    # plt.plot(n3,c3, marker='o', linestyle='-', color='c',label="p = 4")
+    plt.plot(n4,c4, marker='o', linestyle='-', color='m',label="p = 5")
     
     plt.xlabel('Number of Iterations ran inside a single anneal_pack call')
     plt.ylabel('Wire Cost of the Packing')
@@ -455,13 +465,13 @@ def visualize_test_case_4():
         for i in range(0,len(lines)):
             line_data = (lines[i].strip()).split()
             data.append((int(line_data[-2]),float(line_data[-1])))
-    print(data)
+    # print(data)
     
     xdata = [x[0] for x in data]
     ydata = [x[1] for x in data]
     
     # Plot the data
-    print(data)
+    # print(data)
     plt.figure(figsize=(10, 6))
     plt.plot(xdata, ydata, marker='o', linestyle='-', color='r')
     plt.xlabel('Value of perturb_freq parameter for anneal_pack') 
@@ -494,32 +504,55 @@ def visualize_test_case_5():
     plt.title('Variation of Runtime of one anneal_pack call - Fixed Number of Wires (1_00_000)')
     plt.grid(True)
     plt.show()
+
+def visualize_test_case_6():
+    fpath = r"C:\Users\YASH\OneDrive\Desktop\IIT D\Sem 3\Courses\COL215\Practical Work\COL215_assignments\SW Assignments\SW_Assignment_2\Test_Cases\Analysis\Special_Report_Vary_Wires_Fix_Pins.txt"
+    data = []
+    
+    with open(fpath,"r") as file:
+        lines = file.readlines()    
+        for i in range(0,len(lines),6):
+            data.append((int(lines[i+3].strip().split()[-1]),float(lines[i+5].strip().split()[-2])))
+    
+    xdata = [x[0] for x in data][5::]
+    ydata = [x[1] for x in data][5::]
+          
+    plt.figure(figsize=(10, 6))
+    plt.ylim(0,20)
+    plt.plot(xdata, ydata, marker='o', linestyle='-', color='r')
+    plt.xlabel('Number of Wires in Netlist') 
+    plt.ylabel('Runtime of one anneal_pack call (seconds)')
+    plt.title('Variation of Runtime of one anneal_pack call - 500 Gates and Number of Pins ~ 12_000')
+    plt.grid(True)
+    plt.show()
     
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq": 1000,
+          "gate_freq": 10,
           "mode": "uniform",
-          "br_prob": 10**(-5),
+          "br_prob": 10**(-3),
           "dim_lo":1,
           "dim_hi":101,
-          "pin_density": 0.85,
+          "pin_density": 0.4,
           "max_pin_freq":6,
-          "override_specs":False,
-          "ensure_max_pins":False, ### May cause 40_000 pins overflow for larger gate frequencies
-          "ensure_wire_freq_bool": True,
-          "ensure_wire_freq": 2_00_000
+          "override_specs":True,
+          "ensure_max_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
+          "ensure_wire_freq_bool": False,
+          "ensure_wire_freq": 20_000
           }
     kw_multi =  {
                    "tc_count" : 10,
-                   "force_different_wires" : False                
+                   "force_different_wires" : False,
+                   "vary_pins" : True                
                 }
     
     write_single_case(kw["gate_freq"],FP_SINGLE_IN,kw,supress_time_out=False)
+    # write_multi_case(kw,kw_multi,supress_time_out=False)
     # for gfreq in range(50,1001,50):
     #     kw["gate_freq"] = gfreq
     #     write_single_case(kw["gate_freq"],CUST_FP_PATH+f"\\tc_{gfreq}.txt",kw,supress_time_out=False)
     # write_single_case(kw["gate_freq"],FP_SINGLE_IN,kw,supress_time_out=False)
-    # visualize_test_case_5()
+    # visualize_test_case_6()
     print("Done")
     
     

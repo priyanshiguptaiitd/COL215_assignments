@@ -1,0 +1,13 @@
+Evolution of Wire Cost - 
+
+Total Gates Generated : 500
+Total Wires Generated : 250000
+Total Pins Generated : 24527
+Function 'write_single_case' executed in 11.7533s
+
+Multiple perturb frequency - 
+
+Total Gates Generated : 100
+Total Wires Generated : 100000
+Total Pins Generated : 5411
+Function 'write_single_case' executed in 5.4660s
