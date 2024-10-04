@@ -39,6 +39,7 @@ def Parse_Input(fpath):
                 gate_data.add_wire(g_i,p_i,g_j,p_j)
     gate_data.set_gate_env()            
     gate_data.find_connected_components()
+    gate_data.find_pin_comps()
     return gate_data
 
 def Parse_Output(gate_data ,fpath, is_pseudo_copy = False):
@@ -47,7 +48,7 @@ def Parse_Output(gate_data ,fpath, is_pseudo_copy = False):
         with open(fpath,'w') as file:
             file.write(f"bounding_box {bounding_box_x} {bounding_box_y} \n")
             for i in range(1,len(gate_data.gates)+1):
-                gate_index,gate_x,gate_y = gate_data.gates[i].get_gate_tup()
+                gate_index,gate_x,gate_y = gate_data.gates[i].get_gate_tup_og()
                 file.write(f"g{gate_index} {gate_x} {gate_y} \n")
             file.write(f"wire_length {gate_data.wire_length}")
     else:
@@ -137,24 +138,21 @@ if(__name__ == "__main__"):
     # test_testcase_single(8,supress_time_out = True)
     gd = Parse_Input(FP_SINGLE_IN)
     sma = Simulated_Annealing(gd,10**(5),0.1)
-    # sma.gen_init_packing(supress_time_out = False)
-    
-    # sma.gate_data.find_connected_components()
-    # for i in range(1,len(sma.gate_data.gates)+1):
-    #     print(gd.gates[i])
-    # for i in sma.gate_data.connected_components:
-    #     print(i," : ",sma.gate_data.connected_components[i])
-    
-    # sma.perturb_packing_swap_v2(supress_time_out = True)
-    
+    # sma.gen_init_packing(supress_time_out = True)
+    # v1,t1 = sma.wire_cost_function_piazza(supress_time_out = True)
+    # sma.update_wire_cost(v1)
+    # print(f"Initial wire cost before annealing (Piazza Heuristic): {sma.wire_cost}\n")
+    # sma.gen_init_packing(supress_time_out = True)
     # print(f"Total No. Of Connected Components : {len(sma.gate_data.connected_components)}")
     # for i in range(1,len(sma.gate_data.gates)+1):
     #     print(sma.gate_data.gates[i].affected_connected_components)
     psd_gd,anneal_routine_time = sma.anneal_routine(False,supress_time_out = True)
 
-    # psd_gd,anneal_routine_time = sma.anneal_to_pack(1,True,supress_time_out = True)
-    print(f"Total wire cost after annealing: {sma.final_packed_data[2]}")
+    # psd_gd,anneal_routine_time = sma.anneal_to_pack(1,True,False,True,supress_time_out = True)
+    # v1,t1 = sma.wire_cost_function_piazza(supress_time_out = True)
+    # sma.update_wire_cost(v1)
+    print(f"Total wire cost after annealing (Piazza Heuristic): {sma.wire_cost}\n")
     print(f"Total anneal routine Time: {anneal_routine_time:.6f} seconds\n")
-    Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)
+    # Parse_Output(sma.final_packed_data,FP_SINGLE_OUT,is_pseudo_copy = True)
     
-    # Parse_Output(sma.gate_data,FP_SINGLE_OUT,is_pseudo_copy = False)
+    Parse_Output(sma.gate_data,FP_SINGLE_OUT,is_pseudo_copy = False)

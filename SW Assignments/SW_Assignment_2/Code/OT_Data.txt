@@ -1,0 +1,27 @@
+Gate Frequency : 25 || Pin Frequency : 59 || Wire Frequency : 25 || Pin Components : 41
+Wire Length of Initial Packing (Our Heuristic): 254
+Wire Length of Initial Packing (Piazza Heuristic): 390
+Calling one Annealing Iteration with perturb_freq_per_iter = 1
+Wire Length after First Trial Packing: 74
+Time of One Call : 0.082874 seconds, Determining optimal parameters for future calls
+Calling Annealing with perturb_freq_per_iter = 6
+Best Wire length (Our Heuristic): 74 || Wire Length after Current Iteration (Our Heuristic): 52
+Best Wire length (Our Heuristic): 52 || Wire Length after Current Iteration (Our Heuristic): 38
+Best Wire length (Our Heuristic): 38 || Wire Length after Current Iteration (Our Heuristic): 60
+Best Wire length (Our Heuristic): 38 || Wire Length after Current Iteration (Our Heuristic): 65
+Best Wire length (Our Heuristic): 38 || Wire Length after Current Iteration (Our Heuristic): 53
+...
+...
+Intermediate Iterations
+...
+...
+Best Wire length (Our Heuristic): 37 || Wire Length after Current Iteration (Our Heuristic): 46
+Best Wire length (Our Heuristic): 37 || Wire Length after Current Iteration (Our Heuristic): 42
+Best Wire length (Our Heuristic): 37 || Wire Length after Current Iteration (Our Heuristic): 41
+Best Wire length (Our Heuristic): 37 || Wire Length after Current Iteration (Our Heuristic): 62
+
+
+Exiting Routine, Total Calls made to Annealing = 31
+Total wire cost after annealing (Piazza Heuristic): 102
+
+Total anneal routine Time: 13.787231 seconds

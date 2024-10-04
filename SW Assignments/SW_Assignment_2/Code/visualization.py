@@ -214,7 +214,7 @@ class draw_gate_packing(Tk):
                         break
 
                 self.create_rectangle(x1, y1, x2, y2, outline="black", fill=color, width=1, alpha=0.5)
-                self.canvas.create_text(x1 + (x2 - x1) / 2, y1 + (y2 - y1) / 2, font=("Arial", grid_size), text=g)
+                self.canvas.create_text(x1 + (x2 - x1) / 2, y1 + (y2 - y1) / 2, font=("Arial", int(0.5*grid_size)), text=g)
 
                 # Add current gate rectangle to list
                 gates_rects.append(current_rect)
@@ -222,6 +222,7 @@ class draw_gate_packing(Tk):
                 # Draw the pins for this gate
                 if g in pin_data:
                     for pin in pin_data[g]:
+                        # print(pin)
                         px = x1+ self.scale * pin[0]
                         py = y2- self.scale * pin[1]
                         self.canvas.create_oval(px - 5, py - 5, px + 5, py + 5, fill="black")  # Draw bold pin point

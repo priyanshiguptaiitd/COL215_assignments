@@ -99,8 +99,11 @@ class Gate_Env():
         pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
         return self.x + pin_rel_x, self.y + pin_rel_y
     
-    def get_gate_tup(self):
+    def get_gate_tup_og(self):
         return self.gate_index,self.x,self.y
+    
+    def get_gate_tup(self):
+        return self.gate_index,self.envelope_x,self.envelope_y,self.x_relative_env,self.y_relative_env
     
     def __str__(self):
         base_s = f"Gate No = {self.gate_index} || Gate_x = {self.x} || Gate_y = {self.y}"
@@ -238,6 +241,9 @@ class Gate_Data():
         self.connected_components = {}  # New attribute to store connected components
         self.connected_components_data = {}  # New attribute to store connected components data
         
+        self.pins_comp = {}
+        self.pins_comp_data = {}
+        
     def add_gate(self,gate_index,width,height):
         self.gates[gate_index] = Gate_Env(gate_index,width,height)
         self.max_width = self.max_width if(self.max_width > width) else width
@@ -262,13 +268,17 @@ class Gate_Data():
         else:
             self.wires[(g_i,p_i)].append((g_j,p_j))
         
-        if((g_j,p_j) not in self.wires):
-            self.wires[(g_j,p_j)] = [(g_i,p_i)]
-        else:
-            self.wires[(g_j,p_j)].append((g_i,p_i))
+        # if((g_j,p_j) not in self.wires):
+        #     self.wires[(g_j,p_j)] = [(g_i,p_i)]
+        # else:
+        #     self.wires[(g_j,p_j)].append((g_i,p_i))
         self.total_wires_added += 1
         # print(self.wires)
     
+    def find_pin_comps(self):
+        
+        self.pins_comp = {t:self.wires[t] for t in self.wires}
+
     def find_connected_components(self):
         ''' Finds and assigns connected components to each pin using DFS, and stores them. '''
         
@@ -411,7 +421,6 @@ class Simulated_Annealing():
         self.min_temp = min_temp
         self.wire_cost = None
         self.initial_wire_cost = None
-    
     # =============================== Acceptance and Reset Temp Functionality ======    ============================ #
     
     def reset_temp(self):
@@ -448,6 +457,23 @@ class Simulated_Annealing():
             total_wire_length += wire_length_connected_component
             
         return total_wire_length
+    
+    @ time_it_no_out
+    def wire_cost_function_piazza(self):
+        total_wire_length = 0
+        for i in self.gate_data.gates:
+            for j in self.gate_data.gates[i].pins:
+                if (i,j) in self.gate_data.wires:
+                    x_min,y_min = self.gate_data.gates[i].get_global_coord_pin(j)
+                    x_max,y_max = x_min,y_min
+                    for (g_i,p_i) in self.gate_data.wires[(i,j)]: 
+                        x_i,y_i = self.gate_data.gates[g_i].get_global_coord_pin(p_i)
+                        x_min,y_min = x_min if (x_min <= x_i) else x_i, y_min if (y_min <= y_i) else y_i
+                        x_max,y_max = x_max if (x_max >= x_i) else x_i, y_max if (y_max >= y_i) else y_i
+                    self.gate_data.pins_comp_data[(i,j)] = [x_min,y_min,x_max,y_max,(x_max-x_min)+(y_max-y_min)]
+                    total_wire_length += (x_max - x_min) + (y_max - y_min)
+        
+        return total_wire_length    
     
     @ time_it_no_out
     def cost_delta_function(self,g1,g2):
@@ -572,8 +598,6 @@ class Simulated_Annealing():
         
         # for gd in self.gate_data.gates:
         #     print(self.gate_data.gates[gd])
-        
-        
         # print(g1_ref)
         # print(g2_ref)
         old_wire_cost = self.wire_cost
@@ -600,9 +624,57 @@ class Simulated_Annealing():
             
             return
             # print(f"Rejecting Config")        
-    
+
     @ time_it_no_out
     def perturb_packing_move(self):
+        
+        random.seed(random_seed_128())
+        
+        g = random.randint(1,len(self.gate_data.gates))
+        
+        random.seed(random_seed_128())  
+        
+        gate_ref = self.gate_data.gates[g]
+        gate_old_x,gate_old_y,gate_old_delta_x,gate_old_delta_y =  gate_ref.x, gate_ref.y, gate_ref.x-gate_ref.envelope_x,  gate_ref.y-gate_ref.envelope_y
+        gdx_max = gate_ref.envelope_width - gate_ref.width
+        gdy_max = gate_ref.envelope_height - gate_ref.height
+        
+        possible_pos = [(0,0),(gdx_max//2,0),(gdx_max,0),
+                        (0,gdy_max//2),(gdx_max,gdy_max//2),
+                        (0,gdy_max),(gdx_max//2,gdy_max),(gdx_max,gdy_max)
+                        ]
+                        
+        choice_delta = random.choice(possible_pos)
+        
+        gate_ref.set_coord_rel_env(random.randint(0,gdx_max),random.randint(0,gdy_max)) 
+        # gate_ref.set_coord_rel_env(choice_delta[0],choice_delta[1])
+        
+        old_coord = (gate_old_x,gate_old_y)
+        
+        old_wire_cost = self.wire_cost
+        
+        old_wire_cost = self.wire_cost
+        
+        v,rt = self.wire_cost_function(supress_time_out = True)
+        new_wire_cost= v
+        
+        if(self.acceptance_probability(old_wire_cost,new_wire_cost)):
+            self.update_wire_cost(new_wire_cost)
+            # print(f"Accepting Config : Old Cost {old_wire_cost} ---> New Cost {new_wire_cost}")
+            return
+        else:
+            self.update_wire_cost(old_wire_cost)
+            gate_ref.set_coord_rel_env(gate_old_delta_x,gate_old_delta_y)
+            
+            # for c in connected_comps_old_data:
+            #     self.gate_data.connected_components_data[c] = connected_comps_old_data[c]
+            
+            # self.gate_data.connected_components_data.update(connected_comps_old_data)
+            
+            return
+    
+    @ time_it_no_out
+    def perturb_packing_move_v2(self):
         # Randomly select a gate and move it within the bounding box to a new position (Preferably near boundary of an envelope)
         # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
         # If the move is accepted, update the wire length and repeat
@@ -672,7 +744,7 @@ class Simulated_Annealing():
             for _ in range(perturb_freq_per_iter):
                 self.perturb_packing_swap_v2(supress_time_out=True)
                 if(do_move):
-                    self.perturb_packing_move(supress_time_out=True)
+                    self.perturb_packing_move_v2(supress_time_out=True)
                     pass
             self.temp *= cooling_rate(self.temp)
             it_er += 1
@@ -697,14 +769,20 @@ class Simulated_Annealing():
         '''
         
         gate_freq,pin_freq,wire_freq = len(self.gate_data.gates),self.gate_data.total_pins_added,self.gate_data.total_wires_added
-        print(f"\nGate Frequency : {gate_freq} || Pin Frequency : {pin_freq} || Wire Frequency : {wire_freq} || Connected Components : {len(self.gate_data.connected_components)}")
+        print(f"\nGate Frequency : {gate_freq} || Pin Frequency : {pin_freq} || Wire Frequency : {wire_freq} || Pin Components : {len(self.gate_data.connected_components)}")
         est_runtime = 0
         res_timeit_no_out,t_func_call = self.gen_init_packing(supress_time_out=True)
         est_runtime += t_func_call
-        print(f"Wire Length of Initial Packing: {self.initial_wire_cost}")
+        print(f"Wire Length of Initial Packing (Our Heuristic): {self.initial_wire_cost}")
+        ac_wc,rut = self.wire_cost_function_piazza(supress_time_out=True)
+        est_runtime += rut
+        print(f"Wire Length of Initial Packing (Piazza Heuristic): {ac_wc}")
         print(f"Calling one Annealing Iteration with perturb_freq_per_iter = {1}")
         do_we_move = True if(pin_freq < 20_000) else False
         res_timeit_no_out,time_of_one_call = self.anneal_to_pack(1,False,do_we_move,supress_time_out = True)
+        
+        # wc,tr = self.wire_cost_function_piazza(supress_time_out=False)
+        # self.update_wire_cost(wc)
         est_runtime += time_of_one_call
         self.final_packed_data,var_useless = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
         self.reset_temp()
@@ -719,11 +797,13 @@ class Simulated_Annealing():
         while(est_runtime <= TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
             res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq,False,do_we_move,supress_time_out = True)
             call_count += 1
-            print(f"Best Wire length: {old_wire_cost} || Wire Length after Current Iteration: {self.wire_cost}")
+            print(f"Best Wire length (Our Heuristic): {old_wire_cost} || Wire Length after Current Iteration (Our Heuristic): {self.wire_cost}")
             self.reset_temp()
             est_runtime += time_of_one_call
             if(old_wire_cost > self.wire_cost):
                 # print("Old Wire Cost is more than current wire cost, updating wire costs !!")
+                # wc,tr = self.wire_cost_function_piazza(supress_time_out=False)
+                # self.update_wire_cost(wc)
                 self.final_packed_data,var_t = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
                 old_wire_cost = self.final_packed_data[2]
                 est_runtime += time_of_one_call + var_t
@@ -733,9 +813,18 @@ class Simulated_Annealing():
                     break
                 else:
                     max_no_change += 1
+                    
+        # Updating Global Data to reflect the best packing
+        self.gate_data.set_bbox(self.final_packed_data[0],self.final_packed_data[1])
+        for gate_data_up in self.final_packed_data[3]:
+            self.gate_data.gates[gate_data_up[0]].set_coord_env(gate_data_up[1],gate_data_up[2])
+            self.gate_data.gates[gate_data_up[0]].set_coord_rel_env(gate_data_up[3],gate_data_up[4]) 
         
+        v,rt = self.wire_cost_function_piazza(supress_time_out = True)
+        self.update_wire_cost(v)
+        # Calculating Wire Cost in their manner
         print(f"Exiting Routine, Total Calls made to Annealing = {call_count}")
         
-        return self.final_packed_data
+        # return self.final_packed_data
     
     

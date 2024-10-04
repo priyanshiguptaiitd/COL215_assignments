@@ -528,17 +528,17 @@ def visualize_test_case_6():
     
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq": 10,
+          "gate_freq": 100,
           "mode": "uniform",
           "br_prob": 10**(-3),
           "dim_lo":1,
           "dim_hi":101,
-          "pin_density": 0.4,
+          "pin_density": 1.5,
           "max_pin_freq":6,
-          "override_specs":True,
+          "override_specs":False,
           "ensure_max_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
           "ensure_wire_freq_bool": False,
-          "ensure_wire_freq": 20_000
+          "ensure_wire_freq": 2_10_000
           }
     kw_multi =  {
                    "tc_count" : 10,
