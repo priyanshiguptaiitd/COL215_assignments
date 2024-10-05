@@ -18,5 +18,3 @@ wire g3.p1 g4.p1
 wire g4.p1 g5.p1
 wire g5.p1 g6.p1
 wire g7.p1 g1.p1
-
-

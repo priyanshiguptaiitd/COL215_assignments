@@ -1,5 +1,0 @@
-Perturb_Freq and Time : 1 5.6116 
-Perturb_Freq and Time : 2 14.9113
-Perturb_Freq and Time : 3 26.5726
-Perturb_Freq and Time : 4 31.1704
-Perturb_Freq and Time : 5 40.4553
