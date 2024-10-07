@@ -2,26 +2,7 @@ from typing import Any
 from utils import * 
 
 # ========================================== OOP's Helper Functions ========================================== #
-'''
 
-Last Updated : 07/08/2024 , 06:12:54 PM IST , Yash Rawat
-
-===============================================================================================================================
-
-Pending Tasks :
-
-===============================================================================================================================
-
-TODO  - If you get time apart from attending the third best cultural fest of South Delhi,
-       Then readup on the implementation details of the OOP's and the helper functions used in the code
-
-TODO - PS : Could you extensively testing the Hashed Heap Implementation : (O(log(n))) deletion time in general at any index
-            Just do this much please 
-
-TODO - Baaki Courses ki Paddhai lol !!
-
-===============================================================================================================================
-'''
 class Heap:
     '''
     Class to implement a heap with general comparison function
@@ -186,7 +167,7 @@ class Gate_Env:
     def get_global_coord_pin(self,pin_index):
         
         pin_ref = self.pins[pin_index]
-        pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
+        pin_rel_x, pin_rel_y = pin_ref.pin_x, pin_ref.pin_y
         return (self.x + pin_rel_x, self.y + pin_rel_y)
     
     def get_gate_tup(self,mode="parse"):
@@ -202,7 +183,8 @@ class Gate_Env:
     def __str__(self):
         
         basic_data = f"Gate : {self.index} , Pos_X : {self.x} ,Pos_Y {self.y} , Width : {self.width} ,Height : {self.height}"
-        return basic_data
+        pin_data = [f"Pin : {pin_index} || Parent_Gate : {self.index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.pins]
+        return basic_data + "\n" + "\n".join(pin_data)
     
 class Pin:
     
@@ -214,16 +196,7 @@ class Pin:
         self.pin_x, self.pin_y = pin_x, pin_y
         self.connected_pins_to = def_dict(list)
         self.connected_pins_from = def_dict(list)
-        self.connected_pins_to[gate_index] = [pin_index]
-        
-    def connected(self,mode,gate_index,pin_index):
-        
-        assert mode in ["to","from"], Exception("Invalid Mode : Must be 'to' or 'from'")
-        
-        if(mode == "to"):
-            self.connected_pins_to[gate_index].append(pin_index)
-        elif(mode == "from"):
-            self.connected_pins_from[gate_index].append(pin_index)
+        self.connected_pins_to[gate_index] = [self]
     
     def get_global_coord(self):
         return self.parent_ref.get_global_coord_pin(self.index)
@@ -248,10 +221,10 @@ class Wire_Group:
     def __init__(self,gate_index,pin_index,connected_pins_to) -> None:
         self.key = (gate_index,pin_index)
         self.member_count = len(connected_pins_to)
-        self.xmin = Heap(comparator_func_pins,"min_x",connected_pins_to)
-        self.ymin = Heap(comparator_func_pins,"min_y",connected_pins_to)
-        self.xmax = Heap(comparator_func_pins,"max_x",connected_pins_to)
-        self.ymax = Heap(comparator_func_pins,"max_y",connected_pins_to)
+        self.xmin = Heap(comparator_func_pins,"min_x",connected_pins_to[::])
+        self.ymin = Heap(comparator_func_pins,"min_y",connected_pins_to[::])
+        self.xmax = Heap(comparator_func_pins,"max_x",connected_pins_to[::])
+        self.ymax = Heap(comparator_func_pins,"max_y",connected_pins_to[::])
         self.wire_group_length = None
     
     def adjust_wire_group(self,affected_con_pins):
@@ -272,13 +245,14 @@ class Wire_Group:
         return self.wire_group_length 
     
     def __str__(self):
-        return f"Wire_Group : {self.key} || X_min : {self.xmin} || Y_min : {self.ymin} || X_max : {self.xmax} || Y_max : {self.ymax}"
-
+        return f"Wire_Group : {self.key} || X_min : {self.xmin.top().get_global_coord()[0]} || Y_min : {self.ymin.top().get_global_coord()[1]} || X_max : {self.xmax.top().get_global_coord()[0]} || Y_max : {self.ymax.top().get_global_coord()[1]}\nWire_Legth : {self.wire_group_length} || Members : {self.member_count}"
+    
 class Gate_Data:
     
     def __init__(self):
         
-        self.gates = def_dict() 
+        self.gates = def_dict()
+        self.wire_origins = def_dict() 
         self.wire_groups = def_dict()  
         
         self.total_wires_added = 0
@@ -303,10 +277,6 @@ class Gate_Data:
         self.gates[gate_index] = Gate_Env(gate_index,gate_width,gate_height,gate_delay)
         self.max_width = self.max_width if(self.max_width > gate_width) else gate_width
         self.max_height = self.max_height if(self.max_height > gate_height) else gate_height
-     
-    def set_gate_env(self):
-        for i in self.gates:
-            self.gates[i].set_env(self.max_width,self.max_height)
         
     def get_gate(self,gate_index):
         return self.gates[gate_index]
@@ -320,21 +290,42 @@ class Gate_Data:
     
     def add_wire(self,g_i,p_i,g_j,p_j):
         p_i_ref,p_j_ref = self.gates[g_i].pins[p_i],self.gates[g_j].pins[p_j]
-        p_i_ref.connected("to",g_j,p_j)
-        p_j_ref.connected("from",g_i,p_i)
+        p_i_ref.connected_pins_to[g_j].append(self.gates[g_j].pins[p_j])
+        p_j_ref.connected_pins_from[g_i].append(self.gates[g_i].pins[p_i])
+        self.wire_origins[(g_i,p_i)] = True
         self.total_wires_added += 1
-        
-    def init_wire_groups(self):
-        for gate_index in self.gates:
-            gate_ref = self.gates[gate_index]
-            for pin_index in gate_ref.pins:
-                pin_ref = gate_ref.pins[pin_index]
-                temp_con_pins_to_pinref = []
+    
+    def init_packing(self):
+        gate_frequency = len(self.gates)
+        bb_dim,bb_cell_w,bb_cell_h = ceil(sqrt(gate_frequency)), self.max_width, self.max_height                
+        for i in range(1,len(self.gates)+1):
+            if(i%bb_dim==0):
+                self.gates[i].set_coord_env(((i-1)%bb_dim)*bb_cell_w,(i//bb_dim-1)*bb_cell_h)
+                self.gates[i].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[i].width)//2,(bb_cell_h-self.gates[i].height)//2)
+            else:
+                self.gates[i].set_coord_env(((i-1)%bb_dim)*bb_cell_w,(i//bb_dim)*bb_cell_h)
+                self.gates[i].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[i].width)//2,(bb_cell_h-self.gates[i].height)//2)
+      
+    def init_wire_groups(self):        
+        for gate_index,pin_index in self.wire_origins:               
+                pin_ref = self.gates[gate_index].pins[pin_index]
+                pin_ref_pin_obj = []                
                 for g_ind_to in pin_ref.connected_pins_to:
-                    for p_ind_to in pin_ref.connected_pins_to[g_ind_to]:
-                        temp_con_pins_to_pinref.append(self.gates[g_ind_to].pins[p_ind_to])            
-                self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,temp_con_pins_to_pinref)
-                 
+                    pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                            
+                self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,pin_ref_pin_obj)
+                self.wire_groups[(gate_index,pin_index)].set_bbox_wg()
+    
+    def __str__(self):
+        basic_data =  f"Total Gates : {len(self.gates)} || Total Pins : {self.total_pins_added} || Total Wires : {self.total_wires_added}"
+        gate_data_str = ["="*20 + f" Printing Gate Data Now " + "="*20]
+        for gate_ref in self.gates:
+            gate_data_str.append(str(self.gates[gate_ref])) 
+        wire_group_data_str = ["="*20 + f" Printing Wire Group Data Now " + "="*20]
+        for wire_group_ref in self.wire_groups:
+            wire_group_data_str.append(str(self.wire_groups[wire_group_ref]))
+            
+        return basic_data + "\n" + "\n".join(gate_data_str) + "\n" + "\n".join(wire_group_data_str)
+
 # ========================================== OOP's Helper Functions ========================================== #
 
 def heap_key_hash(obj):
@@ -368,7 +359,7 @@ def comparator_func(x,y,mode):
     elif(mode == "max"):
         return x > y
     
-if(__name__ == "__main__"): 
+if(__name__ == "__main__"):
     hp = Heap(comparator_func,"min",[88, 17, 29, 12, 91, 67, 84, 66, 57, 94])
     print(hp)
     print(hp.hash_table_values)

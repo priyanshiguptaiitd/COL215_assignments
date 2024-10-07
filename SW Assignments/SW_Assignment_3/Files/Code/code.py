@@ -5,13 +5,6 @@ import sys
 # ============================ Helper Functions for I/O Parsing ================================= #
 sys.setrecursionlimit(5*10**6)
 
-''' READ ME Regarding Coordinate System Used -
-    
-    We have assumed the global coordinate system to have (0,0) at the top left corner of the bounding box
-    Relevant Calculations are done accordingly to calculate the relative as well as global coordinates of the gate envelopes,
-    gates and pin coordinates.    
-
-'''
 # TODO - FIX these  for newproblem statements
 
 def Parse_Input(fpath):
@@ -40,25 +33,18 @@ def Parse_Input(fpath):
                 g_j,p_j = int(gp_j[0][1:]),int(gp_j[1][1:])
                 # print(g_i,p_i,g_j,p_j)
                 gate_data.add_wire(g_i,p_i,g_j,p_j)
-    gate_data.set_gate_env()            
+               
+    gate_data.init_packing()
+    gate_data.init_wire_groups()
     
     return gate_data
 
-def Parse_Output(gate_data ,fpath, is_pseudo_copy = False):
-    if(not is_pseudo_copy):
-        bounding_box_x,bounding_box_y = gate_data.get_bbox()
-        with open(fpath,'w') as file:
-            file.write(f"bounding_box {bounding_box_x} {bounding_box_y} \n")
-            for i in range(1,len(gate_data.gates)+1):
-                gate_index,gate_x,gate_y = gate_data.gates[i].get_gate_tup_og()
-                file.write(f"g{gate_index} {gate_x} {gate_y} \n")
-            file.write(f"wire_length {gate_data.wire_length}")
-    else:
-        bbox_width,bbox_height,wire_length,gate_packing_data = gate_data
-        with open(fpath,'w') as file:
-            file.write(f"bounding_box {bbox_width} {bbox_height} \n")
-            for i in range(len(gate_packing_data)):
-                file.write(f"g{gate_packing_data[i][0]} {gate_packing_data[i][1]} {gate_packing_data[i][2]} \n")
-            file.write(f"wire_length {wire_length}")
-
 # ============================ Functions for Automated Test Case ================================= #
+
+# ============================= __main__ for Testing Purposes ==================================== #
+
+if(__name__ == "__main__"):
+    gd = Parse_Input(FP_IN)
+    print(gd)
+    print("Exited Input Parsing")
+    
