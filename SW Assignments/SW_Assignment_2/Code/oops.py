@@ -71,7 +71,7 @@ class Gate_Env():
         self.y = None
         
     def get_connected_components(self):
-        return [self.pins[i].conneted_component for i in self.pins]
+        return [self.pins[i].connected_component for i in self.pins]
     
     def set_env(self,env_w,env_h):
         self.envelope_width,self.envelope_height = env_w,env_h
