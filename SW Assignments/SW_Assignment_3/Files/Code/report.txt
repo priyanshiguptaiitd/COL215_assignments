@@ -1,0 +1,60 @@
+
+================================================= Netlist Information ==================================================
+
+Total Gates : 4 || Total Pins : 10 || Total Wires : 4
+
+=================================================== Gate Information ===================================================
+
+Gate : 1 || Pos_X : 0 || Pos_Y 0 || Width : 2 || Height : 3
+Pin : 1 || Parent_Gate : 1 || Pin_X : 0 || Pin_Y : 1
+Pin : 2 || Parent_Gate : 1 || Pin_X : 2 || Pin_Y : 2
+
+Gate : 2 || Pos_X : 3 || Pos_Y 0 || Width : 3 || Height : 2
+Pin : 1 || Parent_Gate : 2 || Pin_X : 3 || Pin_Y : 0
+Pin : 2 || Parent_Gate : 2 || Pin_X : 6 || Pin_Y : 1
+
+Gate : 3 || Pos_X : 0 || Pos_Y 3 || Width : 2 || Height : 2
+Pin : 1 || Parent_Gate : 3 || Pin_X : 0 || Pin_Y : 4
+Pin : 2 || Parent_Gate : 3 || Pin_X : 0 || Pin_Y : 5
+Pin : 3 || Parent_Gate : 3 || Pin_X : 2 || Pin_Y : 4
+
+Gate : 4 || Pos_X : 3 || Pos_Y 4 || Width : 3 || Height : 1
+Pin : 1 || Parent_Gate : 4 || Pin_X : 3 || Pin_Y : 4
+Pin : 2 || Parent_Gate : 4 || Pin_X : 5 || Pin_Y : 5
+Pin : 3 || Parent_Gate : 4 || Pin_X : 5 || Pin_Y : 6
+
+================================================ Wire Group Information ================================================
+
+Total Wire Groups : 3
+
+Wire_Group : (1, 2) || X_min : 0 || Y_min : 2 || X_max : 2 || Y_max : 4 || Wire_Legth : 4 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 1
+Member : 2 || Parent Gate : 1 || Pin : 2
+
+Wire_Group : (2, 2) || X_min : 0 || Y_min : 1 || X_max : 6 || Y_max : 5 || Wire_Legth : 10 || Members : 3
+Member : 1 || Parent Gate : 3 || Pin : 2
+Member : 2 || Parent Gate : 2 || Pin : 2
+Member : 3 || Parent Gate : 4 || Pin : 1
+
+Wire_Group : (3, 3) || X_min : 2 || Y_min : 4 || X_max : 5 || Y_max : 5 || Wire_Legth : 4 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 3
+Member : 2 || Parent Gate : 4 || Pin : 2
+
+============================================= Primary IO Pins Information ==============================================
+
+Primary Inputs Pins (PIP's) : 3 || Primary Outputs Pins (POP's) : 4
+
+PIP : 1 || Parent Gate : 1 || Pin : 2
+PIP : 2 || Parent Gate : 2 || Pin : 2
+PIP : 3 || Parent Gate : 3 || Pin : 3
+
+POP : 1 || Parent Gate : 3 || Pin : 1
+POP : 2 || Parent Gate : 3 || Pin : 2
+POP : 3 || Parent Gate : 4 || Pin : 1
+POP : 4 || Parent Gate : 4 || Pin : 2
+
+============================================== Critical Path Information ===============================================
+
+Total Critical Paths : 0
+
+========================================================================================================================

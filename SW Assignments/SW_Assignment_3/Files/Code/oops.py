@@ -30,6 +30,9 @@ class Heap:
     def __str__(self):
         return str(self.heap)
     
+    def __repr__(self):
+        return str(self.heap)
+    
     def index_in_range(self,i):
         return True if(0<=i<len(self.heap)) else False
     
@@ -129,8 +132,10 @@ class Gate_Env:
         self.delay = gate_delay
         
         self.pins = def_dict()
+        self.critical_paths = None
         self.affected_wire_groups_to = set()
         self.affected_wire_groups_from = set()
+
         
         self.envelope_x, self.envelope_y = None,None
         self.x_rel_env, self.y_rel_env = None,None
@@ -182,9 +187,12 @@ class Gate_Env:
     
     def __str__(self):
         
-        basic_data = f"Gate : {self.index} , Pos_X : {self.x} ,Pos_Y {self.y} , Width : {self.width} ,Height : {self.height}"
+        basic_data = f"Gate : {self.index} || Pos_X : {self.x} || Pos_Y {self.y} || Width : {self.width} || Height : {self.height}"
         pin_data = [f"Pin : {pin_index} || Parent_Gate : {self.index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.pins]
-        return basic_data + "\n" + "\n".join(pin_data)
+        return "\n" + basic_data + "\n" + "\n".join(pin_data)
+    
+    def __repr__(self) -> str:
+        return f"Gate : {self.index} || Pos_X : {self.x} || Pos_Y {self.y} || Width : {self.width} || Height : {self.height}"
     
 class Pin:
     
@@ -200,7 +208,7 @@ class Pin:
     
     def get_global_coord(self):
         return self.parent_ref.get_global_coord_pin(self.index)
-           
+    
     def __str__(self):
         
         basic_data = f"Pin No = {self.index} || Parent Gate = g{self.parent_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y}"
@@ -215,15 +223,18 @@ class Pin:
                 connected_from.append(f"Wire || g{g_ind_from}.p{p_ind_from} --------> g{self.parent_index}.p{self.index}")        
         
         return basic_data + "\n" + "\n".join(connected_to) + "\n" + "\n".join(connected_from)
-    
+
+    def __repr__(self):
+        return f"Pin No = {self.index} || Parent Gate = g{self.parent_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y}"    
+
 class Wire_Group:
     
     def __init__(self,gate_index,pin_index,connected_pins_to) -> None:
         self.key = (gate_index,pin_index)
         self.member_count = len(connected_pins_to)
         self.xmin = Heap(comparator_func_pins,"min_x",connected_pins_to[::])
-        self.ymin = Heap(comparator_func_pins,"min_y",connected_pins_to[::])
         self.xmax = Heap(comparator_func_pins,"max_x",connected_pins_to[::])
+        self.ymin = Heap(comparator_func_pins,"min_y",connected_pins_to[::])
         self.ymax = Heap(comparator_func_pins,"max_y",connected_pins_to[::])
         self.wire_group_length = None
     
@@ -241,20 +252,44 @@ class Wire_Group:
     def set_bbox_wg(self):
         self.wire_group_length = self.xmax.top().get_global_coord()[0] - self.xmin.top().get_global_coord()[0]+ self.ymax.top().get_global_coord()[1] - self.ymin.top().get_global_coord()[1]
     
-    def get_length_wg(self):
+    def __len__(self):
         return self.wire_group_length 
     
     def __str__(self):
-        return f"Wire_Group : {self.key} || X_min : {self.xmin.top().get_global_coord()[0]} || Y_min : {self.ymin.top().get_global_coord()[1]} || X_max : {self.xmax.top().get_global_coord()[0]} || Y_max : {self.ymax.top().get_global_coord()[1]}\nWire_Legth : {self.wire_group_length} || Members : {self.member_count}"
+        basic_data_wg = f"\nWire_Group : {self.key} || X_min : {self.xmin.top().get_global_coord()[0]} || Y_min : {self.ymin.top().get_global_coord()[1]} || X_max : {self.xmax.top().get_global_coord()[0]} || Y_max : {self.ymax.top().get_global_coord()[1]} || Wire_Legth : {self.wire_group_length} || Members : {self.member_count}"
+        pin_data_wg = []
+        for pin_ref in self.xmin.heap:
+            pin_data_wg.append(f"Member : {len(pin_data_wg)+1} || Parent Gate : {pin_ref.parent_index} || Pin : {pin_ref.index}")
+        return basic_data_wg + "\n" + "\n".join(pin_data_wg)
+
+    def __repr__(self):
+        return f"Wire_Group : {self.key} || X_min : {self.xmin.top().get_global_coord()[0]} || Y_min : {self.ymin.top().get_global_coord()[1]} || X_max : {self.xmax.top().get_global_coord()[0]} || Y_max : {self.ymax.top().get_global_coord()[1]} || Wire_Legth : {self.wire_group_length} || Members : {self.member_count}"
+
+class Critical_Path:
+
+    def __init__(self,gate_data_ref):
+        assert isinstance(gate_data_ref,Gate_Data), Exception("Invalid Type : Gate Data Reference must be of Gate_Data type")
+        self.gd_ref = gate_data_ref 
+        self.primary_input,self.primary_output = None,None
+        self.path = def_dict()
+        self.gate_delay = None
+        self.wire_delay = None
+        self.delay = None
     
+    def set_primary_io(self,pip,pop):
+        self.primary_input,self.primary_output = pip,pop
+            
 class Gate_Data:
     
     def __init__(self):
         
         self.gates = def_dict()
-        self.wire_origins = def_dict() 
-        self.wire_groups = def_dict()  
+        self.wire_dag, self.wire_groups, self.gate_dag = def_dict(dict), def_dict(), def_dict(dict)  
+        self.primary_inputs, self.primary_outputs = def_dict(), def_dict()
+        self.gate_wire_groups_keys = def_dict(list)
+        self.gate_wire_groups = def_dict()
         
+        self.critical_path_count = 0
         self.total_wires_added = 0
         self.total_pins_added = 0
         self.bbox = (None,None)
@@ -292,9 +327,17 @@ class Gate_Data:
         p_i_ref,p_j_ref = self.gates[g_i].pins[p_i],self.gates[g_j].pins[p_j]
         p_i_ref.connected_pins_to[g_j].append(self.gates[g_j].pins[p_j])
         p_j_ref.connected_pins_from[g_i].append(self.gates[g_i].pins[p_i])
-        self.wire_origins[(g_i,p_i)] = True
+        self.wire_dag[(g_i,p_i)][(g_j,p_j)] = True
+        self.gate_dag[g_i][g_j] = True
         self.total_wires_added += 1
     
+    def get_crtical_path(self):
+        pass
+    
+    def get_critical_path_delay(self):
+        pass
+    
+    @time_it
     def init_packing(self):
         gate_frequency = len(self.gates)
         bb_dim,bb_cell_w,bb_cell_h = ceil(sqrt(gate_frequency)), self.max_width, self.max_height                
@@ -305,34 +348,95 @@ class Gate_Data:
             else:
                 self.gates[i].set_coord_env(((i-1)%bb_dim)*bb_cell_w,(i//bb_dim)*bb_cell_h)
                 self.gates[i].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[i].width)//2,(bb_cell_h-self.gates[i].height)//2)
-      
+    
+    @time_it  
     def init_wire_groups(self):        
-        for gate_index,pin_index in self.wire_origins:               
-                pin_ref = self.gates[gate_index].pins[pin_index]
-                pin_ref_pin_obj = []                
-                for g_ind_to in pin_ref.connected_pins_to:
-                    pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                            
-                self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,pin_ref_pin_obj)
-                self.wire_groups[(gate_index,pin_index)].set_bbox_wg()
+        for gate_index,pin_index in self.wire_dag:
+            if(len(self.gates[gate_index].pins[pin_index].connected_pins_from) == 0):
+                self.primary_inputs[(gate_index,pin_index)] = True                
+            pin_ref = self.gates[gate_index].pins[pin_index]
+            pin_ref_pin_obj = []                
+            for g_ind_to in pin_ref.connected_pins_to:
+                for pin_obj in pin_ref.connected_pins_to[g_ind_to]:
+                    if(len(pin_obj.connected_pins_to) == 1):
+                        self.primary_outputs[(g_ind_to,pin_obj.index)] = True
+                    # pin_ref_pin_obj.append(pin_obj) 
+                pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                            
+            self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,pin_ref_pin_obj)
+            self.wire_groups[(gate_index,pin_index)].set_bbox_wg()
+            self.gate_wire_groups_keys[gate_index].append(pin_index)
+        
+        for gate_index in self.gates:
+            self.gate_wire_groups[gate_index] = Heap(comparator_func_wg,"max",[self.wire_groups[(gate_index,pin_index)] for pin_index in self.gate_wire_groups_keys[gate_index]])
+
+    @time_it
+    def init_critical_paths(self):
+        all_paths = []
+        for pip in self.primary_inputs:
+            # print(pip)
+            stack,visited = [pip],dict()
+            while stack:
+                # print(stack)
+                for neighbour in self.wire_dag[stack[-1]]:
+                    if(neighbour not in visited):
+                        visited[neighbour] = True
+                        stack.append(neighbour)
+                        break
+                else:
+                    # print("Hi",stack[-1],self.primary_outputs)
+                    if(stack[-1] in self.primary_outputs):
+                        all_paths.append(stack[::])
+                    stack.pop()
+
+
+        self.critical_paths = all_paths
     
     def __str__(self):
-        basic_data =  f"Total Gates : {len(self.gates)} || Total Pins : {self.total_pins_added} || Total Wires : {self.total_wires_added}"
-        gate_data_str = ["="*20 + f" Printing Gate Data Now " + "="*20]
+        basic_data = '\n'+" Netlist Information ".center(120,"=") + '\n'
+        basic_data +=  f"\nTotal Gates : {len(self.gates)} || Total Pins : {self.total_pins_added} || Total Wires : {self.total_wires_added}"
+        
+        gate_data_str = ['\n'+" Gate Information ".center(120,"=")]
         for gate_ref in self.gates:
             gate_data_str.append(str(self.gates[gate_ref])) 
-        wire_group_data_str = ["="*20 + f" Printing Wire Group Data Now " + "="*20]
+        
+        wire_group_data_str = ['\n'+ " Wire Group Information ".center(120,"=")]
+        wire_group_data_str.append(f"\nTotal Wire Groups : {len(self.wire_groups)}")
         for wire_group_ref in self.wire_groups:
             wire_group_data_str.append(str(self.wire_groups[wire_group_ref]))
-            
-        return basic_data + "\n" + "\n".join(gate_data_str) + "\n" + "\n".join(wire_group_data_str)
+        
+        primary_pin_data = ['\n'+" Primary IO Pins Information ".center(120,"=")]
+        primary_pin_data.append(f"\nPrimary Inputs Pins (PIP's) : {len(self.primary_inputs)} || Primary Outputs Pins (POP's) : {len(self.primary_outputs)}\n")
+        pip_count,pop_count = 0,0
+        for gate_ind,pin_ind in self.primary_inputs:
+            pip_count += 1
+            primary_pin_data.append(f"PIP : {pip_count} || Parent Gate : {gate_ind} || Pin : {pin_ind}")
+        primary_pin_data.append("")
+        for gate_ind,pin_ind in self.primary_outputs:
+            pop_count += 1
+            primary_pin_data.append(f"POP : {pop_count} || Parent Gate : {gate_ind} || Pin : {pin_ind}")           
+        
+        critical_path_data = ['\n' + " Critical Path Information ".center(120,"=")]
+        critical_path_data.append(f"\nTotal Critical Paths : {self.critical_path_count}")
+        
+        data_end = '\n'+"".center(120,"=")
+        return basic_data + "\n" + "\n".join(gate_data_str) + "\n" + "\n".join(wire_group_data_str) + "\n" + "\n".join(primary_pin_data) + "\n" + "\n".join(critical_path_data)+ '\n'+ data_end
 
+    @time_it
+    def write_netlist_data(self,fpath):
+        with open(fpath,"w") as file:
+            s = str(self)
+            file.write(s)
+        print("Netlist Data Written to File : ",fpath)
+    
 # ========================================== OOP's Helper Functions ========================================== #
-
+    
 def heap_key_hash(obj):
     if(isinstance(obj,Gate_Env)):
         return obj.index
     elif(isinstance(obj,Pin)):
         return (obj.parent_index,obj.index)
+    elif(isinstance(obj,Wire_Group)):
+        return obj.key
     else:
         return obj
 
@@ -350,6 +454,15 @@ def comparator_func_pins(pin_1,pin_2,mode):
     elif(mode == "max_y"):
         return pin_1.get_global_coord()[1] > pin_2.get_global_coord()[1]
 
+def comparator_func_wg(wg_1,wg_2,mode):
+    assert isinstance(wg_1,Wire_Group) and isinstance(wg_2,Wire_Group), Exception("Invalid Type : Wire Group object comparator must receive Wire Group objects")
+    assert mode in ["min","max"], Exception("Invalid Mode : Wire Group object comparator mode must be 'min' or 'max'")
+    
+    if(mode == "min"):
+        return len(wg_1) < len(wg_2)
+    elif(mode == "max"):
+        return len(wg_1) > len(wg_2)
+
 def comparator_func(x,y,mode):
     
     assert mode in ["min","max"], Exception("Invalid Mode : General Comparator mode must be 'min' or 'max'")
@@ -358,7 +471,9 @@ def comparator_func(x,y,mode):
         return x < y
     elif(mode == "max"):
         return x > y
-    
+
+# ========================================== __main__ for testing ============================================ #
+
 if(__name__ == "__main__"):
     hp = Heap(comparator_func,"min",[88, 17, 29, 12, 91, 67, 84, 66, 57, 94])
     print(hp)
