@@ -3,21 +3,18 @@ use ieee.std_logic_1164.all;
 
 entity bitwise_xor is
 	port (
-		input_byte : in std_logic_vector(7 downto 0);
-		output_byte : out std_logic_vector(7 downto 0)
+		input_a : in std_logic_vector(127 downto 0);
+        input_b : in std_logic_vector(127 downto 0);
+        res: out std_logic_vector(127 downto 0)
 	);
 end bitwise_xor;
 
-architecture behavioral of inv_sbox is
+architecture behavioral of bitwise_xor is
 
 begin
-	lut : process (input_byte) is
+	process (input_a,input_b) 
 	begin
-		case input_byte is
-			
-			when others => null; -- GHDL complains without this statement
-		end case;
-
-	end process lut;
+        res<=input_a xor input_b
+	end process;
 
 end architecture behavioral;
