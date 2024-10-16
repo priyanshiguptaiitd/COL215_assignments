@@ -1,5 +1,6 @@
 from typing import Any
-from utils import * 
+from utils import *
+# print(choice([1,2,3,4,5,6,7,8,9,10]))
 
 # ========================================== OOP's Helper Functions ========================================== #
 
@@ -427,6 +428,281 @@ class Gate_Data:
             s = str(self)
             file.write(s)
         print("Netlist Data Written to File : ",fpath)
+    
+class Simulated_Annealing():
+    ''' Basic Description -
+    
+        Class to perform simulated annealing for optimizing gate placement to minimize wire length
+        At the heart, involves generating an deterministic initial packing of gates, perturbing the packing, and accepting or rejecting the perturbation 
+        based on the cost difference and temperature and an acceptance function.
+        
+        Since the probabilistic arguments are used, the packing and perturbing process is not entirely deterministic
+        but improves with the number of iterations, intial temperature, perturbations per annealing iteration
+        as well as cooling rate.
+        
+        Probablistic arguments require extensive testing on Test - Cases,
+        as well as tweaking of the parameters to get the best results.
+    '''
+    ''' Attributes:
+    
+            gate_data (Gate_Data): An instance of the Gate_Data class containing gate and wire information.
+            temp (float): The current temperature in the simulated annealing process.
+            initial_temp (float): The initial temperature for the simulated annealing process.
+            min_temp (float): The minimum temperature to stop the annealing process.
+            wire_cost (float): The current wire cost.
+            initial_wire_cost (float): The initial wire cost, generated after the initial packing.
+    '''
+    ''' Methods:
+    
+            acceptance_probability(old_cost, new_cost):
+                Calculates the acceptance probability of a new perturbef solution 
+                based on the cost difference and current temperature.
+                
+                If the new cost is less than the old cost, the new solution is always accepted.
+                Otherwise, the acceptance probability is calculated based on the cost difference and temperature.
+                
+                Returns a boolean indicating whether the new solution is accepted or not
+            
+            update_wire_cost(l):
+                Updates the current wire cost in the Annealing class instance as well as 
+                the gate_data attribute and returns it.
+            
+            wire_cost_function():
+                Calculates the total wire length for the current gate placement
+                Is expensive with respect to number of wires 
+                and should be called only when necessary.
+            
+            cost_delta_function(g1, g2, old_coord):
+                Calculates the change in wire length caused by swapping two gates.
+                Heart of the perturbation_v2 function, since we don't need to recalculate 
+                the wire length for all the wires.
+            
+            gen_init_packing():
+                Generates an deterministic initial packing (based on order of gates) of gates as 
+                well as the bounding box. Sets the initial wire cost and is called 
+                whenver a new annealing process is started.
+                
+            perturb_packing_swap():
+                Performs a perturbation by swapping two randomly selected gates and calculates the new wire cost
+                by the wire_cost_function method.
+                
+                Accepts or rejects the perturbation based on the acceptance_probability method.
+                If rejected then the gates environments are reset to the old values. 
+            
+            perturb_packing_swap_v2():
+                Performs a perturbation by swapping two randomly selected gates and 
+                calculates the delta wire cost using cost_delta_function.
+
+                Accepts or rejects the perturbation based on the acceptance_probability method.
+                If rejected then the gates environments are reset to the old values.
+                
+                ---- Significantly faster than perturb_packing_swap ----
+                
+            perturb_packing_move():
+                Performs a perturbation by moving a randomly selected gate to a new position.
+                Not Yet Implemented.
+                
+            anneal_to_pack(perturb_freq_per_iter=5):
+                Performs the simulated annealing process to optimize gate placement.
+                Implements the core logic mentioned in the description.
+            
+            anneal_routine():
+                A routine to perform the annealing process.
+                Determines how to call the annealing function based on one call to the anneal_to_pack
+                method using perturb_freq_per_iter, estimating the runtime and deciding the number of iterations
+                depending on the time available for packing optimization.
+                
+    '''
+    
+    def __init__(self, gate_data , initial_temp, min_temp):
+        self.gate_data = gate_data
+        self.final_packed_data = gate_data
+        self.temp = initial_temp
+        self.initial_temp = initial_temp
+        self.min_temp = min_temp
+           
+    # =============================== Acceptance and Reset Temp Functionality ======    ============================ #
+    
+    def reset_temp(self):
+        self.temp = self.initial_temp
+    
+    def acceptance_probability(self, old_cost, new_cost):
+        if new_cost < old_cost:
+            return True
+        else:
+            cost_pr = pow(10,(old_cost - new_cost) / (self.temp))
+            return random() < cost_pr
+    
+    # ============================ Methods for updating/Calculating wire Costs ================================= #
+    
+    def update_wire_cost(self,l):
+        pass
+    
+    @ time_it
+    def wire_cost_function(self):
+        pass
+
+    
+    @ time_it
+    def cost_delta_function(self,g1,g2):
+        pass    
+    
+    # ================================= Methods for Perturbing the Packing ===================================== #   
+        
+    @ time_it
+    def perturb_packing_swap(self):
+        # Randomly select a gate and swap / Move within the bounding box it to a new position
+        # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
+        # If the move is accepted, update the wire length and repeat
+        # If the move is rejected, repeat the process
+        random.seed(random_seed_128())
+        g1,g2 = random.randint(1,len(self.gate_data.gates)),random.randint(1,len(self.gate_data.gates))
+        
+        while(g1==g2):
+            g1,g2 = random.randint(1,len(self.gate_data.gates)),random.randint(1,len(self.gate_data.gates))
+        
+        g1_ref,g2_ref = self.gate_data.gates[g1],self.gate_data.gates[g2]
+        
+        g1_old_env_x,g1_old_env_y,g1_old_x,g1_old_y =  g1_ref.envelope_x, g1_ref.envelope_y , g1_ref.x, g1_ref.y
+        g2_old_env_x,g2_old_env_y,g2_old_x,g2_old_y =  g2_ref.envelope_x, g2_ref.envelope_y , g2_ref.x, g2_ref.y
+        # print(f"Old Config : g1 = {g1} , g2 = {g2} , g1_old_x = {g1_old_x} , g1_old_y = {g1_old_y} , g2_old_x = {g2_old_x} , g2_old_y = {g2_old_y}") 
+        # old_coord = (g1_old_x,g1_old_y,g2_old_x,g2_old_y)
+        
+        g1_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
+        g1_ref.set_coord_rel_env(g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
+        g2_ref.set_coord_env(g1_old_env_x,g1_old_env_y)
+        g2_ref.set_coord_rel_env(g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+        
+        # print(f"New Config : g1 = {g1} , g2 = {g2} , g1_new_x = {g1_ref.x} , g1_new_y = {g1_ref.y} , g2_new_x = {g2_ref.x} , g2_new_y = {g2_ref.y}")
+        pass
+    
+    @ time_it
+    def perturb_packing_move(self):
+        
+        random.seed(random_seed_128())
+        g = random.randint(1,len(self.gate_data.gates))
+        random.seed(random_seed_128())  
+        
+        gate_ref = self.gate_data.gates[g]
+        gate_old_x,gate_old_y,gate_old_delta_x,gate_old_delta_y =  gate_ref.x, gate_ref.y, gate_ref.x-gate_ref.envelope_x,  gate_ref.y-gate_ref.envelope_y
+        gdx_max = gate_ref.envelope_width - gate_ref.width
+        gdy_max = gate_ref.envelope_height - gate_ref.height
+        
+        possible_pos = [(0,0),(gdx_max//2,0),(gdx_max,0),
+                        (0,gdy_max//2),(gdx_max,gdy_max//2),
+                        (0,gdy_max),(gdx_max//2,gdy_max),(gdx_max,gdy_max)
+                        ]
+                        
+        choice_delta = random.choice(possible_pos)
+        
+        gate_ref.set_coord_rel_env(random.randint(0,gdx_max),random.randint(0,gdy_max)) 
+        # gate_ref.set_coord_rel_env(choice_delta[0],choice_delta[1])
+        
+        old_coord = (gate_old_x,gate_old_y)
+        
+        pass
+    
+        
+    # ================================= Methods for Annealing the Packing ====================================== #
+    
+    @ time_it
+    def anneal_to_pack(self,perturb_freq_per_iter = 1,call_init_pack = True, return_data = False, do_move = True):   
+        if(return_data):
+            iter_data = []
+        
+        if(call_init_pack):
+            self.gen_init_packing(supress_time_out=True)
+            # print(f"Total Initial Wire Cost: {self.wire_cost}")
+            if(return_data):
+                iter_data.append((0,self.wire_cost))
+        
+        it_er = 0
+        while self. temp > self.min_temp and it_er < IT_BOUND:
+            for _ in range(perturb_freq_per_iter):
+                self.perturb_packing_swap_v2(supress_time_out=True)
+                if(do_move):
+                    self.perturb_packing_move_v2(supress_time_out=True)
+                    pass
+            self.temp *= cooling_rate(self.temp)
+            it_er += 1
+            if(return_data):
+                iter_data.append((it_er,self.wire_cost))
+            
+            if(self.wire_cost == 0):                # If the wire cost is 0, then we have definitely reached the optimal solution
+                break
+        # wc,rt = self.wire_cost_function(supress_time_out=True)
+        # self.update_wire_cost(wc)
+        
+        if(return_data):
+            return iter_data
+        # print(f"New_Cost = {self.wire_cost}")
+        # self.update_wire_cost(self.wire_cost_function())
+        # print(f"New_Cost_2 = {self.wire_cost}")
+      
+    @ time_it
+    def anneal_routine(self,supress_out):
+        '''
+        Determines the entire flow of how to perform the Annealing Function for the best results
+        '''
+        
+        gate_freq,pin_freq,wire_freq = len(self.gate_data.gates),self.gate_data.total_pins_added,self.gate_data.total_wires_added
+        print(f"\nGate Frequency : {gate_freq} || Pin Frequency : {pin_freq} || Wire Frequency : {wire_freq} || Pin Components : {len(self.gate_data.connected_components)}")
+        est_runtime = 0
+        res_timeit_no_out,t_func_call = self.gen_init_packing(supress_time_out=True)
+        est_runtime += t_func_call
+        print(f"Wire Length of Initial Packing (Our Heuristic): {self.initial_wire_cost}")
+        ac_wc,rut = self.wire_cost_function_piazza(supress_time_out=True)
+        est_runtime += rut
+        print(f"Wire Length of Initial Packing (Piazza Heuristic): {ac_wc}")
+        print(f"Calling one Annealing Iteration with perturb_freq_per_iter = {1}")
+        do_we_move = True if(pin_freq < 20_000) else False
+        res_timeit_no_out,time_of_one_call = self.anneal_to_pack(1,False,do_we_move,supress_time_out = True)
+        
+        # wc,tr = self.wire_cost_function_piazza(supress_time_out=False)
+        # self.update_wire_cost(wc)
+        est_runtime += time_of_one_call
+        self.final_packed_data,var_useless = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+        self.reset_temp()
+        
+        print(f"Wire Length after First Trial Packing: {self.wire_cost}")
+        print(f"Time of One Call : {time_of_one_call :.6f} seconds, Determining optimal parameters for future calls")
+        old_wire_cost = self.final_packed_data[2]
+        
+        perturb_freq = select_perturb_freq(time_of_one_call)
+        call_count,max_no_change = 1,0
+        print(f"Calling Annealing with perturb_freq_per_iter = {perturb_freq}")
+        while(est_runtime <= TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC):
+            res_timeit_no_out,time_of_one_call = self.anneal_to_pack(perturb_freq,False,do_we_move,supress_time_out = True)
+            call_count += 1
+            print(f"Best Wire length (Our Heuristic): {old_wire_cost} || Wire Length after Current Iteration (Our Heuristic): {self.wire_cost}")
+            self.reset_temp()
+            est_runtime += time_of_one_call
+            if(old_wire_cost > self.wire_cost):
+                # print("Old Wire Cost is more than current wire cost, updating wire costs !!")
+                # wc,tr = self.wire_cost_function_piazza(supress_time_out=False)
+                # self.update_wire_cost(wc)
+                self.final_packed_data,var_t = pseudo_copy_gate_data(self.gate_data,supress_time_out=True)
+                old_wire_cost = self.final_packed_data[2]
+                est_runtime += time_of_one_call + var_t
+                max_no_change = 0
+            else:
+                if(max_no_change > BREAK_FLAG_COUNT):
+                    break
+                else:
+                    max_no_change += 1
+                    
+        # Updating Global Data to reflect the best packing
+        self.gate_data.set_bbox(self.final_packed_data[0],self.final_packed_data[1])
+        for gate_data_up in self.final_packed_data[3]:
+            self.gate_data.gates[gate_data_up[0]].set_coord_env(gate_data_up[1],gate_data_up[2])
+            self.gate_data.gates[gate_data_up[0]].set_coord_rel_env(gate_data_up[3],gate_data_up[4]) 
+        
+        v,rt = self.wire_cost_function_piazza(supress_time_out = True)
+        self.update_wire_cost(v)
+        # Calculating Wire Cost in their manner
+        print(f"Exiting Routine, Total Calls made to Annealing = {call_count}")
+        
+        # return self.final_packed_data
     
 # ========================================== OOP's Helper Functions ========================================== #
     

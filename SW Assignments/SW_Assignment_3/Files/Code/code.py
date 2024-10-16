@@ -56,6 +56,7 @@ def Parse_Output(gate_data,fpath):
 
 if(__name__ == "__main__"):
     gd = Parse_Input(FP_IN)
-    gd.write_netlist_data(FP_REPORT,supress_time_out = False)
-    print(gd.gate_dag)
-    print(gd.gates)
+    # gd.write_netlist_data(FP_REPORT,supress_time_out = False)
+    # print(gd.gate_dag)
+    print(gd.gate_wire_groups)
+    # print(gd.gate_wire_groups_keys[8])

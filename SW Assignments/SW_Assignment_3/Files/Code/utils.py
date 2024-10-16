@@ -1,7 +1,7 @@
 # ===================================== Import of Libraries ======================================== #
 
 from collections import defaultdict as def_dict
-from random import randint as rint
+from random import randint, choice, seed, random
 from math import sqrt, ceil, floor
 from time import time
 from itertools import count
@@ -305,6 +305,42 @@ def write_single_case(gate_freq,fpath,kw):
         print(f"Total Pins Generated : {pins_gen}")
 
     return [gate_freq,pins_gen,len(wire_data)]
+
+# ======================== Helper Functions for Simulated Annealing ============================= #        
+
+IT_BOUND = 10**6
+
+def random_seed_128():
+    return randbits(128)
+
+def cooling_rate(T):
+    return 0.99
+
+def H_global_coord_pin(gate_ref,pin_index,old_coord):
+    pin_ref = gate_ref.pins[pin_index]
+    pin_rel_x,pin_rel_y = pin_ref.pin_x,pin_ref.pin_y
+    return old_coord[0] + pin_rel_x, old_coord[1] + pin_rel_y
+
+def select_perturb_freq(t):
+    if(t < 0.5): 
+        return IDEAL_PERT_ITER_HI
+    elif(t < 2):
+        return IDEAL_PERT_ITER_MED
+    elif(t <= 5):
+        return IDEAL_PERT_ITER_LO
+    else:
+        if(t<10):
+            return 2
+        else:
+            return 1
+@ time_it
+def pseudo_copy_gate_data(gate_data):
+    bbox_width,bbox_height = gate_data.get_bbox()
+    max_wire_delay = gate_data.max_delay
+    gate_packing_data = [gate_data.gates[i].get_gate_tup("parse") for i in range(1,len(gate_data.gates)+1)]
+    
+    return bbox_width,bbox_height,max_wire_delay,gate_packing_data
+
  
 # ====================================== Misc. Helper Functions ====================================== #
 
