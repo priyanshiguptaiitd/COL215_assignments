@@ -200,7 +200,7 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2),ensure_
         if(g1 == g2 or g1 == g_pseudo or g2 == g_pseudo):
             continue
         elif(g2 in comb_loops[g1]):
-            print(f"Comb Loop Detected {g1} {g2}")
+            # print(f"Comb Loop Detected {g1} {g2}")
             if(ensure_wire_freq_bool):
                 if(len(wire_data) >= ensure_wire_freq):
                     break
@@ -254,8 +254,8 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2),ensure_
                 if(rng_break.random() < br_prob):
                     break
                     
-    print(f"Total Gates Generated : {gate_freq}")                
-    print(f"Total Wires Generated : {len(wire_data)}")
+    # print(f"Total Gates Generated : {gate_freq}")                
+    # print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
 
 def write_single_case(gate_freq,fpath,kw):
@@ -294,9 +294,9 @@ def write_single_case(gate_freq,fpath,kw):
         # print(gate_pins)
         print(f"Total Gates Generated : {gate_freq}")
         print(f"Total Pins Generated : {pins_gen}")
-        print(f"Calling wire generation")
+        # print(f"Calling wire generation")
         wire_data = generate_wires(gate_freq,gate_pins,left_edge,kw["br_prob"],kw["ensure_wire_freq_bool"],kw["ensure_wire_freq"])
-        
+        print(f"Total Wires Generated : {len(wire_data)}")
         file.write(f"wire_delay {kw['wire_delay']}\n")
         
         for wire in wire_data:
@@ -353,23 +353,28 @@ def binary_len(n):
         blen+=1
     return blen
 
+def left_cyclic_shift(n,shift):
+    return (n << shift) | (n >> (len(bin(n))-2-shift))
+
+def right_cyclic_shift(n,shift):
+    return (n >> shift) | (n << (len(bin(n))-2-shift))
 # ====================================== __main__ for testing  ====================================== #
 
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq": 10,
+          "gate_freq": 1000,
           "mode": "uniform",
-          "br_prob": 10**(-1),
+          "br_prob": 10**(-6),
           "dim_lo":1,
           "dim_hi":101,
           "wire_delay": 5,
-          "pin_density": 1.5,
+          "pin_density": 1.6,
           "max_pin_freq":4,
-          "override_specs": True,
+          "override_specs": False,
           "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
           "ensure_pins_freq": 10,
-          "ensure_wire_freq_bool": False,
-          "ensure_wire_freq": 3_21_127
+          "ensure_wire_freq_bool": True,
+          "ensure_wire_freq": 1_00_000
           }
     kw_multi =  {
                    "tc_count" : 10,
@@ -377,4 +382,7 @@ if(__name__ == "__main__"):
                    "vary_pins" : True                
                 }
     
-    write_single_case(kw["gate_freq"],FP_IN,kw)        
+    write_single_case(kw["gate_freq"],FP_IN,kw)      
+    # print(bin(35))  
+    # print(right_cyclic_shift(35,2))
+    # print(bin(568))

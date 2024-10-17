@@ -34,7 +34,7 @@ def Parse_Input(fpath):
                
     gate_data.init_packing(supress_time_out = False)
     gate_data.init_wire_groups(supress_time_out = False)
-    # gate_data.init_critical_paths(supress_time_out = False)
+    gate_data.init_critical_paths(supress_time_out = False)
     
     return gate_data
 
@@ -58,5 +58,6 @@ if(__name__ == "__main__"):
     gd = Parse_Input(FP_IN)
     # gd.write_netlist_data(FP_REPORT,supress_time_out = False)
     # print(gd.gate_dag)
-    print(gd.gate_wire_groups)
+    # print(gd.gate_wire_groups)
     # print(gd.gate_wire_groups_keys[8])
+    print(len(gd.critical_paths))

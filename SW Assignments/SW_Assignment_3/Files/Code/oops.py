@@ -4,6 +4,12 @@ from utils import *
 
 # ========================================== OOP's Helper Functions ========================================== #
 
+class dp_state:
+    def __init__(self):
+        self.minx,self.miny,self.maxx,self.maxy = None,None,None,None
+        self.prev_gate, self.max_sp = None, None
+        self.total_gate_delay = None
+        
 class Heap:
     '''
     Class to implement a heap with general comparison function
