@@ -9,6 +9,7 @@ class dp_state:
         self.minx,self.miny,self.maxx,self.maxy = None,None,None,None
         self.prev_gate, self.max_sp = None, None
         self.total_gate_delay = None
+        self.current_path_length = None
         
 class Heap:
     '''
@@ -140,8 +141,8 @@ class Gate_Env:
         
         self.pins = def_dict()
         self.critical_paths = None
-        self.affected_wire_groups_to = set()
-        self.affected_wire_groups_from = set()
+        self.incoming_gates = set()
+        self.outgoing_gates = set()
 
         
         self.envelope_x, self.envelope_y = None,None

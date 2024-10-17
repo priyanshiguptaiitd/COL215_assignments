@@ -60,4 +60,4 @@ if(__name__ == "__main__"):
     # print(gd.gate_dag)
     # print(gd.gate_wire_groups)
     # print(gd.gate_wire_groups_keys[8])
-    print(len(gd.critical_paths))
+    # print(len(gd.critical_paths))
