@@ -149,7 +149,8 @@ class Gate_Env:
         self.envelope_x, self.envelope_y = None,None
         self.x_rel_env, self.y_rel_env = None,None
         self.x, self.y = None,None
-    
+
+   
     def set_coord_env(self,env_x,env_y):
         
         self.envelope_x, self.envelope_y = env_x,env_y
@@ -294,6 +295,50 @@ class Gate_Data:
         
         self.wire_delay = None
         self.max_delay = None
+
+    def find_max_delay():
+        max_delay=0
+        max_gate=None
+        for output_gate in self.gate_dag_to:
+            gate_index=output_gate
+            gate=self.gates[gate_index]
+            path_delay=gate.find_max_gate_sp(gate_index)
+            if path_delay>max_delay:
+                max_delay=path_delay
+                max_gate=gate_index
+     def find_max_gate_delay(self,gate_index):
+        max_gate=None
+        max_delay=0
+        max_sp=0
+        cur_gate=self.gates[gate_index]
+        if gate_index in primary_input_gates:
+            return self.gates[gate_index].delay
+        for  input_gate_index in self.wire_dag_to[gate_index]:
+            input_gate=self.gates[input_gate_index]
+            
+            if input_gate.dp_state==None:
+                self.find_max_gate_sp(input_gate_index)
+            sp=abs(min(input_gate.dp_state.minx,cur_gate.minx)-max(input_gate.dp_state.maxx,cur_gate.maxx))+abs(min(input_gate.dp_state.miny,cur_gate.miny)-max(input_gate.dp_state.maxy,cur_gate.maxy))
+            exp_delay=input_gate.dp_state.total_gate_delay+cur_gate.delay+sp
+            if exp_delay>max_delay:
+                max_sp=sp
+                max_delay=exp_delay
+                max_gate=input_gate
+        cur_gate.dp_state.minx=min(max_gate.dp_state.minx,cur_gate.minx)
+        cur_gate.dp_state.miny=min(max_gate.dp_state.miny,cur_gate.miny)
+        cur_gate.dp_state.maxx=max(max_gate.dp_state.maxx,cur_gate.maxx)
+        cur_gate.dp_state.maxy=max(max_gate.dp_state.maxy,cur_gate.maxy)
+        cur_gate.dp_state.total_gate_delay=max_delay
+        cur_gate.dp_state.current_path_length+=1 
+        cur_gate.dp_state.prev_gate=max_gate 
+        cur_gate.dp_state.max_sp=max_gate.dp_state.max_sp+max_sp 
+        if cur_gate.dp_state.current_path_length==len(self.gates):
+            return max_delay
+         
+         
+
+                    
+            
     
     def set_bbox(self,x,y):
         self.bbox = (x,y)
