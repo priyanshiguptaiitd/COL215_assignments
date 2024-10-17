@@ -9,6 +9,7 @@ class dp_state:
         self.minx,self.miny,self.maxx,self.maxy = None,None,None,None
         self.prev_gate, self.max_sp = None, None
         self.total_gate_delay = None
+        self.current_path_length = None
         
 class Heap:
     '''
@@ -137,6 +138,7 @@ class Gate_Env:
         self.width = gate_width
         self.height = gate_height
         self.delay = gate_delay
+        self.dp_state = dp_state()
         
         self.pins = def_dict()
         self.critical_paths = None
@@ -271,28 +273,16 @@ class Wire_Group:
 
     def __repr__(self):
         return f"Wire_Group : {self.key} || X_min : {self.xmin.top().get_global_coord()[0]} || Y_min : {self.ymin.top().get_global_coord()[1]} || X_max : {self.xmax.top().get_global_coord()[0]} || Y_max : {self.ymax.top().get_global_coord()[1]} || Wire_Legth : {self.wire_group_length} || Members : {self.member_count}"
-
-class Critical_Path:
-
-    def __init__(self,gate_data_ref):
-        assert isinstance(gate_data_ref,Gate_Data), Exception("Invalid Type : Gate Data Reference must be of Gate_Data type")
-        self.gd_ref = gate_data_ref 
-        self.primary_input,self.primary_output = None,None
-        self.path = def_dict()
-        self.gate_delay = None
-        self.wire_delay = None
-        self.delay = None
-    
-    def set_primary_io(self,pip,pop):
-        self.primary_input,self.primary_output = pip,pop
             
 class Gate_Data:
     
     def __init__(self):
         
         self.gates = def_dict()
-        self.wire_dag, self.wire_groups, self.gate_dag = def_dict(dict), def_dict(), def_dict(dict)  
+        self.wire_dag_to, self.wire_groups, self.gate_dag_from,self.gate_dag_to = def_dict(dict), def_dict(), def_dict(dict), def_dict(dict)  
         self.primary_inputs, self.primary_outputs = def_dict(), def_dict()
+        self.primary_input_gates, self.primary_output_gates = def_dict(), def_dict()
+        
         self.gate_wire_groups_keys = def_dict(list)
         self.gate_wire_groups = def_dict()
         
@@ -335,7 +325,8 @@ class Gate_Data:
         p_i_ref.connected_pins_to[g_j].append(self.gates[g_j].pins[p_j])
         p_j_ref.connected_pins_from[g_i].append(self.gates[g_i].pins[p_i])
         self.wire_dag[(g_i,p_i)][(g_j,p_j)] = True
-        self.gate_dag[g_i][g_j] = True
+        self.gate_dag_from[g_i][g_j] = True
+        self.gate_dag_to[g_j][g_i] = True
         self.total_wires_added += 1
     
     def get_crtical_path(self):
@@ -360,13 +351,16 @@ class Gate_Data:
     def init_wire_groups(self):        
         for gate_index,pin_index in self.wire_dag:
             if(len(self.gates[gate_index].pins[pin_index].connected_pins_from) == 0):
-                self.primary_inputs[(gate_index,pin_index)] = True                
+                self.primary_inputs[(gate_index,pin_index)] = True
+                self.primary_input_gates[gate_index] = True
+                                
             pin_ref = self.gates[gate_index].pins[pin_index]
             pin_ref_pin_obj = []                
             for g_ind_to in pin_ref.connected_pins_to:
                 for pin_obj in pin_ref.connected_pins_to[g_ind_to]:
                     if(len(pin_obj.connected_pins_to) == 1):
                         self.primary_outputs[(g_ind_to,pin_obj.index)] = True
+                        self.primary_output_gates[g_ind_to] = True
                     # pin_ref_pin_obj.append(pin_obj) 
                 pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                            
             self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,pin_ref_pin_obj)
@@ -410,7 +404,7 @@ class Gate_Data:
         wire_group_data_str.append(f"\nTotal Wire Groups : {len(self.wire_groups)}")
         for wire_group_ref in self.wire_groups:
             wire_group_data_str.append(str(self.wire_groups[wire_group_ref]))
-        
+
         primary_pin_data = ['\n'+" Primary IO Pins Information ".center(120,"=")]
         primary_pin_data.append(f"\nPrimary Inputs Pins (PIP's) : {len(self.primary_inputs)} || Primary Outputs Pins (POP's) : {len(self.primary_outputs)}\n")
         pip_count,pop_count = 0,0
