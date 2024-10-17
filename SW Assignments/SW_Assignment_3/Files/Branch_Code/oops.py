@@ -293,8 +293,6 @@ class Gate_Data:
         self.gates = def_dict()
         self.wire_dag, self.wire_groups, self.gate_dag = def_dict(dict), def_dict(), def_dict(dict)  
         self.primary_inputs, self.primary_outputs = def_dict(), def_dict()
-        self.primary_input_gates, self.primary_output_gates = def_dict(), def_dict()
-        
         self.gate_wire_groups_keys = def_dict(list)
         self.gate_wire_groups = def_dict()
         
@@ -362,15 +360,13 @@ class Gate_Data:
     def init_wire_groups(self):        
         for gate_index,pin_index in self.wire_dag:
             if(len(self.gates[gate_index].pins[pin_index].connected_pins_from) == 0):
-                self.primary_inputs[(gate_index,pin_index)] = True 
-                self.primary_input_gates[gate_index] = True               
+                self.primary_inputs[(gate_index,pin_index)] = True                
             pin_ref = self.gates[gate_index].pins[pin_index]
             pin_ref_pin_obj = []                
             for g_ind_to in pin_ref.connected_pins_to:
                 for pin_obj in pin_ref.connected_pins_to[g_ind_to]:
                     if(len(pin_obj.connected_pins_to) == 1):
                         self.primary_outputs[(g_ind_to,pin_obj.index)] = True
-                        self.primary_output_gates[g_ind_to] = True
                     # pin_ref_pin_obj.append(pin_obj) 
                 pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                            
             self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,pin_ref_pin_obj)
