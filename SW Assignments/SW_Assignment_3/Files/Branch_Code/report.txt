@@ -1,143 +1,57 @@
 
 ================================================= Netlist Information ==================================================
 
-Total Gates : 10 || Total Pins : 39 || Total Wires : 14
+Total Gates : 4 || Total Pins : 10 || Total Wires : 4
 
 =================================================== Gate Information ===================================================
 
-Gate : 1 || Pos_X : 1 || Pos_Y 24 || Width : 73 || Height : 28
-Pin : 1 || Parent_Gate : 1 || Pin_X : 1 || Pin_Y : 31
-Pin : 2 || Parent_Gate : 1 || Pin_X : 1 || Pin_Y : 52
-Pin : 3 || Parent_Gate : 1 || Pin_X : 74 || Pin_Y : 43
-Pin : 4 || Parent_Gate : 1 || Pin_X : 74 || Pin_Y : 31
+Gate : 1 || Pos_X : 0 || Pos_Y 0 || Width : 2 || Height : 3
+Pin : 1 || Parent_Gate : 1 || Pin_X : 0 || Pin_Y : 1
+Pin : 2 || Parent_Gate : 1 || Pin_X : 2 || Pin_Y : 2
 
-Gate : 2 || Pos_X : 105 || Pos_Y 10 || Width : 15 || Height : 56
-Pin : 1 || Parent_Gate : 2 || Pin_X : 105 || Pin_Y : 37
-Pin : 2 || Parent_Gate : 2 || Pin_X : 105 || Pin_Y : 42
-Pin : 3 || Parent_Gate : 2 || Pin_X : 120 || Pin_Y : 45
-Pin : 4 || Parent_Gate : 2 || Pin_X : 120 || Pin_Y : 37
+Gate : 2 || Pos_X : 3 || Pos_Y 0 || Width : 3 || Height : 2
+Pin : 1 || Parent_Gate : 2 || Pin_X : 3 || Pin_Y : 0
+Pin : 2 || Parent_Gate : 2 || Pin_X : 6 || Pin_Y : 1
 
-Gate : 3 || Pos_X : 169 || Pos_Y 21 || Width : 37 || Height : 33
-Pin : 1 || Parent_Gate : 3 || Pin_X : 169 || Pin_Y : 34
-Pin : 2 || Parent_Gate : 3 || Pin_X : 169 || Pin_Y : 32
-Pin : 3 || Parent_Gate : 3 || Pin_X : 206 || Pin_Y : 53
-Pin : 4 || Parent_Gate : 3 || Pin_X : 206 || Pin_Y : 51
+Gate : 3 || Pos_X : 0 || Pos_Y 3 || Width : 2 || Height : 2
+Pin : 1 || Parent_Gate : 3 || Pin_X : 0 || Pin_Y : 4
+Pin : 2 || Parent_Gate : 3 || Pin_X : 0 || Pin_Y : 5
+Pin : 3 || Parent_Gate : 3 || Pin_X : 2 || Pin_Y : 4
 
-Gate : 4 || Pos_X : 225 || Pos_Y 17 || Width : 75 || Height : 42
-Pin : 1 || Parent_Gate : 4 || Pin_X : 225 || Pin_Y : 42
-Pin : 2 || Parent_Gate : 4 || Pin_X : 225 || Pin_Y : 24
-Pin : 3 || Parent_Gate : 4 || Pin_X : 300 || Pin_Y : 43
-Pin : 4 || Parent_Gate : 4 || Pin_X : 300 || Pin_Y : 32
-
-Gate : 5 || Pos_X : 28 || Pos_Y 110 || Width : 19 || Height : 8
-Pin : 1 || Parent_Gate : 5 || Pin_X : 28 || Pin_Y : 113
-Pin : 2 || Parent_Gate : 5 || Pin_X : 28 || Pin_Y : 117
-Pin : 3 || Parent_Gate : 5 || Pin_X : 47 || Pin_Y : 114
-
-Gate : 6 || Pos_X : 75 || Pos_Y 104 || Width : 75 || Height : 19
-Pin : 1 || Parent_Gate : 6 || Pin_X : 75 || Pin_Y : 118
-Pin : 2 || Parent_Gate : 6 || Pin_X : 75 || Pin_Y : 123
-Pin : 3 || Parent_Gate : 6 || Pin_X : 150 || Pin_Y : 106
-Pin : 4 || Parent_Gate : 6 || Pin_X : 150 || Pin_Y : 105
-
-Gate : 7 || Pos_X : 180 || Pos_Y 91 || Width : 14 || Height : 46
-Pin : 1 || Parent_Gate : 7 || Pin_X : 180 || Pin_Y : 131
-Pin : 2 || Parent_Gate : 7 || Pin_X : 180 || Pin_Y : 114
-Pin : 3 || Parent_Gate : 7 || Pin_X : 194 || Pin_Y : 111
-Pin : 4 || Parent_Gate : 7 || Pin_X : 194 || Pin_Y : 117
-
-Gate : 8 || Pos_X : 233 || Pos_Y 76 || Width : 58 || Height : 76
-Pin : 1 || Parent_Gate : 8 || Pin_X : 233 || Pin_Y : 131
-Pin : 2 || Parent_Gate : 8 || Pin_X : 233 || Pin_Y : 80
-Pin : 3 || Parent_Gate : 8 || Pin_X : 291 || Pin_Y : 125
-Pin : 4 || Parent_Gate : 8 || Pin_X : 291 || Pin_Y : 140
-
-Gate : 9 || Pos_X : 5 || Pos_Y 177 || Width : 65 || Height : 25
-Pin : 1 || Parent_Gate : 9 || Pin_X : 5 || Pin_Y : 201
-Pin : 2 || Parent_Gate : 9 || Pin_X : 5 || Pin_Y : 202
-Pin : 3 || Parent_Gate : 9 || Pin_X : 70 || Pin_Y : 195
-Pin : 4 || Parent_Gate : 9 || Pin_X : 70 || Pin_Y : 180
-
-Gate : 10 || Pos_X : 80 || Pos_Y 156 || Width : 65 || Height : 67
-Pin : 1 || Parent_Gate : 10 || Pin_X : 80 || Pin_Y : 168
-Pin : 2 || Parent_Gate : 10 || Pin_X : 80 || Pin_Y : 223
-Pin : 3 || Parent_Gate : 10 || Pin_X : 145 || Pin_Y : 207
-Pin : 4 || Parent_Gate : 10 || Pin_X : 145 || Pin_Y : 204
+Gate : 4 || Pos_X : 3 || Pos_Y 4 || Width : 3 || Height : 1
+Pin : 1 || Parent_Gate : 4 || Pin_X : 3 || Pin_Y : 4
+Pin : 2 || Parent_Gate : 4 || Pin_X : 5 || Pin_Y : 5
+Pin : 3 || Parent_Gate : 4 || Pin_X : 5 || Pin_Y : 6
 
 ================================================ Wire Group Information ================================================
 
-Total Wire Groups : 11
+Total Wire Groups : 3
 
-Wire_Group : (1, 3) || X_min : 74 || Y_min : 43 || X_max : 206 || Y_max : 53 || Wire_Legth : 142 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 3
-Member : 2 || Parent Gate : 3 || Pin : 3
+Wire_Group : (1, 2) || X_min : 0 || Y_min : 2 || X_max : 2 || Y_max : 4 || Wire_Legth : 4 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 1
+Member : 2 || Parent Gate : 1 || Pin : 2
 
-Wire_Group : (2, 4) || X_min : 1 || Y_min : 37 || X_max : 206 || Y_max : 52 || Wire_Legth : 220 || Members : 3
-Member : 1 || Parent Gate : 1 || Pin : 2
-Member : 2 || Parent Gate : 3 || Pin : 4
-Member : 3 || Parent Gate : 2 || Pin : 4
+Wire_Group : (2, 2) || X_min : 0 || Y_min : 1 || X_max : 6 || Y_max : 5 || Wire_Legth : 10 || Members : 3
+Member : 1 || Parent Gate : 3 || Pin : 2
+Member : 2 || Parent Gate : 2 || Pin : 2
+Member : 3 || Parent Gate : 4 || Pin : 1
 
-Wire_Group : (4, 3) || X_min : 206 || Y_min : 43 || X_max : 300 || Y_max : 51 || Wire_Legth : 102 || Members : 2
-Member : 1 || Parent Gate : 3 || Pin : 4
-Member : 2 || Parent Gate : 4 || Pin : 3
-
-Wire_Group : (5, 3) || X_min : 47 || Y_min : 51 || X_max : 206 || Y_max : 114 || Wire_Legth : 222 || Members : 2
-Member : 1 || Parent Gate : 5 || Pin : 3
-Member : 2 || Parent Gate : 3 || Pin : 4
-
-Wire_Group : (6, 3) || X_min : 150 || Y_min : 53 || X_max : 206 || Y_max : 106 || Wire_Legth : 109 || Members : 2
-Member : 1 || Parent Gate : 6 || Pin : 3
-Member : 2 || Parent Gate : 3 || Pin : 3
-
-Wire_Group : (7, 4) || X_min : 194 || Y_min : 53 || X_max : 206 || Y_max : 117 || Wire_Legth : 76 || Members : 2
-Member : 1 || Parent Gate : 7 || Pin : 4
-Member : 2 || Parent Gate : 3 || Pin : 3
-
-Wire_Group : (8, 4) || X_min : 70 || Y_min : 53 || X_max : 291 || Y_max : 195 || Wire_Legth : 363 || Members : 3
-Member : 1 || Parent Gate : 9 || Pin : 3
-Member : 2 || Parent Gate : 3 || Pin : 3
-Member : 3 || Parent Gate : 8 || Pin : 4
-
-Wire_Group : (9, 4) || X_min : 1 || Y_min : 31 || X_max : 206 || Y_max : 180 || Wire_Legth : 354 || Members : 3
-Member : 1 || Parent Gate : 1 || Pin : 1
-Member : 2 || Parent Gate : 3 || Pin : 3
-Member : 3 || Parent Gate : 9 || Pin : 4
-
-Wire_Group : (10, 3) || X_min : 145 || Y_min : 53 || X_max : 206 || Y_max : 207 || Wire_Legth : 215 || Members : 2
-Member : 1 || Parent Gate : 10 || Pin : 3
-Member : 2 || Parent Gate : 3 || Pin : 3
-
-Wire_Group : (8, 2) || X_min : 105 || Y_min : 42 || X_max : 233 || Y_max : 80 || Wire_Legth : 166 || Members : 2
-Member : 1 || Parent Gate : 2 || Pin : 2
-Member : 2 || Parent Gate : 8 || Pin : 2
-
-Wire_Group : (7, 2) || X_min : 180 || Y_min : 114 || X_max : 291 || Y_max : 125 || Wire_Legth : 122 || Members : 2
-Member : 1 || Parent Gate : 7 || Pin : 2
-Member : 2 || Parent Gate : 8 || Pin : 3
+Wire_Group : (3, 3) || X_min : 2 || Y_min : 4 || X_max : 5 || Y_max : 5 || Wire_Legth : 4 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 3
+Member : 2 || Parent Gate : 4 || Pin : 2
 
 ============================================= Primary IO Pins Information ==============================================
 
-Primary Inputs Pins (PIP's) : 11 || Primary Outputs Pins (POP's) : 7
+Primary Inputs Pins (PIP's) : 3 || Primary Outputs Pins (POP's) : 4
 
-PIP : 1 || Parent Gate : 1 || Pin : 3
-PIP : 2 || Parent Gate : 2 || Pin : 4
-PIP : 3 || Parent Gate : 4 || Pin : 3
-PIP : 4 || Parent Gate : 5 || Pin : 3
-PIP : 5 || Parent Gate : 6 || Pin : 3
-PIP : 6 || Parent Gate : 7 || Pin : 4
-PIP : 7 || Parent Gate : 8 || Pin : 4
-PIP : 8 || Parent Gate : 9 || Pin : 4
-PIP : 9 || Parent Gate : 10 || Pin : 3
-PIP : 10 || Parent Gate : 8 || Pin : 2
-PIP : 11 || Parent Gate : 7 || Pin : 2
+PIP : 1 || Parent Gate : 1 || Pin : 2
+PIP : 2 || Parent Gate : 2 || Pin : 2
+PIP : 3 || Parent Gate : 3 || Pin : 3
 
-POP : 1 || Parent Gate : 3 || Pin : 3
-POP : 2 || Parent Gate : 3 || Pin : 4
-POP : 3 || Parent Gate : 1 || Pin : 2
-POP : 4 || Parent Gate : 9 || Pin : 3
-POP : 5 || Parent Gate : 1 || Pin : 1
-POP : 6 || Parent Gate : 2 || Pin : 2
-POP : 7 || Parent Gate : 8 || Pin : 3
+POP : 1 || Parent Gate : 3 || Pin : 1
+POP : 2 || Parent Gate : 3 || Pin : 2
+POP : 3 || Parent Gate : 4 || Pin : 1
+POP : 4 || Parent Gate : 4 || Pin : 2
 
 ============================================== Critical Path Information ===============================================
 

@@ -138,7 +138,7 @@ class Gate_Env:
         self.width = gate_width
         self.height = gate_height
         self.delay = gate_delay
-        self.dp_state = dp_state()
+        self.dp_state = None
         
         self.pins = def_dict()
         self.critical_paths = None
@@ -279,7 +279,7 @@ class Gate_Data:
     def __init__(self):
         
         self.gates = def_dict()
-        self.wire_dag_to, self.wire_groups, self.gate_dag_from,self.gate_dag_to = def_dict(dict), def_dict(), def_dict(dict), def_dict(dict)  
+        self.wire_dag, self.wire_groups, self.gate_dag_from,self.gate_dag_to = def_dict(dict), def_dict(), def_dict(dict), def_dict(dict)  
         self.primary_inputs, self.primary_outputs = def_dict(), def_dict()
         self.primary_input_gates, self.primary_output_gates = def_dict(), def_dict()
         
@@ -346,13 +346,13 @@ class Gate_Data:
             else:
                 self.gates[i].set_coord_env(((i-1)%bb_dim)*bb_cell_w,(i//bb_dim)*bb_cell_h)
                 self.gates[i].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[i].width)//2,(bb_cell_h-self.gates[i].height)//2)
-    
+
     @time_it  
     def init_wire_groups(self):        
         for gate_index,pin_index in self.wire_dag:
             if(len(self.gates[gate_index].pins[pin_index].connected_pins_from) == 0):
                 self.primary_inputs[(gate_index,pin_index)] = True
-                self.primary_input_gates[gate_index] = True
+                # self.primary_input_gates[gate_index] = True
                                 
             pin_ref = self.gates[gate_index].pins[pin_index]
             pin_ref_pin_obj = []                
@@ -369,6 +369,8 @@ class Gate_Data:
         
         for gate_index in self.gates:
             self.gate_wire_groups[gate_index] = Heap(comparator_func_wg,"max",[self.wire_groups[(gate_index,pin_index)] for pin_index in self.gate_wire_groups_keys[gate_index]])
+            if(self.gate_dag_to[gate_index] == {}):
+                self.primary_input_gates[gate_index] = True
 
     @time_it
     def init_critical_paths(self):
