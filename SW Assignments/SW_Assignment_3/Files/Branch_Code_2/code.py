@@ -20,9 +20,11 @@ def Parse_Input(fpath):
                 gate_data.add_gate(gate_index,gate_width,gate_height,gate_delay)
             elif(line_data[0].lower() == "pins"):
                 gate_index = int(line_data[1][1:])
+                gw = gate_data.gates[gate_index].width
                 for i in range(2,len(line_data),2):
                     pin_index,pin_x,pin_y = i//2,int(line_data[i]),int(line_data[i+1])
                     gate_data.add_pin(gate_index,pin_index,pin_x,pin_y)
+                
             elif(line_data[0].lower() == "wire_delay"):
                 gate_data.set_wire_delay(int(line_data[1]))
             elif(line_data[0].lower() == "wire"):
@@ -73,3 +75,7 @@ if(__name__ == "__main__"):
     
     # for g in gd.gates:
     #     print(g, gd.gates[g].dp_state)
+    # print(gd.primary_inputs)
+    print(gd.wire_dag_from_to)
+    print(gd.wire_groups_max_delay)
+    # print(gd.gates[6].out_pins[47].connected_pins_to)

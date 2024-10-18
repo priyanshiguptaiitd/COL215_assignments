@@ -150,6 +150,7 @@ class Gate_Env:
         self.dp_state = None
         
         self.pins = def_dict()
+        self.inp_pins, self.out_pins = def_dict(), def_dict()
         self.critical_paths = None
         self.affected_wire_groups_to = set()
         self.affected_wire_groups_from = set()
@@ -180,8 +181,10 @@ class Gate_Env:
                     self.affected_wire_groups_to.add((g_ind_to,p_ind_to))
     
     def add_pin(self,pin_index,pin_x,pin_y):
-        
-        self.pins[pin_index] = Pin(self,self.index,pin_index,pin_x,pin_y)
+        if(pin_x == 0):
+            self.inp_pins[pin_index] = Pin(self,self.index,pin_index,pin_x,pin_y,True)
+        else:
+            self.out_pins[pin_index] = Pin(self,self.index,pin_index,pin_x,pin_y,False)
         pass
     
     def get_global_coord(self):
@@ -190,7 +193,11 @@ class Gate_Env:
     
     def get_global_coord_pin(self,pin_index):
         
-        pin_ref = self.pins[pin_index]
+        if(pin_index in self.inp_pins):
+            pin_ref = self.inp_pins[pin_index]
+        else:
+            pin_ref = self.out_pins[pin_index]
+            
         pin_rel_x, pin_rel_y = pin_ref.pin_x, pin_ref.pin_y
         return (self.x + pin_rel_x, self.y + pin_rel_y)
     
@@ -207,30 +214,35 @@ class Gate_Env:
     def __str__(self):
         
         basic_data = f"Gate : {self.index} || Pos_X : {self.x} || Pos_Y {self.y} || Width : {self.width} || Height : {self.height}"
-        pin_data = [f"Pin : {pin_index} || Parent_Gate : {self.index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.pins]
-        return "\n" + basic_data + "\n" + "\n".join(pin_data)
+        input_pin_data  = [f"Input Pin : {pin_index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.inp_pins]
+        output_pin_data = [f"Output Pin : {pin_index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.out_pins]
+
+        return "\n" + basic_data + "\n" + "\n".join(input_pin_data) + "\n" + "\n".join(output_pin_data)
     
     def __repr__(self) -> str:
         return f"Gate : {self.index} || Pos_X : {self.x} || Pos_Y {self.y} || Width : {self.width} || Height : {self.height}"
     
 class Pin:
     
-    def __init__(self,parent_ref, gate_index, pin_index, pin_x,pin_y):
+    def __init__(self,parent_ref, gate_index, pin_index, pin_x, pin_y, is_inp):
         assert isinstance(parent_ref,Gate_Env), Exception("Invalid Type : Parent Reference of a Pin must be Gate_Env type")   
         self.parent_ref = parent_ref
         self.parent_index = gate_index
         self.index = pin_index
         self.pin_x, self.pin_y = pin_x, pin_y
+       
         self.connected_pins_to = def_dict(list)
         self.connected_pins_from = def_dict(list)
-        self.connected_pins_to[gate_index] = [self]
-    
+
+        self.is_inp,self.is_out = is_inp, not is_inp
+        self.is_pip,self.is_pop = True,True
+        
     def get_global_coord(self):
         return self.parent_ref.get_global_coord_pin(self.index)
     
     def __str__(self):
         
-        basic_data = f"Pin No = {self.index} || Parent Gate = g{self.parent_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y}"
+        basic_data = f"Pin No = {self.index} || Parent Gate = g{self.parent_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y} || Is_Input = {self.is_inp}"
         connected_from = [f"Connections of form gx.py --------> g{self.parent_index}.p{self.index}"]
         connected_to = [f"Connections of form g{self.parent_index}.p{self.index} --------> gx.py"]
         
@@ -244,7 +256,7 @@ class Pin:
         return basic_data + "\n" + "\n".join(connected_to) + "\n" + "\n".join(connected_from)
 
     def __repr__(self):
-        return f"Pin No = {self.index} || Parent Gate = g{self.parent_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y}"    
+        return f"Pin No = {self.index} || Parent Gate = g{self.parent_index} || Pin_x = {self.pin_x} || Pin_y = {self.pin_y} || Is_Input = {self.is_inp}"    
 
 class Wire_Group:
     
@@ -289,12 +301,14 @@ class Gate_Data:
     def __init__(self):
         
         self.gates = def_dict()
-        self.wire_dag, self.wire_groups, self.gate_dag_from,self.gate_dag_to = def_dict(dict), def_dict(), def_dict(dict), def_dict(dict)  
+        self.wire_dag_from_to,self.wire_dag_to_from, self.wire_groups, self.gate_dag_from_to,self.gate_dag_to_from = def_dict(dict), def_dict(dict), def_dict(), def_dict(dict), def_dict(dict)  
         self.primary_inputs, self.primary_outputs = def_dict(), def_dict()
         self.primary_input_gates, self.primary_output_gates = def_dict(), def_dict()
         self.wire_groups_between = def_dict(list)
         self.gate_wire_groups_keys = def_dict(list)
         self.gate_wire_groups = def_dict()
+        self.wire_groups_max_delay = def_dict(dict)
+        
         
         self.critical_path_count = 0
         self.total_wires_added = 0
@@ -366,7 +380,11 @@ class Gate_Data:
             return max_delay
 
         return max_delay
-         
+    
+    # def find_max_delay(self):
+    #     pass
+
+        
     def set_bbox(self,x,y):
         self.bbox = (x,y)
     
@@ -393,12 +411,28 @@ class Gate_Data:
         return self.gates[gate_index].pins[pin_index]
     
     def add_wire(self,g_i,p_i,g_j,p_j):
-        p_i_ref,p_j_ref = self.gates[g_i].pins[p_i],self.gates[g_j].pins[p_j]
-        p_i_ref.connected_pins_to[g_j].append(self.gates[g_j].pins[p_j])
-        p_j_ref.connected_pins_from[g_i].append(self.gates[g_i].pins[p_i])
-        self.wire_dag[(g_i,p_i)][(g_j,p_j)] = True
-        self.gate_dag_from[g_i][g_j] = True
-        self.gate_dag_to[g_j][g_i] = True
+        if(p_i not in self.gates[g_i].out_pins):
+            print(self.gates[g_i].out_pins)
+            raise Exception(f"Gate {g_i}, output {p_i} not found")
+        if(p_j not in self.gates[g_j].inp_pins):
+            print(self.gates[g_j].inp_pins)
+            raise Exception(f"Gate {g_j} , input {p_j} not found")
+        
+        p_i_ref,p_j_ref = self.gates[g_i].out_pins[p_i],self.gates[g_j].inp_pins[p_j]
+        
+        if(p_i_ref.is_pop): p_i_ref.is_pop = False
+        if(p_j_ref.is_pip): p_j_ref.is_pip = False
+        
+               
+        p_i_ref.connected_pins_to[g_j].append(self.gates[g_j].inp_pins[p_j])
+        p_j_ref.connected_pins_from[g_i].append(self.gates[g_i].out_pins[p_i])
+        
+        self.wire_dag_from_to[(g_i,p_i)][(g_j,p_j)] = True
+        self.wire_dag_to_from[(g_j,p_j)][(g_i,p_i)] = True
+                
+        self.gate_dag_from_to[g_i][g_j] = True
+        self.gate_dag_to_from[g_j][g_i] = True
+        
         self.total_wires_added += 1
     
     def get_crtical_path(self):
@@ -421,20 +455,13 @@ class Gate_Data:
 
     @time_it  
     def init_wire_groups(self):        
-        for gate_index,pin_index in self.wire_dag:
-            if(len(self.gates[gate_index].pins[pin_index].connected_pins_from) == 0):
-                self.primary_inputs[(gate_index,pin_index)] = True
-                # self.primary_input_gates[gate_index] = True
-                                
-            pin_ref = self.gates[gate_index].pins[pin_index]
+        for gate_index,pin_index in self.wire_dag_from_to:                    
+            pin_ref = self.gates[gate_index].out_pins[pin_index]
             pin_ref_pin_obj = []                
-            for g_ind_to in pin_ref.connected_pins_to:
-                for pin_obj in pin_ref.connected_pins_to[g_ind_to]:
-                    if(len(pin_obj.connected_pins_to) == 1):
-                        self.primary_outputs[(g_ind_to,pin_obj.index)] = True
-                        self.primary_output_gates[g_ind_to] = True
-                    # pin_ref_pin_obj.append(pin_obj) 
-                pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                            
+            for g_ind_to in pin_ref.connected_pins_to: 
+                pin_ref_pin_obj.extend(pin_ref.connected_pins_to[g_ind_to])                
+                            
+            pin_ref_pin_obj.append(pin_ref)
             self.wire_groups[(gate_index,pin_index)] = Wire_Group(gate_index,pin_index,pin_ref_pin_obj)
             self.wire_groups[(gate_index,pin_index)].set_bbox_wg()
             
@@ -446,9 +473,22 @@ class Gate_Data:
             self.gate_wire_groups_keys[gate_index].append(pin_index)
         
         for gate_index in self.gates:
+            
+            for pin_index in self.gates[gate_index].out_pins:
+                if(self.gates[gate_index].out_pins[pin_index].is_pop):
+                    self.primary_outputs[(gate_index,pin_index)] = True
+            
+            for pin_index in self.gates[gate_index].inp_pins:
+                if(self.gates[gate_index].inp_pins[pin_index].is_pip):
+                    self.primary_inputs[(gate_index,pin_index)] = True            
+            
             self.gate_wire_groups[gate_index] = Heap(comparator_func_wg,"max",[self.wire_groups[(gate_index,pin_index)] for pin_index in self.gate_wire_groups_keys[gate_index]])
-            if(self.gate_dag_to[gate_index] == {}):
+            
+            if(self.gate_dag_to_from[gate_index] == {}):
                 self.primary_input_gates[gate_index] = True
+            
+        for gate_index,gate_index_to in self.wire_groups_between:
+            self.wire_groups_max_delay[(gate_index,gate_index_to)] = len(max((wg for wg in self.wire_groups_between[(gate_index,gate_index_to)]), key = len))
 
     @time_it
     def init_critical_paths(self):
@@ -489,7 +529,7 @@ class Gate_Data:
         primary_pin_data.append(f"\nPrimary Inputs Pins (PIP's) : {len(self.primary_inputs)} || Primary Outputs Pins (POP's) : {len(self.primary_outputs)}\n")
         pip_count,pop_count = 0,0
         for gate_ind,pin_ind in self.primary_inputs:
-            pip_count += 1
+            pip_count += 1  
             primary_pin_data.append(f"PIP : {pip_count} || Parent Gate : {gate_ind} || Pin : {pin_ind}")
         primary_pin_data.append("")
         for gate_ind,pin_ind in self.primary_outputs:

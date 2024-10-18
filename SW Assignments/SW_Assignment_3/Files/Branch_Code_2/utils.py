@@ -11,33 +11,12 @@ from matplotlib import pyplot as plt
 
 # =====================================-= Project Constants ======================================== #
 
-kw = {
-          "gate_freq": 100,
-          "mode": "uniform",
-          "br_prob": 10**(-4),
-          "dim_lo":1,
-          "dim_hi":101,
-          "wire_delay": 1,
-          "pin_density": 1.6,
-          "max_pin_freq":4,
-          "override_specs": False,
-          "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
-          "ensure_pins_freq": 10,
-          "ensure_wire_freq_bool": False,
-          "ensure_wire_freq": 4_000
-          }
-    
-kw_multi =  {
-                "tc_count" : 10,
-                "force_different_wires" : False,
-                "vary_pins" : True                
-            }
 
 # ------------------------------------------ File Paths -------------------------------------------- #
 
-FP_IN = r"SW Assignments\SW_Assignment_3\Files\Branch_Code\input.txt"
-FP_OUT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code\output.txt"
-FP_REPORT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code\report.txt"
+FP_IN = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\input.txt"
+FP_OUT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\output.txt"
+FP_REPORT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\report.txt"
 
 FP_IN_MULTI = r"SW Assignments\SW_Assignment_3\Files\Test_Cases\TC_Multi\Input"
 FP_OUT_MULTI = r"SW Assignments\SW_Assignment_3\Files\Test_Cases\TC_Multi\Output"
@@ -166,7 +145,7 @@ def generate_pin_positions(gh,gate_freq,pin_density = 0.75,max_pin_freq = 6,over
     
     return arr_left, arr_right
 
-def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2),ensure_wire_freq_bool=False,
+def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob = 10**(-2),ensure_wire_freq_bool=False,
           ensure_wire_freq = 50_000):
     """
     Generates wires between gates based on the problem Statement specifications.
@@ -184,121 +163,78 @@ def generate_wires(gate_freq,gate_pins,left_edge_data,br_prob = 10**(-2),ensure_
         wire_data.keys: The keys of the wire data dictionary.
     """
     atleast_one,wire_data,count_atleast_one,wires_generated = {i:False for i in range(1,gate_freq+1)},{},0,0
-    comb_loops = def_dict(dict)
-    rng = np.random.default_rng(randbits(128))
-    rng_break = np.random.default_rng(randbits(128))
-    g_pseudo = rng.integers(1,gate_freq+1)
     
-    while(count_atleast_one <= gate_freq):
-        if(gate_freq%2 == 0):
-            for i in range(1,gate_freq+1,2):
-                g1,g2 = i,i+1
-                meets_wire_gen_criteria = False
-                while(not meets_wire_gen_criteria):
-                    pi = rng.integers(0,len(gate_pins[g1]))
-                    pj = rng.integers(0,len(gate_pins[g2]))
-                    if(gate_pins[g1][p1][0] != 0 and gate_pins[g2][p2][0] != 0):
-                        meets_wire_gen_criteria = True 
-                if(meets_wire_gen_criteria):
-                    wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
-                
-                    comb_loops[g2][g1] = True
-                    comb_loops[g2].update(comb_loops[g1])
-                    
-                    wires_generated += 1
-                    
-                    if(not atleast_one[g1]):
-                        atleast_one[g1] = True
-                        count_atleast_one += 1
-                    if(not atleast_one[g2]):
-                        atleast_one[g2] = True
-                        count_atleast_one += 1
-        else:
-            for i in range(1,gate_freq+1,2):
-                g1,g2 = i,i+1
-                meets_wire_gen_criteria = False
-                while(not meets_wire_gen_criteria):
-                    pi = rng.integers(0,len(gate_pins[g1]))
-                    pj = rng.integers(0,len(gate_pins[g2]))
-                    if(gate_pins[g1][p1][0] != 0 and gate_pins[g2][p2][0] != 0):
-                        meets_wire_gen_criteria = True 
-                if(meets_wire_gen_criteria):
-                    wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
-                
-                    comb_loops[g2][g1] = True
-                    comb_loops[g2].update(comb_loops[g1])
-                    
-                    wires_generated += 1
-                    
-                    if(not atleast_one[g1]):
-                        atleast_one[g1] = True
-                        count_atleast_one += 1
-                    if(not atleast_one[g2]):
-                        atleast_one[g2] = True
-                        count_atleast_one += 1
-            
-            
+    comb_loops =def_dict(dict)
+    
+    rng = np.random.default_rng(randbits(128))
+    rng_break = np.random.default_rng(randbits(128))     
     
     while(True):
         g1 = rng.integers(1,gate_freq+1)
         g2 = rng.integers(1,gate_freq+1)
+        
         if(g1 == g2):
+            if(ensure_wire_freq_bool):
+                if(len(wire_data) >= ensure_wire_freq):
+                    break
+            else:
+                if(count_atleast_one >= gate_freq):
+                    if(rng_break.random() < br_prob):
+                        break
             continue
+        
+        elif(False not in is_done_left[g2].values()):
+            if(ensure_wire_freq_bool):
+                if(len(wire_data) >= ensure_wire_freq):
+                    break
+            else:
+                if(count_atleast_one >= gate_freq):
+                    if(rng_break.random() < br_prob):
+                        break
+            continue
+        
         elif(g2 in comb_loops[g1]):
             # print(f"Comb Loop Detected {g1} {g2}")
             if(ensure_wire_freq_bool):
                 if(len(wire_data) >= ensure_wire_freq):
                     break
             else:
+                if(count_atleast_one < gate_freq):
+                    continue
                 if(rng_break.random() < br_prob):
                     break
         else:
-            p1 = rng.integers(0,len(gate_pins[g1]))
-            p2 = rng.integers(0,len(gate_pins[g2]))
+            p1 = rng.choice(right_edge_data[g1])
+            p2 = rng.choice(left_edge_data[g2])
             
-            meets_wire_gen_criteria = False
-        
-            if(gate_pins[g1][p1][0] != 0 and gate_pins[g2][p2][0] != 0):
-                meets_wire_gen_criteria = True 
-                                    
-            elif(gate_pins[g1][p1][0] == 0 and gate_pins[g2][p2][0] != 0):
-                if(not left_edge_data[(g1,0,gate_pins[g1][p1][1])]):
-                    meets_wire_gen_criteria = True
-                    left_edge_data[(g1,0,gate_pins[g1][p1][1])] = True
-                                        
-            elif(gate_pins[g1][p1][0] != 0 and gate_pins[g2][p2][0] == 0):
-                if(not left_edge_data[(g2,0,gate_pins[g2][p2][1])]):
-                    meets_wire_gen_criteria = True
-                    left_edge_data[(g2,0,gate_pins[g2][p2][1])] = True
-            
-            else:
-                if(not (left_edge_data[(g1,0,gate_pins[g1][p1][1])] or left_edge_data[(g2,0,gate_pins[g2][p2][1])])):
-                    meets_wire_gen_criteria = True
-                    left_edge_data[(g1,0,gate_pins[g1][p1][1])] = True
-                    left_edge_data[(g2,0,gate_pins[g2][p2][1])] = True
+            while(is_done_left[g2][p2]):
+                p2 = rng.choice(left_edge_data[g2])
                             
-            if(meets_wire_gen_criteria):
-                wire_data[f"wire g{g1}.p{p1+1} g{g2}.p{p2+1}"] = True
+            wire_data[f"wire g{g1}.p{p1} g{g2}.p{p2}"] = True
+            
+            comb_loops[g2][g1] = True
+            comb_loops[g2].update(comb_loops[g1])
+            
+            wires_generated += 1
+            
+            if(not atleast_one[g1]):
+                atleast_one[g1] = True
+                count_atleast_one += 1
+            if(not atleast_one[g2]):
+                atleast_one[g2] = True
+                count_atleast_one += 1
+            
+            is_done_left[g2][p2] = True
                 
-                comb_loops[g2][g1] = True
-                comb_loops[g2].update(comb_loops[g1])
-                
-                wires_generated += 1
-                if(not atleast_one[g1]):
-                    atleast_one[g1] = True
-                    count_atleast_one += 1
-                if(not atleast_one[g2]):
-                    atleast_one[g2] = True
-                    count_atleast_one += 1
-                    
             
             if(ensure_wire_freq_bool):
                 if(len(wire_data) >= ensure_wire_freq):
                     break
             else:
-                if(rng_break.random() < br_prob):
-                    break
-                    
+                if(count_atleast_one >= gate_freq):
+                    if(rng_break.random() < br_prob):
+                        break
+                            
     # print(f"Total Gates Generated : {gate_freq}")                
     # print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
@@ -322,28 +258,37 @@ def write_single_case(gate_freq,fpath,kw):
         assert kw["mode"] in ["uniform","normal_lo","normal_hi"], "Please give a valid testcase generator type"
         
         with open(fpath,"w") as file:
-            gate_pins = {i:[] for i in range(1,gate_freq+1)}
-            left_edge = {} 
+            
+            
+            left_edge, right_edge, is_done_left = def_dict(list),def_dict(list), def_dict(dict) 
+            
             pins_gen = 0
+            
             for i in range(1,gate_freq+1):
-                gw,gh,gd = generate_dimensions(kw["mode"],kw["dim_lo"],kw["dim_hi"])
+                
+                gw, gh, gd = generate_dimensions(kw["mode"],kw["dim_lo"],kw["dim_hi"])
                 file.write(f"g{i} {gw} {gh} {gd}\n")
                 file.write(f"pins g{i} ")
-                pin_left,pin_right = generate_pin_positions(gh,gate_freq,kw["pin_density"],kw["max_pin_freq"],kw["override_specs"],kw["ensure_pins"],kw["ensure_pins_freq"])
-                pins_gen += len(pin_left) + len(pin_right)
-                for j in range(len(pin_left)):
-                    file.write(f"{0} {pin_left[j]} ")
-                    gate_pins[i].append((0,pin_left[j]))
-                    left_edge[(i,0,pin_left[j])] = False
-                for j in range(len(pin_right)):
-                    file.write(f"{gw} {pin_right[j]} ")
-                    gate_pins[i].append((gw,pin_right[j]))
+                pin_left, pin_right = generate_pin_positions(gh,gate_freq,kw["pin_density"],kw["max_pin_freq"],kw["override_specs"],kw["ensure_pins"],kw["ensure_pins_freq"])
+                
+                pl,pr = len(pin_left),len(pin_right)
+                pins_gen += pl + pr
+                
+                for j in range(pl+pr):
+                    if(0<= j <pl):
+                        file.write(f"{0} {pin_left[j]} ")
+                        left_edge[i].append(j+1) 
+                        is_done_left[i][j+1] = False
+                    elif(pl<= j <pl+pr):
+                        file.write(f"{gw} {pin_right[j-pl]} ")
+                        right_edge[i].append(j+1)
+                    
                 file.write("\n")
             # print(gate_pins)
             print(f"Total Gates Generated : {gate_freq}")
             print(f"Total Pins Generated : {pins_gen}")
             # print(f"Calling wire generation")
-            wire_data = generate_wires(gate_freq,gate_pins,left_edge,kw["br_prob"],kw["ensure_wire_freq_bool"],kw["ensure_wire_freq"])
+            wire_data = generate_wires(gate_freq,is_done_left,left_edge,right_edge,kw["br_prob"],kw["ensure_wire_freq_bool"],kw["ensure_wire_freq"])
             print(f"Total Wires Generated : {len(wire_data)}")
             file.write(f"wire_delay {kw['wire_delay']}\n")
             
@@ -410,7 +355,28 @@ def right_cyclic_shift(n,shift):
 # ====================================== __main__ for testing  ====================================== #
 
 if(__name__ == "__main__"):
+    kw = {
+          "gate_freq": 10,
+          "mode": "uniform",
+          "br_prob": 10**(-3),
+          "dim_lo":1,
+          "dim_hi":101,
+          "wire_delay": 1,
+          "pin_density": 1.6,
+          "max_pin_freq":4,
+          "override_specs": False,
+          "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
+          "ensure_pins_freq": 10,
+          "ensure_wire_freq_bool": False,
+          "ensure_wire_freq": 4_000
+          }
     
+    kw_multi =  {
+                    "tc_count" : 10,
+                    "force_different_wires" : False,
+                    "vary_pins" : True                
+                }
+
     
     write_single_case(kw["gate_freq"],FP_IN,kw)      
     

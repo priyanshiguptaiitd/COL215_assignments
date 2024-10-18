@@ -1,0 +1,1440 @@
+
+================================================= Netlist Information ==================================================
+
+Total Gates : 10 || Total Pins : 637 || Total Wires : 81
+
+=================================================== Gate Information ===================================================
+
+Gate : 1 || Pos_X : 14 || Pos_Y 24 || Width : 64 || Height : 49
+Input Pin : 1 || Pin_X : 14 || Pin_Y : 36
+Input Pin : 2 || Pin_X : 14 || Pin_Y : 34
+Input Pin : 3 || Pin_X : 14 || Pin_Y : 27
+Input Pin : 4 || Pin_X : 14 || Pin_Y : 46
+Input Pin : 5 || Pin_X : 14 || Pin_Y : 51
+Input Pin : 6 || Pin_X : 14 || Pin_Y : 32
+Input Pin : 7 || Pin_X : 14 || Pin_Y : 45
+Input Pin : 8 || Pin_X : 14 || Pin_Y : 41
+Input Pin : 9 || Pin_X : 14 || Pin_Y : 28
+Input Pin : 10 || Pin_X : 14 || Pin_Y : 48
+Input Pin : 11 || Pin_X : 14 || Pin_Y : 39
+Input Pin : 12 || Pin_X : 14 || Pin_Y : 53
+Input Pin : 13 || Pin_X : 14 || Pin_Y : 58
+Input Pin : 14 || Pin_X : 14 || Pin_Y : 26
+Input Pin : 15 || Pin_X : 14 || Pin_Y : 37
+Input Pin : 16 || Pin_X : 14 || Pin_Y : 62
+Input Pin : 17 || Pin_X : 14 || Pin_Y : 63
+Input Pin : 18 || Pin_X : 14 || Pin_Y : 64
+Input Pin : 19 || Pin_X : 14 || Pin_Y : 65
+Input Pin : 20 || Pin_X : 14 || Pin_Y : 66
+Input Pin : 21 || Pin_X : 14 || Pin_Y : 30
+Input Pin : 22 || Pin_X : 14 || Pin_Y : 68
+Input Pin : 23 || Pin_X : 14 || Pin_Y : 69
+Input Pin : 24 || Pin_X : 14 || Pin_Y : 60
+Input Pin : 25 || Pin_X : 14 || Pin_Y : 71
+Input Pin : 26 || Pin_X : 14 || Pin_Y : 72
+Input Pin : 27 || Pin_X : 14 || Pin_Y : 57
+Output Pin : 28 || Pin_X : 78 || Pin_Y : 32
+Output Pin : 29 || Pin_X : 78 || Pin_Y : 26
+Output Pin : 30 || Pin_X : 78 || Pin_Y : 33
+Output Pin : 31 || Pin_X : 78 || Pin_Y : 30
+Output Pin : 32 || Pin_X : 78 || Pin_Y : 37
+Output Pin : 33 || Pin_X : 78 || Pin_Y : 36
+Output Pin : 34 || Pin_X : 78 || Pin_Y : 27
+Output Pin : 35 || Pin_X : 78 || Pin_Y : 31
+Output Pin : 36 || Pin_X : 78 || Pin_Y : 42
+Output Pin : 37 || Pin_X : 78 || Pin_Y : 34
+Output Pin : 38 || Pin_X : 78 || Pin_Y : 28
+Output Pin : 39 || Pin_X : 78 || Pin_Y : 45
+Output Pin : 40 || Pin_X : 78 || Pin_Y : 46
+Output Pin : 41 || Pin_X : 78 || Pin_Y : 47
+Output Pin : 42 || Pin_X : 78 || Pin_Y : 48
+Output Pin : 43 || Pin_X : 78 || Pin_Y : 49
+Output Pin : 44 || Pin_X : 78 || Pin_Y : 50
+Output Pin : 45 || Pin_X : 78 || Pin_Y : 51
+Output Pin : 46 || Pin_X : 78 || Pin_Y : 29
+Output Pin : 47 || Pin_X : 78 || Pin_Y : 53
+Output Pin : 48 || Pin_X : 78 || Pin_Y : 54
+Output Pin : 49 || Pin_X : 78 || Pin_Y : 55
+Output Pin : 50 || Pin_X : 78 || Pin_Y : 41
+Output Pin : 51 || Pin_X : 78 || Pin_Y : 57
+Output Pin : 52 || Pin_X : 78 || Pin_Y : 58
+Output Pin : 53 || Pin_X : 78 || Pin_Y : 59
+Output Pin : 54 || Pin_X : 78 || Pin_Y : 52
+Output Pin : 55 || Pin_X : 78 || Pin_Y : 61
+Output Pin : 56 || Pin_X : 78 || Pin_Y : 60
+Output Pin : 57 || Pin_X : 78 || Pin_Y : 63
+Output Pin : 58 || Pin_X : 78 || Pin_Y : 39
+Output Pin : 59 || Pin_X : 78 || Pin_Y : 65
+Output Pin : 60 || Pin_X : 78 || Pin_Y : 66
+Output Pin : 61 || Pin_X : 78 || Pin_Y : 67
+Output Pin : 62 || Pin_X : 78 || Pin_Y : 68
+Output Pin : 63 || Pin_X : 78 || Pin_Y : 69
+Output Pin : 64 || Pin_X : 78 || Pin_Y : 70
+Output Pin : 65 || Pin_X : 78 || Pin_Y : 56
+Output Pin : 66 || Pin_X : 78 || Pin_Y : 72
+Output Pin : 67 || Pin_X : 78 || Pin_Y : 73
+
+Gate : 2 || Pos_X : 105 || Pos_Y 39 || Width : 68 || Height : 20
+Input Pin : 1 || Pin_X : 105 || Pin_Y : 53
+Input Pin : 2 || Pin_X : 105 || Pin_Y : 56
+Output Pin : 3 || Pin_X : 173 || Pin_Y : 40
+Output Pin : 4 || Pin_X : 173 || Pin_Y : 41
+Output Pin : 5 || Pin_X : 173 || Pin_Y : 43
+Output Pin : 6 || Pin_X : 173 || Pin_Y : 44
+Output Pin : 7 || Pin_X : 173 || Pin_Y : 58
+
+Gate : 3 || Pos_X : 186 || Pos_Y 25 || Width : 93 || Height : 48
+Input Pin : 1 || Pin_X : 186 || Pin_Y : 38
+Input Pin : 2 || Pin_X : 186 || Pin_Y : 39
+Input Pin : 3 || Pin_X : 186 || Pin_Y : 32
+Input Pin : 4 || Pin_X : 186 || Pin_Y : 41
+Input Pin : 5 || Pin_X : 186 || Pin_Y : 26
+Input Pin : 6 || Pin_X : 186 || Pin_Y : 43
+Input Pin : 7 || Pin_X : 186 || Pin_Y : 29
+Input Pin : 8 || Pin_X : 186 || Pin_Y : 42
+Input Pin : 9 || Pin_X : 186 || Pin_Y : 46
+Input Pin : 10 || Pin_X : 186 || Pin_Y : 47
+Input Pin : 11 || Pin_X : 186 || Pin_Y : 40
+Input Pin : 12 || Pin_X : 186 || Pin_Y : 44
+Input Pin : 13 || Pin_X : 186 || Pin_Y : 50
+Input Pin : 14 || Pin_X : 186 || Pin_Y : 45
+Input Pin : 15 || Pin_X : 186 || Pin_Y : 52
+Input Pin : 16 || Pin_X : 186 || Pin_Y : 31
+Input Pin : 17 || Pin_X : 186 || Pin_Y : 54
+Input Pin : 18 || Pin_X : 186 || Pin_Y : 55
+Input Pin : 19 || Pin_X : 186 || Pin_Y : 56
+Input Pin : 20 || Pin_X : 186 || Pin_Y : 34
+Input Pin : 21 || Pin_X : 186 || Pin_Y : 58
+Input Pin : 22 || Pin_X : 186 || Pin_Y : 37
+Input Pin : 23 || Pin_X : 186 || Pin_Y : 59
+Input Pin : 24 || Pin_X : 186 || Pin_Y : 61
+Input Pin : 25 || Pin_X : 186 || Pin_Y : 62
+Input Pin : 26 || Pin_X : 186 || Pin_Y : 27
+Input Pin : 27 || Pin_X : 186 || Pin_Y : 53
+Input Pin : 28 || Pin_X : 186 || Pin_Y : 65
+Input Pin : 29 || Pin_X : 186 || Pin_Y : 57
+Input Pin : 30 || Pin_X : 186 || Pin_Y : 64
+Input Pin : 31 || Pin_X : 186 || Pin_Y : 68
+Input Pin : 32 || Pin_X : 186 || Pin_Y : 30
+Input Pin : 33 || Pin_X : 186 || Pin_Y : 35
+Input Pin : 34 || Pin_X : 186 || Pin_Y : 71
+Input Pin : 35 || Pin_X : 186 || Pin_Y : 72
+Input Pin : 36 || Pin_X : 186 || Pin_Y : 73
+Output Pin : 37 || Pin_X : 279 || Pin_Y : 31
+Output Pin : 38 || Pin_X : 279 || Pin_Y : 27
+Output Pin : 39 || Pin_X : 279 || Pin_Y : 30
+Output Pin : 40 || Pin_X : 279 || Pin_Y : 36
+Output Pin : 41 || Pin_X : 279 || Pin_Y : 28
+Output Pin : 42 || Pin_X : 279 || Pin_Y : 35
+Output Pin : 43 || Pin_X : 279 || Pin_Y : 37
+Output Pin : 44 || Pin_X : 279 || Pin_Y : 32
+Output Pin : 45 || Pin_X : 279 || Pin_Y : 41
+Output Pin : 46 || Pin_X : 279 || Pin_Y : 42
+Output Pin : 47 || Pin_X : 279 || Pin_Y : 43
+Output Pin : 48 || Pin_X : 279 || Pin_Y : 44
+Output Pin : 49 || Pin_X : 279 || Pin_Y : 45
+Output Pin : 50 || Pin_X : 279 || Pin_Y : 40
+Output Pin : 51 || Pin_X : 279 || Pin_Y : 47
+Output Pin : 52 || Pin_X : 279 || Pin_Y : 48
+Output Pin : 53 || Pin_X : 279 || Pin_Y : 49
+Output Pin : 54 || Pin_X : 279 || Pin_Y : 50
+Output Pin : 55 || Pin_X : 279 || Pin_Y : 33
+Output Pin : 56 || Pin_X : 279 || Pin_Y : 52
+Output Pin : 57 || Pin_X : 279 || Pin_Y : 53
+Output Pin : 58 || Pin_X : 279 || Pin_Y : 34
+Output Pin : 59 || Pin_X : 279 || Pin_Y : 55
+Output Pin : 60 || Pin_X : 279 || Pin_Y : 51
+Output Pin : 61 || Pin_X : 279 || Pin_Y : 57
+Output Pin : 62 || Pin_X : 279 || Pin_Y : 58
+Output Pin : 63 || Pin_X : 279 || Pin_Y : 59
+Output Pin : 64 || Pin_X : 279 || Pin_Y : 60
+Output Pin : 65 || Pin_X : 279 || Pin_Y : 61
+Output Pin : 66 || Pin_X : 279 || Pin_Y : 62
+Output Pin : 67 || Pin_X : 279 || Pin_Y : 29
+Output Pin : 68 || Pin_X : 279 || Pin_Y : 64
+Output Pin : 69 || Pin_X : 279 || Pin_Y : 54
+Output Pin : 70 || Pin_X : 279 || Pin_Y : 66
+Output Pin : 71 || Pin_X : 279 || Pin_Y : 67
+Output Pin : 72 || Pin_X : 279 || Pin_Y : 68
+Output Pin : 73 || Pin_X : 279 || Pin_Y : 69
+Output Pin : 74 || Pin_X : 279 || Pin_Y : 70
+Output Pin : 75 || Pin_X : 279 || Pin_Y : 71
+Output Pin : 76 || Pin_X : 279 || Pin_Y : 72
+Output Pin : 77 || Pin_X : 279 || Pin_Y : 73
+
+Gate : 4 || Pos_X : 318 || Pos_Y 26 || Width : 15 || Height : 45
+Input Pin : 1 || Pin_X : 318 || Pin_Y : 29
+Input Pin : 2 || Pin_X : 318 || Pin_Y : 35
+Input Pin : 3 || Pin_X : 318 || Pin_Y : 30
+Input Pin : 4 || Pin_X : 318 || Pin_Y : 27
+Input Pin : 5 || Pin_X : 318 || Pin_Y : 41
+Input Pin : 6 || Pin_X : 318 || Pin_Y : 38
+Input Pin : 7 || Pin_X : 318 || Pin_Y : 43
+Input Pin : 8 || Pin_X : 318 || Pin_Y : 34
+Input Pin : 9 || Pin_X : 318 || Pin_Y : 28
+Input Pin : 10 || Pin_X : 318 || Pin_Y : 42
+Input Pin : 11 || Pin_X : 318 || Pin_Y : 39
+Input Pin : 12 || Pin_X : 318 || Pin_Y : 48
+Input Pin : 13 || Pin_X : 318 || Pin_Y : 49
+Input Pin : 14 || Pin_X : 318 || Pin_Y : 46
+Input Pin : 15 || Pin_X : 318 || Pin_Y : 51
+Input Pin : 16 || Pin_X : 318 || Pin_Y : 40
+Input Pin : 17 || Pin_X : 318 || Pin_Y : 53
+Input Pin : 18 || Pin_X : 318 || Pin_Y : 54
+Input Pin : 19 || Pin_X : 318 || Pin_Y : 55
+Input Pin : 20 || Pin_X : 318 || Pin_Y : 56
+Input Pin : 21 || Pin_X : 318 || Pin_Y : 57
+Input Pin : 22 || Pin_X : 318 || Pin_Y : 58
+Input Pin : 23 || Pin_X : 318 || Pin_Y : 59
+Input Pin : 24 || Pin_X : 318 || Pin_Y : 60
+Input Pin : 25 || Pin_X : 318 || Pin_Y : 61
+Input Pin : 26 || Pin_X : 318 || Pin_Y : 62
+Input Pin : 27 || Pin_X : 318 || Pin_Y : 63
+Input Pin : 28 || Pin_X : 318 || Pin_Y : 64
+Input Pin : 29 || Pin_X : 318 || Pin_Y : 65
+Input Pin : 30 || Pin_X : 318 || Pin_Y : 66
+Input Pin : 31 || Pin_X : 318 || Pin_Y : 67
+Input Pin : 32 || Pin_X : 318 || Pin_Y : 68
+Input Pin : 33 || Pin_X : 318 || Pin_Y : 69
+Input Pin : 34 || Pin_X : 318 || Pin_Y : 44
+Input Pin : 35 || Pin_X : 318 || Pin_Y : 71
+Output Pin : 36 || Pin_X : 333 || Pin_Y : 32
+Output Pin : 37 || Pin_X : 333 || Pin_Y : 54
+Output Pin : 38 || Pin_X : 333 || Pin_Y : 55
+Output Pin : 39 || Pin_X : 333 || Pin_Y : 49
+Output Pin : 40 || Pin_X : 333 || Pin_Y : 28
+Output Pin : 41 || Pin_X : 333 || Pin_Y : 38
+Output Pin : 42 || Pin_X : 333 || Pin_Y : 52
+Output Pin : 43 || Pin_X : 333 || Pin_Y : 56
+Output Pin : 44 || Pin_X : 333 || Pin_Y : 60
+Output Pin : 45 || Pin_X : 333 || Pin_Y : 61
+Output Pin : 46 || Pin_X : 333 || Pin_Y : 39
+Output Pin : 47 || Pin_X : 333 || Pin_Y : 29
+Output Pin : 48 || Pin_X : 333 || Pin_Y : 65
+Output Pin : 49 || Pin_X : 333 || Pin_Y : 58
+Output Pin : 50 || Pin_X : 333 || Pin_Y : 33
+Output Pin : 51 || Pin_X : 333 || Pin_Y : 68
+Output Pin : 52 || Pin_X : 333 || Pin_Y : 69
+Output Pin : 53 || Pin_X : 333 || Pin_Y : 66
+Output Pin : 54 || Pin_X : 333 || Pin_Y : 57
+
+Gate : 5 || Pos_X : 36 || Pos_Y 137 || Width : 21 || Height : 19
+Input Pin : 1 || Pin_X : 36 || Pin_Y : 141
+Input Pin : 2 || Pin_X : 36 || Pin_Y : 144
+Input Pin : 3 || Pin_X : 36 || Pin_Y : 139
+Input Pin : 4 || Pin_X : 36 || Pin_Y : 142
+Input Pin : 5 || Pin_X : 36 || Pin_Y : 138
+Input Pin : 6 || Pin_X : 36 || Pin_Y : 148
+Input Pin : 7 || Pin_X : 36 || Pin_Y : 149
+Input Pin : 8 || Pin_X : 36 || Pin_Y : 150
+Input Pin : 9 || Pin_X : 36 || Pin_Y : 151
+Input Pin : 10 || Pin_X : 36 || Pin_Y : 146
+Input Pin : 11 || Pin_X : 36 || Pin_Y : 143
+Input Pin : 12 || Pin_X : 36 || Pin_Y : 154
+Input Pin : 13 || Pin_X : 36 || Pin_Y : 152
+Input Pin : 14 || Pin_X : 36 || Pin_Y : 156
+Output Pin : 15 || Pin_X : 57 || Pin_Y : 138
+Output Pin : 16 || Pin_X : 57 || Pin_Y : 139
+Output Pin : 17 || Pin_X : 57 || Pin_Y : 140
+Output Pin : 18 || Pin_X : 57 || Pin_Y : 141
+Output Pin : 19 || Pin_X : 57 || Pin_Y : 142
+Output Pin : 20 || Pin_X : 57 || Pin_Y : 143
+Output Pin : 21 || Pin_X : 57 || Pin_Y : 144
+Output Pin : 22 || Pin_X : 57 || Pin_Y : 145
+Output Pin : 23 || Pin_X : 57 || Pin_Y : 146
+Output Pin : 24 || Pin_X : 57 || Pin_Y : 147
+Output Pin : 25 || Pin_X : 57 || Pin_Y : 148
+Output Pin : 26 || Pin_X : 57 || Pin_Y : 149
+Output Pin : 27 || Pin_X : 57 || Pin_Y : 150
+Output Pin : 28 || Pin_X : 57 || Pin_Y : 151
+Output Pin : 29 || Pin_X : 57 || Pin_Y : 152
+Output Pin : 30 || Pin_X : 57 || Pin_Y : 153
+Output Pin : 31 || Pin_X : 57 || Pin_Y : 154
+Output Pin : 32 || Pin_X : 57 || Pin_Y : 155
+Output Pin : 33 || Pin_X : 57 || Pin_Y : 156
+
+Gate : 6 || Pos_X : 109 || Pos_Y 120 || Width : 61 || Height : 54
+Input Pin : 1 || Pin_X : 109 || Pin_Y : 149
+Input Pin : 2 || Pin_X : 109 || Pin_Y : 154
+Input Pin : 3 || Pin_X : 109 || Pin_Y : 153
+Input Pin : 4 || Pin_X : 109 || Pin_Y : 132
+Input Pin : 5 || Pin_X : 109 || Pin_Y : 147
+Input Pin : 6 || Pin_X : 109 || Pin_Y : 152
+Input Pin : 7 || Pin_X : 109 || Pin_Y : 123
+Input Pin : 8 || Pin_X : 109 || Pin_Y : 141
+Input Pin : 9 || Pin_X : 109 || Pin_Y : 135
+Input Pin : 10 || Pin_X : 109 || Pin_Y : 159
+Input Pin : 11 || Pin_X : 109 || Pin_Y : 162
+Input Pin : 12 || Pin_X : 109 || Pin_Y : 136
+Input Pin : 13 || Pin_X : 109 || Pin_Y : 129
+Input Pin : 14 || Pin_X : 109 || Pin_Y : 139
+Input Pin : 15 || Pin_X : 109 || Pin_Y : 167
+Input Pin : 16 || Pin_X : 109 || Pin_Y : 160
+Input Pin : 17 || Pin_X : 109 || Pin_Y : 145
+Input Pin : 18 || Pin_X : 109 || Pin_Y : 131
+Input Pin : 19 || Pin_X : 109 || Pin_Y : 127
+Input Pin : 20 || Pin_X : 109 || Pin_Y : 133
+Input Pin : 21 || Pin_X : 109 || Pin_Y : 134
+Input Pin : 22 || Pin_X : 109 || Pin_Y : 128
+Output Pin : 23 || Pin_X : 170 || Pin_Y : 132
+Output Pin : 24 || Pin_X : 170 || Pin_Y : 134
+Output Pin : 25 || Pin_X : 170 || Pin_Y : 139
+Output Pin : 26 || Pin_X : 170 || Pin_Y : 137
+Output Pin : 27 || Pin_X : 170 || Pin_Y : 125
+Output Pin : 28 || Pin_X : 170 || Pin_Y : 142
+Output Pin : 29 || Pin_X : 170 || Pin_Y : 123
+Output Pin : 30 || Pin_X : 170 || Pin_Y : 144
+Output Pin : 31 || Pin_X : 170 || Pin_Y : 145
+Output Pin : 32 || Pin_X : 170 || Pin_Y : 146
+Output Pin : 33 || Pin_X : 170 || Pin_Y : 136
+Output Pin : 34 || Pin_X : 170 || Pin_Y : 138
+Output Pin : 35 || Pin_X : 170 || Pin_Y : 149
+Output Pin : 36 || Pin_X : 170 || Pin_Y : 150
+Output Pin : 37 || Pin_X : 170 || Pin_Y : 151
+Output Pin : 38 || Pin_X : 170 || Pin_Y : 147
+Output Pin : 39 || Pin_X : 170 || Pin_Y : 135
+Output Pin : 40 || Pin_X : 170 || Pin_Y : 133
+Output Pin : 41 || Pin_X : 170 || Pin_Y : 155
+Output Pin : 42 || Pin_X : 170 || Pin_Y : 122
+Output Pin : 43 || Pin_X : 170 || Pin_Y : 157
+Output Pin : 44 || Pin_X : 170 || Pin_Y : 158
+Output Pin : 45 || Pin_X : 170 || Pin_Y : 129
+Output Pin : 46 || Pin_X : 170 || Pin_Y : 160
+Output Pin : 47 || Pin_X : 170 || Pin_Y : 161
+Output Pin : 48 || Pin_X : 170 || Pin_Y : 128
+Output Pin : 49 || Pin_X : 170 || Pin_Y : 124
+Output Pin : 50 || Pin_X : 170 || Pin_Y : 154
+Output Pin : 51 || Pin_X : 170 || Pin_Y : 165
+Output Pin : 52 || Pin_X : 170 || Pin_Y : 166
+Output Pin : 53 || Pin_X : 170 || Pin_Y : 167
+Output Pin : 54 || Pin_X : 170 || Pin_Y : 168
+Output Pin : 55 || Pin_X : 170 || Pin_Y : 169
+Output Pin : 56 || Pin_X : 170 || Pin_Y : 170
+Output Pin : 57 || Pin_X : 170 || Pin_Y : 171
+Output Pin : 58 || Pin_X : 170 || Pin_Y : 172
+Output Pin : 59 || Pin_X : 170 || Pin_Y : 173
+Output Pin : 60 || Pin_X : 170 || Pin_Y : 130
+
+Gate : 7 || Pos_X : 189 || Pos_Y 121 || Width : 87 || Height : 52
+Input Pin : 1 || Pin_X : 189 || Pin_Y : 132
+Input Pin : 2 || Pin_X : 189 || Pin_Y : 123
+Input Pin : 3 || Pin_X : 189 || Pin_Y : 125
+Input Pin : 4 || Pin_X : 189 || Pin_Y : 134
+Input Pin : 5 || Pin_X : 189 || Pin_Y : 133
+Input Pin : 6 || Pin_X : 189 || Pin_Y : 140
+Input Pin : 7 || Pin_X : 189 || Pin_Y : 146
+Input Pin : 8 || Pin_X : 189 || Pin_Y : 124
+Input Pin : 9 || Pin_X : 189 || Pin_Y : 143
+Input Pin : 10 || Pin_X : 189 || Pin_Y : 149
+Input Pin : 11 || Pin_X : 189 || Pin_Y : 130
+Input Pin : 12 || Pin_X : 189 || Pin_Y : 151
+Input Pin : 13 || Pin_X : 189 || Pin_Y : 147
+Input Pin : 14 || Pin_X : 189 || Pin_Y : 153
+Input Pin : 15 || Pin_X : 189 || Pin_Y : 144
+Input Pin : 16 || Pin_X : 189 || Pin_Y : 142
+Input Pin : 17 || Pin_X : 189 || Pin_Y : 152
+Input Pin : 18 || Pin_X : 189 || Pin_Y : 122
+Input Pin : 19 || Pin_X : 189 || Pin_Y : 158
+Input Pin : 20 || Pin_X : 189 || Pin_Y : 159
+Input Pin : 21 || Pin_X : 189 || Pin_Y : 157
+Input Pin : 22 || Pin_X : 189 || Pin_Y : 136
+Input Pin : 23 || Pin_X : 189 || Pin_Y : 162
+Input Pin : 24 || Pin_X : 189 || Pin_Y : 160
+Input Pin : 25 || Pin_X : 189 || Pin_Y : 164
+Input Pin : 26 || Pin_X : 189 || Pin_Y : 165
+Input Pin : 27 || Pin_X : 189 || Pin_Y : 166
+Input Pin : 28 || Pin_X : 189 || Pin_Y : 167
+Input Pin : 29 || Pin_X : 189 || Pin_Y : 168
+Input Pin : 30 || Pin_X : 189 || Pin_Y : 169
+Input Pin : 31 || Pin_X : 189 || Pin_Y : 131
+Input Pin : 32 || Pin_X : 189 || Pin_Y : 171
+Input Pin : 33 || Pin_X : 189 || Pin_Y : 172
+Input Pin : 34 || Pin_X : 189 || Pin_Y : 128
+Output Pin : 35 || Pin_X : 276 || Pin_Y : 156
+Output Pin : 36 || Pin_X : 276 || Pin_Y : 158
+Output Pin : 37 || Pin_X : 276 || Pin_Y : 162
+Output Pin : 38 || Pin_X : 276 || Pin_Y : 127
+Output Pin : 39 || Pin_X : 276 || Pin_Y : 142
+Output Pin : 40 || Pin_X : 276 || Pin_Y : 147
+Output Pin : 41 || Pin_X : 276 || Pin_Y : 168
+Output Pin : 42 || Pin_X : 276 || Pin_Y : 152
+Output Pin : 43 || Pin_X : 276 || Pin_Y : 159
+Output Pin : 44 || Pin_X : 276 || Pin_Y : 171
+Output Pin : 45 || Pin_X : 276 || Pin_Y : 169
+Output Pin : 46 || Pin_X : 276 || Pin_Y : 146
+
+Gate : 8 || Pos_X : 303 || Pos_Y 126 || Width : 45 || Height : 41
+Input Pin : 1 || Pin_X : 303 || Pin_Y : 127
+Input Pin : 2 || Pin_X : 303 || Pin_Y : 129
+Input Pin : 3 || Pin_X : 303 || Pin_Y : 128
+Input Pin : 4 || Pin_X : 303 || Pin_Y : 132
+Input Pin : 5 || Pin_X : 303 || Pin_Y : 133
+Input Pin : 6 || Pin_X : 303 || Pin_Y : 134
+Input Pin : 7 || Pin_X : 303 || Pin_Y : 130
+Input Pin : 8 || Pin_X : 303 || Pin_Y : 136
+Input Pin : 9 || Pin_X : 303 || Pin_Y : 137
+Input Pin : 10 || Pin_X : 303 || Pin_Y : 138
+Input Pin : 11 || Pin_X : 303 || Pin_Y : 139
+Input Pin : 12 || Pin_X : 303 || Pin_Y : 140
+Input Pin : 13 || Pin_X : 303 || Pin_Y : 141
+Input Pin : 14 || Pin_X : 303 || Pin_Y : 142
+Input Pin : 15 || Pin_X : 303 || Pin_Y : 143
+Input Pin : 16 || Pin_X : 303 || Pin_Y : 144
+Input Pin : 17 || Pin_X : 303 || Pin_Y : 145
+Input Pin : 18 || Pin_X : 303 || Pin_Y : 146
+Input Pin : 19 || Pin_X : 303 || Pin_Y : 147
+Input Pin : 20 || Pin_X : 303 || Pin_Y : 148
+Input Pin : 21 || Pin_X : 303 || Pin_Y : 149
+Input Pin : 22 || Pin_X : 303 || Pin_Y : 150
+Input Pin : 23 || Pin_X : 303 || Pin_Y : 151
+Input Pin : 24 || Pin_X : 303 || Pin_Y : 152
+Input Pin : 25 || Pin_X : 303 || Pin_Y : 153
+Input Pin : 26 || Pin_X : 303 || Pin_Y : 154
+Input Pin : 27 || Pin_X : 303 || Pin_Y : 155
+Input Pin : 28 || Pin_X : 303 || Pin_Y : 156
+Input Pin : 29 || Pin_X : 303 || Pin_Y : 157
+Input Pin : 30 || Pin_X : 303 || Pin_Y : 158
+Input Pin : 31 || Pin_X : 303 || Pin_Y : 159
+Input Pin : 32 || Pin_X : 303 || Pin_Y : 160
+Input Pin : 33 || Pin_X : 303 || Pin_Y : 161
+Input Pin : 34 || Pin_X : 303 || Pin_Y : 162
+Input Pin : 35 || Pin_X : 303 || Pin_Y : 163
+Input Pin : 36 || Pin_X : 303 || Pin_Y : 164
+Input Pin : 37 || Pin_X : 303 || Pin_Y : 131
+Input Pin : 38 || Pin_X : 303 || Pin_Y : 166
+Input Pin : 39 || Pin_X : 303 || Pin_Y : 167
+Output Pin : 40 || Pin_X : 348 || Pin_Y : 130
+Output Pin : 41 || Pin_X : 348 || Pin_Y : 127
+Output Pin : 42 || Pin_X : 348 || Pin_Y : 133
+Output Pin : 43 || Pin_X : 348 || Pin_Y : 134
+Output Pin : 44 || Pin_X : 348 || Pin_Y : 135
+Output Pin : 45 || Pin_X : 348 || Pin_Y : 128
+Output Pin : 46 || Pin_X : 348 || Pin_Y : 137
+Output Pin : 47 || Pin_X : 348 || Pin_Y : 138
+Output Pin : 48 || Pin_X : 348 || Pin_Y : 139
+Output Pin : 49 || Pin_X : 348 || Pin_Y : 131
+Output Pin : 50 || Pin_X : 348 || Pin_Y : 141
+Output Pin : 51 || Pin_X : 348 || Pin_Y : 142
+Output Pin : 52 || Pin_X : 348 || Pin_Y : 132
+Output Pin : 53 || Pin_X : 348 || Pin_Y : 144
+Output Pin : 54 || Pin_X : 348 || Pin_Y : 145
+Output Pin : 55 || Pin_X : 348 || Pin_Y : 146
+Output Pin : 56 || Pin_X : 348 || Pin_Y : 147
+Output Pin : 57 || Pin_X : 348 || Pin_Y : 143
+Output Pin : 58 || Pin_X : 348 || Pin_Y : 149
+Output Pin : 59 || Pin_X : 348 || Pin_Y : 150
+Output Pin : 60 || Pin_X : 348 || Pin_Y : 151
+Output Pin : 61 || Pin_X : 348 || Pin_Y : 152
+Output Pin : 62 || Pin_X : 348 || Pin_Y : 153
+Output Pin : 63 || Pin_X : 348 || Pin_Y : 154
+Output Pin : 64 || Pin_X : 348 || Pin_Y : 155
+Output Pin : 65 || Pin_X : 348 || Pin_Y : 156
+Output Pin : 66 || Pin_X : 348 || Pin_Y : 140
+Output Pin : 67 || Pin_X : 348 || Pin_Y : 158
+Output Pin : 68 || Pin_X : 348 || Pin_Y : 159
+Output Pin : 69 || Pin_X : 348 || Pin_Y : 160
+Output Pin : 70 || Pin_X : 348 || Pin_Y : 161
+Output Pin : 71 || Pin_X : 348 || Pin_Y : 162
+Output Pin : 72 || Pin_X : 348 || Pin_Y : 163
+Output Pin : 73 || Pin_X : 348 || Pin_Y : 164
+Output Pin : 74 || Pin_X : 348 || Pin_Y : 165
+Output Pin : 75 || Pin_X : 348 || Pin_Y : 166
+Output Pin : 76 || Pin_X : 348 || Pin_Y : 167
+
+Gate : 9 || Pos_X : 35 || Pos_Y 196 || Width : 23 || Height : 98
+Input Pin : 1 || Pin_X : 35 || Pin_Y : 246
+Input Pin : 2 || Pin_X : 35 || Pin_Y : 265
+Input Pin : 3 || Pin_X : 35 || Pin_Y : 247
+Input Pin : 4 || Pin_X : 35 || Pin_Y : 230
+Input Pin : 5 || Pin_X : 35 || Pin_Y : 208
+Input Pin : 6 || Pin_X : 35 || Pin_Y : 197
+Input Pin : 7 || Pin_X : 35 || Pin_Y : 205
+Input Pin : 8 || Pin_X : 35 || Pin_Y : 216
+Input Pin : 9 || Pin_X : 35 || Pin_Y : 225
+Input Pin : 10 || Pin_X : 35 || Pin_Y : 227
+Input Pin : 11 || Pin_X : 35 || Pin_Y : 288
+Input Pin : 12 || Pin_X : 35 || Pin_Y : 206
+Output Pin : 13 || Pin_X : 58 || Pin_Y : 199
+Output Pin : 14 || Pin_X : 58 || Pin_Y : 211
+Output Pin : 15 || Pin_X : 58 || Pin_Y : 206
+Output Pin : 16 || Pin_X : 58 || Pin_Y : 212
+Output Pin : 17 || Pin_X : 58 || Pin_Y : 202
+Output Pin : 18 || Pin_X : 58 || Pin_Y : 220
+Output Pin : 19 || Pin_X : 58 || Pin_Y : 221
+Output Pin : 20 || Pin_X : 58 || Pin_Y : 207
+Output Pin : 21 || Pin_X : 58 || Pin_Y : 222
+Output Pin : 22 || Pin_X : 58 || Pin_Y : 209
+Output Pin : 23 || Pin_X : 58 || Pin_Y : 217
+Output Pin : 24 || Pin_X : 58 || Pin_Y : 226
+Output Pin : 25 || Pin_X : 58 || Pin_Y : 197
+Output Pin : 26 || Pin_X : 58 || Pin_Y : 218
+Output Pin : 27 || Pin_X : 58 || Pin_Y : 228
+Output Pin : 28 || Pin_X : 58 || Pin_Y : 213
+Output Pin : 29 || Pin_X : 58 || Pin_Y : 231
+Output Pin : 30 || Pin_X : 58 || Pin_Y : 204
+Output Pin : 31 || Pin_X : 58 || Pin_Y : 233
+Output Pin : 32 || Pin_X : 58 || Pin_Y : 234
+Output Pin : 33 || Pin_X : 58 || Pin_Y : 235
+Output Pin : 34 || Pin_X : 58 || Pin_Y : 201
+Output Pin : 35 || Pin_X : 58 || Pin_Y : 237
+Output Pin : 36 || Pin_X : 58 || Pin_Y : 238
+Output Pin : 37 || Pin_X : 58 || Pin_Y : 232
+Output Pin : 38 || Pin_X : 58 || Pin_Y : 240
+Output Pin : 39 || Pin_X : 58 || Pin_Y : 241
+Output Pin : 40 || Pin_X : 58 || Pin_Y : 214
+Output Pin : 41 || Pin_X : 58 || Pin_Y : 243
+Output Pin : 42 || Pin_X : 58 || Pin_Y : 244
+Output Pin : 43 || Pin_X : 58 || Pin_Y : 245
+Output Pin : 44 || Pin_X : 58 || Pin_Y : 246
+Output Pin : 45 || Pin_X : 58 || Pin_Y : 247
+Output Pin : 46 || Pin_X : 58 || Pin_Y : 215
+Output Pin : 47 || Pin_X : 58 || Pin_Y : 249
+Output Pin : 48 || Pin_X : 58 || Pin_Y : 250
+Output Pin : 49 || Pin_X : 58 || Pin_Y : 223
+Output Pin : 50 || Pin_X : 58 || Pin_Y : 252
+Output Pin : 51 || Pin_X : 58 || Pin_Y : 253
+Output Pin : 52 || Pin_X : 58 || Pin_Y : 254
+Output Pin : 53 || Pin_X : 58 || Pin_Y : 255
+Output Pin : 54 || Pin_X : 58 || Pin_Y : 227
+Output Pin : 55 || Pin_X : 58 || Pin_Y : 257
+Output Pin : 56 || Pin_X : 58 || Pin_Y : 258
+Output Pin : 57 || Pin_X : 58 || Pin_Y : 259
+Output Pin : 58 || Pin_X : 58 || Pin_Y : 260
+Output Pin : 59 || Pin_X : 58 || Pin_Y : 261
+Output Pin : 60 || Pin_X : 58 || Pin_Y : 239
+Output Pin : 61 || Pin_X : 58 || Pin_Y : 263
+Output Pin : 62 || Pin_X : 58 || Pin_Y : 210
+Output Pin : 63 || Pin_X : 58 || Pin_Y : 198
+Output Pin : 64 || Pin_X : 58 || Pin_Y : 205
+Output Pin : 65 || Pin_X : 58 || Pin_Y : 267
+Output Pin : 66 || Pin_X : 58 || Pin_Y : 268
+Output Pin : 67 || Pin_X : 58 || Pin_Y : 269
+Output Pin : 68 || Pin_X : 58 || Pin_Y : 270
+Output Pin : 69 || Pin_X : 58 || Pin_Y : 200
+Output Pin : 70 || Pin_X : 58 || Pin_Y : 272
+Output Pin : 71 || Pin_X : 58 || Pin_Y : 273
+Output Pin : 72 || Pin_X : 58 || Pin_Y : 208
+Output Pin : 73 || Pin_X : 58 || Pin_Y : 275
+Output Pin : 74 || Pin_X : 58 || Pin_Y : 276
+Output Pin : 75 || Pin_X : 58 || Pin_Y : 277
+Output Pin : 76 || Pin_X : 58 || Pin_Y : 278
+Output Pin : 77 || Pin_X : 58 || Pin_Y : 279
+Output Pin : 78 || Pin_X : 58 || Pin_Y : 271
+Output Pin : 79 || Pin_X : 58 || Pin_Y : 281
+Output Pin : 80 || Pin_X : 58 || Pin_Y : 282
+Output Pin : 81 || Pin_X : 58 || Pin_Y : 283
+Output Pin : 82 || Pin_X : 58 || Pin_Y : 284
+Output Pin : 83 || Pin_X : 58 || Pin_Y : 285
+Output Pin : 84 || Pin_X : 58 || Pin_Y : 286
+Output Pin : 85 || Pin_X : 58 || Pin_Y : 287
+Output Pin : 86 || Pin_X : 58 || Pin_Y : 288
+Output Pin : 87 || Pin_X : 58 || Pin_Y : 289
+Output Pin : 88 || Pin_X : 58 || Pin_Y : 262
+Output Pin : 89 || Pin_X : 58 || Pin_Y : 291
+Output Pin : 90 || Pin_X : 58 || Pin_Y : 292
+Output Pin : 91 || Pin_X : 58 || Pin_Y : 293
+Output Pin : 92 || Pin_X : 58 || Pin_Y : 294
+
+Gate : 10 || Pos_X : 114 || Pos_Y 205 || Width : 51 || Height : 80
+Input Pin : 1 || Pin_X : 114 || Pin_Y : 208
+Input Pin : 2 || Pin_X : 114 || Pin_Y : 209
+Input Pin : 3 || Pin_X : 114 || Pin_Y : 210
+Input Pin : 4 || Pin_X : 114 || Pin_Y : 211
+Input Pin : 5 || Pin_X : 114 || Pin_Y : 212
+Input Pin : 6 || Pin_X : 114 || Pin_Y : 213
+Input Pin : 7 || Pin_X : 114 || Pin_Y : 214
+Input Pin : 8 || Pin_X : 114 || Pin_Y : 207
+Input Pin : 9 || Pin_X : 114 || Pin_Y : 216
+Input Pin : 10 || Pin_X : 114 || Pin_Y : 217
+Input Pin : 11 || Pin_X : 114 || Pin_Y : 218
+Input Pin : 12 || Pin_X : 114 || Pin_Y : 219
+Input Pin : 13 || Pin_X : 114 || Pin_Y : 220
+Input Pin : 14 || Pin_X : 114 || Pin_Y : 221
+Input Pin : 15 || Pin_X : 114 || Pin_Y : 222
+Input Pin : 16 || Pin_X : 114 || Pin_Y : 215
+Input Pin : 17 || Pin_X : 114 || Pin_Y : 224
+Input Pin : 18 || Pin_X : 114 || Pin_Y : 225
+Input Pin : 19 || Pin_X : 114 || Pin_Y : 226
+Input Pin : 20 || Pin_X : 114 || Pin_Y : 227
+Input Pin : 21 || Pin_X : 114 || Pin_Y : 228
+Input Pin : 22 || Pin_X : 114 || Pin_Y : 229
+Input Pin : 23 || Pin_X : 114 || Pin_Y : 230
+Input Pin : 24 || Pin_X : 114 || Pin_Y : 206
+Input Pin : 25 || Pin_X : 114 || Pin_Y : 232
+Input Pin : 26 || Pin_X : 114 || Pin_Y : 233
+Input Pin : 27 || Pin_X : 114 || Pin_Y : 234
+Input Pin : 28 || Pin_X : 114 || Pin_Y : 235
+Input Pin : 29 || Pin_X : 114 || Pin_Y : 236
+Input Pin : 30 || Pin_X : 114 || Pin_Y : 237
+Input Pin : 31 || Pin_X : 114 || Pin_Y : 238
+Input Pin : 32 || Pin_X : 114 || Pin_Y : 239
+Input Pin : 33 || Pin_X : 114 || Pin_Y : 240
+Input Pin : 34 || Pin_X : 114 || Pin_Y : 241
+Input Pin : 35 || Pin_X : 114 || Pin_Y : 242
+Input Pin : 36 || Pin_X : 114 || Pin_Y : 243
+Input Pin : 37 || Pin_X : 114 || Pin_Y : 244
+Input Pin : 38 || Pin_X : 114 || Pin_Y : 245
+Input Pin : 39 || Pin_X : 114 || Pin_Y : 246
+Input Pin : 40 || Pin_X : 114 || Pin_Y : 247
+Input Pin : 41 || Pin_X : 114 || Pin_Y : 248
+Input Pin : 42 || Pin_X : 114 || Pin_Y : 249
+Input Pin : 43 || Pin_X : 114 || Pin_Y : 250
+Input Pin : 44 || Pin_X : 114 || Pin_Y : 251
+Input Pin : 45 || Pin_X : 114 || Pin_Y : 252
+Input Pin : 46 || Pin_X : 114 || Pin_Y : 253
+Input Pin : 47 || Pin_X : 114 || Pin_Y : 254
+Input Pin : 48 || Pin_X : 114 || Pin_Y : 255
+Input Pin : 49 || Pin_X : 114 || Pin_Y : 256
+Input Pin : 50 || Pin_X : 114 || Pin_Y : 257
+Input Pin : 51 || Pin_X : 114 || Pin_Y : 258
+Input Pin : 52 || Pin_X : 114 || Pin_Y : 259
+Input Pin : 53 || Pin_X : 114 || Pin_Y : 260
+Input Pin : 54 || Pin_X : 114 || Pin_Y : 261
+Input Pin : 55 || Pin_X : 114 || Pin_Y : 262
+Input Pin : 56 || Pin_X : 114 || Pin_Y : 263
+Input Pin : 57 || Pin_X : 114 || Pin_Y : 264
+Input Pin : 58 || Pin_X : 114 || Pin_Y : 265
+Input Pin : 59 || Pin_X : 114 || Pin_Y : 266
+Input Pin : 60 || Pin_X : 114 || Pin_Y : 267
+Input Pin : 61 || Pin_X : 114 || Pin_Y : 268
+Input Pin : 62 || Pin_X : 114 || Pin_Y : 269
+Input Pin : 63 || Pin_X : 114 || Pin_Y : 270
+Input Pin : 64 || Pin_X : 114 || Pin_Y : 271
+Input Pin : 65 || Pin_X : 114 || Pin_Y : 272
+Input Pin : 66 || Pin_X : 114 || Pin_Y : 273
+Input Pin : 67 || Pin_X : 114 || Pin_Y : 274
+Input Pin : 68 || Pin_X : 114 || Pin_Y : 275
+Input Pin : 69 || Pin_X : 114 || Pin_Y : 276
+Input Pin : 70 || Pin_X : 114 || Pin_Y : 277
+Input Pin : 71 || Pin_X : 114 || Pin_Y : 278
+Input Pin : 72 || Pin_X : 114 || Pin_Y : 279
+Input Pin : 73 || Pin_X : 114 || Pin_Y : 280
+Input Pin : 74 || Pin_X : 114 || Pin_Y : 281
+Input Pin : 75 || Pin_X : 114 || Pin_Y : 282
+Input Pin : 76 || Pin_X : 114 || Pin_Y : 283
+Input Pin : 77 || Pin_X : 114 || Pin_Y : 284
+Input Pin : 78 || Pin_X : 114 || Pin_Y : 285
+Output Pin : 79 || Pin_X : 165 || Pin_Y : 227
+Output Pin : 80 || Pin_X : 165 || Pin_Y : 234
+Output Pin : 81 || Pin_X : 165 || Pin_Y : 230
+Output Pin : 82 || Pin_X : 165 || Pin_Y : 239
+Output Pin : 83 || Pin_X : 165 || Pin_Y : 243
+Output Pin : 84 || Pin_X : 165 || Pin_Y : 224
+Output Pin : 85 || Pin_X : 165 || Pin_Y : 213
+Output Pin : 86 || Pin_X : 165 || Pin_Y : 246
+Output Pin : 87 || Pin_X : 165 || Pin_Y : 222
+Output Pin : 88 || Pin_X : 165 || Pin_Y : 226
+Output Pin : 89 || Pin_X : 165 || Pin_Y : 244
+Output Pin : 90 || Pin_X : 165 || Pin_Y : 247
+Output Pin : 91 || Pin_X : 165 || Pin_Y : 251
+Output Pin : 92 || Pin_X : 165 || Pin_Y : 240
+Output Pin : 93 || Pin_X : 165 || Pin_Y : 229
+Output Pin : 94 || Pin_X : 165 || Pin_Y : 249
+Output Pin : 95 || Pin_X : 165 || Pin_Y : 255
+Output Pin : 96 || Pin_X : 165 || Pin_Y : 256
+Output Pin : 97 || Pin_X : 165 || Pin_Y : 217
+Output Pin : 98 || Pin_X : 165 || Pin_Y : 254
+Output Pin : 99 || Pin_X : 165 || Pin_Y : 209
+Output Pin : 100 || Pin_X : 165 || Pin_Y : 236
+Output Pin : 101 || Pin_X : 165 || Pin_Y : 219
+Output Pin : 102 || Pin_X : 165 || Pin_Y : 262
+Output Pin : 103 || Pin_X : 165 || Pin_Y : 263
+Output Pin : 104 || Pin_X : 165 || Pin_Y : 211
+Output Pin : 105 || Pin_X : 165 || Pin_Y : 265
+Output Pin : 106 || Pin_X : 165 || Pin_Y : 223
+Output Pin : 107 || Pin_X : 165 || Pin_Y : 267
+Output Pin : 108 || Pin_X : 165 || Pin_Y : 252
+Output Pin : 109 || Pin_X : 165 || Pin_Y : 232
+Output Pin : 110 || Pin_X : 165 || Pin_Y : 270
+Output Pin : 111 || Pin_X : 165 || Pin_Y : 271
+Output Pin : 112 || Pin_X : 165 || Pin_Y : 272
+Output Pin : 113 || Pin_X : 165 || Pin_Y : 273
+Output Pin : 114 || Pin_X : 165 || Pin_Y : 253
+Output Pin : 115 || Pin_X : 165 || Pin_Y : 260
+Output Pin : 116 || Pin_X : 165 || Pin_Y : 276
+Output Pin : 117 || Pin_X : 165 || Pin_Y : 208
+Output Pin : 118 || Pin_X : 165 || Pin_Y : 278
+Output Pin : 119 || Pin_X : 165 || Pin_Y : 279
+Output Pin : 120 || Pin_X : 165 || Pin_Y : 215
+Output Pin : 121 || Pin_X : 165 || Pin_Y : 235
+Output Pin : 122 || Pin_X : 165 || Pin_Y : 269
+Output Pin : 123 || Pin_X : 165 || Pin_Y : 283
+Output Pin : 124 || Pin_X : 165 || Pin_Y : 284
+Output Pin : 125 || Pin_X : 165 || Pin_Y : 285
+
+================================================ Wire Group Information ================================================
+
+Total Wire Groups : 62
+
+Wire_Group : (7, 39) || X_min : 276 || Y_min : 51 || X_max : 318 || Y_max : 142 || Wire_Legth : 133 || Members : 2
+Member : 1 || Parent Gate : 7 || Pin : 39
+Member : 2 || Parent Gate : 4 || Pin : 15
+
+Wire_Group : (6, 47) || X_min : 170 || Y_min : 55 || X_max : 186 || Y_max : 161 || Wire_Legth : 122 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 47
+Member : 2 || Parent Gate : 3 || Pin : 18
+
+Wire_Group : (6, 42) || X_min : 170 || Y_min : 122 || X_max : 303 || Y_max : 151 || Wire_Legth : 162 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 42
+Member : 2 || Parent Gate : 8 || Pin : 23
+
+Wire_Group : (4, 50) || X_min : 35 || Y_min : 33 || X_max : 333 || Y_max : 220 || Wire_Legth : 485 || Members : 3
+Member : 1 || Parent Gate : 9 || Pin : 12
+Member : 2 || Parent Gate : 10 || Pin : 13
+Member : 3 || Parent Gate : 4 || Pin : 50
+
+Wire_Group : (9, 78) || X_min : 58 || Y_min : 242 || X_max : 114 || Y_max : 271 || Wire_Legth : 85 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 78
+Member : 2 || Parent Gate : 10 || Pin : 35
+
+Wire_Group : (6, 36) || X_min : 170 || Y_min : 47 || X_max : 186 || Y_max : 150 || Wire_Legth : 119 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 36
+Member : 2 || Parent Gate : 3 || Pin : 10
+
+Wire_Group : (1, 39) || X_min : 78 || Y_min : 45 || X_max : 109 || Y_max : 129 || Wire_Legth : 115 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 39
+Member : 2 || Parent Gate : 6 || Pin : 13
+
+Wire_Group : (2, 6) || X_min : 14 || Y_min : 36 || X_max : 173 || Y_max : 145 || Wire_Legth : 268 || Members : 3
+Member : 1 || Parent Gate : 1 || Pin : 1
+Member : 2 || Parent Gate : 6 || Pin : 17
+Member : 3 || Parent Gate : 2 || Pin : 6
+
+Wire_Group : (1, 43) || X_min : 78 || Y_min : 49 || X_max : 303 || Y_max : 129 || Wire_Legth : 305 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 43
+Member : 2 || Parent Gate : 8 || Pin : 2
+
+Wire_Group : (1, 45) || X_min : 78 || Y_min : 51 || X_max : 303 || Y_max : 148 || Wire_Legth : 322 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 45
+Member : 2 || Parent Gate : 8 || Pin : 20
+
+Wire_Group : (4, 54) || X_min : 114 || Y_min : 57 || X_max : 333 || Y_max : 232 || Wire_Legth : 394 || Members : 3
+Member : 1 || Parent Gate : 10 || Pin : 25
+Member : 2 || Parent Gate : 8 || Pin : 6
+Member : 3 || Parent Gate : 4 || Pin : 54
+
+Wire_Group : (5, 27) || X_min : 57 || Y_min : 136 || X_max : 109 || Y_max : 150 || Wire_Legth : 66 || Members : 2
+Member : 1 || Parent Gate : 5 || Pin : 27
+Member : 2 || Parent Gate : 6 || Pin : 12
+
+Wire_Group : (1, 51) || X_min : 78 || Y_min : 57 || X_max : 109 || Y_max : 128 || Wire_Legth : 102 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 51
+Member : 2 || Parent Gate : 6 || Pin : 22
+
+Wire_Group : (5, 15) || X_min : 35 || Y_min : 138 || X_max : 57 || Y_max : 230 || Wire_Legth : 114 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 4
+Member : 2 || Parent Gate : 5 || Pin : 15
+
+Wire_Group : (10, 116) || X_min : 109 || Y_min : 147 || X_max : 165 || Y_max : 276 || Wire_Legth : 185 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 5
+Member : 2 || Parent Gate : 10 || Pin : 116
+
+Wire_Group : (4, 45) || X_min : 109 || Y_min : 61 || X_max : 333 || Y_max : 154 || Wire_Legth : 317 || Members : 3
+Member : 1 || Parent Gate : 6 || Pin : 1
+Member : 2 || Parent Gate : 8 || Pin : 26
+Member : 3 || Parent Gate : 4 || Pin : 45
+
+Wire_Group : (4, 49) || X_min : 35 || Y_min : 58 || X_max : 333 || Y_max : 225 || Wire_Legth : 465 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 9
+Member : 2 || Parent Gate : 4 || Pin : 49
+
+Wire_Group : (3, 41) || X_min : 279 || Y_min : 27 || X_max : 318 || Y_max : 28 || Wire_Legth : 40 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 41
+Member : 2 || Parent Gate : 4 || Pin : 4
+
+Wire_Group : (10, 111) || X_min : 109 || Y_min : 162 || X_max : 165 || Y_max : 271 || Wire_Legth : 165 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 11
+Member : 2 || Parent Gate : 10 || Pin : 111
+
+Wire_Group : (1, 50) || X_min : 78 || Y_min : 41 || X_max : 189 || Y_max : 132 || Wire_Legth : 202 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 50
+Member : 2 || Parent Gate : 7 || Pin : 1
+
+Wire_Group : (1, 48) || X_min : 78 || Y_min : 54 || X_max : 303 || Y_max : 161 || Wire_Legth : 332 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 48
+Member : 2 || Parent Gate : 8 || Pin : 33
+
+Wire_Group : (5, 21) || X_min : 57 || Y_min : 144 || X_max : 189 || Y_max : 168 || Wire_Legth : 156 || Members : 2
+Member : 1 || Parent Gate : 5 || Pin : 21
+Member : 2 || Parent Gate : 7 || Pin : 29
+
+Wire_Group : (6, 43) || X_min : 170 || Y_min : 57 || X_max : 186 || Y_max : 157 || Wire_Legth : 116 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 43
+Member : 2 || Parent Gate : 3 || Pin : 29
+
+Wire_Group : (5, 17) || X_min : 35 || Y_min : 140 || X_max : 57 || Y_max : 247 || Wire_Legth : 129 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 3
+Member : 2 || Parent Gate : 5 || Pin : 17
+
+Wire_Group : (8, 64) || X_min : 35 || Y_min : 155 || X_max : 348 || Y_max : 205 || Wire_Legth : 363 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 7
+Member : 2 || Parent Gate : 8 || Pin : 64
+
+Wire_Group : (7, 36) || X_min : 186 || Y_min : 29 || X_max : 276 || Y_max : 158 || Wire_Legth : 219 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 7
+Member : 2 || Parent Gate : 7 || Pin : 36
+
+Wire_Group : (4, 41) || X_min : 14 || Y_min : 38 || X_max : 333 || Y_max : 66 || Wire_Legth : 347 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 20
+Member : 2 || Parent Gate : 4 || Pin : 41
+
+Wire_Group : (5, 31) || X_min : 57 || Y_min : 53 || X_max : 105 || Y_max : 154 || Wire_Legth : 149 || Members : 2
+Member : 1 || Parent Gate : 5 || Pin : 31
+Member : 2 || Parent Gate : 2 || Pin : 1
+
+Wire_Group : (1, 49) || X_min : 36 || Y_min : 55 || X_max : 78 || Y_max : 150 || Wire_Legth : 137 || Members : 2
+Member : 1 || Parent Gate : 5 || Pin : 8
+Member : 2 || Parent Gate : 1 || Pin : 49
+
+Wire_Group : (8, 58) || X_min : 114 || Y_min : 149 || X_max : 348 || Y_max : 218 || Wire_Legth : 303 || Members : 2
+Member : 1 || Parent Gate : 10 || Pin : 11
+Member : 2 || Parent Gate : 8 || Pin : 58
+
+Wire_Group : (2, 5) || X_min : 14 || Y_min : 34 || X_max : 318 || Y_max : 227 || Wire_Legth : 497 || Members : 6
+Member : 1 || Parent Gate : 1 || Pin : 2
+Member : 2 || Parent Gate : 9 || Pin : 5
+Member : 3 || Parent Gate : 9 || Pin : 10
+Member : 4 || Parent Gate : 8 || Pin : 37
+Member : 5 || Parent Gate : 4 || Pin : 24
+Member : 6 || Parent Gate : 2 || Pin : 5
+
+Wire_Group : (10, 102) || X_min : 36 || Y_min : 151 || X_max : 165 || Y_max : 262 || Wire_Legth : 240 || Members : 2
+Member : 1 || Parent Gate : 5 || Pin : 9
+Member : 2 || Parent Gate : 10 || Pin : 102
+
+Wire_Group : (2, 7) || X_min : 35 || Y_min : 58 || X_max : 189 || Y_max : 222 || Wire_Legth : 318 || Members : 5
+Member : 1 || Parent Gate : 9 || Pin : 6
+Member : 2 || Parent Gate : 10 || Pin : 7
+Member : 3 || Parent Gate : 10 || Pin : 15
+Member : 4 || Parent Gate : 7 || Pin : 17
+Member : 5 || Parent Gate : 2 || Pin : 7
+
+Wire_Group : (7, 44) || X_min : 35 || Y_min : 139 || X_max : 303 || Y_max : 265 || Wire_Legth : 394 || Members : 3
+Member : 1 || Parent Gate : 9 || Pin : 2
+Member : 2 || Parent Gate : 8 || Pin : 11
+Member : 3 || Parent Gate : 7 || Pin : 44
+
+Wire_Group : (2, 4) || X_min : 14 || Y_min : 41 || X_max : 318 || Y_max : 46 || Wire_Legth : 309 || Members : 3
+Member : 1 || Parent Gate : 1 || Pin : 4
+Member : 2 || Parent Gate : 4 || Pin : 10
+Member : 3 || Parent Gate : 2 || Pin : 4
+
+Wire_Group : (7, 46) || X_min : 109 || Y_min : 133 || X_max : 276 || Y_max : 146 || Wire_Legth : 180 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 20
+Member : 2 || Parent Gate : 7 || Pin : 46
+
+Wire_Group : (8, 51) || X_min : 114 || Y_min : 142 || X_max : 348 || Y_max : 241 || Wire_Legth : 333 || Members : 2
+Member : 1 || Parent Gate : 10 || Pin : 34
+Member : 2 || Parent Gate : 8 || Pin : 51
+
+Wire_Group : (4, 43) || X_min : 303 || Y_min : 56 || X_max : 333 || Y_max : 149 || Wire_Legth : 123 || Members : 2
+Member : 1 || Parent Gate : 8 || Pin : 21
+Member : 2 || Parent Gate : 4 || Pin : 43
+
+Wire_Group : (4, 38) || X_min : 303 || Y_min : 55 || X_max : 333 || Y_max : 142 || Wire_Legth : 117 || Members : 2
+Member : 1 || Parent Gate : 8 || Pin : 14
+Member : 2 || Parent Gate : 4 || Pin : 38
+
+Wire_Group : (3, 47) || X_min : 279 || Y_min : 43 || X_max : 303 || Y_max : 166 || Wire_Legth : 147 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 47
+Member : 2 || Parent Gate : 8 || Pin : 38
+
+Wire_Group : (7, 45) || X_min : 35 || Y_min : 169 || X_max : 276 || Y_max : 216 || Wire_Legth : 288 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 8
+Member : 2 || Parent Gate : 7 || Pin : 45
+
+Wire_Group : (4, 51) || X_min : 114 || Y_min : 68 || X_max : 333 || Y_max : 272 || Wire_Legth : 423 || Members : 4
+Member : 1 || Parent Gate : 10 || Pin : 55
+Member : 2 || Parent Gate : 10 || Pin : 32
+Member : 3 || Parent Gate : 10 || Pin : 65
+Member : 4 || Parent Gate : 4 || Pin : 51
+
+Wire_Group : (4, 40) || X_min : 35 || Y_min : 28 || X_max : 333 || Y_max : 288 || Wire_Legth : 558 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 11
+Member : 2 || Parent Gate : 4 || Pin : 40
+
+Wire_Group : (4, 44) || X_min : 36 || Y_min : 60 || X_max : 333 || Y_max : 159 || Wire_Legth : 396 || Members : 3
+Member : 1 || Parent Gate : 5 || Pin : 10
+Member : 2 || Parent Gate : 8 || Pin : 31
+Member : 3 || Parent Gate : 4 || Pin : 44
+
+Wire_Group : (9, 50) || X_min : 58 || Y_min : 252 || X_max : 114 || Y_max : 261 || Wire_Legth : 65 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 50
+Member : 2 || Parent Gate : 10 || Pin : 54
+
+Wire_Group : (7, 35) || X_min : 186 || Y_min : 45 || X_max : 276 || Y_max : 156 || Wire_Legth : 201 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 14
+Member : 2 || Parent Gate : 7 || Pin : 35
+
+Wire_Group : (9, 38) || X_min : 58 || Y_min : 238 || X_max : 114 || Y_max : 240 || Wire_Legth : 58 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 38
+Member : 2 || Parent Gate : 10 || Pin : 31
+
+Wire_Group : (1, 60) || X_min : 78 || Y_min : 66 || X_max : 114 || Y_max : 221 || Wire_Legth : 191 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 60
+Member : 2 || Parent Gate : 10 || Pin : 14
+
+Wire_Group : (6, 46) || X_min : 170 || Y_min : 137 || X_max : 303 || Y_max : 160 || Wire_Legth : 156 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 46
+Member : 2 || Parent Gate : 8 || Pin : 9
+
+Wire_Group : (7, 37) || X_min : 186 || Y_min : 28 || X_max : 318 || Y_max : 162 || Wire_Legth : 266 || Members : 3
+Member : 1 || Parent Gate : 3 || Pin : 6
+Member : 2 || Parent Gate : 4 || Pin : 9
+Member : 3 || Parent Gate : 7 || Pin : 37
+
+Wire_Group : (4, 47) || X_min : 114 || Y_min : 29 || X_max : 333 || Y_max : 244 || Wire_Legth : 434 || Members : 2
+Member : 1 || Parent Gate : 10 || Pin : 37
+Member : 2 || Parent Gate : 4 || Pin : 47
+
+Wire_Group : (7, 43) || X_min : 186 || Y_min : 46 || X_max : 276 || Y_max : 159 || Wire_Legth : 203 || Members : 2
+Member : 1 || Parent Gate : 3 || Pin : 9
+Member : 2 || Parent Gate : 7 || Pin : 43
+
+Wire_Group : (2, 3) || X_min : 14 || Y_min : 40 || X_max : 173 || Y_max : 226 || Wire_Legth : 345 || Members : 4
+Member : 1 || Parent Gate : 1 || Pin : 26
+Member : 2 || Parent Gate : 10 || Pin : 19
+Member : 3 || Parent Gate : 1 || Pin : 7
+Member : 4 || Parent Gate : 2 || Pin : 3
+
+Wire_Group : (6, 49) || X_min : 170 || Y_min : 39 || X_max : 186 || Y_max : 124 || Wire_Legth : 101 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 49
+Member : 2 || Parent Gate : 3 || Pin : 2
+
+Wire_Group : (6, 32) || X_min : 170 || Y_min : 128 || X_max : 303 || Y_max : 146 || Wire_Legth : 151 || Members : 2
+Member : 1 || Parent Gate : 6 || Pin : 32
+Member : 2 || Parent Gate : 8 || Pin : 3
+
+Wire_Group : (9, 75) || X_min : 58 || Y_min : 212 || X_max : 114 || Y_max : 277 || Wire_Legth : 121 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 75
+Member : 2 || Parent Gate : 10 || Pin : 5
+
+Wire_Group : (7, 38) || X_min : 276 || Y_min : 56 || X_max : 318 || Y_max : 127 || Wire_Legth : 113 || Members : 2
+Member : 1 || Parent Gate : 7 || Pin : 38
+Member : 2 || Parent Gate : 4 || Pin : 20
+
+Wire_Group : (1, 59) || X_min : 78 || Y_min : 65 || X_max : 114 || Y_max : 240 || Wire_Legth : 211 || Members : 2
+Member : 1 || Parent Gate : 1 || Pin : 59
+Member : 2 || Parent Gate : 10 || Pin : 33
+
+Wire_Group : (4, 46) || X_min : 114 || Y_min : 39 || X_max : 333 || Y_max : 275 || Wire_Legth : 455 || Members : 2
+Member : 1 || Parent Gate : 10 || Pin : 68
+Member : 2 || Parent Gate : 4 || Pin : 46
+
+Wire_Group : (9, 23) || X_min : 58 || Y_min : 217 || X_max : 114 || Y_max : 273 || Wire_Legth : 112 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 23
+Member : 2 || Parent Gate : 10 || Pin : 66
+
+Wire_Group : (9, 16) || X_min : 58 || Y_min : 212 || X_max : 114 || Y_max : 285 || Wire_Legth : 129 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 16
+Member : 2 || Parent Gate : 10 || Pin : 78
+
+Wire_Group : (9, 73) || X_min : 58 || Y_min : 260 || X_max : 114 || Y_max : 275 || Wire_Legth : 71 || Members : 2
+Member : 1 || Parent Gate : 9 || Pin : 73
+Member : 2 || Parent Gate : 10 || Pin : 53
+
+============================================= Primary IO Pins Information ==============================================
+
+Primary Inputs Pins (PIP's) : 218 || Primary Outputs Pins (POP's) : 276
+
+PIP : 1 || Parent Gate : 1 || Pin : 3
+PIP : 2 || Parent Gate : 1 || Pin : 5
+PIP : 3 || Parent Gate : 1 || Pin : 6
+PIP : 4 || Parent Gate : 1 || Pin : 8
+PIP : 5 || Parent Gate : 1 || Pin : 9
+PIP : 6 || Parent Gate : 1 || Pin : 10
+PIP : 7 || Parent Gate : 1 || Pin : 11
+PIP : 8 || Parent Gate : 1 || Pin : 12
+PIP : 9 || Parent Gate : 1 || Pin : 13
+PIP : 10 || Parent Gate : 1 || Pin : 14
+PIP : 11 || Parent Gate : 1 || Pin : 15
+PIP : 12 || Parent Gate : 1 || Pin : 16
+PIP : 13 || Parent Gate : 1 || Pin : 17
+PIP : 14 || Parent Gate : 1 || Pin : 18
+PIP : 15 || Parent Gate : 1 || Pin : 19
+PIP : 16 || Parent Gate : 1 || Pin : 21
+PIP : 17 || Parent Gate : 1 || Pin : 22
+PIP : 18 || Parent Gate : 1 || Pin : 23
+PIP : 19 || Parent Gate : 1 || Pin : 24
+PIP : 20 || Parent Gate : 1 || Pin : 25
+PIP : 21 || Parent Gate : 1 || Pin : 27
+PIP : 22 || Parent Gate : 2 || Pin : 2
+PIP : 23 || Parent Gate : 3 || Pin : 1
+PIP : 24 || Parent Gate : 3 || Pin : 3
+PIP : 25 || Parent Gate : 3 || Pin : 4
+PIP : 26 || Parent Gate : 3 || Pin : 5
+PIP : 27 || Parent Gate : 3 || Pin : 8
+PIP : 28 || Parent Gate : 3 || Pin : 11
+PIP : 29 || Parent Gate : 3 || Pin : 12
+PIP : 30 || Parent Gate : 3 || Pin : 13
+PIP : 31 || Parent Gate : 3 || Pin : 15
+PIP : 32 || Parent Gate : 3 || Pin : 16
+PIP : 33 || Parent Gate : 3 || Pin : 17
+PIP : 34 || Parent Gate : 3 || Pin : 19
+PIP : 35 || Parent Gate : 3 || Pin : 20
+PIP : 36 || Parent Gate : 3 || Pin : 21
+PIP : 37 || Parent Gate : 3 || Pin : 22
+PIP : 38 || Parent Gate : 3 || Pin : 23
+PIP : 39 || Parent Gate : 3 || Pin : 24
+PIP : 40 || Parent Gate : 3 || Pin : 25
+PIP : 41 || Parent Gate : 3 || Pin : 26
+PIP : 42 || Parent Gate : 3 || Pin : 27
+PIP : 43 || Parent Gate : 3 || Pin : 28
+PIP : 44 || Parent Gate : 3 || Pin : 30
+PIP : 45 || Parent Gate : 3 || Pin : 31
+PIP : 46 || Parent Gate : 3 || Pin : 32
+PIP : 47 || Parent Gate : 3 || Pin : 33
+PIP : 48 || Parent Gate : 3 || Pin : 34
+PIP : 49 || Parent Gate : 3 || Pin : 35
+PIP : 50 || Parent Gate : 3 || Pin : 36
+PIP : 51 || Parent Gate : 4 || Pin : 1
+PIP : 52 || Parent Gate : 4 || Pin : 2
+PIP : 53 || Parent Gate : 4 || Pin : 3
+PIP : 54 || Parent Gate : 4 || Pin : 5
+PIP : 55 || Parent Gate : 4 || Pin : 6
+PIP : 56 || Parent Gate : 4 || Pin : 7
+PIP : 57 || Parent Gate : 4 || Pin : 8
+PIP : 58 || Parent Gate : 4 || Pin : 11
+PIP : 59 || Parent Gate : 4 || Pin : 12
+PIP : 60 || Parent Gate : 4 || Pin : 13
+PIP : 61 || Parent Gate : 4 || Pin : 14
+PIP : 62 || Parent Gate : 4 || Pin : 16
+PIP : 63 || Parent Gate : 4 || Pin : 17
+PIP : 64 || Parent Gate : 4 || Pin : 18
+PIP : 65 || Parent Gate : 4 || Pin : 19
+PIP : 66 || Parent Gate : 4 || Pin : 21
+PIP : 67 || Parent Gate : 4 || Pin : 22
+PIP : 68 || Parent Gate : 4 || Pin : 23
+PIP : 69 || Parent Gate : 4 || Pin : 25
+PIP : 70 || Parent Gate : 4 || Pin : 26
+PIP : 71 || Parent Gate : 4 || Pin : 27
+PIP : 72 || Parent Gate : 4 || Pin : 28
+PIP : 73 || Parent Gate : 4 || Pin : 29
+PIP : 74 || Parent Gate : 4 || Pin : 30
+PIP : 75 || Parent Gate : 4 || Pin : 31
+PIP : 76 || Parent Gate : 4 || Pin : 32
+PIP : 77 || Parent Gate : 4 || Pin : 33
+PIP : 78 || Parent Gate : 4 || Pin : 34
+PIP : 79 || Parent Gate : 4 || Pin : 35
+PIP : 80 || Parent Gate : 5 || Pin : 1
+PIP : 81 || Parent Gate : 5 || Pin : 2
+PIP : 82 || Parent Gate : 5 || Pin : 3
+PIP : 83 || Parent Gate : 5 || Pin : 4
+PIP : 84 || Parent Gate : 5 || Pin : 5
+PIP : 85 || Parent Gate : 5 || Pin : 6
+PIP : 86 || Parent Gate : 5 || Pin : 7
+PIP : 87 || Parent Gate : 5 || Pin : 11
+PIP : 88 || Parent Gate : 5 || Pin : 12
+PIP : 89 || Parent Gate : 5 || Pin : 13
+PIP : 90 || Parent Gate : 5 || Pin : 14
+PIP : 91 || Parent Gate : 6 || Pin : 2
+PIP : 92 || Parent Gate : 6 || Pin : 3
+PIP : 93 || Parent Gate : 6 || Pin : 4
+PIP : 94 || Parent Gate : 6 || Pin : 6
+PIP : 95 || Parent Gate : 6 || Pin : 7
+PIP : 96 || Parent Gate : 6 || Pin : 8
+PIP : 97 || Parent Gate : 6 || Pin : 9
+PIP : 98 || Parent Gate : 6 || Pin : 10
+PIP : 99 || Parent Gate : 6 || Pin : 14
+PIP : 100 || Parent Gate : 6 || Pin : 15
+PIP : 101 || Parent Gate : 6 || Pin : 16
+PIP : 102 || Parent Gate : 6 || Pin : 18
+PIP : 103 || Parent Gate : 6 || Pin : 19
+PIP : 104 || Parent Gate : 6 || Pin : 21
+PIP : 105 || Parent Gate : 7 || Pin : 2
+PIP : 106 || Parent Gate : 7 || Pin : 3
+PIP : 107 || Parent Gate : 7 || Pin : 4
+PIP : 108 || Parent Gate : 7 || Pin : 5
+PIP : 109 || Parent Gate : 7 || Pin : 6
+PIP : 110 || Parent Gate : 7 || Pin : 7
+PIP : 111 || Parent Gate : 7 || Pin : 8
+PIP : 112 || Parent Gate : 7 || Pin : 9
+PIP : 113 || Parent Gate : 7 || Pin : 10
+PIP : 114 || Parent Gate : 7 || Pin : 11
+PIP : 115 || Parent Gate : 7 || Pin : 12
+PIP : 116 || Parent Gate : 7 || Pin : 13
+PIP : 117 || Parent Gate : 7 || Pin : 14
+PIP : 118 || Parent Gate : 7 || Pin : 15
+PIP : 119 || Parent Gate : 7 || Pin : 16
+PIP : 120 || Parent Gate : 7 || Pin : 18
+PIP : 121 || Parent Gate : 7 || Pin : 19
+PIP : 122 || Parent Gate : 7 || Pin : 20
+PIP : 123 || Parent Gate : 7 || Pin : 21
+PIP : 124 || Parent Gate : 7 || Pin : 22
+PIP : 125 || Parent Gate : 7 || Pin : 23
+PIP : 126 || Parent Gate : 7 || Pin : 24
+PIP : 127 || Parent Gate : 7 || Pin : 25
+PIP : 128 || Parent Gate : 7 || Pin : 26
+PIP : 129 || Parent Gate : 7 || Pin : 27
+PIP : 130 || Parent Gate : 7 || Pin : 28
+PIP : 131 || Parent Gate : 7 || Pin : 30
+PIP : 132 || Parent Gate : 7 || Pin : 31
+PIP : 133 || Parent Gate : 7 || Pin : 32
+PIP : 134 || Parent Gate : 7 || Pin : 33
+PIP : 135 || Parent Gate : 7 || Pin : 34
+PIP : 136 || Parent Gate : 8 || Pin : 1
+PIP : 137 || Parent Gate : 8 || Pin : 4
+PIP : 138 || Parent Gate : 8 || Pin : 5
+PIP : 139 || Parent Gate : 8 || Pin : 7
+PIP : 140 || Parent Gate : 8 || Pin : 8
+PIP : 141 || Parent Gate : 8 || Pin : 10
+PIP : 142 || Parent Gate : 8 || Pin : 12
+PIP : 143 || Parent Gate : 8 || Pin : 13
+PIP : 144 || Parent Gate : 8 || Pin : 15
+PIP : 145 || Parent Gate : 8 || Pin : 16
+PIP : 146 || Parent Gate : 8 || Pin : 17
+PIP : 147 || Parent Gate : 8 || Pin : 18
+PIP : 148 || Parent Gate : 8 || Pin : 19
+PIP : 149 || Parent Gate : 8 || Pin : 22
+PIP : 150 || Parent Gate : 8 || Pin : 24
+PIP : 151 || Parent Gate : 8 || Pin : 25
+PIP : 152 || Parent Gate : 8 || Pin : 27
+PIP : 153 || Parent Gate : 8 || Pin : 28
+PIP : 154 || Parent Gate : 8 || Pin : 29
+PIP : 155 || Parent Gate : 8 || Pin : 30
+PIP : 156 || Parent Gate : 8 || Pin : 32
+PIP : 157 || Parent Gate : 8 || Pin : 34
+PIP : 158 || Parent Gate : 8 || Pin : 35
+PIP : 159 || Parent Gate : 8 || Pin : 36
+PIP : 160 || Parent Gate : 8 || Pin : 39
+PIP : 161 || Parent Gate : 9 || Pin : 1
+PIP : 162 || Parent Gate : 10 || Pin : 1
+PIP : 163 || Parent Gate : 10 || Pin : 2
+PIP : 164 || Parent Gate : 10 || Pin : 3
+PIP : 165 || Parent Gate : 10 || Pin : 4
+PIP : 166 || Parent Gate : 10 || Pin : 6
+PIP : 167 || Parent Gate : 10 || Pin : 8
+PIP : 168 || Parent Gate : 10 || Pin : 9
+PIP : 169 || Parent Gate : 10 || Pin : 10
+PIP : 170 || Parent Gate : 10 || Pin : 12
+PIP : 171 || Parent Gate : 10 || Pin : 16
+PIP : 172 || Parent Gate : 10 || Pin : 17
+PIP : 173 || Parent Gate : 10 || Pin : 18
+PIP : 174 || Parent Gate : 10 || Pin : 20
+PIP : 175 || Parent Gate : 10 || Pin : 21
+PIP : 176 || Parent Gate : 10 || Pin : 22
+PIP : 177 || Parent Gate : 10 || Pin : 23
+PIP : 178 || Parent Gate : 10 || Pin : 24
+PIP : 179 || Parent Gate : 10 || Pin : 26
+PIP : 180 || Parent Gate : 10 || Pin : 27
+PIP : 181 || Parent Gate : 10 || Pin : 28
+PIP : 182 || Parent Gate : 10 || Pin : 29
+PIP : 183 || Parent Gate : 10 || Pin : 30
+PIP : 184 || Parent Gate : 10 || Pin : 36
+PIP : 185 || Parent Gate : 10 || Pin : 38
+PIP : 186 || Parent Gate : 10 || Pin : 39
+PIP : 187 || Parent Gate : 10 || Pin : 40
+PIP : 188 || Parent Gate : 10 || Pin : 41
+PIP : 189 || Parent Gate : 10 || Pin : 42
+PIP : 190 || Parent Gate : 10 || Pin : 43
+PIP : 191 || Parent Gate : 10 || Pin : 44
+PIP : 192 || Parent Gate : 10 || Pin : 45
+PIP : 193 || Parent Gate : 10 || Pin : 46
+PIP : 194 || Parent Gate : 10 || Pin : 47
+PIP : 195 || Parent Gate : 10 || Pin : 48
+PIP : 196 || Parent Gate : 10 || Pin : 49
+PIP : 197 || Parent Gate : 10 || Pin : 50
+PIP : 198 || Parent Gate : 10 || Pin : 51
+PIP : 199 || Parent Gate : 10 || Pin : 52
+PIP : 200 || Parent Gate : 10 || Pin : 56
+PIP : 201 || Parent Gate : 10 || Pin : 57
+PIP : 202 || Parent Gate : 10 || Pin : 58
+PIP : 203 || Parent Gate : 10 || Pin : 59
+PIP : 204 || Parent Gate : 10 || Pin : 60
+PIP : 205 || Parent Gate : 10 || Pin : 61
+PIP : 206 || Parent Gate : 10 || Pin : 62
+PIP : 207 || Parent Gate : 10 || Pin : 63
+PIP : 208 || Parent Gate : 10 || Pin : 64
+PIP : 209 || Parent Gate : 10 || Pin : 67
+PIP : 210 || Parent Gate : 10 || Pin : 69
+PIP : 211 || Parent Gate : 10 || Pin : 70
+PIP : 212 || Parent Gate : 10 || Pin : 71
+PIP : 213 || Parent Gate : 10 || Pin : 72
+PIP : 214 || Parent Gate : 10 || Pin : 73
+PIP : 215 || Parent Gate : 10 || Pin : 74
+PIP : 216 || Parent Gate : 10 || Pin : 75
+PIP : 217 || Parent Gate : 10 || Pin : 76
+PIP : 218 || Parent Gate : 10 || Pin : 77
+
+POP : 1 || Parent Gate : 1 || Pin : 28
+POP : 2 || Parent Gate : 1 || Pin : 29
+POP : 3 || Parent Gate : 1 || Pin : 30
+POP : 4 || Parent Gate : 1 || Pin : 31
+POP : 5 || Parent Gate : 1 || Pin : 32
+POP : 6 || Parent Gate : 1 || Pin : 33
+POP : 7 || Parent Gate : 1 || Pin : 34
+POP : 8 || Parent Gate : 1 || Pin : 35
+POP : 9 || Parent Gate : 1 || Pin : 36
+POP : 10 || Parent Gate : 1 || Pin : 37
+POP : 11 || Parent Gate : 1 || Pin : 38
+POP : 12 || Parent Gate : 1 || Pin : 40
+POP : 13 || Parent Gate : 1 || Pin : 41
+POP : 14 || Parent Gate : 1 || Pin : 42
+POP : 15 || Parent Gate : 1 || Pin : 44
+POP : 16 || Parent Gate : 1 || Pin : 46
+POP : 17 || Parent Gate : 1 || Pin : 47
+POP : 18 || Parent Gate : 1 || Pin : 52
+POP : 19 || Parent Gate : 1 || Pin : 53
+POP : 20 || Parent Gate : 1 || Pin : 54
+POP : 21 || Parent Gate : 1 || Pin : 55
+POP : 22 || Parent Gate : 1 || Pin : 56
+POP : 23 || Parent Gate : 1 || Pin : 57
+POP : 24 || Parent Gate : 1 || Pin : 58
+POP : 25 || Parent Gate : 1 || Pin : 61
+POP : 26 || Parent Gate : 1 || Pin : 62
+POP : 27 || Parent Gate : 1 || Pin : 63
+POP : 28 || Parent Gate : 1 || Pin : 64
+POP : 29 || Parent Gate : 1 || Pin : 65
+POP : 30 || Parent Gate : 1 || Pin : 66
+POP : 31 || Parent Gate : 1 || Pin : 67
+POP : 32 || Parent Gate : 3 || Pin : 37
+POP : 33 || Parent Gate : 3 || Pin : 38
+POP : 34 || Parent Gate : 3 || Pin : 39
+POP : 35 || Parent Gate : 3 || Pin : 40
+POP : 36 || Parent Gate : 3 || Pin : 42
+POP : 37 || Parent Gate : 3 || Pin : 43
+POP : 38 || Parent Gate : 3 || Pin : 44
+POP : 39 || Parent Gate : 3 || Pin : 45
+POP : 40 || Parent Gate : 3 || Pin : 46
+POP : 41 || Parent Gate : 3 || Pin : 48
+POP : 42 || Parent Gate : 3 || Pin : 49
+POP : 43 || Parent Gate : 3 || Pin : 50
+POP : 44 || Parent Gate : 3 || Pin : 51
+POP : 45 || Parent Gate : 3 || Pin : 52
+POP : 46 || Parent Gate : 3 || Pin : 53
+POP : 47 || Parent Gate : 3 || Pin : 54
+POP : 48 || Parent Gate : 3 || Pin : 55
+POP : 49 || Parent Gate : 3 || Pin : 56
+POP : 50 || Parent Gate : 3 || Pin : 57
+POP : 51 || Parent Gate : 3 || Pin : 58
+POP : 52 || Parent Gate : 3 || Pin : 59
+POP : 53 || Parent Gate : 3 || Pin : 60
+POP : 54 || Parent Gate : 3 || Pin : 61
+POP : 55 || Parent Gate : 3 || Pin : 62
+POP : 56 || Parent Gate : 3 || Pin : 63
+POP : 57 || Parent Gate : 3 || Pin : 64
+POP : 58 || Parent Gate : 3 || Pin : 65
+POP : 59 || Parent Gate : 3 || Pin : 66
+POP : 60 || Parent Gate : 3 || Pin : 67
+POP : 61 || Parent Gate : 3 || Pin : 68
+POP : 62 || Parent Gate : 3 || Pin : 69
+POP : 63 || Parent Gate : 3 || Pin : 70
+POP : 64 || Parent Gate : 3 || Pin : 71
+POP : 65 || Parent Gate : 3 || Pin : 72
+POP : 66 || Parent Gate : 3 || Pin : 73
+POP : 67 || Parent Gate : 3 || Pin : 74
+POP : 68 || Parent Gate : 3 || Pin : 75
+POP : 69 || Parent Gate : 3 || Pin : 76
+POP : 70 || Parent Gate : 3 || Pin : 77
+POP : 71 || Parent Gate : 4 || Pin : 36
+POP : 72 || Parent Gate : 4 || Pin : 37
+POP : 73 || Parent Gate : 4 || Pin : 39
+POP : 74 || Parent Gate : 4 || Pin : 42
+POP : 75 || Parent Gate : 4 || Pin : 48
+POP : 76 || Parent Gate : 4 || Pin : 52
+POP : 77 || Parent Gate : 4 || Pin : 53
+POP : 78 || Parent Gate : 5 || Pin : 16
+POP : 79 || Parent Gate : 5 || Pin : 18
+POP : 80 || Parent Gate : 5 || Pin : 19
+POP : 81 || Parent Gate : 5 || Pin : 20
+POP : 82 || Parent Gate : 5 || Pin : 22
+POP : 83 || Parent Gate : 5 || Pin : 23
+POP : 84 || Parent Gate : 5 || Pin : 24
+POP : 85 || Parent Gate : 5 || Pin : 25
+POP : 86 || Parent Gate : 5 || Pin : 26
+POP : 87 || Parent Gate : 5 || Pin : 28
+POP : 88 || Parent Gate : 5 || Pin : 29
+POP : 89 || Parent Gate : 5 || Pin : 30
+POP : 90 || Parent Gate : 5 || Pin : 32
+POP : 91 || Parent Gate : 5 || Pin : 33
+POP : 92 || Parent Gate : 6 || Pin : 23
+POP : 93 || Parent Gate : 6 || Pin : 24
+POP : 94 || Parent Gate : 6 || Pin : 25
+POP : 95 || Parent Gate : 6 || Pin : 26
+POP : 96 || Parent Gate : 6 || Pin : 27
+POP : 97 || Parent Gate : 6 || Pin : 28
+POP : 98 || Parent Gate : 6 || Pin : 29
+POP : 99 || Parent Gate : 6 || Pin : 30
+POP : 100 || Parent Gate : 6 || Pin : 31
+POP : 101 || Parent Gate : 6 || Pin : 33
+POP : 102 || Parent Gate : 6 || Pin : 34
+POP : 103 || Parent Gate : 6 || Pin : 35
+POP : 104 || Parent Gate : 6 || Pin : 37
+POP : 105 || Parent Gate : 6 || Pin : 38
+POP : 106 || Parent Gate : 6 || Pin : 39
+POP : 107 || Parent Gate : 6 || Pin : 40
+POP : 108 || Parent Gate : 6 || Pin : 41
+POP : 109 || Parent Gate : 6 || Pin : 44
+POP : 110 || Parent Gate : 6 || Pin : 45
+POP : 111 || Parent Gate : 6 || Pin : 48
+POP : 112 || Parent Gate : 6 || Pin : 50
+POP : 113 || Parent Gate : 6 || Pin : 51
+POP : 114 || Parent Gate : 6 || Pin : 52
+POP : 115 || Parent Gate : 6 || Pin : 53
+POP : 116 || Parent Gate : 6 || Pin : 54
+POP : 117 || Parent Gate : 6 || Pin : 55
+POP : 118 || Parent Gate : 6 || Pin : 56
+POP : 119 || Parent Gate : 6 || Pin : 57
+POP : 120 || Parent Gate : 6 || Pin : 58
+POP : 121 || Parent Gate : 6 || Pin : 59
+POP : 122 || Parent Gate : 6 || Pin : 60
+POP : 123 || Parent Gate : 7 || Pin : 40
+POP : 124 || Parent Gate : 7 || Pin : 41
+POP : 125 || Parent Gate : 7 || Pin : 42
+POP : 126 || Parent Gate : 8 || Pin : 40
+POP : 127 || Parent Gate : 8 || Pin : 41
+POP : 128 || Parent Gate : 8 || Pin : 42
+POP : 129 || Parent Gate : 8 || Pin : 43
+POP : 130 || Parent Gate : 8 || Pin : 44
+POP : 131 || Parent Gate : 8 || Pin : 45
+POP : 132 || Parent Gate : 8 || Pin : 46
+POP : 133 || Parent Gate : 8 || Pin : 47
+POP : 134 || Parent Gate : 8 || Pin : 48
+POP : 135 || Parent Gate : 8 || Pin : 49
+POP : 136 || Parent Gate : 8 || Pin : 50
+POP : 137 || Parent Gate : 8 || Pin : 52
+POP : 138 || Parent Gate : 8 || Pin : 53
+POP : 139 || Parent Gate : 8 || Pin : 54
+POP : 140 || Parent Gate : 8 || Pin : 55
+POP : 141 || Parent Gate : 8 || Pin : 56
+POP : 142 || Parent Gate : 8 || Pin : 57
+POP : 143 || Parent Gate : 8 || Pin : 59
+POP : 144 || Parent Gate : 8 || Pin : 60
+POP : 145 || Parent Gate : 8 || Pin : 61
+POP : 146 || Parent Gate : 8 || Pin : 62
+POP : 147 || Parent Gate : 8 || Pin : 63
+POP : 148 || Parent Gate : 8 || Pin : 65
+POP : 149 || Parent Gate : 8 || Pin : 66
+POP : 150 || Parent Gate : 8 || Pin : 67
+POP : 151 || Parent Gate : 8 || Pin : 68
+POP : 152 || Parent Gate : 8 || Pin : 69
+POP : 153 || Parent Gate : 8 || Pin : 70
+POP : 154 || Parent Gate : 8 || Pin : 71
+POP : 155 || Parent Gate : 8 || Pin : 72
+POP : 156 || Parent Gate : 8 || Pin : 73
+POP : 157 || Parent Gate : 8 || Pin : 74
+POP : 158 || Parent Gate : 8 || Pin : 75
+POP : 159 || Parent Gate : 8 || Pin : 76
+POP : 160 || Parent Gate : 9 || Pin : 13
+POP : 161 || Parent Gate : 9 || Pin : 14
+POP : 162 || Parent Gate : 9 || Pin : 15
+POP : 163 || Parent Gate : 9 || Pin : 17
+POP : 164 || Parent Gate : 9 || Pin : 18
+POP : 165 || Parent Gate : 9 || Pin : 19
+POP : 166 || Parent Gate : 9 || Pin : 20
+POP : 167 || Parent Gate : 9 || Pin : 21
+POP : 168 || Parent Gate : 9 || Pin : 22
+POP : 169 || Parent Gate : 9 || Pin : 24
+POP : 170 || Parent Gate : 9 || Pin : 25
+POP : 171 || Parent Gate : 9 || Pin : 26
+POP : 172 || Parent Gate : 9 || Pin : 27
+POP : 173 || Parent Gate : 9 || Pin : 28
+POP : 174 || Parent Gate : 9 || Pin : 29
+POP : 175 || Parent Gate : 9 || Pin : 30
+POP : 176 || Parent Gate : 9 || Pin : 31
+POP : 177 || Parent Gate : 9 || Pin : 32
+POP : 178 || Parent Gate : 9 || Pin : 33
+POP : 179 || Parent Gate : 9 || Pin : 34
+POP : 180 || Parent Gate : 9 || Pin : 35
+POP : 181 || Parent Gate : 9 || Pin : 36
+POP : 182 || Parent Gate : 9 || Pin : 37
+POP : 183 || Parent Gate : 9 || Pin : 39
+POP : 184 || Parent Gate : 9 || Pin : 40
+POP : 185 || Parent Gate : 9 || Pin : 41
+POP : 186 || Parent Gate : 9 || Pin : 42
+POP : 187 || Parent Gate : 9 || Pin : 43
+POP : 188 || Parent Gate : 9 || Pin : 44
+POP : 189 || Parent Gate : 9 || Pin : 45
+POP : 190 || Parent Gate : 9 || Pin : 46
+POP : 191 || Parent Gate : 9 || Pin : 47
+POP : 192 || Parent Gate : 9 || Pin : 48
+POP : 193 || Parent Gate : 9 || Pin : 49
+POP : 194 || Parent Gate : 9 || Pin : 51
+POP : 195 || Parent Gate : 9 || Pin : 52
+POP : 196 || Parent Gate : 9 || Pin : 53
+POP : 197 || Parent Gate : 9 || Pin : 54
+POP : 198 || Parent Gate : 9 || Pin : 55
+POP : 199 || Parent Gate : 9 || Pin : 56
+POP : 200 || Parent Gate : 9 || Pin : 57
+POP : 201 || Parent Gate : 9 || Pin : 58
+POP : 202 || Parent Gate : 9 || Pin : 59
+POP : 203 || Parent Gate : 9 || Pin : 60
+POP : 204 || Parent Gate : 9 || Pin : 61
+POP : 205 || Parent Gate : 9 || Pin : 62
+POP : 206 || Parent Gate : 9 || Pin : 63
+POP : 207 || Parent Gate : 9 || Pin : 64
+POP : 208 || Parent Gate : 9 || Pin : 65
+POP : 209 || Parent Gate : 9 || Pin : 66
+POP : 210 || Parent Gate : 9 || Pin : 67
+POP : 211 || Parent Gate : 9 || Pin : 68
+POP : 212 || Parent Gate : 9 || Pin : 69
+POP : 213 || Parent Gate : 9 || Pin : 70
+POP : 214 || Parent Gate : 9 || Pin : 71
+POP : 215 || Parent Gate : 9 || Pin : 72
+POP : 216 || Parent Gate : 9 || Pin : 74
+POP : 217 || Parent Gate : 9 || Pin : 76
+POP : 218 || Parent Gate : 9 || Pin : 77
+POP : 219 || Parent Gate : 9 || Pin : 79
+POP : 220 || Parent Gate : 9 || Pin : 80
+POP : 221 || Parent Gate : 9 || Pin : 81
+POP : 222 || Parent Gate : 9 || Pin : 82
+POP : 223 || Parent Gate : 9 || Pin : 83
+POP : 224 || Parent Gate : 9 || Pin : 84
+POP : 225 || Parent Gate : 9 || Pin : 85
+POP : 226 || Parent Gate : 9 || Pin : 86
+POP : 227 || Parent Gate : 9 || Pin : 87
+POP : 228 || Parent Gate : 9 || Pin : 88
+POP : 229 || Parent Gate : 9 || Pin : 89
+POP : 230 || Parent Gate : 9 || Pin : 90
+POP : 231 || Parent Gate : 9 || Pin : 91
+POP : 232 || Parent Gate : 9 || Pin : 92
+POP : 233 || Parent Gate : 10 || Pin : 79
+POP : 234 || Parent Gate : 10 || Pin : 80
+POP : 235 || Parent Gate : 10 || Pin : 81
+POP : 236 || Parent Gate : 10 || Pin : 82
+POP : 237 || Parent Gate : 10 || Pin : 83
+POP : 238 || Parent Gate : 10 || Pin : 84
+POP : 239 || Parent Gate : 10 || Pin : 85
+POP : 240 || Parent Gate : 10 || Pin : 86
+POP : 241 || Parent Gate : 10 || Pin : 87
+POP : 242 || Parent Gate : 10 || Pin : 88
+POP : 243 || Parent Gate : 10 || Pin : 89
+POP : 244 || Parent Gate : 10 || Pin : 90
+POP : 245 || Parent Gate : 10 || Pin : 91
+POP : 246 || Parent Gate : 10 || Pin : 92
+POP : 247 || Parent Gate : 10 || Pin : 93
+POP : 248 || Parent Gate : 10 || Pin : 94
+POP : 249 || Parent Gate : 10 || Pin : 95
+POP : 250 || Parent Gate : 10 || Pin : 96
+POP : 251 || Parent Gate : 10 || Pin : 97
+POP : 252 || Parent Gate : 10 || Pin : 98
+POP : 253 || Parent Gate : 10 || Pin : 99
+POP : 254 || Parent Gate : 10 || Pin : 100
+POP : 255 || Parent Gate : 10 || Pin : 101
+POP : 256 || Parent Gate : 10 || Pin : 103
+POP : 257 || Parent Gate : 10 || Pin : 104
+POP : 258 || Parent Gate : 10 || Pin : 105
+POP : 259 || Parent Gate : 10 || Pin : 106
+POP : 260 || Parent Gate : 10 || Pin : 107
+POP : 261 || Parent Gate : 10 || Pin : 108
+POP : 262 || Parent Gate : 10 || Pin : 109
+POP : 263 || Parent Gate : 10 || Pin : 110
+POP : 264 || Parent Gate : 10 || Pin : 112
+POP : 265 || Parent Gate : 10 || Pin : 113
+POP : 266 || Parent Gate : 10 || Pin : 114
+POP : 267 || Parent Gate : 10 || Pin : 115
+POP : 268 || Parent Gate : 10 || Pin : 117
+POP : 269 || Parent Gate : 10 || Pin : 118
+POP : 270 || Parent Gate : 10 || Pin : 119
+POP : 271 || Parent Gate : 10 || Pin : 120
+POP : 272 || Parent Gate : 10 || Pin : 121
+POP : 273 || Parent Gate : 10 || Pin : 122
+POP : 274 || Parent Gate : 10 || Pin : 123
+POP : 275 || Parent Gate : 10 || Pin : 124
+POP : 276 || Parent Gate : 10 || Pin : 125
+
+============================================== Critical Path Information ===============================================
+
+Total Critical Paths : 0
+
+========================================================================================================================
