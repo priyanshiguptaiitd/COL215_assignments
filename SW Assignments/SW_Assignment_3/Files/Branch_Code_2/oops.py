@@ -10,6 +10,7 @@ class dp_state:
     def __init__(self):
         # self.minx,self.miny,self.maxx,self.maxy = None,None,None,None
         self.prev_wg_ref = None
+        self.input_pin=None
         self.prev_gate = None
         self.total_gate_delay = None
         self.current_path_length = None
@@ -303,6 +304,7 @@ class Gate_Data:
         self.gates = def_dict()
         self.wire_dag_from_to,self.wire_dag_to_from, self.wire_groups, self.gate_dag_from_to,self.gate_dag_to_from = def_dict(dict), def_dict(dict), def_dict(), def_dict(dict), def_dict(dict)  
         self.primary_inputs, self.primary_outputs = def_dict(), def_dict()
+        self.only_primary_input_gates=def_dict()
         self.primary_input_gates, self.primary_output_gates = def_dict(), def_dict()
         self.wire_groups_between = def_dict(list)
         self.gate_wire_groups_keys = def_dict(list)
@@ -318,6 +320,7 @@ class Gate_Data:
         
         self.wire_delay = None
         self.max_delay = None
+        self.critical_path=None
 
     def find_max_delay(self):
         
@@ -326,7 +329,7 @@ class Gate_Data:
         for output_gate in self.primary_output_gates:
             gate_index = output_gate
             # gate = self.gates[gate_index]
-            path_delay = self.find_max_gate_delay(gate_index)
+            path_delay = self.gates[gate_index].dp_state.total_gate_delay
             if path_delay > max_delay:
                 max_delay = path_delay
                 max_gate = gate_index
@@ -338,8 +341,9 @@ class Gate_Data:
         max_gate, max_delay, prev_wg = None, 0, None
         cur_gate = self.gates[gate_index]
         
-        if gate_index in self.primary_input_gates:
+        if gate_index in self.only_primary_input_gates:
             self.gates[gate_index].dp_state = dp_state()
+            self.gates[gate_index].dp_state.input_pin=next(iter(self.gates[gate_index].inp_pins))
             self.gates[gate_index].dp_state.total_gate_delay = self.gates[gate_index].delay
             self.gates[gate_index].dp_state.current_path_length = 1    
             return self.gates[gate_index].delay
@@ -360,9 +364,10 @@ class Gate_Data:
             exp_delay = input_gate.dp_state.total_gate_delay + cur_gate.delay + len(max_wg)*self.wire_delay
             
             if exp_delay > max_delay:
-                prev_wg = max_wg
+                prev_wg = max_wg.key
                 max_delay = exp_delay
                 max_gate = input_gate
+                input_pin=
                 
         # cur_gate.dp_state.minx=min(max_gate.dp_state.minx,cur_gate.minx)
         # cur_gate.dp_state.miny=min(max_gate.dp_state.miny,cur_gate.miny)
@@ -370,6 +375,7 @@ class Gate_Data:
         # cur_gate.dp_state.maxy=max(max_gate.dp_state.maxy,cur_gate.maxy)
         
         cur_gate.dp_state = dp_state()
+        cur_gate.dp_state.input_pin=input_pin
         cur_gate.dp_state.prev_wg_ref = prev_wg
         cur_gate.dp_state.total_gate_delay = max_delay
         cur_gate.dp_state.current_path_length = max_gate.dp_state.current_path_length + 1  
@@ -382,7 +388,7 @@ class Gate_Data:
         return max_delay
     
     def find_max_delay_gi(self,gate_index):
-        g_ref = self.gates[gate_index]
+        cur_gate = self.gates[gate_index]
         dp = {ind:0 for ind in self.gates}
         ref_dp = {ind:None for ind in self.gates}    
         for gi in self.gate_dag_from_to:
@@ -399,10 +405,17 @@ class Gate_Data:
         return max_delay,max_delay_gate
     
     def find_max_delay_routine(self):
-        for i in self.primary_input_gates:
-            print(f"Starting at Gate {i} : {self.find_max_delay_gi(i)}")
-        
-        return            
+        gate_queue=[]
+        for i in self.only_primary_input_gates:
+            gate_queue.append(i)
+
+        while len(gate_queue):
+            if self.gates[gate_queue[0]].dp_state==None:
+                print(f"Starting at Gate {gate_queue[0]} : {self.find_max_gate_delay(gate_queue[0])}")
+            for con_gate_index in self.wire_dag_from_to[gate_queue[0]]:
+                if self.gates[gate_queue[0]].dp_state==None:gate_queue.append(con_gate_index)
+            gate_queue.pop(0)
+           
 
         
     def set_bbox(self,x,y):
@@ -455,11 +468,20 @@ class Gate_Data:
         
         self.total_wires_added += 1
     
-    def get_crtical_path(self):
-        pass
-    
-    def get_critical_path_delay(self):
-        pass
+    def get_critical_path(self,max_gate):
+        cur_gate=max_gate
+        output="g"+max_gate+".p"+next(iter(self.gates[cur_gate].out_pin))
+        cur_gate=self.gates[cur_gate].dp_state.prev_wg_ref[0]
+        while cur_gate not in self.primary_output_gates:
+            if self.gates[cur_gate].dp_state.prev_wg_ref[0]==None:
+                output="g"+cur_gate+".p"+self.gates[cur_gate].dp_state.input_pin+output
+            else:output="g"+self.gates[cur_gate].dp_state.prev_wg_ref[0]+".p"+self.gates[cur_gate].dp_state.prev_wg_ref[1]+" g"+cur_gate+".p"+self.gates[cur_gate].dp_state.input_pin+output
+            cur_gate=self.gates[cur_gate].dp_state.prev_wg_ref[0]
+
+        self.critical_path=output
+
+
+   
     
     @time_it
     def init_packing(self):
@@ -506,8 +528,8 @@ class Gate_Data:
                     
             self.gate_wire_groups[gate_index] = Heap(comparator_func_wg,"max",[self.wire_groups[(gate_index,pin_index)] for pin_index in self.gate_wire_groups_keys[gate_index]])
             
-            # if(self.gate_dag_to_from[gate_index] == {}):
-            #     self.primary_input_gates[gate_index] = True
+            if(self.gate_dag_to_from[gate_index] == {}):
+                 self.only_primary_input_gates[gate_index] = True
             
         for gate_index,gate_index_to in self.wire_groups_between:
             wg_max = max((wg for wg in self.wire_groups_between[(gate_index,gate_index_to)]), key = len)

@@ -42,8 +42,10 @@ def Parse_Input(fpath):
 
 def Parse_Output(gate_data,fpath):
     bbox = gate_data.get_bbox()
-    cpath = f"critcal_path " + gate_data.get_critical_path()
-    cpath_delay = f"critical_path_delay {gate_data.get_critical_path_delay()}"
+    gate_data.find_max_delay_routine()
+    max_delay,max_gate=gate_data.find_max_delay_routine()
+    cpath = f"critical_path {gate_data.critical_path}" 
+    cpath_delay = f"critical_path_delay {max_delay}"
     with open(fpath,'w') as file:
         file.write(f"bounding_box {bbox}\n")
         file.write(f"{cpath}\n")
@@ -79,4 +81,4 @@ if(__name__ == "__main__"):
     print(gd.primary_output_gates)
     # print(gd.gates[6].out_pins[47].connected_pins_to)
     print(f" ---------------------------------- ")
-    # print(gd.find_max_delay_routine())
+    print(gd.find_max_delay_routine())
