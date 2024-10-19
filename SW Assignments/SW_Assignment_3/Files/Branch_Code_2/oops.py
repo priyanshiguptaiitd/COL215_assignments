@@ -214,8 +214,8 @@ class Gate_Env:
     def __str__(self):
         
         basic_data = f"Gate : {self.index} || Pos_X : {self.x} || Pos_Y {self.y} || Width : {self.width} || Height : {self.height}"
-        input_pin_data  = [f"Input Pin : {pin_index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.inp_pins]
-        output_pin_data = [f"Output Pin : {pin_index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]}" for pin_index in self.out_pins]
+        input_pin_data  = [f"Input Pin : {pin_index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]} || PIP {self.inp_pins[pin_index].is_pip} " for pin_index in self.inp_pins]
+        output_pin_data = [f"Output Pin : {pin_index} || Pin_X : {self.get_global_coord_pin(pin_index)[0]} || Pin_Y : {self.get_global_coord_pin(pin_index)[1]} || POP {self.out_pins[pin_index].is_pop}" for pin_index in self.out_pins]
 
         return "\n" + basic_data + "\n" + "\n".join(input_pin_data) + "\n" + "\n".join(output_pin_data)
     
@@ -307,7 +307,7 @@ class Gate_Data:
         self.wire_groups_between = def_dict(list)
         self.gate_wire_groups_keys = def_dict(list)
         self.gate_wire_groups = def_dict()
-        self.wire_groups_max_delay = def_dict(dict)
+        self.wire_groups_max_delay = def_dict()
         
         
         self.critical_path_count = 0
@@ -381,8 +381,28 @@ class Gate_Data:
 
         return max_delay
     
-    # def find_max_delay(self):
-    #     pass
+    def find_max_delay_gi(self,gate_index):
+        g_ref = self.gates[gate_index]
+        dp = {ind:0 for ind in self.gates}
+        ref_dp = {ind:None for ind in self.gates}    
+        for gi in self.gate_dag_from_to:
+            for gj in self.gate_dag_from_to[gi]:
+                if(dp[gj] <= dp[gi] + self.wire_groups_max_delay[(gi,gj)][0]*self.wire_delay + self.gates[gi].delay):
+                    dp[gj] = dp[gi] + self.wire_groups_max_delay[(gi,gj)][0]*self.wire_delay + self.gates[gi].delay
+                    ref_dp[gj] = self.wire_groups_max_delay[(gi,gj)][1]
+        max_delay,max_delay_gate = 0,0
+        for gi in dp:
+            if(gi in self.primary_output_gates):
+                if(dp[gi]+self.gates[gi].delay > max_delay): # Delay for primary output gate is not considered in the calculation
+                    max_delay,max_delay_gate = dp[gi]+self.gates[gi].delay,gi
+        print(ref_dp)
+        return max_delay,max_delay_gate
+    
+    def find_max_delay_routine(self):
+        for i in self.primary_input_gates:
+            print(f"Starting at Gate {i} : {self.find_max_delay_gi(i)}")
+        
+        return            
 
         
     def set_bbox(self,x,y):
@@ -477,18 +497,21 @@ class Gate_Data:
             for pin_index in self.gates[gate_index].out_pins:
                 if(self.gates[gate_index].out_pins[pin_index].is_pop):
                     self.primary_outputs[(gate_index,pin_index)] = True
+                    self.primary_output_gates[gate_index] = True
             
             for pin_index in self.gates[gate_index].inp_pins:
                 if(self.gates[gate_index].inp_pins[pin_index].is_pip):
                     self.primary_inputs[(gate_index,pin_index)] = True            
-            
+                    self.primary_input_gates[gate_index] = True
+                    
             self.gate_wire_groups[gate_index] = Heap(comparator_func_wg,"max",[self.wire_groups[(gate_index,pin_index)] for pin_index in self.gate_wire_groups_keys[gate_index]])
             
-            if(self.gate_dag_to_from[gate_index] == {}):
-                self.primary_input_gates[gate_index] = True
+            # if(self.gate_dag_to_from[gate_index] == {}):
+            #     self.primary_input_gates[gate_index] = True
             
         for gate_index,gate_index_to in self.wire_groups_between:
-            self.wire_groups_max_delay[(gate_index,gate_index_to)] = len(max((wg for wg in self.wire_groups_between[(gate_index,gate_index_to)]), key = len))
+            wg_max = max((wg for wg in self.wire_groups_between[(gate_index,gate_index_to)]), key = len)
+            self.wire_groups_max_delay[(gate_index,gate_index_to)] = (len(wg_max),wg_max.key)
 
     @time_it
     def init_critical_paths(self):

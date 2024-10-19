@@ -146,7 +146,7 @@ def generate_pin_positions(gh,gate_freq,pin_density = 0.75,max_pin_freq = 6,over
     return arr_left, arr_right
 
 def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob = 10**(-2),ensure_wire_freq_bool=False,
-          ensure_wire_freq = 50_000):
+          ensure_wire_freq = 50_000, only_pip_freq = 5):
     """
     Generates wires between gates based on the problem Statement specifications.
     
@@ -163,17 +163,18 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
         wire_data.keys: The keys of the wire data dictionary.
     """
     atleast_one,wire_data,count_atleast_one,wires_generated = {i:False for i in range(1,gate_freq+1)},{},0,0
-    
     comb_loops =def_dict(dict)
     
     rng = np.random.default_rng(randbits(128))
     rng_break = np.random.default_rng(randbits(128))     
     
+    only_pips = rng.choice([i for i in range(1,gate_freq+1)],only_pip_freq,replace=False)
+    
     while(True):
         g1 = rng.integers(1,gate_freq+1)
         g2 = rng.integers(1,gate_freq+1)
         
-        if(g1 == g2):
+        if(g1 == g2 or g2 in only_pips):
             if(ensure_wire_freq_bool):
                 if(len(wire_data) >= ensure_wire_freq):
                     break
@@ -193,7 +194,7 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
                         break
             continue
         
-        elif(g2 in comb_loops[g1]):
+        elif(g2 in comb_loops[g1] or g1 in comb_loops[g2]):
             # print(f"Comb Loop Detected {g1} {g2}")
             if(ensure_wire_freq_bool):
                 if(len(wire_data) >= ensure_wire_freq):
@@ -234,7 +235,7 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
                 if(count_atleast_one >= gate_freq):
                     if(rng_break.random() < br_prob):
                         break
-                            
+    print(comb_loops)
     # print(f"Total Gates Generated : {gate_freq}")                
     # print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
@@ -288,7 +289,7 @@ def write_single_case(gate_freq,fpath,kw):
             print(f"Total Gates Generated : {gate_freq}")
             print(f"Total Pins Generated : {pins_gen}")
             # print(f"Calling wire generation")
-            wire_data = generate_wires(gate_freq,is_done_left,left_edge,right_edge,kw["br_prob"],kw["ensure_wire_freq_bool"],kw["ensure_wire_freq"])
+            wire_data = generate_wires(gate_freq,is_done_left,left_edge,right_edge,kw["br_prob"],kw["ensure_wire_freq_bool"],kw["ensure_wire_freq"],kw["only_pip_freq"])
             print(f"Total Wires Generated : {len(wire_data)}")
             file.write(f"wire_delay {kw['wire_delay']}\n")
             
@@ -368,7 +369,8 @@ if(__name__ == "__main__"):
           "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
           "ensure_pins_freq": 10,
           "ensure_wire_freq_bool": False,
-          "ensure_wire_freq": 4_000
+          "ensure_wire_freq": 4_000,
+          "only_pip_freq": 3
           }
     
     kw_multi =  {

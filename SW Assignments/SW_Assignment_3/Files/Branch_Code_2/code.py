@@ -28,7 +28,7 @@ def Parse_Input(fpath):
             elif(line_data[0].lower() == "wire_delay"):
                 gate_data.set_wire_delay(int(line_data[1]))
             elif(line_data[0].lower() == "wire"):
-                gp_i,gp_j = line_data[1].split('.'),line_data[2].split('.') 
+                gp_i,gp_j = line_data[1].split('.'),line_data[ 2].split('.') 
                 g_i,p_i = int(gp_i[0][1:]),int(gp_i[1][1:])
                 g_j,p_j = int(gp_j[0][1:]),int(gp_j[1][1:])
                 # print(g_i,p_i,g_j,p_j)
@@ -69,13 +69,14 @@ if(__name__ == "__main__"):
     print(gd.primary_input_gates)
     # print(gd.primary_output_gates)
     print(f" ---------------------------------- ")
-    # print(gd.wire_groups_between)
+    # print(gd.gate_dag_from_to)
     # md,mgi = gd.find_max_delay()
     # print(f"Max Delay: {md} at gate {mgi}")
     
     # for g in gd.gates:
     #     print(g, gd.gates[g].dp_state)
     # print(gd.primary_inputs)
-    print(gd.wire_dag_from_to)
-    print(gd.wire_groups_max_delay)
+    print(gd.primary_output_gates)
     # print(gd.gates[6].out_pins[47].connected_pins_to)
+    print(f" ---------------------------------- ")
+    print(gd.find_max_delay_routine())
