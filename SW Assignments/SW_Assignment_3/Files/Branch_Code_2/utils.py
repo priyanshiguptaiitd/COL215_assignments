@@ -216,6 +216,10 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
             comb_loops[g2][g1] = True
             comb_loops[g2].update(comb_loops[g1])
             
+            for g in comb_loops:
+                if(g2 in comb_loops[g]):
+                    comb_loops[g].update(comb_loops[g2])
+            
             wires_generated += 1
             
             if(not atleast_one[g1]):
@@ -235,7 +239,7 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
                 if(count_atleast_one >= gate_freq):
                     if(rng_break.random() < br_prob):
                         break
-    print(comb_loops)
+    # print(comb_loops)
     # print(f"Total Gates Generated : {gate_freq}")                
     # print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
@@ -250,7 +254,7 @@ def generate_wires_2(gate_freq,is_done_left, left_edge_data, right_edge_data, br
     rng_break = np.random.default_rng(randbits(128))
     only_pips = rng.choice([i for i in range(1,gate_freq+1)],only_pip_freq,replace=False)
     
-    print(is_done_left,left_edge_data,right_edge_data)
+    # print(is_done_left,left_edge_data,right_edge_data)
     bcount = 0
 
     while bcount < 20:
@@ -284,7 +288,7 @@ def generate_wires_2(gate_freq,is_done_left, left_edge_data, right_edge_data, br
         comb_loops[g_in][g_out] = True
         comb_loops[g_in].update(comb_loops[g_out])
         
-        print(comb_loops)
+        # print(comb_loops)
         
         if(not atleast_one[g_out]):
                 atleast_one[g_out] = True
@@ -353,8 +357,8 @@ def write_single_case(gate_freq,fpath,kw):
             print(f"Total Wires Generated : {len(wire_data)}")
             file.write(f"wire_delay {kw['wire_delay']}\n")
             
-            # for wire in wire_data:
-            #     file.write(wire + "\n")
+            for wire in wire_data:
+                file.write(wire + "\n")
                 
             # print(f"Total Pins Generated : {pins_gen}")
 
@@ -417,19 +421,19 @@ def right_cyclic_shift(n,shift):
 
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq": 10,
+          "gate_freq": 1000,
           "mode": "uniform",
-          "br_prob": 10**(-3),
+          "br_prob": 10**(-4),
           "dim_lo":1,
           "dim_hi":101,
           "wire_delay": 1,
           "pin_density": 1.6,
-          "max_pin_freq":4,
+          "max_pin_freq":6,
           "override_specs": False,
           "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
           "ensure_pins_freq": 10,
           "ensure_wire_freq_bool": False,
-          "ensure_wire_freq": 4_000,
+          "ensure_wire_freq": 2_000,
           "only_pip_freq": 1
           }
     

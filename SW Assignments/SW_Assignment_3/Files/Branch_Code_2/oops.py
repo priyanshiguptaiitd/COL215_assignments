@@ -10,7 +10,7 @@ class dp_state:
     def __init__(self):
         # self.minx,self.miny,self.maxx,self.maxy = None,None,None,None
         self.prev_wg_ref = None
-        self.input_pin=None
+        self.input_pin = None
         self.prev_gate = None
         self.total_gate_delay = None
         self.current_path_length = None
@@ -18,9 +18,10 @@ class dp_state:
     
     def __str__(self):
         if(self.prev_gate is not None):
-            return f"Total Delay : {self.total_gate_delay} || Current Path Length : {self.current_path_length} || Previous Gate : {self.prev_gate.index} || Previous Wire Group : {self.prev_wg_ref.key}"
+            return f"Total Delay : {self.total_gate_delay} || Current Path Length : {self.current_path_length} || Previous Gate : {self.prev_gate.index} || Previous Wire Group : {self.prev_wg_ref}"
         else:
             return f"Total Delay : {self.total_gate_delay} || Current Path Length : {self.current_path_length} || Previous Gate : {self.prev_gate} || Previous Wire Group : {self.prev_wg_ref}"
+
 class Heap:
     '''
     Class to implement a heap with general comparison function
@@ -310,7 +311,8 @@ class Gate_Data:
         self.gate_wire_groups_keys = def_dict(list)
         self.gate_wire_groups = def_dict()
         self.wire_groups_max_delay = def_dict()
-        
+        self.better_pack_order = [None]
+
         
         self.critical_path_count = 0
         self.total_wires_added = 0
@@ -321,7 +323,8 @@ class Gate_Data:
         self.wire_delay = None
         self.max_delay = None
         self.critical_path=None
-
+    
+    @time_it
     def find_max_delay(self):
         
         max_delay,max_gate = 0, None
@@ -329,6 +332,9 @@ class Gate_Data:
         for output_gate in self.primary_output_gates:
             gate_index = output_gate
             # gate = self.gates[gate_index]
+            if(self.gates[gate_index].dp_state is None):
+                self.find_max_gate_delay(gate_index)
+                
             path_delay = self.gates[gate_index].dp_state.total_gate_delay
             if path_delay > max_delay:
                 max_delay = path_delay
@@ -348,14 +354,14 @@ class Gate_Data:
             self.gates[gate_index].dp_state.current_path_length = 1    
             return self.gates[gate_index].delay
         
-        for input_gate_index in self.gate_dag_to[gate_index]:
+        for input_gate_index in self.gate_dag_to_from[gate_index]:
             
             if(input_gate_index == gate_index):
                 continue
             
             input_gate = self.gates[input_gate_index]
             
-            if (input_gate.dp_state is None) :
+            if (input_gate.dp_state is None):
                 self.find_max_gate_delay(input_gate_index)
                 
             # sp = abs(min(input_gate.dp_state.minx,cur_gate.minx)-max(input_gate.dp_state.maxx,cur_gate.maxx))+abs(min(input_gate.dp_state.miny,cur_gate.miny)-max(input_gate.dp_state.maxy,cur_gate.maxy))
@@ -367,15 +373,18 @@ class Gate_Data:
                 prev_wg = max_wg.key
                 max_delay = exp_delay
                 max_gate = input_gate
-                input_pin=
-                
+                for pin_refs in max_wg.xmin.heap:
+                    if(pin_refs.parent_index == gate_index):
+                        input_pin = pin_refs.index
+                        break
+            
         # cur_gate.dp_state.minx=min(max_gate.dp_state.minx,cur_gate.minx)
         # cur_gate.dp_state.miny=min(max_gate.dp_state.miny,cur_gate.miny)
         # cur_gate.dp_state.maxx=max(max_gate.dp_state.maxx,cur_gate.maxx)
         # cur_gate.dp_state.maxy=max(max_gate.dp_state.maxy,cur_gate.maxy)
         
         cur_gate.dp_state = dp_state()
-        cur_gate.dp_state.input_pin=input_pin
+        cur_gate.dp_state.input_pin = input_pin
         cur_gate.dp_state.prev_wg_ref = prev_wg
         cur_gate.dp_state.total_gate_delay = max_delay
         cur_gate.dp_state.current_path_length = max_gate.dp_state.current_path_length + 1  
@@ -411,13 +420,16 @@ class Gate_Data:
 
         while len(gate_queue):
             if self.gates[gate_queue[0]].dp_state==None:
-                print(f"Starting at Gate {gate_queue[0]} : {self.find_max_gate_delay(gate_queue[0])}")
-            for con_gate_index in self.wire_dag_from_to[gate_queue[0]]:
-                if self.gates[gate_queue[0]].dp_state==None:gate_queue.append(con_gate_index)
-            gate_queue.pop(0)
+                # print(f"Starting at Gate {gate_queue[0]} : {self.find_max_gate_delay(gate_queue[0])}")
+                self.find_max_gate_delay(gate_queue[0])
+            for con_gate_index in self.gate_dag_from_to[gate_queue[0]]:
+                #  print(f"Hi {con_gate_index}")
+                if self.gates[con_gate_index].dp_state==None:
+                    # print(f"DP State of Gate : {con_gate_index}")
+                    gate_queue.append(con_gate_index)
+            gqi = gate_queue.pop(0)
+            self.better_pack_order.append(gqi)
            
-
-        
     def set_bbox(self,x,y):
         self.bbox = (x,y)
     
@@ -468,20 +480,19 @@ class Gate_Data:
         
         self.total_wires_added += 1
     
-    def get_critical_path(self,max_gate):
-        cur_gate=max_gate
-        output="g"+max_gate+".p"+next(iter(self.gates[cur_gate].out_pin))
-        cur_gate=self.gates[cur_gate].dp_state.prev_wg_ref[0]
-        while cur_gate not in self.primary_output_gates:
-            if self.gates[cur_gate].dp_state.prev_wg_ref[0]==None:
-                output="g"+cur_gate+".p"+self.gates[cur_gate].dp_state.input_pin+output
-            else:output="g"+self.gates[cur_gate].dp_state.prev_wg_ref[0]+".p"+self.gates[cur_gate].dp_state.prev_wg_ref[1]+" g"+cur_gate+".p"+self.gates[cur_gate].dp_state.input_pin+output
+    def set_critical_path(self,max_gate):
+        cur_gate = max_gate
+        # output = ""
+        output=f"g{max_gate}"+f".p{next(iter(self.gates[cur_gate].out_pins))}"
+        # cur_gate=self.gates[cur_gate].dp_state.prev_wg_ref[0]
+        #  cur_gate not in self.primary_output_gates
+        while self.gates[cur_gate].dp_state.prev_wg_ref is not None:
+            output=f"g{self.gates[cur_gate].dp_state.prev_wg_ref[0]}.p{self.gates[cur_gate].dp_state.prev_wg_ref[1]} g{cur_gate}.p{self.gates[cur_gate].dp_state.input_pin} " + output
             cur_gate=self.gates[cur_gate].dp_state.prev_wg_ref[0]
 
-        self.critical_path=output
-
-
-   
+        output= f"g{cur_gate}.p{self.gates[cur_gate].dp_state.input_pin} " + output
+        
+        self.critical_path = output
     
     @time_it
     def init_packing(self):
@@ -494,7 +505,24 @@ class Gate_Data:
             else:
                 self.gates[i].set_coord_env(((i-1)%bb_dim)*bb_cell_w,(i//bb_dim)*bb_cell_h)
                 self.gates[i].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[i].width)//2,(bb_cell_h-self.gates[i].height)//2)
-
+        self.bbox = (bb_dim*bb_cell_w,bb_dim*bb_cell_h)
+    @time_it
+    def init_better_packing(self):
+        gate_frequency = len(self.gates)
+        rng  = np.random.default_rng()
+        self.better_pack_order = [None] + list(rng.permutation([i for i in range(1,len(self.gates)+1)])) 
+        bb_dim, bb_cell_w, bb_cell_h = ceil(sqrt(gate_frequency)), self.max_width, self.max_height 
+        for i in range(1,len(self.gates)+1):
+            j = self.better_pack_order[i]
+            if(i%bb_dim==0):
+                self.gates[j].set_coord_env((i//bb_dim-1)*bb_cell_w, (i-1)%bb_dim*bb_cell_h)
+                self.gates[j].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[j].width)//2,(bb_cell_h-self.gates[j].height)//2)
+            else:
+                self.gates[j].set_coord_env((i//bb_dim)*bb_cell_w, ((i-1)%bb_dim)*bb_cell_h)
+                self.gates[j].set_coord_rel_env(bb_cell_w,bb_cell_h,(bb_cell_w-self.gates[j].width)//2,(bb_cell_h-self.gates[j].height)//2)
+        
+        self.bbox = (bb_dim*bb_cell_w,bb_dim*bb_cell_h)
+        
     @time_it  
     def init_wire_groups(self):        
         for gate_index,pin_index in self.wire_dag_from_to:                    
@@ -557,6 +585,11 @@ class Gate_Data:
 
         self.critical_paths = all_paths
     
+    def reset_dp_state(self):
+        for i in self.gates:
+            self.gates[i].dp_state = None
+        
+        self.max_delay = None
     def __str__(self):
         basic_data = '\n'+" Netlist Information ".center(120,"=") + '\n'
         basic_data +=  f"\nTotal Gates : {len(self.gates)} || Total Pins : {self.total_pins_added} || Total Wires : {self.total_wires_added}"
@@ -593,8 +626,149 @@ class Gate_Data:
             s = str(self)
             file.write(s)
         print("Netlist Data Written to File : ",fpath)
+
+# ========================================== Simulated -- Annealing ========================================== #
+
+class simulated_annealing:
+    def __init__(self, gate_data , initial_temp, min_temp, cooling_rate):
+        self.gate_data = gate_data
+        self.final_packed_data = gate_data
+        self.temp = initial_temp
+        self.initial_temp = initial_temp
+        self.cooling_rate = cooling_rate
+        self.min_temp = min_temp
+           
+    # =============================== Acceptance and Reset Temp Functionality ======    ============================ #
     
+    def reset_temp(self):
+        self.temp = self.initial_temp
     
+    def acceptance_probability(self, old_cost, new_cost):
+        if new_cost < old_cost:
+            return True
+        else:
+            cost_pr = pow(10,(old_cost - new_cost) / (self.temp))
+            return random() < cost_pr
+    
+    # ============================ Methods for updating/Calculating wire Costs ================================= #
+    
+    def update_wire_cost(self,l):
+        pass
+    
+    @ time_it
+    def wire_cost_function(self):
+        self.gate_data.init_wire_groups(supress_time_out = True)
+        self.gate_data.find_max_delay_routine()
+        self.gate_data.reset_dp_state()
+        md , run_t = self.gate_data.find_max_delay(supress_time_out = True)
+        max_delay, max_gate = md[0],md[1]
+        self.gate_data.max_delay = max_delay
+        self.gate_data.set_critical_path(max_gate)
+        # print(max_delay)
+        return max_delay
+
+    
+    @ time_it
+    def cost_delta_function(self,g1,g2):
+        pass    
+    
+    # ================================= Methods for Perturbing the Packing ===================================== #   
+        
+    @ time_it
+    def perturb_packing_swap(self):
+        # Randomly select a gate and swap / Move within the bounding box it to a new position
+        # Calculate the new wire length (Recalculate only for the moved part) and decide whether to accept the move
+        # If the move is accepted, update the wire length and repeat
+        # If the move is rejected, repeat the process
+        seed(random_seed_128())
+        
+        g1,g2 = randint(1,len(self.gate_data.gates)),randint(1,len(self.gate_data.gates))
+        
+        while(g1==g2):
+            g1,g2 = randint(1,len(self.gate_data.gates)),randint(1,len(self.gate_data.gates))
+        
+        g1_ref,g2_ref = self.gate_data.gates[g1],self.gate_data.gates[g2]
+        
+        g1_old_env_x,g1_old_env_y,g1_old_x,g1_old_y =  g1_ref.envelope_x, g1_ref.envelope_y , g1_ref.x, g1_ref.y
+        g2_old_env_x,g2_old_env_y,g2_old_x,g2_old_y =  g2_ref.envelope_x, g2_ref.envelope_y , g2_ref.x, g2_ref.y
+        # print(f"Old Config : g1 = {g1} , g2 = {g2} , g1_old_x = {g1_old_x} , g1_old_y = {g1_old_y} , g2_old_x = {g2_old_x} , g2_old_y = {g2_old_y}") 
+        # old_coord = (g1_old_x,g1_old_y,g2_old_x,g2_old_y)
+        
+        g1_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
+        g1_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,g1_old_x-g1_old_env_x, g1_old_y-g1_old_env_y) 
+        g2_ref.set_coord_env(g1_old_env_x,g1_old_env_y)
+        g2_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,g2_old_x-g2_old_env_x, g2_old_y-g2_old_env_y)
+         
+        old_delay  = self.gate_data.max_delay
+        new_delay, rtvar = self.wire_cost_function(supress_time_out=True)
+        # print(f"New Config : g1 = {g1} , g2 = {g2} , g1_new_x = {g1_ref.x} , g1_new_y = {g1_ref.y} , g2_new_x = {g2_ref.x} , g2_new_y = {g2_ref.y}")
+        if(not self.acceptance_probability(old_delay,new_delay)):
+            g1_ref.set_coord_env(g1_old_env_x,g1_old_env_y)
+            g1_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,g1_old_x-g1_old_env_x,g1_old_y-g1_old_env_y) 
+            g2_ref.set_coord_env(g2_old_env_x,g2_old_env_y)
+            g2_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,g2_old_x-g2_old_env_x,g2_old_y-g2_old_env_y)
+            self.wire_cost_function(supress_time_out=True)
+            
+    
+    @ time_it
+    def perturb_packing_move(self):
+        
+        seed(random_seed_128())
+        g = randint(1,len(self.gate_data.gates))
+        seed(random_seed_128())  
+        
+        gate_ref = self.gate_data.gates[g]
+        gate_old_x,gate_old_y,gate_old_delta_x,gate_old_delta_y =  gate_ref.x, gate_ref.y, gate_ref.x-gate_ref.envelope_x,  gate_ref.y-gate_ref.envelope_y
+        gdx_max = self.gate_data.max_width - gate_ref.width
+        gdy_max = self.gate_data.max_height - gate_ref.height
+        
+        possible_pos = [(0,0),(gdx_max//2,0),(gdx_max,0),
+                        (0,gdy_max//2),(gdx_max,gdy_max//2),
+                        (0,gdy_max),(gdx_max//2,gdy_max),(gdx_max,gdy_max)
+                        ]
+                        
+        choice_delta = choice(possible_pos)
+        
+        # gate_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,random.randint(0,gdx_max),random.randint(0,gdy_max)) 
+        gate_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,choice_delta[0],choice_delta[1])
+        
+        old_delay  = self.gate_data.max_delay
+        new_delay, rtvar = self.wire_cost_function(supress_time_out=True)
+        
+        if(not self.acceptance_probability(old_delay, new_delay)):
+            gate_ref.set_coord_rel_env(self.gate_data.max_width,self.gate_data.max_height,gate_old_delta_x,gate_old_delta_y)
+            self.wire_cost_function(supress_time_out=True)
+        
+    
+        
+    # ================================= Methods for Annealing the Packing ====================================== #
+    
+    @ time_it
+    def anneal_to_pack(self,perturb_freq_per_iter = 1,call_init_pack = True, return_data = False, do_move = True):   
+        if(return_data):
+            iter_data = []
+        
+        it_er = 0
+        while self.temp > self.min_temp and it_er < IT_BOUND:
+            # print(self.temp)
+            for _ in range(perturb_freq_per_iter):
+                self.perturb_packing_swap(supress_time_out=True)
+                if(do_move):
+                    self.perturb_packing_move(supress_time_out=True)
+                    pass
+            self.temp *= self.cooling_rate
+            it_er += 1
+            if(return_data):
+                iter_data.append((it_er,self.wire_cost))
+            
+        # wc,rt = self.wire_cost_function(supress_time_out=True)
+        # self.update_wire_cost(wc)
+        print("Exiting Annealing")
+        if(return_data):
+            return iter_data
+        # print(f"New_Cost = {self.wire_cost}")
+        # self.update_wire_cost(self.wire_cost_function())
+        # print(f"New_Cost_2 = {self.wire_cost}")
 # ========================================== OOP's Helper Functions ========================================== #
     
 def heap_key_hash(obj):
@@ -641,11 +815,3 @@ def comparator_func(x,y,mode):
 
 # ========================================== __main__ for testing ============================================ #
 
-if(__name__ == "__main__"):
-    hp = Heap(comparator_func,"min",[88, 17, 29, 12, 91, 67, 84, 66, 57, 94])
-    print(hp)
-    print(hp.hash_table_values)
-    hp.insert(4)
-    hp.insert(1)
-    print(hp)
-    print(hp.hash_table_values)
