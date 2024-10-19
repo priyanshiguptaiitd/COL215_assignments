@@ -240,6 +240,66 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
     # print(f"Total Wires Generated : {len(wire_data)}")
     return wire_data.keys()
 
+def generate_wires_2(gate_freq,is_done_left, left_edge_data, right_edge_data, br_prob = 10**(-2), ensure_wire_freq_bool=False,
+          ensure_wire_freq = 50_000, only_pip_freq = 5):
+    
+    atleast_one,count_atleast_one,wires_generated = {i:False for i in range(1,gate_freq+1)},0,0
+    wire_data, comb_loops = {}, def_dict(dict)
+
+    rng = np.random.default_rng(randbits(128))
+    rng_break = np.random.default_rng(randbits(128))
+    only_pips = rng.choice([i for i in range(1,gate_freq+1)],only_pip_freq,replace=False)
+    
+    print(is_done_left,left_edge_data,right_edge_data)
+    bcount = 0
+
+    while bcount < 20:
+        
+        g_out,g_in = rng.integers(1,gate_freq+1),rng.integers(1,gate_freq+1)
+        
+        while(g_out == g_in):
+            g_in = rng.integers(1,gate_freq+1)
+        
+        print(f"Choosing g_out : {g_out} , g_in : {g_in}")
+        
+        if(g_in in only_pips):
+            print(f"Only PIP Gate Detected : {g_in}")
+            continue
+        
+        if(False not in is_done_left[g_in].values()):
+            print(f"Gate {g_in} input's are full")
+            continue
+        
+        if(g_in in comb_loops[g_out]):
+            print(f"Comb Loop Detected {g_out} {g_in}")
+            continue
+        
+        p_out, p_in = rng.choice(right_edge_data[g_out]), rng.choice(left_edge_data[g_in])
+        
+        while(is_done_left[g_in][p_in]):
+            p_in = rng.choice(left_edge_data[g_in])
+        
+        wire_data[f"wire g{g_out}.p{p_out} g{g_in}.p{p_in}"] = True
+        
+        comb_loops[g_in][g_out] = True
+        comb_loops[g_in].update(comb_loops[g_out])
+        
+        print(comb_loops)
+        
+        if(not atleast_one[g_out]):
+                atleast_one[g_out] = True
+                count_atleast_one += 1
+        if(not atleast_one[g_in]):
+            atleast_one[g_in] = True
+            count_atleast_one += 1
+            
+        is_done_left[g_in][p_in] = True
+        wires_generated += 1
+        bcount += 1
+        
+    return wire_data.keys()  
+
+
 def write_single_case(gate_freq,fpath,kw):
     """
     Writes a single test case to a file using generate_dimensions, generate_pin_positions,
@@ -293,8 +353,8 @@ def write_single_case(gate_freq,fpath,kw):
             print(f"Total Wires Generated : {len(wire_data)}")
             file.write(f"wire_delay {kw['wire_delay']}\n")
             
-            for wire in wire_data:
-                file.write(wire + "\n")
+            # for wire in wire_data:
+            #     file.write(wire + "\n")
                 
             # print(f"Total Pins Generated : {pins_gen}")
 
@@ -370,7 +430,7 @@ if(__name__ == "__main__"):
           "ensure_pins_freq": 10,
           "ensure_wire_freq_bool": False,
           "ensure_wire_freq": 4_000,
-          "only_pip_freq": 3
+          "only_pip_freq": 1
           }
     
     kw_multi =  {

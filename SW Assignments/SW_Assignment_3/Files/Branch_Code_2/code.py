@@ -79,4 +79,4 @@ if(__name__ == "__main__"):
     print(gd.primary_output_gates)
     # print(gd.gates[6].out_pins[47].connected_pins_to)
     print(f" ---------------------------------- ")
-    print(gd.find_max_delay_routine())
+    # print(gd.find_max_delay_routine())

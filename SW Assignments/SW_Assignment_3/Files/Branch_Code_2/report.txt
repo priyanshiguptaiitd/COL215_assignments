@@ -1,1447 +1,743 @@
 
 ================================================= Netlist Information ==================================================
 
-Total Gates : 10 || Total Pins : 681 || Total Wires : 27
+Total Gates : 10 || Total Pins : 352 || Total Wires : 0
 
 =================================================== Gate Information ===================================================
 
-Gate : 1 || Pos_X : 47 || Pos_Y 11 || Width : 3 || Height : 65
-Input Pin : 1 || Pin_X : 47 || Pin_Y : 35 || PIP False 
-Input Pin : 2 || Pin_X : 47 || Pin_Y : 50 || PIP False 
-Input Pin : 3 || Pin_X : 47 || Pin_Y : 29 || PIP True 
-Input Pin : 4 || Pin_X : 47 || Pin_Y : 64 || PIP True 
-Input Pin : 5 || Pin_X : 47 || Pin_Y : 13 || PIP True 
-Input Pin : 6 || Pin_X : 47 || Pin_Y : 68 || PIP True 
-Input Pin : 7 || Pin_X : 47 || Pin_Y : 45 || PIP False 
-Input Pin : 8 || Pin_X : 47 || Pin_Y : 30 || PIP True 
-Input Pin : 9 || Pin_X : 47 || Pin_Y : 25 || PIP False 
-Input Pin : 10 || Pin_X : 47 || Pin_Y : 59 || PIP True 
-Input Pin : 11 || Pin_X : 47 || Pin_Y : 51 || PIP False 
-Input Pin : 12 || Pin_X : 47 || Pin_Y : 69 || PIP False 
-Output Pin : 13 || Pin_X : 50 || Pin_Y : 13 || POP True
-Output Pin : 14 || Pin_X : 50 || Pin_Y : 22 || POP True
-Output Pin : 15 || Pin_X : 50 || Pin_Y : 31 || POP True
-Output Pin : 16 || Pin_X : 50 || Pin_Y : 18 || POP True
-Output Pin : 17 || Pin_X : 50 || Pin_Y : 21 || POP True
-Output Pin : 18 || Pin_X : 50 || Pin_Y : 26 || POP False
-Output Pin : 19 || Pin_X : 50 || Pin_Y : 30 || POP False
-Output Pin : 20 || Pin_X : 50 || Pin_Y : 17 || POP True
-Output Pin : 21 || Pin_X : 50 || Pin_Y : 54 || POP True
-Output Pin : 22 || Pin_X : 50 || Pin_Y : 23 || POP True
-Output Pin : 23 || Pin_X : 50 || Pin_Y : 56 || POP True
+Gate : 1 || Pos_X : 0 || Pos_Y 46 || Width : 84 || Height : 6
+Input Pin : 1 || Pin_X : 0 || Pin_Y : 47 || PIP True 
+Output Pin : 2 || Pin_X : 84 || Pin_Y : 49 || POP True
+Output Pin : 3 || Pin_X : 84 || Pin_Y : 47 || POP True
+Output Pin : 4 || Pin_X : 84 || Pin_Y : 52 || POP True
 
-Gate : 2 || Pos_X : 120 || Pos_Y 22 || Width : 50 || Height : 42
-Input Pin : 1 || Pin_X : 120 || Pin_Y : 44 || PIP False 
-Input Pin : 2 || Pin_X : 120 || Pin_Y : 60 || PIP True 
-Input Pin : 3 || Pin_X : 120 || Pin_Y : 47 || PIP False 
-Input Pin : 4 || Pin_X : 120 || Pin_Y : 32 || PIP False 
-Input Pin : 5 || Pin_X : 120 || Pin_Y : 55 || PIP False 
-Output Pin : 6 || Pin_X : 170 || Pin_Y : 30 || POP True
-Output Pin : 7 || Pin_X : 170 || Pin_Y : 27 || POP True
-Output Pin : 8 || Pin_X : 170 || Pin_Y : 29 || POP True
-Output Pin : 9 || Pin_X : 170 || Pin_Y : 39 || POP True
-Output Pin : 10 || Pin_X : 170 || Pin_Y : 36 || POP True
-Output Pin : 11 || Pin_X : 170 || Pin_Y : 32 || POP True
-Output Pin : 12 || Pin_X : 170 || Pin_Y : 42 || POP True
-Output Pin : 13 || Pin_X : 170 || Pin_Y : 34 || POP True
-Output Pin : 14 || Pin_X : 170 || Pin_Y : 38 || POP True
-Output Pin : 15 || Pin_X : 170 || Pin_Y : 45 || POP True
-Output Pin : 16 || Pin_X : 170 || Pin_Y : 46 || POP True
-Output Pin : 17 || Pin_X : 170 || Pin_Y : 47 || POP True
-Output Pin : 18 || Pin_X : 170 || Pin_Y : 28 || POP True
-Output Pin : 19 || Pin_X : 170 || Pin_Y : 49 || POP True
-Output Pin : 20 || Pin_X : 170 || Pin_Y : 41 || POP True
-Output Pin : 21 || Pin_X : 170 || Pin_Y : 51 || POP True
-Output Pin : 22 || Pin_X : 170 || Pin_Y : 26 || POP False
-Output Pin : 23 || Pin_X : 170 || Pin_Y : 53 || POP True
-Output Pin : 24 || Pin_X : 170 || Pin_Y : 54 || POP True
-Output Pin : 25 || Pin_X : 170 || Pin_Y : 33 || POP True
-Output Pin : 26 || Pin_X : 170 || Pin_Y : 56 || POP True
-Output Pin : 27 || Pin_X : 170 || Pin_Y : 57 || POP True
-Output Pin : 28 || Pin_X : 170 || Pin_Y : 58 || POP True
-Output Pin : 29 || Pin_X : 170 || Pin_Y : 59 || POP True
-Output Pin : 30 || Pin_X : 170 || Pin_Y : 60 || POP True
-Output Pin : 31 || Pin_X : 170 || Pin_Y : 23 || POP True
-Output Pin : 32 || Pin_X : 170 || Pin_Y : 62 || POP True
-Output Pin : 33 || Pin_X : 170 || Pin_Y : 63 || POP True
-Output Pin : 34 || Pin_X : 170 || Pin_Y : 64 || POP True
+Gate : 2 || Pos_X : 113 || Pos_Y 31 || Width : 26 || Height : 36
+Input Pin : 1 || Pin_X : 113 || Pin_Y : 32 || PIP True 
+Input Pin : 2 || Pin_X : 113 || Pin_Y : 35 || PIP True 
+Input Pin : 3 || Pin_X : 113 || Pin_Y : 33 || PIP True 
+Input Pin : 4 || Pin_X : 113 || Pin_Y : 39 || PIP True 
+Input Pin : 5 || Pin_X : 113 || Pin_Y : 40 || PIP True 
+Input Pin : 6 || Pin_X : 113 || Pin_Y : 38 || PIP True 
+Input Pin : 7 || Pin_X : 113 || Pin_Y : 42 || PIP True 
+Input Pin : 8 || Pin_X : 113 || Pin_Y : 43 || PIP True 
+Input Pin : 9 || Pin_X : 113 || Pin_Y : 41 || PIP True 
+Input Pin : 10 || Pin_X : 113 || Pin_Y : 45 || PIP True 
+Input Pin : 11 || Pin_X : 113 || Pin_Y : 44 || PIP True 
+Input Pin : 12 || Pin_X : 113 || Pin_Y : 46 || PIP True 
+Input Pin : 13 || Pin_X : 113 || Pin_Y : 48 || PIP True 
+Input Pin : 14 || Pin_X : 113 || Pin_Y : 49 || PIP True 
+Input Pin : 15 || Pin_X : 113 || Pin_Y : 50 || PIP True 
+Input Pin : 16 || Pin_X : 113 || Pin_Y : 51 || PIP True 
+Input Pin : 17 || Pin_X : 113 || Pin_Y : 52 || PIP True 
+Input Pin : 18 || Pin_X : 113 || Pin_Y : 53 || PIP True 
+Input Pin : 19 || Pin_X : 113 || Pin_Y : 54 || PIP True 
+Input Pin : 20 || Pin_X : 113 || Pin_Y : 55 || PIP True 
+Input Pin : 21 || Pin_X : 113 || Pin_Y : 56 || PIP True 
+Input Pin : 22 || Pin_X : 113 || Pin_Y : 37 || PIP True 
+Input Pin : 23 || Pin_X : 113 || Pin_Y : 36 || PIP True 
+Input Pin : 24 || Pin_X : 113 || Pin_Y : 59 || PIP True 
+Input Pin : 25 || Pin_X : 113 || Pin_Y : 60 || PIP True 
+Input Pin : 26 || Pin_X : 113 || Pin_Y : 61 || PIP True 
+Input Pin : 27 || Pin_X : 113 || Pin_Y : 62 || PIP True 
+Input Pin : 28 || Pin_X : 113 || Pin_Y : 63 || PIP True 
+Input Pin : 29 || Pin_X : 113 || Pin_Y : 64 || PIP True 
+Input Pin : 30 || Pin_X : 113 || Pin_Y : 65 || PIP True 
+Input Pin : 31 || Pin_X : 113 || Pin_Y : 66 || PIP True 
+Input Pin : 32 || Pin_X : 113 || Pin_Y : 67 || PIP True 
+Output Pin : 33 || Pin_X : 139 || Pin_Y : 32 || POP True
+Output Pin : 34 || Pin_X : 139 || Pin_Y : 46 || POP True
+Output Pin : 35 || Pin_X : 139 || Pin_Y : 50 || POP True
+Output Pin : 36 || Pin_X : 139 || Pin_Y : 39 || POP True
+Output Pin : 37 || Pin_X : 139 || Pin_Y : 36 || POP True
+Output Pin : 38 || Pin_X : 139 || Pin_Y : 43 || POP True
+Output Pin : 39 || Pin_X : 139 || Pin_Y : 55 || POP True
+Output Pin : 40 || Pin_X : 139 || Pin_Y : 61 || POP True
+Output Pin : 41 || Pin_X : 139 || Pin_Y : 49 || POP True
+Output Pin : 42 || Pin_X : 139 || Pin_Y : 44 || POP True
+Output Pin : 43 || Pin_X : 139 || Pin_Y : 64 || POP True
+Output Pin : 44 || Pin_X : 139 || Pin_Y : 62 || POP True
+Output Pin : 45 || Pin_X : 139 || Pin_Y : 57 || POP True
+Output Pin : 46 || Pin_X : 139 || Pin_Y : 67 || POP True
 
-Gate : 3 || Pos_X : 194 || Pos_Y 40 || Width : 97 || Height : 7
-Input Pin : 1 || Pin_X : 194 || Pin_Y : 44 || PIP False 
-Input Pin : 2 || Pin_X : 194 || Pin_Y : 45 || PIP False 
-Input Pin : 3 || Pin_X : 194 || Pin_Y : 42 || PIP False 
-Input Pin : 4 || Pin_X : 194 || Pin_Y : 46 || PIP False 
-Output Pin : 5 || Pin_X : 291 || Pin_Y : 41 || POP True
-Output Pin : 6 || Pin_X : 291 || Pin_Y : 43 || POP True
-Output Pin : 7 || Pin_X : 291 || Pin_Y : 44 || POP False
-Output Pin : 8 || Pin_X : 291 || Pin_Y : 45 || POP True
-Output Pin : 9 || Pin_X : 291 || Pin_Y : 46 || POP True
-Output Pin : 10 || Pin_X : 291 || Pin_Y : 47 || POP True
+Gate : 3 || Pos_X : 178 || Pos_Y 43 || Width : 64 || Height : 13
+Input Pin : 1 || Pin_X : 178 || Pin_Y : 45 || PIP True 
+Input Pin : 2 || Pin_X : 178 || Pin_Y : 49 || PIP True 
+Input Pin : 3 || Pin_X : 178 || Pin_Y : 56 || PIP True 
+Output Pin : 4 || Pin_X : 242 || Pin_Y : 44 || POP True
+Output Pin : 5 || Pin_X : 242 || Pin_Y : 48 || POP True
+Output Pin : 6 || Pin_X : 242 || Pin_Y : 50 || POP True
+Output Pin : 7 || Pin_X : 242 || Pin_Y : 51 || POP True
+Output Pin : 8 || Pin_X : 242 || Pin_Y : 52 || POP True
+Output Pin : 9 || Pin_X : 242 || Pin_Y : 49 || POP True
+Output Pin : 10 || Pin_X : 242 || Pin_Y : 53 || POP True
+Output Pin : 11 || Pin_X : 242 || Pin_Y : 46 || POP True
+Output Pin : 12 || Pin_X : 242 || Pin_Y : 56 || POP True
 
-Gate : 4 || Pos_X : 294 || Pos_Y 5 || Width : 91 || Height : 77
-Input Pin : 1 || Pin_X : 294 || Pin_Y : 37 || PIP True 
-Input Pin : 2 || Pin_X : 294 || Pin_Y : 18 || PIP True 
-Input Pin : 3 || Pin_X : 294 || Pin_Y : 6 || PIP True 
-Input Pin : 4 || Pin_X : 294 || Pin_Y : 39 || PIP True 
-Input Pin : 5 || Pin_X : 294 || Pin_Y : 40 || PIP True 
-Input Pin : 6 || Pin_X : 294 || Pin_Y : 9 || PIP True 
-Input Pin : 7 || Pin_X : 294 || Pin_Y : 10 || PIP True 
-Input Pin : 8 || Pin_X : 294 || Pin_Y : 30 || PIP True 
-Input Pin : 9 || Pin_X : 294 || Pin_Y : 25 || PIP True 
-Input Pin : 10 || Pin_X : 294 || Pin_Y : 14 || PIP True 
-Input Pin : 11 || Pin_X : 294 || Pin_Y : 32 || PIP True 
-Input Pin : 12 || Pin_X : 294 || Pin_Y : 38 || PIP True 
-Input Pin : 13 || Pin_X : 294 || Pin_Y : 36 || PIP True 
-Input Pin : 14 || Pin_X : 294 || Pin_Y : 33 || PIP True 
-Input Pin : 15 || Pin_X : 294 || Pin_Y : 53 || PIP True 
-Input Pin : 16 || Pin_X : 294 || Pin_Y : 54 || PIP True 
-Input Pin : 17 || Pin_X : 294 || Pin_Y : 55 || PIP True 
-Input Pin : 18 || Pin_X : 294 || Pin_Y : 12 || PIP True 
-Input Pin : 19 || Pin_X : 294 || Pin_Y : 57 || PIP True 
-Input Pin : 20 || Pin_X : 294 || Pin_Y : 58 || PIP True 
-Input Pin : 21 || Pin_X : 294 || Pin_Y : 47 || PIP True 
-Input Pin : 22 || Pin_X : 294 || Pin_Y : 60 || PIP True 
-Input Pin : 23 || Pin_X : 294 || Pin_Y : 28 || PIP True 
-Input Pin : 24 || Pin_X : 294 || Pin_Y : 62 || PIP True 
-Input Pin : 25 || Pin_X : 294 || Pin_Y : 7 || PIP True 
-Input Pin : 26 || Pin_X : 294 || Pin_Y : 50 || PIP True 
-Input Pin : 27 || Pin_X : 294 || Pin_Y : 65 || PIP True 
-Input Pin : 28 || Pin_X : 294 || Pin_Y : 29 || PIP True 
-Input Pin : 29 || Pin_X : 294 || Pin_Y : 34 || PIP True 
-Input Pin : 30 || Pin_X : 294 || Pin_Y : 67 || PIP True 
-Input Pin : 31 || Pin_X : 294 || Pin_Y : 35 || PIP True 
-Input Pin : 32 || Pin_X : 294 || Pin_Y : 70 || PIP True 
-Input Pin : 33 || Pin_X : 294 || Pin_Y : 71 || PIP True 
-Input Pin : 34 || Pin_X : 294 || Pin_Y : 72 || PIP True 
-Input Pin : 35 || Pin_X : 294 || Pin_Y : 73 || PIP True 
-Input Pin : 36 || Pin_X : 294 || Pin_Y : 74 || PIP True 
-Input Pin : 37 || Pin_X : 294 || Pin_Y : 21 || PIP True 
-Input Pin : 38 || Pin_X : 294 || Pin_Y : 41 || PIP True 
-Input Pin : 39 || Pin_X : 294 || Pin_Y : 77 || PIP True 
-Input Pin : 40 || Pin_X : 294 || Pin_Y : 78 || PIP True 
-Input Pin : 41 || Pin_X : 294 || Pin_Y : 75 || PIP True 
-Input Pin : 42 || Pin_X : 294 || Pin_Y : 17 || PIP True 
-Input Pin : 43 || Pin_X : 294 || Pin_Y : 81 || PIP True 
-Input Pin : 44 || Pin_X : 294 || Pin_Y : 44 || PIP True 
-Output Pin : 45 || Pin_X : 385 || Pin_Y : 7 || POP True
-Output Pin : 46 || Pin_X : 385 || Pin_Y : 21 || POP True
-Output Pin : 47 || Pin_X : 385 || Pin_Y : 16 || POP True
-Output Pin : 48 || Pin_X : 385 || Pin_Y : 20 || POP False
-Output Pin : 49 || Pin_X : 385 || Pin_Y : 15 || POP True
-Output Pin : 50 || Pin_X : 385 || Pin_Y : 17 || POP True
-Output Pin : 51 || Pin_X : 385 || Pin_Y : 22 || POP True
-Output Pin : 52 || Pin_X : 385 || Pin_Y : 28 || POP True
-Output Pin : 53 || Pin_X : 385 || Pin_Y : 18 || POP True
-Output Pin : 54 || Pin_X : 385 || Pin_Y : 30 || POP True
-Output Pin : 55 || Pin_X : 385 || Pin_Y : 11 || POP True
-Output Pin : 56 || Pin_X : 385 || Pin_Y : 32 || POP True
-Output Pin : 57 || Pin_X : 385 || Pin_Y : 33 || POP True
-Output Pin : 58 || Pin_X : 385 || Pin_Y : 34 || POP True
-Output Pin : 59 || Pin_X : 385 || Pin_Y : 35 || POP True
-Output Pin : 60 || Pin_X : 385 || Pin_Y : 36 || POP True
-Output Pin : 61 || Pin_X : 385 || Pin_Y : 37 || POP True
-Output Pin : 62 || Pin_X : 385 || Pin_Y : 38 || POP True
-Output Pin : 63 || Pin_X : 385 || Pin_Y : 25 || POP True
-Output Pin : 64 || Pin_X : 385 || Pin_Y : 40 || POP True
-Output Pin : 65 || Pin_X : 385 || Pin_Y : 41 || POP True
-Output Pin : 66 || Pin_X : 385 || Pin_Y : 42 || POP True
-Output Pin : 67 || Pin_X : 385 || Pin_Y : 9 || POP True
-Output Pin : 68 || Pin_X : 385 || Pin_Y : 43 || POP True
-Output Pin : 69 || Pin_X : 385 || Pin_Y : 45 || POP True
-Output Pin : 70 || Pin_X : 385 || Pin_Y : 12 || POP True
-Output Pin : 71 || Pin_X : 385 || Pin_Y : 14 || POP True
-Output Pin : 72 || Pin_X : 385 || Pin_Y : 24 || POP False
-Output Pin : 73 || Pin_X : 385 || Pin_Y : 49 || POP False
-Output Pin : 74 || Pin_X : 385 || Pin_Y : 27 || POP True
-Output Pin : 75 || Pin_X : 385 || Pin_Y : 29 || POP True
-Output Pin : 76 || Pin_X : 385 || Pin_Y : 52 || POP True
-Output Pin : 77 || Pin_X : 385 || Pin_Y : 53 || POP True
-Output Pin : 78 || Pin_X : 385 || Pin_Y : 54 || POP True
-Output Pin : 79 || Pin_X : 385 || Pin_Y : 55 || POP True
-Output Pin : 80 || Pin_X : 385 || Pin_Y : 56 || POP True
-Output Pin : 81 || Pin_X : 385 || Pin_Y : 57 || POP True
-Output Pin : 82 || Pin_X : 385 || Pin_Y : 10 || POP True
-Output Pin : 83 || Pin_X : 385 || Pin_Y : 46 || POP True
-Output Pin : 84 || Pin_X : 385 || Pin_Y : 23 || POP True
-Output Pin : 85 || Pin_X : 385 || Pin_Y : 44 || POP True
-Output Pin : 86 || Pin_X : 385 || Pin_Y : 50 || POP True
-Output Pin : 87 || Pin_X : 385 || Pin_Y : 6 || POP True
-Output Pin : 88 || Pin_X : 385 || Pin_Y : 64 || POP True
-Output Pin : 89 || Pin_X : 385 || Pin_Y : 65 || POP True
-Output Pin : 90 || Pin_X : 385 || Pin_Y : 62 || POP True
-Output Pin : 91 || Pin_X : 385 || Pin_Y : 19 || POP True
-Output Pin : 92 || Pin_X : 385 || Pin_Y : 66 || POP True
-Output Pin : 93 || Pin_X : 385 || Pin_Y : 69 || POP True
-Output Pin : 94 || Pin_X : 385 || Pin_Y : 70 || POP True
-Output Pin : 95 || Pin_X : 385 || Pin_Y : 8 || POP True
-Output Pin : 96 || Pin_X : 385 || Pin_Y : 72 || POP True
-Output Pin : 97 || Pin_X : 385 || Pin_Y : 73 || POP True
-Output Pin : 98 || Pin_X : 385 || Pin_Y : 74 || POP True
-Output Pin : 99 || Pin_X : 385 || Pin_Y : 75 || POP True
-Output Pin : 100 || Pin_X : 385 || Pin_Y : 76 || POP True
-Output Pin : 101 || Pin_X : 385 || Pin_Y : 63 || POP True
-Output Pin : 102 || Pin_X : 385 || Pin_Y : 78 || POP True
-Output Pin : 103 || Pin_X : 385 || Pin_Y : 26 || POP True
-Output Pin : 104 || Pin_X : 385 || Pin_Y : 80 || POP True
-Output Pin : 105 || Pin_X : 385 || Pin_Y : 81 || POP True
-Output Pin : 106 || Pin_X : 385 || Pin_Y : 82 || POP True
+Gate : 4 || Pos_X : 292 || Pos_Y 0 || Width : 4 || Height : 99
+Input Pin : 1 || Pin_X : 292 || Pin_Y : 9 || PIP True 
+Input Pin : 2 || Pin_X : 292 || Pin_Y : 2 || PIP True 
+Input Pin : 3 || Pin_X : 292 || Pin_Y : 36 || PIP True 
+Input Pin : 4 || Pin_X : 292 || Pin_Y : 20 || PIP True 
+Input Pin : 5 || Pin_X : 292 || Pin_Y : 55 || PIP True 
+Input Pin : 6 || Pin_X : 292 || Pin_Y : 34 || PIP True 
+Input Pin : 7 || Pin_X : 292 || Pin_Y : 11 || PIP True 
+Input Pin : 8 || Pin_X : 292 || Pin_Y : 32 || PIP True 
+Input Pin : 9 || Pin_X : 292 || Pin_Y : 63 || PIP True 
+Input Pin : 10 || Pin_X : 292 || Pin_Y : 41 || PIP True 
+Input Pin : 11 || Pin_X : 292 || Pin_Y : 8 || PIP True 
+Input Pin : 12 || Pin_X : 292 || Pin_Y : 14 || PIP True 
+Input Pin : 13 || Pin_X : 292 || Pin_Y : 79 || PIP True 
+Input Pin : 14 || Pin_X : 292 || Pin_Y : 49 || PIP True 
+Input Pin : 15 || Pin_X : 292 || Pin_Y : 81 || PIP True 
+Input Pin : 16 || Pin_X : 292 || Pin_Y : 44 || PIP True 
+Input Pin : 17 || Pin_X : 292 || Pin_Y : 27 || PIP True 
+Input Pin : 18 || Pin_X : 292 || Pin_Y : 40 || PIP True 
+Input Pin : 19 || Pin_X : 292 || Pin_Y : 13 || PIP True 
+Input Pin : 20 || Pin_X : 292 || Pin_Y : 86 || PIP True 
+Input Pin : 21 || Pin_X : 292 || Pin_Y : 77 || PIP True 
+Input Pin : 22 || Pin_X : 292 || Pin_Y : 62 || PIP True 
+Input Pin : 23 || Pin_X : 292 || Pin_Y : 72 || PIP True 
+Input Pin : 24 || Pin_X : 292 || Pin_Y : 42 || PIP True 
+Input Pin : 25 || Pin_X : 292 || Pin_Y : 91 || PIP True 
+Input Pin : 26 || Pin_X : 292 || Pin_Y : 92 || PIP True 
+Input Pin : 27 || Pin_X : 292 || Pin_Y : 93 || PIP True 
+Input Pin : 28 || Pin_X : 292 || Pin_Y : 45 || PIP True 
+Input Pin : 29 || Pin_X : 292 || Pin_Y : 87 || PIP True 
+Input Pin : 30 || Pin_X : 292 || Pin_Y : 22 || PIP True 
+Input Pin : 31 || Pin_X : 292 || Pin_Y : 61 || PIP True 
+Input Pin : 32 || Pin_X : 292 || Pin_Y : 33 || PIP True 
+Input Pin : 33 || Pin_X : 292 || Pin_Y : 12 || PIP True 
+Output Pin : 34 || Pin_X : 296 || Pin_Y : 29 || POP True
+Output Pin : 35 || Pin_X : 296 || Pin_Y : 18 || POP True
+Output Pin : 36 || Pin_X : 296 || Pin_Y : 22 || POP True
+Output Pin : 37 || Pin_X : 296 || Pin_Y : 48 || POP True
+Output Pin : 38 || Pin_X : 296 || Pin_Y : 49 || POP True
+Output Pin : 39 || Pin_X : 296 || Pin_Y : 21 || POP True
+Output Pin : 40 || Pin_X : 296 || Pin_Y : 25 || POP True
+Output Pin : 41 || Pin_X : 296 || Pin_Y : 27 || POP True
+Output Pin : 42 || Pin_X : 296 || Pin_Y : 53 || POP True
+Output Pin : 43 || Pin_X : 296 || Pin_Y : 54 || POP True
+Output Pin : 44 || Pin_X : 296 || Pin_Y : 26 || POP True
+Output Pin : 45 || Pin_X : 296 || Pin_Y : 3 || POP True
+Output Pin : 46 || Pin_X : 296 || Pin_Y : 11 || POP True
+Output Pin : 47 || Pin_X : 296 || Pin_Y : 58 || POP True
+Output Pin : 48 || Pin_X : 296 || Pin_Y : 59 || POP True
+Output Pin : 49 || Pin_X : 296 || Pin_Y : 60 || POP True
+Output Pin : 50 || Pin_X : 296 || Pin_Y : 15 || POP True
+Output Pin : 51 || Pin_X : 296 || Pin_Y : 62 || POP True
+Output Pin : 52 || Pin_X : 296 || Pin_Y : 51 || POP True
+Output Pin : 53 || Pin_X : 296 || Pin_Y : 7 || POP True
+Output Pin : 54 || Pin_X : 296 || Pin_Y : 43 || POP True
+Output Pin : 55 || Pin_X : 296 || Pin_Y : 66 || POP True
+Output Pin : 56 || Pin_X : 296 || Pin_Y : 67 || POP True
+Output Pin : 57 || Pin_X : 296 || Pin_Y : 68 || POP True
+Output Pin : 58 || Pin_X : 296 || Pin_Y : 35 || POP True
+Output Pin : 59 || Pin_X : 296 || Pin_Y : 46 || POP True
+Output Pin : 60 || Pin_X : 296 || Pin_Y : 19 || POP True
+Output Pin : 61 || Pin_X : 296 || Pin_Y : 39 || POP True
+Output Pin : 62 || Pin_X : 296 || Pin_Y : 73 || POP True
+Output Pin : 63 || Pin_X : 296 || Pin_Y : 13 || POP True
+Output Pin : 64 || Pin_X : 296 || Pin_Y : 50 || POP True
+Output Pin : 65 || Pin_X : 296 || Pin_Y : 71 || POP True
+Output Pin : 66 || Pin_X : 296 || Pin_Y : 24 || POP True
+Output Pin : 67 || Pin_X : 296 || Pin_Y : 78 || POP True
+Output Pin : 68 || Pin_X : 296 || Pin_Y : 65 || POP True
+Output Pin : 69 || Pin_X : 296 || Pin_Y : 36 || POP True
+Output Pin : 70 || Pin_X : 296 || Pin_Y : 81 || POP True
+Output Pin : 71 || Pin_X : 296 || Pin_Y : 82 || POP True
+Output Pin : 72 || Pin_X : 296 || Pin_Y : 83 || POP True
+Output Pin : 73 || Pin_X : 296 || Pin_Y : 47 || POP True
+Output Pin : 74 || Pin_X : 296 || Pin_Y : 85 || POP True
+Output Pin : 75 || Pin_X : 296 || Pin_Y : 86 || POP True
+Output Pin : 76 || Pin_X : 296 || Pin_Y : 87 || POP True
+Output Pin : 77 || Pin_X : 296 || Pin_Y : 88 || POP True
+Output Pin : 78 || Pin_X : 296 || Pin_Y : 55 || POP True
+Output Pin : 79 || Pin_X : 296 || Pin_Y : 90 || POP True
+Output Pin : 80 || Pin_X : 296 || Pin_Y : 84 || POP True
+Output Pin : 81 || Pin_X : 296 || Pin_Y : 92 || POP True
+Output Pin : 82 || Pin_X : 296 || Pin_Y : 93 || POP True
+Output Pin : 83 || Pin_X : 296 || Pin_Y : 94 || POP True
+Output Pin : 84 || Pin_X : 296 || Pin_Y : 89 || POP True
+Output Pin : 85 || Pin_X : 296 || Pin_Y : 96 || POP True
+Output Pin : 86 || Pin_X : 296 || Pin_Y : 23 || POP True
+Output Pin : 87 || Pin_X : 296 || Pin_Y : 95 || POP True
+Output Pin : 88 || Pin_X : 296 || Pin_Y : 69 || POP True
 
-Gate : 5 || Pos_X : 43 || Pos_Y 93 || Width : 10 || Height : 75
-Input Pin : 1 || Pin_X : 43 || Pin_Y : 142 || PIP True 
-Input Pin : 2 || Pin_X : 43 || Pin_Y : 114 || PIP True 
-Input Pin : 3 || Pin_X : 43 || Pin_Y : 119 || PIP True 
-Input Pin : 4 || Pin_X : 43 || Pin_Y : 135 || PIP True 
-Input Pin : 5 || Pin_X : 43 || Pin_Y : 127 || PIP True 
-Input Pin : 6 || Pin_X : 43 || Pin_Y : 148 || PIP True 
-Input Pin : 7 || Pin_X : 43 || Pin_Y : 125 || PIP True 
-Input Pin : 8 || Pin_X : 43 || Pin_Y : 138 || PIP True 
-Input Pin : 9 || Pin_X : 43 || Pin_Y : 155 || PIP True 
-Input Pin : 10 || Pin_X : 43 || Pin_Y : 95 || PIP True 
-Input Pin : 11 || Pin_X : 43 || Pin_Y : 111 || PIP True 
-Input Pin : 12 || Pin_X : 43 || Pin_Y : 145 || PIP True 
-Input Pin : 13 || Pin_X : 43 || Pin_Y : 96 || PIP True 
-Input Pin : 14 || Pin_X : 43 || Pin_Y : 167 || PIP True 
-Input Pin : 15 || Pin_X : 43 || Pin_Y : 137 || PIP True 
-Output Pin : 16 || Pin_X : 53 || Pin_Y : 102 || POP False
-Output Pin : 17 || Pin_X : 53 || Pin_Y : 111 || POP True
-Output Pin : 18 || Pin_X : 53 || Pin_Y : 125 || POP True
-Output Pin : 19 || Pin_X : 53 || Pin_Y : 110 || POP True
-Output Pin : 20 || Pin_X : 53 || Pin_Y : 116 || POP True
-Output Pin : 21 || Pin_X : 53 || Pin_Y : 95 || POP True
-Output Pin : 22 || Pin_X : 53 || Pin_Y : 121 || POP True
-Output Pin : 23 || Pin_X : 53 || Pin_Y : 123 || POP True
-Output Pin : 24 || Pin_X : 53 || Pin_Y : 104 || POP True
-Output Pin : 25 || Pin_X : 53 || Pin_Y : 106 || POP True
-Output Pin : 26 || Pin_X : 53 || Pin_Y : 94 || POP True
-Output Pin : 27 || Pin_X : 53 || Pin_Y : 115 || POP True
-Output Pin : 28 || Pin_X : 53 || Pin_Y : 105 || POP True
-Output Pin : 29 || Pin_X : 53 || Pin_Y : 139 || POP True
-Output Pin : 30 || Pin_X : 53 || Pin_Y : 155 || POP True
-Output Pin : 31 || Pin_X : 53 || Pin_Y : 147 || POP True
-Output Pin : 32 || Pin_X : 53 || Pin_Y : 145 || POP False
-Output Pin : 33 || Pin_X : 53 || Pin_Y : 146 || POP True
-Output Pin : 34 || Pin_X : 53 || Pin_Y : 144 || POP True
-Output Pin : 35 || Pin_X : 53 || Pin_Y : 160 || POP True
-Output Pin : 36 || Pin_X : 53 || Pin_Y : 131 || POP True
-Output Pin : 37 || Pin_X : 53 || Pin_Y : 103 || POP True
-Output Pin : 38 || Pin_X : 53 || Pin_Y : 159 || POP True
-Output Pin : 39 || Pin_X : 53 || Pin_Y : 126 || POP True
-Output Pin : 40 || Pin_X : 53 || Pin_Y : 134 || POP True
-Output Pin : 41 || Pin_X : 53 || Pin_Y : 98 || POP True
-Output Pin : 42 || Pin_X : 53 || Pin_Y : 152 || POP True
-Output Pin : 43 || Pin_X : 53 || Pin_Y : 168 || POP False
+Gate : 5 || Pos_X : 12 || Pos_Y 139 || Width : 59 || Height : 18
+Input Pin : 1 || Pin_X : 12 || Pin_Y : 141 || PIP True 
+Input Pin : 2 || Pin_X : 12 || Pin_Y : 144 || PIP True 
+Input Pin : 3 || Pin_X : 12 || Pin_Y : 151 || PIP True 
+Input Pin : 4 || Pin_X : 12 || Pin_Y : 148 || PIP True 
+Input Pin : 5 || Pin_X : 12 || Pin_Y : 150 || PIP True 
+Input Pin : 6 || Pin_X : 12 || Pin_Y : 154 || PIP True 
+Input Pin : 7 || Pin_X : 12 || Pin_Y : 155 || PIP True 
+Input Pin : 8 || Pin_X : 12 || Pin_Y : 156 || PIP True 
+Input Pin : 9 || Pin_X : 12 || Pin_Y : 145 || PIP True 
+Output Pin : 10 || Pin_X : 71 || Pin_Y : 140 || POP True
+Output Pin : 11 || Pin_X : 71 || Pin_Y : 142 || POP True
+Output Pin : 12 || Pin_X : 71 || Pin_Y : 143 || POP True
+Output Pin : 13 || Pin_X : 71 || Pin_Y : 149 || POP True
+Output Pin : 14 || Pin_X : 71 || Pin_Y : 151 || POP True
+Output Pin : 15 || Pin_X : 71 || Pin_Y : 152 || POP True
+Output Pin : 16 || Pin_X : 71 || Pin_Y : 150 || POP True
+Output Pin : 17 || Pin_X : 71 || Pin_Y : 154 || POP True
+Output Pin : 18 || Pin_X : 71 || Pin_Y : 148 || POP True
+Output Pin : 19 || Pin_X : 71 || Pin_Y : 156 || POP True
+Output Pin : 20 || Pin_X : 71 || Pin_Y : 157 || POP True
 
-Gate : 6 || Pos_X : 101 || Pos_Y 108 || Width : 89 || Height : 44
-Input Pin : 1 || Pin_X : 101 || Pin_Y : 111 || PIP True 
-Input Pin : 2 || Pin_X : 101 || Pin_Y : 118 || PIP True 
-Input Pin : 3 || Pin_X : 101 || Pin_Y : 115 || PIP True 
-Input Pin : 4 || Pin_X : 101 || Pin_Y : 125 || PIP True 
-Input Pin : 5 || Pin_X : 101 || Pin_Y : 126 || PIP True 
-Input Pin : 6 || Pin_X : 101 || Pin_Y : 124 || PIP True 
-Input Pin : 7 || Pin_X : 101 || Pin_Y : 109 || PIP True 
-Input Pin : 8 || Pin_X : 101 || Pin_Y : 110 || PIP True 
-Input Pin : 9 || Pin_X : 101 || Pin_Y : 114 || PIP True 
-Input Pin : 10 || Pin_X : 101 || Pin_Y : 131 || PIP True 
-Input Pin : 11 || Pin_X : 101 || Pin_Y : 116 || PIP True 
-Input Pin : 12 || Pin_X : 101 || Pin_Y : 133 || PIP True 
-Input Pin : 13 || Pin_X : 101 || Pin_Y : 127 || PIP True 
-Input Pin : 14 || Pin_X : 101 || Pin_Y : 117 || PIP True 
-Input Pin : 15 || Pin_X : 101 || Pin_Y : 119 || PIP True 
-Input Pin : 16 || Pin_X : 101 || Pin_Y : 135 || PIP True 
-Input Pin : 17 || Pin_X : 101 || Pin_Y : 138 || PIP True 
-Input Pin : 18 || Pin_X : 101 || Pin_Y : 139 || PIP True 
-Input Pin : 19 || Pin_X : 101 || Pin_Y : 140 || PIP True 
-Input Pin : 20 || Pin_X : 101 || Pin_Y : 136 || PIP True 
-Input Pin : 21 || Pin_X : 101 || Pin_Y : 120 || PIP True 
-Input Pin : 22 || Pin_X : 101 || Pin_Y : 143 || PIP True 
-Input Pin : 23 || Pin_X : 101 || Pin_Y : 144 || PIP True 
-Input Pin : 24 || Pin_X : 101 || Pin_Y : 145 || PIP True 
-Input Pin : 25 || Pin_X : 101 || Pin_Y : 146 || PIP True 
-Input Pin : 26 || Pin_X : 101 || Pin_Y : 147 || PIP True 
-Input Pin : 27 || Pin_X : 101 || Pin_Y : 148 || PIP True 
-Input Pin : 28 || Pin_X : 101 || Pin_Y : 149 || PIP True 
-Input Pin : 29 || Pin_X : 101 || Pin_Y : 113 || PIP True 
-Input Pin : 30 || Pin_X : 101 || Pin_Y : 151 || PIP True 
-Input Pin : 31 || Pin_X : 101 || Pin_Y : 141 || PIP True 
-Output Pin : 32 || Pin_X : 190 || Pin_Y : 109 || POP True
-Output Pin : 33 || Pin_X : 190 || Pin_Y : 110 || POP True
-Output Pin : 34 || Pin_X : 190 || Pin_Y : 111 || POP True
-Output Pin : 35 || Pin_X : 190 || Pin_Y : 112 || POP False
-Output Pin : 36 || Pin_X : 190 || Pin_Y : 113 || POP True
-Output Pin : 37 || Pin_X : 190 || Pin_Y : 114 || POP True
-Output Pin : 38 || Pin_X : 190 || Pin_Y : 115 || POP True
-Output Pin : 39 || Pin_X : 190 || Pin_Y : 116 || POP False
-Output Pin : 40 || Pin_X : 190 || Pin_Y : 117 || POP True
-Output Pin : 41 || Pin_X : 190 || Pin_Y : 118 || POP True
-Output Pin : 42 || Pin_X : 190 || Pin_Y : 119 || POP False
-Output Pin : 43 || Pin_X : 190 || Pin_Y : 120 || POP True
-Output Pin : 44 || Pin_X : 190 || Pin_Y : 121 || POP False
-Output Pin : 45 || Pin_X : 190 || Pin_Y : 122 || POP True
-Output Pin : 46 || Pin_X : 190 || Pin_Y : 123 || POP True
-Output Pin : 47 || Pin_X : 190 || Pin_Y : 124 || POP True
-Output Pin : 48 || Pin_X : 190 || Pin_Y : 125 || POP True
-Output Pin : 49 || Pin_X : 190 || Pin_Y : 126 || POP True
-Output Pin : 50 || Pin_X : 190 || Pin_Y : 127 || POP True
-Output Pin : 51 || Pin_X : 190 || Pin_Y : 128 || POP True
-Output Pin : 52 || Pin_X : 190 || Pin_Y : 129 || POP True
-Output Pin : 53 || Pin_X : 190 || Pin_Y : 130 || POP True
-Output Pin : 54 || Pin_X : 190 || Pin_Y : 131 || POP True
-Output Pin : 55 || Pin_X : 190 || Pin_Y : 132 || POP True
-Output Pin : 56 || Pin_X : 190 || Pin_Y : 133 || POP True
-Output Pin : 57 || Pin_X : 190 || Pin_Y : 134 || POP True
-Output Pin : 58 || Pin_X : 190 || Pin_Y : 135 || POP True
-Output Pin : 59 || Pin_X : 190 || Pin_Y : 136 || POP True
-Output Pin : 60 || Pin_X : 190 || Pin_Y : 137 || POP True
-Output Pin : 61 || Pin_X : 190 || Pin_Y : 138 || POP True
-Output Pin : 62 || Pin_X : 190 || Pin_Y : 139 || POP True
-Output Pin : 63 || Pin_X : 190 || Pin_Y : 140 || POP True
-Output Pin : 64 || Pin_X : 190 || Pin_Y : 141 || POP True
-Output Pin : 65 || Pin_X : 190 || Pin_Y : 142 || POP False
-Output Pin : 66 || Pin_X : 190 || Pin_Y : 143 || POP True
-Output Pin : 67 || Pin_X : 190 || Pin_Y : 144 || POP True
-Output Pin : 68 || Pin_X : 190 || Pin_Y : 145 || POP True
-Output Pin : 69 || Pin_X : 190 || Pin_Y : 146 || POP True
-Output Pin : 70 || Pin_X : 190 || Pin_Y : 147 || POP True
-Output Pin : 71 || Pin_X : 190 || Pin_Y : 148 || POP True
-Output Pin : 72 || Pin_X : 190 || Pin_Y : 149 || POP True
-Output Pin : 73 || Pin_X : 190 || Pin_Y : 150 || POP True
-Output Pin : 74 || Pin_X : 190 || Pin_Y : 151 || POP True
-Output Pin : 75 || Pin_X : 190 || Pin_Y : 152 || POP True
+Gate : 6 || Pos_X : 101 || Pos_Y 115 || Width : 49 || Height : 67
+Input Pin : 1 || Pin_X : 101 || Pin_Y : 146 || PIP True 
+Input Pin : 2 || Pin_X : 101 || Pin_Y : 125 || PIP True 
+Input Pin : 3 || Pin_X : 101 || Pin_Y : 144 || PIP True 
+Input Pin : 4 || Pin_X : 101 || Pin_Y : 140 || PIP True 
+Output Pin : 5 || Pin_X : 150 || Pin_Y : 133 || POP True
+Output Pin : 6 || Pin_X : 150 || Pin_Y : 138 || POP True
+Output Pin : 7 || Pin_X : 150 || Pin_Y : 132 || POP True
+Output Pin : 8 || Pin_X : 150 || Pin_Y : 152 || POP True
+Output Pin : 9 || Pin_X : 150 || Pin_Y : 121 || POP True
+Output Pin : 10 || Pin_X : 150 || Pin_Y : 149 || POP True
+Output Pin : 11 || Pin_X : 150 || Pin_Y : 118 || POP True
+Output Pin : 12 || Pin_X : 150 || Pin_Y : 143 || POP True
+Output Pin : 13 || Pin_X : 150 || Pin_Y : 127 || POP True
+Output Pin : 14 || Pin_X : 150 || Pin_Y : 146 || POP True
+Output Pin : 15 || Pin_X : 150 || Pin_Y : 116 || POP True
+Output Pin : 16 || Pin_X : 150 || Pin_Y : 122 || POP True
+Output Pin : 17 || Pin_X : 150 || Pin_Y : 130 || POP True
+Output Pin : 18 || Pin_X : 150 || Pin_Y : 163 || POP True
+Output Pin : 19 || Pin_X : 150 || Pin_Y : 145 || POP True
+Output Pin : 20 || Pin_X : 150 || Pin_Y : 131 || POP True
+Output Pin : 21 || Pin_X : 150 || Pin_Y : 128 || POP True
+Output Pin : 22 || Pin_X : 150 || Pin_Y : 167 || POP True
+Output Pin : 23 || Pin_X : 150 || Pin_Y : 124 || POP True
+Output Pin : 24 || Pin_X : 150 || Pin_Y : 137 || POP True
+Output Pin : 25 || Pin_X : 150 || Pin_Y : 170 || POP True
+Output Pin : 26 || Pin_X : 150 || Pin_Y : 171 || POP True
+Output Pin : 27 || Pin_X : 150 || Pin_Y : 172 || POP True
+Output Pin : 28 || Pin_X : 150 || Pin_Y : 141 || POP True
+Output Pin : 29 || Pin_X : 150 || Pin_Y : 139 || POP True
+Output Pin : 30 || Pin_X : 150 || Pin_Y : 175 || POP True
+Output Pin : 31 || Pin_X : 150 || Pin_Y : 156 || POP True
+Output Pin : 32 || Pin_X : 150 || Pin_Y : 177 || POP True
+Output Pin : 33 || Pin_X : 150 || Pin_Y : 178 || POP True
+Output Pin : 34 || Pin_X : 150 || Pin_Y : 120 || POP True
+Output Pin : 35 || Pin_X : 150 || Pin_Y : 158 || POP True
+Output Pin : 36 || Pin_X : 150 || Pin_Y : 169 || POP True
+Output Pin : 37 || Pin_X : 150 || Pin_Y : 176 || POP True
 
-Gate : 7 || Pos_X : 242 || Pos_Y 101 || Width : 1 || Height : 59
-Input Pin : 1 || Pin_X : 242 || Pin_Y : 123 || PIP False 
-Output Pin : 2 || Pin_X : 243 || Pin_Y : 129 || POP False
+Gate : 7 || Pos_X : 179 || Pos_Y 118 || Width : 61 || Height : 60
+Input Pin : 1 || Pin_X : 179 || Pin_Y : 138 || PIP True 
+Input Pin : 2 || Pin_X : 179 || Pin_Y : 128 || PIP True 
+Input Pin : 3 || Pin_X : 179 || Pin_Y : 133 || PIP True 
+Input Pin : 4 || Pin_X : 179 || Pin_Y : 127 || PIP True 
+Input Pin : 5 || Pin_X : 179 || Pin_Y : 126 || PIP True 
+Input Pin : 6 || Pin_X : 179 || Pin_Y : 161 || PIP True 
+Input Pin : 7 || Pin_X : 179 || Pin_Y : 122 || PIP True 
+Input Pin : 8 || Pin_X : 179 || Pin_Y : 151 || PIP True 
+Input Pin : 9 || Pin_X : 179 || Pin_Y : 125 || PIP True 
+Input Pin : 10 || Pin_X : 179 || Pin_Y : 165 || PIP True 
+Input Pin : 11 || Pin_X : 179 || Pin_Y : 168 || PIP True 
+Input Pin : 12 || Pin_X : 179 || Pin_Y : 156 || PIP True 
+Input Pin : 13 || Pin_X : 179 || Pin_Y : 170 || PIP True 
+Input Pin : 14 || Pin_X : 179 || Pin_Y : 171 || PIP True 
+Input Pin : 15 || Pin_X : 179 || Pin_Y : 147 || PIP True 
+Input Pin : 16 || Pin_X : 179 || Pin_Y : 144 || PIP True 
+Input Pin : 17 || Pin_X : 179 || Pin_Y : 174 || PIP True 
+Input Pin : 18 || Pin_X : 179 || Pin_Y : 175 || PIP True 
+Input Pin : 19 || Pin_X : 179 || Pin_Y : 176 || PIP True 
+Input Pin : 20 || Pin_X : 179 || Pin_Y : 139 || PIP True 
+Input Pin : 21 || Pin_X : 179 || Pin_Y : 148 || PIP True 
+Output Pin : 22 || Pin_X : 240 || Pin_Y : 161 || POP True
+Output Pin : 23 || Pin_X : 240 || Pin_Y : 167 || POP True
+Output Pin : 24 || Pin_X : 240 || Pin_Y : 169 || POP True
+Output Pin : 25 || Pin_X : 240 || Pin_Y : 171 || POP True
+Output Pin : 26 || Pin_X : 240 || Pin_Y : 177 || POP True
 
-Gate : 8 || Pos_X : 298 || Pos_Y 90 || Width : 82 || Height : 81
-Input Pin : 1 || Pin_X : 298 || Pin_Y : 100 || PIP True 
-Input Pin : 2 || Pin_X : 298 || Pin_Y : 101 || PIP True 
-Input Pin : 3 || Pin_X : 298 || Pin_Y : 94 || PIP True 
-Input Pin : 4 || Pin_X : 298 || Pin_Y : 96 || PIP True 
-Input Pin : 5 || Pin_X : 298 || Pin_Y : 95 || PIP True 
-Input Pin : 6 || Pin_X : 298 || Pin_Y : 105 || PIP True 
-Input Pin : 7 || Pin_X : 298 || Pin_Y : 106 || PIP False 
-Input Pin : 8 || Pin_X : 298 || Pin_Y : 107 || PIP True 
-Input Pin : 9 || Pin_X : 298 || Pin_Y : 108 || PIP True 
-Input Pin : 10 || Pin_X : 298 || Pin_Y : 109 || PIP True 
-Input Pin : 11 || Pin_X : 298 || Pin_Y : 92 || PIP True 
-Input Pin : 12 || Pin_X : 298 || Pin_Y : 111 || PIP True 
-Input Pin : 13 || Pin_X : 298 || Pin_Y : 91 || PIP True 
-Input Pin : 14 || Pin_X : 298 || Pin_Y : 93 || PIP True 
-Input Pin : 15 || Pin_X : 298 || Pin_Y : 110 || PIP True 
-Input Pin : 16 || Pin_X : 298 || Pin_Y : 99 || PIP True 
-Input Pin : 17 || Pin_X : 298 || Pin_Y : 116 || PIP True 
-Input Pin : 18 || Pin_X : 298 || Pin_Y : 117 || PIP True 
-Input Pin : 19 || Pin_X : 298 || Pin_Y : 118 || PIP True 
-Input Pin : 20 || Pin_X : 298 || Pin_Y : 119 || PIP True 
-Input Pin : 21 || Pin_X : 298 || Pin_Y : 120 || PIP True 
-Input Pin : 22 || Pin_X : 298 || Pin_Y : 113 || PIP True 
-Input Pin : 23 || Pin_X : 298 || Pin_Y : 122 || PIP True 
-Input Pin : 24 || Pin_X : 298 || Pin_Y : 123 || PIP True 
-Input Pin : 25 || Pin_X : 298 || Pin_Y : 112 || PIP True 
-Input Pin : 26 || Pin_X : 298 || Pin_Y : 125 || PIP True 
-Input Pin : 27 || Pin_X : 298 || Pin_Y : 126 || PIP True 
-Input Pin : 28 || Pin_X : 298 || Pin_Y : 127 || PIP True 
-Input Pin : 29 || Pin_X : 298 || Pin_Y : 128 || PIP True 
-Input Pin : 30 || Pin_X : 298 || Pin_Y : 129 || PIP True 
-Input Pin : 31 || Pin_X : 298 || Pin_Y : 130 || PIP True 
-Input Pin : 32 || Pin_X : 298 || Pin_Y : 131 || PIP True 
-Input Pin : 33 || Pin_X : 298 || Pin_Y : 115 || PIP True 
-Input Pin : 34 || Pin_X : 298 || Pin_Y : 104 || PIP True 
-Input Pin : 35 || Pin_X : 298 || Pin_Y : 134 || PIP True 
-Input Pin : 36 || Pin_X : 298 || Pin_Y : 135 || PIP True 
-Input Pin : 37 || Pin_X : 298 || Pin_Y : 136 || PIP True 
-Input Pin : 38 || Pin_X : 298 || Pin_Y : 137 || PIP False 
-Input Pin : 39 || Pin_X : 298 || Pin_Y : 138 || PIP True 
-Input Pin : 40 || Pin_X : 298 || Pin_Y : 139 || PIP True 
-Input Pin : 41 || Pin_X : 298 || Pin_Y : 114 || PIP True 
-Input Pin : 42 || Pin_X : 298 || Pin_Y : 141 || PIP True 
-Input Pin : 43 || Pin_X : 298 || Pin_Y : 142 || PIP False 
-Input Pin : 44 || Pin_X : 298 || Pin_Y : 143 || PIP True 
-Input Pin : 45 || Pin_X : 298 || Pin_Y : 144 || PIP True 
-Input Pin : 46 || Pin_X : 298 || Pin_Y : 145 || PIP True 
-Input Pin : 47 || Pin_X : 298 || Pin_Y : 146 || PIP True 
-Input Pin : 48 || Pin_X : 298 || Pin_Y : 147 || PIP True 
-Input Pin : 49 || Pin_X : 298 || Pin_Y : 148 || PIP True 
-Input Pin : 50 || Pin_X : 298 || Pin_Y : 149 || PIP False 
-Input Pin : 51 || Pin_X : 298 || Pin_Y : 150 || PIP True 
-Input Pin : 52 || Pin_X : 298 || Pin_Y : 151 || PIP True 
-Input Pin : 53 || Pin_X : 298 || Pin_Y : 152 || PIP True 
-Input Pin : 54 || Pin_X : 298 || Pin_Y : 121 || PIP True 
-Input Pin : 55 || Pin_X : 298 || Pin_Y : 154 || PIP True 
-Input Pin : 56 || Pin_X : 298 || Pin_Y : 155 || PIP True 
-Input Pin : 57 || Pin_X : 298 || Pin_Y : 156 || PIP True 
-Input Pin : 58 || Pin_X : 298 || Pin_Y : 157 || PIP True 
-Input Pin : 59 || Pin_X : 298 || Pin_Y : 102 || PIP True 
-Input Pin : 60 || Pin_X : 298 || Pin_Y : 159 || PIP True 
-Input Pin : 61 || Pin_X : 298 || Pin_Y : 133 || PIP True 
-Input Pin : 62 || Pin_X : 298 || Pin_Y : 124 || PIP True 
-Input Pin : 63 || Pin_X : 298 || Pin_Y : 162 || PIP True 
-Input Pin : 64 || Pin_X : 298 || Pin_Y : 163 || PIP True 
-Input Pin : 65 || Pin_X : 298 || Pin_Y : 164 || PIP True 
-Input Pin : 66 || Pin_X : 298 || Pin_Y : 165 || PIP True 
-Input Pin : 67 || Pin_X : 298 || Pin_Y : 166 || PIP True 
-Input Pin : 68 || Pin_X : 298 || Pin_Y : 167 || PIP True 
-Input Pin : 69 || Pin_X : 298 || Pin_Y : 168 || PIP True 
-Input Pin : 70 || Pin_X : 298 || Pin_Y : 161 || PIP True 
-Input Pin : 71 || Pin_X : 298 || Pin_Y : 170 || PIP True 
-Input Pin : 72 || Pin_X : 298 || Pin_Y : 171 || PIP True 
-Output Pin : 73 || Pin_X : 380 || Pin_Y : 119 || POP True
-Output Pin : 74 || Pin_X : 380 || Pin_Y : 101 || POP True
-Output Pin : 75 || Pin_X : 380 || Pin_Y : 130 || POP True
-Output Pin : 76 || Pin_X : 380 || Pin_Y : 103 || POP True
-Output Pin : 77 || Pin_X : 380 || Pin_Y : 104 || POP True
-Output Pin : 78 || Pin_X : 380 || Pin_Y : 129 || POP False
-Output Pin : 79 || Pin_X : 380 || Pin_Y : 109 || POP False
-Output Pin : 80 || Pin_X : 380 || Pin_Y : 133 || POP True
-Output Pin : 81 || Pin_X : 380 || Pin_Y : 136 || POP True
-Output Pin : 82 || Pin_X : 380 || Pin_Y : 107 || POP True
-Output Pin : 83 || Pin_X : 380 || Pin_Y : 132 || POP True
-Output Pin : 84 || Pin_X : 380 || Pin_Y : 149 || POP True
-Output Pin : 85 || Pin_X : 380 || Pin_Y : 150 || POP True
-Output Pin : 86 || Pin_X : 380 || Pin_Y : 91 || POP True
-Output Pin : 87 || Pin_X : 380 || Pin_Y : 121 || POP True
-Output Pin : 88 || Pin_X : 380 || Pin_Y : 153 || POP True
-Output Pin : 89 || Pin_X : 380 || Pin_Y : 142 || POP True
-Output Pin : 90 || Pin_X : 380 || Pin_Y : 100 || POP True
-Output Pin : 91 || Pin_X : 380 || Pin_Y : 151 || POP True
-Output Pin : 92 || Pin_X : 380 || Pin_Y : 157 || POP True
-Output Pin : 93 || Pin_X : 380 || Pin_Y : 158 || POP False
-Output Pin : 94 || Pin_X : 380 || Pin_Y : 108 || POP True
-Output Pin : 95 || Pin_X : 380 || Pin_Y : 124 || POP True
-Output Pin : 96 || Pin_X : 380 || Pin_Y : 161 || POP True
-Output Pin : 97 || Pin_X : 380 || Pin_Y : 162 || POP True
-Output Pin : 98 || Pin_X : 380 || Pin_Y : 147 || POP True
-Output Pin : 99 || Pin_X : 380 || Pin_Y : 164 || POP True
-Output Pin : 100 || Pin_X : 380 || Pin_Y : 165 || POP True
-Output Pin : 101 || Pin_X : 380 || Pin_Y : 131 || POP True
-Output Pin : 102 || Pin_X : 380 || Pin_Y : 143 || POP True
-Output Pin : 103 || Pin_X : 380 || Pin_Y : 95 || POP True
-Output Pin : 104 || Pin_X : 380 || Pin_Y : 128 || POP True
-Output Pin : 105 || Pin_X : 380 || Pin_Y : 99 || POP True
-Output Pin : 106 || Pin_X : 380 || Pin_Y : 171 || POP True
+Gate : 8 || Pos_X : 289 || Pos_Y 145 || Width : 9 || Height : 7
+Input Pin : 1 || Pin_X : 289 || Pin_Y : 146 || PIP True 
+Input Pin : 2 || Pin_X : 289 || Pin_Y : 147 || PIP True 
+Input Pin : 3 || Pin_X : 289 || Pin_Y : 149 || PIP True 
+Input Pin : 4 || Pin_X : 289 || Pin_Y : 148 || PIP True 
+Input Pin : 5 || Pin_X : 289 || Pin_Y : 151 || PIP True 
+Input Pin : 6 || Pin_X : 289 || Pin_Y : 152 || PIP True 
+Output Pin : 7 || Pin_X : 298 || Pin_Y : 147 || POP True
+Output Pin : 8 || Pin_X : 298 || Pin_Y : 149 || POP True
+Output Pin : 9 || Pin_X : 298 || Pin_Y : 150 || POP True
+Output Pin : 10 || Pin_X : 298 || Pin_Y : 151 || POP True
+Output Pin : 11 || Pin_X : 298 || Pin_Y : 152 || POP True
 
-Gate : 9 || Pos_X : 29 || Pos_Y 174 || Width : 39 || Height : 87
-Input Pin : 1 || Pin_X : 29 || Pin_Y : 175 || PIP True 
-Input Pin : 2 || Pin_X : 29 || Pin_Y : 189 || PIP True 
-Input Pin : 3 || Pin_X : 29 || Pin_Y : 180 || PIP True 
-Input Pin : 4 || Pin_X : 29 || Pin_Y : 185 || PIP True 
-Input Pin : 5 || Pin_X : 29 || Pin_Y : 187 || PIP True 
-Input Pin : 6 || Pin_X : 29 || Pin_Y : 188 || PIP True 
-Input Pin : 7 || Pin_X : 29 || Pin_Y : 195 || PIP True 
-Input Pin : 8 || Pin_X : 29 || Pin_Y : 186 || PIP True 
-Input Pin : 9 || Pin_X : 29 || Pin_Y : 182 || PIP True 
-Input Pin : 10 || Pin_X : 29 || Pin_Y : 198 || PIP True 
-Input Pin : 11 || Pin_X : 29 || Pin_Y : 181 || PIP True 
-Input Pin : 12 || Pin_X : 29 || Pin_Y : 200 || PIP True 
-Input Pin : 13 || Pin_X : 29 || Pin_Y : 184 || PIP True 
-Input Pin : 14 || Pin_X : 29 || Pin_Y : 202 || PIP False 
-Input Pin : 15 || Pin_X : 29 || Pin_Y : 176 || PIP True 
-Input Pin : 16 || Pin_X : 29 || Pin_Y : 203 || PIP True 
-Input Pin : 17 || Pin_X : 29 || Pin_Y : 205 || PIP True 
-Input Pin : 18 || Pin_X : 29 || Pin_Y : 206 || PIP True 
-Input Pin : 19 || Pin_X : 29 || Pin_Y : 207 || PIP True 
-Input Pin : 20 || Pin_X : 29 || Pin_Y : 208 || PIP True 
-Input Pin : 21 || Pin_X : 29 || Pin_Y : 190 || PIP True 
-Input Pin : 22 || Pin_X : 29 || Pin_Y : 210 || PIP True 
-Input Pin : 23 || Pin_X : 29 || Pin_Y : 211 || PIP True 
-Input Pin : 24 || Pin_X : 29 || Pin_Y : 178 || PIP True 
-Input Pin : 25 || Pin_X : 29 || Pin_Y : 201 || PIP True 
-Input Pin : 26 || Pin_X : 29 || Pin_Y : 214 || PIP True 
-Input Pin : 27 || Pin_X : 29 || Pin_Y : 192 || PIP False 
-Input Pin : 28 || Pin_X : 29 || Pin_Y : 216 || PIP False 
-Input Pin : 29 || Pin_X : 29 || Pin_Y : 217 || PIP True 
-Input Pin : 30 || Pin_X : 29 || Pin_Y : 218 || PIP True 
-Input Pin : 31 || Pin_X : 29 || Pin_Y : 199 || PIP True 
-Input Pin : 32 || Pin_X : 29 || Pin_Y : 209 || PIP True 
-Input Pin : 33 || Pin_X : 29 || Pin_Y : 221 || PIP True 
-Input Pin : 34 || Pin_X : 29 || Pin_Y : 193 || PIP True 
-Input Pin : 35 || Pin_X : 29 || Pin_Y : 223 || PIP True 
-Input Pin : 36 || Pin_X : 29 || Pin_Y : 196 || PIP True 
-Input Pin : 37 || Pin_X : 29 || Pin_Y : 225 || PIP True 
-Input Pin : 38 || Pin_X : 29 || Pin_Y : 226 || PIP True 
-Input Pin : 39 || Pin_X : 29 || Pin_Y : 212 || PIP True 
-Input Pin : 40 || Pin_X : 29 || Pin_Y : 228 || PIP True 
-Input Pin : 41 || Pin_X : 29 || Pin_Y : 224 || PIP True 
-Input Pin : 42 || Pin_X : 29 || Pin_Y : 230 || PIP True 
-Input Pin : 43 || Pin_X : 29 || Pin_Y : 197 || PIP True 
-Input Pin : 44 || Pin_X : 29 || Pin_Y : 213 || PIP True 
-Input Pin : 45 || Pin_X : 29 || Pin_Y : 233 || PIP True 
-Input Pin : 46 || Pin_X : 29 || Pin_Y : 234 || PIP True 
-Input Pin : 47 || Pin_X : 29 || Pin_Y : 235 || PIP True 
-Input Pin : 48 || Pin_X : 29 || Pin_Y : 236 || PIP True 
-Input Pin : 49 || Pin_X : 29 || Pin_Y : 237 || PIP True 
-Input Pin : 50 || Pin_X : 29 || Pin_Y : 238 || PIP True 
-Input Pin : 51 || Pin_X : 29 || Pin_Y : 239 || PIP True 
-Input Pin : 52 || Pin_X : 29 || Pin_Y : 240 || PIP True 
-Input Pin : 53 || Pin_X : 29 || Pin_Y : 241 || PIP True 
-Input Pin : 54 || Pin_X : 29 || Pin_Y : 242 || PIP True 
-Input Pin : 55 || Pin_X : 29 || Pin_Y : 243 || PIP True 
-Input Pin : 56 || Pin_X : 29 || Pin_Y : 215 || PIP True 
-Input Pin : 57 || Pin_X : 29 || Pin_Y : 245 || PIP True 
-Input Pin : 58 || Pin_X : 29 || Pin_Y : 246 || PIP True 
-Input Pin : 59 || Pin_X : 29 || Pin_Y : 247 || PIP True 
-Input Pin : 60 || Pin_X : 29 || Pin_Y : 248 || PIP True 
-Input Pin : 61 || Pin_X : 29 || Pin_Y : 219 || PIP True 
-Input Pin : 62 || Pin_X : 29 || Pin_Y : 250 || PIP True 
-Input Pin : 63 || Pin_X : 29 || Pin_Y : 179 || PIP True 
-Input Pin : 64 || Pin_X : 29 || Pin_Y : 227 || PIP True 
-Input Pin : 65 || Pin_X : 29 || Pin_Y : 249 || PIP True 
-Input Pin : 66 || Pin_X : 29 || Pin_Y : 254 || PIP True 
-Input Pin : 67 || Pin_X : 29 || Pin_Y : 255 || PIP True 
-Input Pin : 68 || Pin_X : 29 || Pin_Y : 256 || PIP True 
-Input Pin : 69 || Pin_X : 29 || Pin_Y : 257 || PIP True 
-Input Pin : 70 || Pin_X : 29 || Pin_Y : 252 || PIP True 
-Input Pin : 71 || Pin_X : 29 || Pin_Y : 259 || PIP True 
-Input Pin : 72 || Pin_X : 29 || Pin_Y : 260 || PIP True 
-Input Pin : 73 || Pin_X : 29 || Pin_Y : 261 || PIP True 
-Output Pin : 74 || Pin_X : 68 || Pin_Y : 179 || POP True
-Output Pin : 75 || Pin_X : 68 || Pin_Y : 181 || POP True
-Output Pin : 76 || Pin_X : 68 || Pin_Y : 183 || POP True
-Output Pin : 77 || Pin_X : 68 || Pin_Y : 185 || POP True
-Output Pin : 78 || Pin_X : 68 || Pin_Y : 177 || POP True
-Output Pin : 79 || Pin_X : 68 || Pin_Y : 187 || POP True
-Output Pin : 80 || Pin_X : 68 || Pin_Y : 188 || POP True
-Output Pin : 81 || Pin_X : 68 || Pin_Y : 186 || POP True
-Output Pin : 82 || Pin_X : 68 || Pin_Y : 189 || POP True
-Output Pin : 83 || Pin_X : 68 || Pin_Y : 176 || POP True
-Output Pin : 84 || Pin_X : 68 || Pin_Y : 191 || POP True
-Output Pin : 85 || Pin_X : 68 || Pin_Y : 193 || POP True
-Output Pin : 86 || Pin_X : 68 || Pin_Y : 182 || POP True
-Output Pin : 87 || Pin_X : 68 || Pin_Y : 195 || POP True
-Output Pin : 88 || Pin_X : 68 || Pin_Y : 196 || POP True
-Output Pin : 89 || Pin_X : 68 || Pin_Y : 197 || POP True
-Output Pin : 90 || Pin_X : 68 || Pin_Y : 198 || POP True
-Output Pin : 91 || Pin_X : 68 || Pin_Y : 199 || POP True
-Output Pin : 92 || Pin_X : 68 || Pin_Y : 180 || POP True
-Output Pin : 93 || Pin_X : 68 || Pin_Y : 201 || POP True
-Output Pin : 94 || Pin_X : 68 || Pin_Y : 175 || POP True
-Output Pin : 95 || Pin_X : 68 || Pin_Y : 203 || POP True
-Output Pin : 96 || Pin_X : 68 || Pin_Y : 204 || POP True
-Output Pin : 97 || Pin_X : 68 || Pin_Y : 205 || POP True
-Output Pin : 98 || Pin_X : 68 || Pin_Y : 206 || POP True
-Output Pin : 99 || Pin_X : 68 || Pin_Y : 207 || POP True
-Output Pin : 100 || Pin_X : 68 || Pin_Y : 208 || POP False
-Output Pin : 101 || Pin_X : 68 || Pin_Y : 209 || POP True
-Output Pin : 102 || Pin_X : 68 || Pin_Y : 210 || POP True
-Output Pin : 103 || Pin_X : 68 || Pin_Y : 211 || POP True
-Output Pin : 104 || Pin_X : 68 || Pin_Y : 212 || POP True
-Output Pin : 105 || Pin_X : 68 || Pin_Y : 213 || POP True
-Output Pin : 106 || Pin_X : 68 || Pin_Y : 214 || POP True
-Output Pin : 107 || Pin_X : 68 || Pin_Y : 178 || POP True
-Output Pin : 108 || Pin_X : 68 || Pin_Y : 190 || POP True
-Output Pin : 109 || Pin_X : 68 || Pin_Y : 192 || POP True
-Output Pin : 110 || Pin_X : 68 || Pin_Y : 194 || POP True
-Output Pin : 111 || Pin_X : 68 || Pin_Y : 219 || POP True
-Output Pin : 112 || Pin_X : 68 || Pin_Y : 220 || POP True
-Output Pin : 113 || Pin_X : 68 || Pin_Y : 221 || POP True
-Output Pin : 114 || Pin_X : 68 || Pin_Y : 184 || POP True
-Output Pin : 115 || Pin_X : 68 || Pin_Y : 215 || POP True
-Output Pin : 116 || Pin_X : 68 || Pin_Y : 200 || POP True
-Output Pin : 117 || Pin_X : 68 || Pin_Y : 225 || POP True
-Output Pin : 118 || Pin_X : 68 || Pin_Y : 226 || POP True
-Output Pin : 119 || Pin_X : 68 || Pin_Y : 227 || POP True
-Output Pin : 120 || Pin_X : 68 || Pin_Y : 228 || POP True
-Output Pin : 121 || Pin_X : 68 || Pin_Y : 229 || POP True
-Output Pin : 122 || Pin_X : 68 || Pin_Y : 230 || POP True
-Output Pin : 123 || Pin_X : 68 || Pin_Y : 231 || POP True
-Output Pin : 124 || Pin_X : 68 || Pin_Y : 232 || POP True
-Output Pin : 125 || Pin_X : 68 || Pin_Y : 233 || POP True
-Output Pin : 126 || Pin_X : 68 || Pin_Y : 234 || POP True
-Output Pin : 127 || Pin_X : 68 || Pin_Y : 235 || POP True
-Output Pin : 128 || Pin_X : 68 || Pin_Y : 236 || POP True
-Output Pin : 129 || Pin_X : 68 || Pin_Y : 237 || POP True
-Output Pin : 130 || Pin_X : 68 || Pin_Y : 238 || POP True
-Output Pin : 131 || Pin_X : 68 || Pin_Y : 222 || POP True
-Output Pin : 132 || Pin_X : 68 || Pin_Y : 240 || POP True
-Output Pin : 133 || Pin_X : 68 || Pin_Y : 241 || POP True
-Output Pin : 134 || Pin_X : 68 || Pin_Y : 242 || POP True
-Output Pin : 135 || Pin_X : 68 || Pin_Y : 243 || POP True
-Output Pin : 136 || Pin_X : 68 || Pin_Y : 244 || POP True
-Output Pin : 137 || Pin_X : 68 || Pin_Y : 245 || POP True
-Output Pin : 138 || Pin_X : 68 || Pin_Y : 246 || POP False
-Output Pin : 139 || Pin_X : 68 || Pin_Y : 217 || POP True
-Output Pin : 140 || Pin_X : 68 || Pin_Y : 248 || POP True
-Output Pin : 141 || Pin_X : 68 || Pin_Y : 249 || POP True
-Output Pin : 142 || Pin_X : 68 || Pin_Y : 250 || POP True
-Output Pin : 143 || Pin_X : 68 || Pin_Y : 224 || POP True
-Output Pin : 144 || Pin_X : 68 || Pin_Y : 252 || POP True
-Output Pin : 145 || Pin_X : 68 || Pin_Y : 253 || POP True
-Output Pin : 146 || Pin_X : 68 || Pin_Y : 254 || POP True
-Output Pin : 147 || Pin_X : 68 || Pin_Y : 255 || POP True
-Output Pin : 148 || Pin_X : 68 || Pin_Y : 256 || POP True
-Output Pin : 149 || Pin_X : 68 || Pin_Y : 257 || POP True
-Output Pin : 150 || Pin_X : 68 || Pin_Y : 258 || POP True
-Output Pin : 151 || Pin_X : 68 || Pin_Y : 259 || POP True
-Output Pin : 152 || Pin_X : 68 || Pin_Y : 202 || POP True
-Output Pin : 153 || Pin_X : 68 || Pin_Y : 261 || POP True
+Gate : 9 || Pos_X : 32 || Pos_Y 238 || Width : 20 || Height : 18
+Input Pin : 1 || Pin_X : 32 || Pin_Y : 239 || PIP True 
+Input Pin : 2 || Pin_X : 32 || Pin_Y : 245 || PIP True 
+Input Pin : 3 || Pin_X : 32 || Pin_Y : 255 || PIP True 
+Input Pin : 4 || Pin_X : 32 || Pin_Y : 253 || PIP True 
+Output Pin : 5 || Pin_X : 52 || Pin_Y : 249 || POP True
+Output Pin : 6 || Pin_X : 52 || Pin_Y : 245 || POP True
+Output Pin : 7 || Pin_X : 52 || Pin_Y : 243 || POP True
+Output Pin : 8 || Pin_X : 52 || Pin_Y : 254 || POP True
+Output Pin : 9 || Pin_X : 52 || Pin_Y : 250 || POP True
+Output Pin : 10 || Pin_X : 52 || Pin_Y : 241 || POP True
 
-Gate : 10 || Pos_X : 127 || Pos_Y 174 || Width : 37 || Height : 86
-Input Pin : 1 || Pin_X : 127 || Pin_Y : 192 || PIP True 
-Input Pin : 2 || Pin_X : 127 || Pin_Y : 191 || PIP True 
-Input Pin : 3 || Pin_X : 127 || Pin_Y : 180 || PIP True 
-Input Pin : 4 || Pin_X : 127 || Pin_Y : 212 || PIP True 
-Input Pin : 5 || Pin_X : 127 || Pin_Y : 199 || PIP False 
-Input Pin : 6 || Pin_X : 127 || Pin_Y : 204 || PIP True 
-Input Pin : 7 || Pin_X : 127 || Pin_Y : 193 || PIP True 
-Input Pin : 8 || Pin_X : 127 || Pin_Y : 179 || PIP True 
-Input Pin : 9 || Pin_X : 127 || Pin_Y : 211 || PIP True 
-Input Pin : 10 || Pin_X : 127 || Pin_Y : 219 || PIP True 
-Input Pin : 11 || Pin_X : 127 || Pin_Y : 208 || PIP True 
-Input Pin : 12 || Pin_X : 127 || Pin_Y : 216 || PIP True 
-Input Pin : 13 || Pin_X : 127 || Pin_Y : 222 || PIP True 
-Input Pin : 14 || Pin_X : 127 || Pin_Y : 185 || PIP True 
-Input Pin : 15 || Pin_X : 127 || Pin_Y : 224 || PIP True 
-Input Pin : 16 || Pin_X : 127 || Pin_Y : 196 || PIP True 
-Input Pin : 17 || Pin_X : 127 || Pin_Y : 187 || PIP True 
-Input Pin : 18 || Pin_X : 127 || Pin_Y : 205 || PIP True 
-Input Pin : 19 || Pin_X : 127 || Pin_Y : 220 || PIP True 
-Input Pin : 20 || Pin_X : 127 || Pin_Y : 177 || PIP True 
-Input Pin : 21 || Pin_X : 127 || Pin_Y : 178 || PIP False 
-Input Pin : 22 || Pin_X : 127 || Pin_Y : 186 || PIP True 
-Input Pin : 23 || Pin_X : 127 || Pin_Y : 232 || PIP True 
-Input Pin : 24 || Pin_X : 127 || Pin_Y : 233 || PIP True 
-Input Pin : 25 || Pin_X : 127 || Pin_Y : 200 || PIP True 
-Input Pin : 26 || Pin_X : 127 || Pin_Y : 235 || PIP True 
-Input Pin : 27 || Pin_X : 127 || Pin_Y : 236 || PIP True 
-Input Pin : 28 || Pin_X : 127 || Pin_Y : 176 || PIP True 
-Input Pin : 29 || Pin_X : 127 || Pin_Y : 238 || PIP True 
-Input Pin : 30 || Pin_X : 127 || Pin_Y : 181 || PIP True 
-Input Pin : 31 || Pin_X : 127 || Pin_Y : 215 || PIP True 
-Input Pin : 32 || Pin_X : 127 || Pin_Y : 241 || PIP True 
-Input Pin : 33 || Pin_X : 127 || Pin_Y : 189 || PIP True 
-Input Pin : 34 || Pin_X : 127 || Pin_Y : 242 || PIP True 
-Input Pin : 35 || Pin_X : 127 || Pin_Y : 244 || PIP True 
-Input Pin : 36 || Pin_X : 127 || Pin_Y : 245 || PIP True 
-Input Pin : 37 || Pin_X : 127 || Pin_Y : 246 || PIP False 
-Input Pin : 38 || Pin_X : 127 || Pin_Y : 247 || PIP True 
-Input Pin : 39 || Pin_X : 127 || Pin_Y : 240 || PIP True 
-Input Pin : 40 || Pin_X : 127 || Pin_Y : 249 || PIP False 
-Input Pin : 41 || Pin_X : 127 || Pin_Y : 250 || PIP True 
-Input Pin : 42 || Pin_X : 127 || Pin_Y : 218 || PIP True 
-Input Pin : 43 || Pin_X : 127 || Pin_Y : 252 || PIP True 
-Input Pin : 44 || Pin_X : 127 || Pin_Y : 253 || PIP True 
-Input Pin : 45 || Pin_X : 127 || Pin_Y : 254 || PIP False 
-Input Pin : 46 || Pin_X : 127 || Pin_Y : 255 || PIP True 
-Input Pin : 47 || Pin_X : 127 || Pin_Y : 256 || PIP True 
-Input Pin : 48 || Pin_X : 127 || Pin_Y : 257 || PIP True 
-Input Pin : 49 || Pin_X : 127 || Pin_Y : 258 || PIP True 
-Input Pin : 50 || Pin_X : 127 || Pin_Y : 259 || PIP True 
-Input Pin : 51 || Pin_X : 127 || Pin_Y : 202 || PIP True 
-Output Pin : 52 || Pin_X : 164 || Pin_Y : 176 || POP True
-Output Pin : 53 || Pin_X : 164 || Pin_Y : 184 || POP False
-Output Pin : 54 || Pin_X : 164 || Pin_Y : 180 || POP True
-Output Pin : 55 || Pin_X : 164 || Pin_Y : 177 || POP True
-Output Pin : 56 || Pin_X : 164 || Pin_Y : 179 || POP True
-Output Pin : 57 || Pin_X : 164 || Pin_Y : 187 || POP True
-Output Pin : 58 || Pin_X : 164 || Pin_Y : 181 || POP True
-Output Pin : 59 || Pin_X : 164 || Pin_Y : 189 || POP True
-Output Pin : 60 || Pin_X : 164 || Pin_Y : 191 || POP True
-Output Pin : 61 || Pin_X : 164 || Pin_Y : 192 || POP True
-Output Pin : 62 || Pin_X : 164 || Pin_Y : 175 || POP True
-Output Pin : 63 || Pin_X : 164 || Pin_Y : 193 || POP True
-Output Pin : 64 || Pin_X : 164 || Pin_Y : 188 || POP True
-Output Pin : 65 || Pin_X : 164 || Pin_Y : 194 || POP True
-Output Pin : 66 || Pin_X : 164 || Pin_Y : 183 || POP True
-Output Pin : 67 || Pin_X : 164 || Pin_Y : 185 || POP True
-Output Pin : 68 || Pin_X : 164 || Pin_Y : 199 || POP True
-Output Pin : 69 || Pin_X : 164 || Pin_Y : 198 || POP True
-Output Pin : 70 || Pin_X : 164 || Pin_Y : 201 || POP True
-Output Pin : 71 || Pin_X : 164 || Pin_Y : 202 || POP True
-Output Pin : 72 || Pin_X : 164 || Pin_Y : 203 || POP True
-Output Pin : 73 || Pin_X : 164 || Pin_Y : 204 || POP True
-Output Pin : 74 || Pin_X : 164 || Pin_Y : 190 || POP True
-Output Pin : 75 || Pin_X : 164 || Pin_Y : 182 || POP True
-Output Pin : 76 || Pin_X : 164 || Pin_Y : 207 || POP True
-Output Pin : 77 || Pin_X : 164 || Pin_Y : 196 || POP True
-Output Pin : 78 || Pin_X : 164 || Pin_Y : 209 || POP True
-Output Pin : 79 || Pin_X : 164 || Pin_Y : 210 || POP True
-Output Pin : 80 || Pin_X : 164 || Pin_Y : 211 || POP True
-Output Pin : 81 || Pin_X : 164 || Pin_Y : 205 || POP True
-Output Pin : 82 || Pin_X : 164 || Pin_Y : 213 || POP True
-Output Pin : 83 || Pin_X : 164 || Pin_Y : 200 || POP True
-Output Pin : 84 || Pin_X : 164 || Pin_Y : 215 || POP True
-Output Pin : 85 || Pin_X : 164 || Pin_Y : 208 || POP True
-Output Pin : 86 || Pin_X : 164 || Pin_Y : 217 || POP True
-Output Pin : 87 || Pin_X : 164 || Pin_Y : 218 || POP True
-Output Pin : 88 || Pin_X : 164 || Pin_Y : 219 || POP True
-Output Pin : 89 || Pin_X : 164 || Pin_Y : 220 || POP True
-Output Pin : 90 || Pin_X : 164 || Pin_Y : 221 || POP True
-Output Pin : 91 || Pin_X : 164 || Pin_Y : 222 || POP True
-Output Pin : 92 || Pin_X : 164 || Pin_Y : 223 || POP True
-Output Pin : 93 || Pin_X : 164 || Pin_Y : 224 || POP True
-Output Pin : 94 || Pin_X : 164 || Pin_Y : 225 || POP True
-Output Pin : 95 || Pin_X : 164 || Pin_Y : 226 || POP True
-Output Pin : 96 || Pin_X : 164 || Pin_Y : 227 || POP True
-Output Pin : 97 || Pin_X : 164 || Pin_Y : 228 || POP True
-Output Pin : 98 || Pin_X : 164 || Pin_Y : 229 || POP True
-Output Pin : 99 || Pin_X : 164 || Pin_Y : 230 || POP True
-Output Pin : 100 || Pin_X : 164 || Pin_Y : 231 || POP True
-Output Pin : 101 || Pin_X : 164 || Pin_Y : 232 || POP True
-Output Pin : 102 || Pin_X : 164 || Pin_Y : 233 || POP True
-Output Pin : 103 || Pin_X : 164 || Pin_Y : 234 || POP True
-Output Pin : 104 || Pin_X : 164 || Pin_Y : 235 || POP True
-Output Pin : 105 || Pin_X : 164 || Pin_Y : 236 || POP True
-Output Pin : 106 || Pin_X : 164 || Pin_Y : 237 || POP False
-Output Pin : 107 || Pin_X : 164 || Pin_Y : 238 || POP True
-Output Pin : 108 || Pin_X : 164 || Pin_Y : 239 || POP True
-Output Pin : 109 || Pin_X : 164 || Pin_Y : 240 || POP True
-Output Pin : 110 || Pin_X : 164 || Pin_Y : 241 || POP True
-Output Pin : 111 || Pin_X : 164 || Pin_Y : 242 || POP True
-Output Pin : 112 || Pin_X : 164 || Pin_Y : 243 || POP True
-Output Pin : 113 || Pin_X : 164 || Pin_Y : 244 || POP True
-Output Pin : 114 || Pin_X : 164 || Pin_Y : 245 || POP True
-Output Pin : 115 || Pin_X : 164 || Pin_Y : 216 || POP True
-Output Pin : 116 || Pin_X : 164 || Pin_Y : 247 || POP True
-Output Pin : 117 || Pin_X : 164 || Pin_Y : 195 || POP True
-Output Pin : 118 || Pin_X : 164 || Pin_Y : 197 || POP True
-Output Pin : 119 || Pin_X : 164 || Pin_Y : 250 || POP True
-Output Pin : 120 || Pin_X : 164 || Pin_Y : 214 || POP True
-Output Pin : 121 || Pin_X : 164 || Pin_Y : 252 || POP True
-Output Pin : 122 || Pin_X : 164 || Pin_Y : 178 || POP True
-Output Pin : 123 || Pin_X : 164 || Pin_Y : 186 || POP True
-Output Pin : 124 || Pin_X : 164 || Pin_Y : 255 || POP True
-Output Pin : 125 || Pin_X : 164 || Pin_Y : 256 || POP True
-Output Pin : 126 || Pin_X : 164 || Pin_Y : 257 || POP True
-Output Pin : 127 || Pin_X : 164 || Pin_Y : 258 || POP True
-Output Pin : 128 || Pin_X : 164 || Pin_Y : 259 || POP True
-Output Pin : 129 || Pin_X : 164 || Pin_Y : 260 || POP True
+Gate : 10 || Pos_X : 90 || Pos_Y 204 || Width : 72 || Height : 87
+Input Pin : 1 || Pin_X : 90 || Pin_Y : 213 || PIP True 
+Input Pin : 2 || Pin_X : 90 || Pin_Y : 212 || PIP True 
+Input Pin : 3 || Pin_X : 90 || Pin_Y : 207 || PIP True 
+Input Pin : 4 || Pin_X : 90 || Pin_Y : 206 || PIP True 
+Input Pin : 5 || Pin_X : 90 || Pin_Y : 214 || PIP True 
+Input Pin : 6 || Pin_X : 90 || Pin_Y : 208 || PIP True 
+Input Pin : 7 || Pin_X : 90 || Pin_Y : 211 || PIP True 
+Input Pin : 8 || Pin_X : 90 || Pin_Y : 220 || PIP True 
+Input Pin : 9 || Pin_X : 90 || Pin_Y : 221 || PIP True 
+Input Pin : 10 || Pin_X : 90 || Pin_Y : 222 || PIP True 
+Input Pin : 11 || Pin_X : 90 || Pin_Y : 223 || PIP True 
+Input Pin : 12 || Pin_X : 90 || Pin_Y : 224 || PIP True 
+Input Pin : 13 || Pin_X : 90 || Pin_Y : 225 || PIP True 
+Input Pin : 14 || Pin_X : 90 || Pin_Y : 226 || PIP True 
+Input Pin : 15 || Pin_X : 90 || Pin_Y : 209 || PIP True 
+Input Pin : 16 || Pin_X : 90 || Pin_Y : 228 || PIP True 
+Input Pin : 17 || Pin_X : 90 || Pin_Y : 229 || PIP True 
+Input Pin : 18 || Pin_X : 90 || Pin_Y : 230 || PIP True 
+Input Pin : 19 || Pin_X : 90 || Pin_Y : 218 || PIP True 
+Input Pin : 20 || Pin_X : 90 || Pin_Y : 232 || PIP True 
+Input Pin : 21 || Pin_X : 90 || Pin_Y : 210 || PIP True 
+Input Pin : 22 || Pin_X : 90 || Pin_Y : 219 || PIP True 
+Input Pin : 23 || Pin_X : 90 || Pin_Y : 235 || PIP True 
+Input Pin : 24 || Pin_X : 90 || Pin_Y : 236 || PIP True 
+Input Pin : 25 || Pin_X : 90 || Pin_Y : 231 || PIP True 
+Input Pin : 26 || Pin_X : 90 || Pin_Y : 238 || PIP True 
+Input Pin : 27 || Pin_X : 90 || Pin_Y : 239 || PIP True 
+Input Pin : 28 || Pin_X : 90 || Pin_Y : 215 || PIP True 
+Input Pin : 29 || Pin_X : 90 || Pin_Y : 205 || PIP True 
+Input Pin : 30 || Pin_X : 90 || Pin_Y : 242 || PIP True 
+Input Pin : 31 || Pin_X : 90 || Pin_Y : 227 || PIP True 
+Input Pin : 32 || Pin_X : 90 || Pin_Y : 244 || PIP True 
+Input Pin : 33 || Pin_X : 90 || Pin_Y : 245 || PIP True 
+Input Pin : 34 || Pin_X : 90 || Pin_Y : 246 || PIP True 
+Input Pin : 35 || Pin_X : 90 || Pin_Y : 247 || PIP True 
+Input Pin : 36 || Pin_X : 90 || Pin_Y : 243 || PIP True 
+Input Pin : 37 || Pin_X : 90 || Pin_Y : 248 || PIP True 
+Input Pin : 38 || Pin_X : 90 || Pin_Y : 250 || PIP True 
+Input Pin : 39 || Pin_X : 90 || Pin_Y : 251 || PIP True 
+Input Pin : 40 || Pin_X : 90 || Pin_Y : 252 || PIP True 
+Input Pin : 41 || Pin_X : 90 || Pin_Y : 253 || PIP True 
+Input Pin : 42 || Pin_X : 90 || Pin_Y : 254 || PIP True 
+Input Pin : 43 || Pin_X : 90 || Pin_Y : 255 || PIP True 
+Input Pin : 44 || Pin_X : 90 || Pin_Y : 256 || PIP True 
+Input Pin : 45 || Pin_X : 90 || Pin_Y : 257 || PIP True 
+Input Pin : 46 || Pin_X : 90 || Pin_Y : 258 || PIP True 
+Input Pin : 47 || Pin_X : 90 || Pin_Y : 240 || PIP True 
+Input Pin : 48 || Pin_X : 90 || Pin_Y : 260 || PIP True 
+Input Pin : 49 || Pin_X : 90 || Pin_Y : 261 || PIP True 
+Input Pin : 50 || Pin_X : 90 || Pin_Y : 262 || PIP True 
+Input Pin : 51 || Pin_X : 90 || Pin_Y : 263 || PIP True 
+Input Pin : 52 || Pin_X : 90 || Pin_Y : 264 || PIP True 
+Input Pin : 53 || Pin_X : 90 || Pin_Y : 265 || PIP True 
+Input Pin : 54 || Pin_X : 90 || Pin_Y : 266 || PIP True 
+Input Pin : 55 || Pin_X : 90 || Pin_Y : 267 || PIP True 
+Input Pin : 56 || Pin_X : 90 || Pin_Y : 268 || PIP True 
+Input Pin : 57 || Pin_X : 90 || Pin_Y : 269 || PIP True 
+Input Pin : 58 || Pin_X : 90 || Pin_Y : 270 || PIP True 
+Input Pin : 59 || Pin_X : 90 || Pin_Y : 271 || PIP True 
+Input Pin : 60 || Pin_X : 90 || Pin_Y : 272 || PIP True 
+Input Pin : 61 || Pin_X : 90 || Pin_Y : 273 || PIP True 
+Input Pin : 62 || Pin_X : 90 || Pin_Y : 274 || PIP True 
+Input Pin : 63 || Pin_X : 90 || Pin_Y : 275 || PIP True 
+Input Pin : 64 || Pin_X : 90 || Pin_Y : 276 || PIP True 
+Input Pin : 65 || Pin_X : 90 || Pin_Y : 277 || PIP True 
+Input Pin : 66 || Pin_X : 90 || Pin_Y : 278 || PIP True 
+Input Pin : 67 || Pin_X : 90 || Pin_Y : 279 || PIP True 
+Input Pin : 68 || Pin_X : 90 || Pin_Y : 280 || PIP True 
+Input Pin : 69 || Pin_X : 90 || Pin_Y : 281 || PIP True 
+Input Pin : 70 || Pin_X : 90 || Pin_Y : 282 || PIP True 
+Input Pin : 71 || Pin_X : 90 || Pin_Y : 259 || PIP True 
+Input Pin : 72 || Pin_X : 90 || Pin_Y : 284 || PIP True 
+Input Pin : 73 || Pin_X : 90 || Pin_Y : 285 || PIP True 
+Input Pin : 74 || Pin_X : 90 || Pin_Y : 286 || PIP True 
+Input Pin : 75 || Pin_X : 90 || Pin_Y : 287 || PIP True 
+Input Pin : 76 || Pin_X : 90 || Pin_Y : 288 || PIP True 
+Input Pin : 77 || Pin_X : 90 || Pin_Y : 289 || PIP True 
+Input Pin : 78 || Pin_X : 90 || Pin_Y : 290 || PIP True 
+Input Pin : 79 || Pin_X : 90 || Pin_Y : 291 || PIP True 
+Output Pin : 80 || Pin_X : 162 || Pin_Y : 210 || POP True
+Output Pin : 81 || Pin_X : 162 || Pin_Y : 261 || POP True
+Output Pin : 82 || Pin_X : 162 || Pin_Y : 226 || POP True
+Output Pin : 83 || Pin_X : 162 || Pin_Y : 249 || POP True
+Output Pin : 84 || Pin_X : 162 || Pin_Y : 262 || POP True
+Output Pin : 85 || Pin_X : 162 || Pin_Y : 267 || POP True
+Output Pin : 86 || Pin_X : 162 || Pin_Y : 251 || POP True
+Output Pin : 87 || Pin_X : 162 || Pin_Y : 260 || POP True
+Output Pin : 88 || Pin_X : 162 || Pin_Y : 220 || POP True
+Output Pin : 89 || Pin_X : 162 || Pin_Y : 216 || POP True
+Output Pin : 90 || Pin_X : 162 || Pin_Y : 248 || POP True
+Output Pin : 91 || Pin_X : 162 || Pin_Y : 284 || POP True
+Output Pin : 92 || Pin_X : 162 || Pin_Y : 208 || POP True
+Output Pin : 93 || Pin_X : 162 || Pin_Y : 206 || POP True
+Output Pin : 94 || Pin_X : 162 || Pin_Y : 280 || POP True
+Output Pin : 95 || Pin_X : 162 || Pin_Y : 269 || POP True
+Output Pin : 96 || Pin_X : 162 || Pin_Y : 256 || POP True
+Output Pin : 97 || Pin_X : 162 || Pin_Y : 277 || POP True
+Output Pin : 98 || Pin_X : 162 || Pin_Y : 236 || POP True
 
 ================================================ Wire Group Information ================================================
 
-Total Wire Groups : 23
-
-Wire_Group : (4, 72) || X_min : 47 || Y_min : 24 || X_max : 385 || Y_max : 51 || Wire_Legth : 365 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 11
-Member : 2 || Parent Gate : 4 || Pin : 72
-
-Wire_Group : (10, 106) || X_min : 164 || Y_min : 42 || X_max : 194 || Y_max : 237 || Wire_Legth : 225 || Members : 2
-Member : 1 || Parent Gate : 10 || Pin : 106
-Member : 2 || Parent Gate : 3 || Pin : 3
-
-Wire_Group : (5, 32) || X_min : 47 || Y_min : 35 || X_max : 53 || Y_max : 145 || Wire_Legth : 116 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 1
-Member : 2 || Parent Gate : 5 || Pin : 32
-
-Wire_Group : (10, 53) || X_min : 164 || Y_min : 123 || X_max : 242 || Y_max : 184 || Wire_Legth : 139 || Members : 2
-Member : 1 || Parent Gate : 10 || Pin : 53
-Member : 2 || Parent Gate : 7 || Pin : 1
-
-Wire_Group : (3, 7) || X_min : 47 || Y_min : 44 || X_max : 291 || Y_max : 45 || Wire_Legth : 245 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 7
-Member : 2 || Parent Gate : 3 || Pin : 7
-
-Wire_Group : (8, 93) || X_min : 120 || Y_min : 44 || X_max : 380 || Y_max : 158 || Wire_Legth : 374 || Members : 2
-Member : 1 || Parent Gate : 2 || Pin : 1
-Member : 2 || Parent Gate : 8 || Pin : 93
-
-Wire_Group : (9, 100) || X_min : 68 || Y_min : 208 || X_max : 127 || Y_max : 249 || Wire_Legth : 100 || Members : 2
-Member : 1 || Parent Gate : 9 || Pin : 100
-Member : 2 || Parent Gate : 10 || Pin : 40
-
-Wire_Group : (9, 138) || X_min : 68 || Y_min : 47 || X_max : 120 || Y_max : 246 || Wire_Legth : 251 || Members : 2
-Member : 1 || Parent Gate : 9 || Pin : 138
-Member : 2 || Parent Gate : 2 || Pin : 3
-
-Wire_Group : (7, 2) || X_min : 29 || Y_min : 44 || X_max : 298 || Y_max : 192 || Wire_Legth : 417 || Members : 5
-Member : 1 || Parent Gate : 9 || Pin : 27
-Member : 2 || Parent Gate : 1 || Pin : 12
-Member : 3 || Parent Gate : 3 || Pin : 1
-Member : 4 || Parent Gate : 8 || Pin : 38
-Member : 5 || Parent Gate : 7 || Pin : 2
-
-Wire_Group : (1, 18) || X_min : 29 || Y_min : 26 || X_max : 50 || Y_max : 202 || Wire_Legth : 197 || Members : 2
-Member : 1 || Parent Gate : 9 || Pin : 14
-Member : 2 || Parent Gate : 1 || Pin : 18
-
-Wire_Group : (2, 22) || X_min : 127 || Y_min : 26 || X_max : 194 || Y_max : 254 || Wire_Legth : 295 || Members : 3
-Member : 1 || Parent Gate : 10 || Pin : 45
-Member : 2 || Parent Gate : 3 || Pin : 4
-Member : 3 || Parent Gate : 2 || Pin : 22
-
-Wire_Group : (8, 79) || X_min : 47 || Y_min : 50 || X_max : 380 || Y_max : 109 || Wire_Legth : 392 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 2
-Member : 2 || Parent Gate : 8 || Pin : 79
-
-Wire_Group : (6, 39) || X_min : 190 || Y_min : 106 || X_max : 298 || Y_max : 116 || Wire_Legth : 118 || Members : 2
-Member : 1 || Parent Gate : 6 || Pin : 39
-Member : 2 || Parent Gate : 8 || Pin : 7
-
-Wire_Group : (5, 16) || X_min : 53 || Y_min : 102 || X_max : 127 || Y_max : 246 || Wire_Legth : 218 || Members : 2
-Member : 1 || Parent Gate : 5 || Pin : 16
-Member : 2 || Parent Gate : 10 || Pin : 37
-
-Wire_Group : (8, 78) || X_min : 29 || Y_min : 129 || X_max : 380 || Y_max : 216 || Wire_Legth : 438 || Members : 2
-Member : 1 || Parent Gate : 9 || Pin : 28
-Member : 2 || Parent Gate : 8 || Pin : 78
-
-Wire_Group : (1, 19) || X_min : 50 || Y_min : 30 || X_max : 120 || Y_max : 55 || Wire_Legth : 95 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 19
-Member : 2 || Parent Gate : 2 || Pin : 5
-
-Wire_Group : (6, 42) || X_min : 190 || Y_min : 45 || X_max : 194 || Y_max : 119 || Wire_Legth : 78 || Members : 2
-Member : 1 || Parent Gate : 6 || Pin : 42
-Member : 2 || Parent Gate : 3 || Pin : 2
-
-Wire_Group : (6, 65) || X_min : 47 || Y_min : 25 || X_max : 190 || Y_max : 142 || Wire_Legth : 260 || Members : 2
-Member : 1 || Parent Gate : 1 || Pin : 9
-Member : 2 || Parent Gate : 6 || Pin : 65
-
-Wire_Group : (6, 35) || X_min : 120 || Y_min : 32 || X_max : 190 || Y_max : 112 || Wire_Legth : 150 || Members : 2
-Member : 1 || Parent Gate : 2 || Pin : 4
-Member : 2 || Parent Gate : 6 || Pin : 35
-
-Wire_Group : (4, 73) || X_min : 298 || Y_min : 49 || X_max : 385 || Y_max : 149 || Wire_Legth : 187 || Members : 2
-Member : 1 || Parent Gate : 8 || Pin : 50
-Member : 2 || Parent Gate : 4 || Pin : 73
-
-Wire_Group : (4, 48) || X_min : 127 || Y_min : 20 || X_max : 385 || Y_max : 178 || Wire_Legth : 416 || Members : 2
-Member : 1 || Parent Gate : 10 || Pin : 21
-Member : 2 || Parent Gate : 4 || Pin : 48
-
-Wire_Group : (6, 44) || X_min : 127 || Y_min : 121 || X_max : 190 || Y_max : 199 || Wire_Legth : 141 || Members : 2
-Member : 1 || Parent Gate : 10 || Pin : 5
-Member : 2 || Parent Gate : 6 || Pin : 44
-
-Wire_Group : (5, 43) || X_min : 53 || Y_min : 142 || X_max : 298 || Y_max : 168 || Wire_Legth : 271 || Members : 2
-Member : 1 || Parent Gate : 5 || Pin : 43
-Member : 2 || Parent Gate : 8 || Pin : 43
+Total Wire Groups : 0
 
 ============================================= Primary IO Pins Information ==============================================
 
-Primary Inputs Pins (PIP's) : 281 || Primary Outputs Pins (POP's) : 350
+Primary Inputs Pins (PIP's) : 192 || Primary Outputs Pins (POP's) : 160
 
-PIP : 1 || Parent Gate : 1 || Pin : 3
-PIP : 2 || Parent Gate : 1 || Pin : 4
-PIP : 3 || Parent Gate : 1 || Pin : 5
-PIP : 4 || Parent Gate : 1 || Pin : 6
-PIP : 5 || Parent Gate : 1 || Pin : 8
-PIP : 6 || Parent Gate : 1 || Pin : 10
-PIP : 7 || Parent Gate : 2 || Pin : 2
-PIP : 8 || Parent Gate : 4 || Pin : 1
-PIP : 9 || Parent Gate : 4 || Pin : 2
-PIP : 10 || Parent Gate : 4 || Pin : 3
-PIP : 11 || Parent Gate : 4 || Pin : 4
-PIP : 12 || Parent Gate : 4 || Pin : 5
-PIP : 13 || Parent Gate : 4 || Pin : 6
-PIP : 14 || Parent Gate : 4 || Pin : 7
-PIP : 15 || Parent Gate : 4 || Pin : 8
-PIP : 16 || Parent Gate : 4 || Pin : 9
-PIP : 17 || Parent Gate : 4 || Pin : 10
-PIP : 18 || Parent Gate : 4 || Pin : 11
-PIP : 19 || Parent Gate : 4 || Pin : 12
-PIP : 20 || Parent Gate : 4 || Pin : 13
-PIP : 21 || Parent Gate : 4 || Pin : 14
-PIP : 22 || Parent Gate : 4 || Pin : 15
-PIP : 23 || Parent Gate : 4 || Pin : 16
-PIP : 24 || Parent Gate : 4 || Pin : 17
-PIP : 25 || Parent Gate : 4 || Pin : 18
-PIP : 26 || Parent Gate : 4 || Pin : 19
-PIP : 27 || Parent Gate : 4 || Pin : 20
-PIP : 28 || Parent Gate : 4 || Pin : 21
-PIP : 29 || Parent Gate : 4 || Pin : 22
-PIP : 30 || Parent Gate : 4 || Pin : 23
-PIP : 31 || Parent Gate : 4 || Pin : 24
-PIP : 32 || Parent Gate : 4 || Pin : 25
-PIP : 33 || Parent Gate : 4 || Pin : 26
-PIP : 34 || Parent Gate : 4 || Pin : 27
-PIP : 35 || Parent Gate : 4 || Pin : 28
-PIP : 36 || Parent Gate : 4 || Pin : 29
-PIP : 37 || Parent Gate : 4 || Pin : 30
-PIP : 38 || Parent Gate : 4 || Pin : 31
-PIP : 39 || Parent Gate : 4 || Pin : 32
-PIP : 40 || Parent Gate : 4 || Pin : 33
-PIP : 41 || Parent Gate : 4 || Pin : 34
-PIP : 42 || Parent Gate : 4 || Pin : 35
-PIP : 43 || Parent Gate : 4 || Pin : 36
-PIP : 44 || Parent Gate : 4 || Pin : 37
-PIP : 45 || Parent Gate : 4 || Pin : 38
-PIP : 46 || Parent Gate : 4 || Pin : 39
-PIP : 47 || Parent Gate : 4 || Pin : 40
-PIP : 48 || Parent Gate : 4 || Pin : 41
-PIP : 49 || Parent Gate : 4 || Pin : 42
-PIP : 50 || Parent Gate : 4 || Pin : 43
-PIP : 51 || Parent Gate : 4 || Pin : 44
-PIP : 52 || Parent Gate : 5 || Pin : 1
-PIP : 53 || Parent Gate : 5 || Pin : 2
-PIP : 54 || Parent Gate : 5 || Pin : 3
-PIP : 55 || Parent Gate : 5 || Pin : 4
-PIP : 56 || Parent Gate : 5 || Pin : 5
-PIP : 57 || Parent Gate : 5 || Pin : 6
-PIP : 58 || Parent Gate : 5 || Pin : 7
-PIP : 59 || Parent Gate : 5 || Pin : 8
-PIP : 60 || Parent Gate : 5 || Pin : 9
-PIP : 61 || Parent Gate : 5 || Pin : 10
-PIP : 62 || Parent Gate : 5 || Pin : 11
-PIP : 63 || Parent Gate : 5 || Pin : 12
-PIP : 64 || Parent Gate : 5 || Pin : 13
-PIP : 65 || Parent Gate : 5 || Pin : 14
-PIP : 66 || Parent Gate : 5 || Pin : 15
-PIP : 67 || Parent Gate : 6 || Pin : 1
-PIP : 68 || Parent Gate : 6 || Pin : 2
-PIP : 69 || Parent Gate : 6 || Pin : 3
-PIP : 70 || Parent Gate : 6 || Pin : 4
-PIP : 71 || Parent Gate : 6 || Pin : 5
-PIP : 72 || Parent Gate : 6 || Pin : 6
-PIP : 73 || Parent Gate : 6 || Pin : 7
-PIP : 74 || Parent Gate : 6 || Pin : 8
-PIP : 75 || Parent Gate : 6 || Pin : 9
-PIP : 76 || Parent Gate : 6 || Pin : 10
-PIP : 77 || Parent Gate : 6 || Pin : 11
-PIP : 78 || Parent Gate : 6 || Pin : 12
-PIP : 79 || Parent Gate : 6 || Pin : 13
-PIP : 80 || Parent Gate : 6 || Pin : 14
-PIP : 81 || Parent Gate : 6 || Pin : 15
-PIP : 82 || Parent Gate : 6 || Pin : 16
-PIP : 83 || Parent Gate : 6 || Pin : 17
-PIP : 84 || Parent Gate : 6 || Pin : 18
-PIP : 85 || Parent Gate : 6 || Pin : 19
-PIP : 86 || Parent Gate : 6 || Pin : 20
-PIP : 87 || Parent Gate : 6 || Pin : 21
-PIP : 88 || Parent Gate : 6 || Pin : 22
-PIP : 89 || Parent Gate : 6 || Pin : 23
-PIP : 90 || Parent Gate : 6 || Pin : 24
-PIP : 91 || Parent Gate : 6 || Pin : 25
-PIP : 92 || Parent Gate : 6 || Pin : 26
-PIP : 93 || Parent Gate : 6 || Pin : 27
-PIP : 94 || Parent Gate : 6 || Pin : 28
-PIP : 95 || Parent Gate : 6 || Pin : 29
-PIP : 96 || Parent Gate : 6 || Pin : 30
-PIP : 97 || Parent Gate : 6 || Pin : 31
-PIP : 98 || Parent Gate : 8 || Pin : 1
-PIP : 99 || Parent Gate : 8 || Pin : 2
-PIP : 100 || Parent Gate : 8 || Pin : 3
-PIP : 101 || Parent Gate : 8 || Pin : 4
-PIP : 102 || Parent Gate : 8 || Pin : 5
-PIP : 103 || Parent Gate : 8 || Pin : 6
-PIP : 104 || Parent Gate : 8 || Pin : 8
-PIP : 105 || Parent Gate : 8 || Pin : 9
-PIP : 106 || Parent Gate : 8 || Pin : 10
-PIP : 107 || Parent Gate : 8 || Pin : 11
-PIP : 108 || Parent Gate : 8 || Pin : 12
-PIP : 109 || Parent Gate : 8 || Pin : 13
-PIP : 110 || Parent Gate : 8 || Pin : 14
-PIP : 111 || Parent Gate : 8 || Pin : 15
-PIP : 112 || Parent Gate : 8 || Pin : 16
-PIP : 113 || Parent Gate : 8 || Pin : 17
-PIP : 114 || Parent Gate : 8 || Pin : 18
-PIP : 115 || Parent Gate : 8 || Pin : 19
-PIP : 116 || Parent Gate : 8 || Pin : 20
-PIP : 117 || Parent Gate : 8 || Pin : 21
-PIP : 118 || Parent Gate : 8 || Pin : 22
-PIP : 119 || Parent Gate : 8 || Pin : 23
-PIP : 120 || Parent Gate : 8 || Pin : 24
-PIP : 121 || Parent Gate : 8 || Pin : 25
-PIP : 122 || Parent Gate : 8 || Pin : 26
-PIP : 123 || Parent Gate : 8 || Pin : 27
-PIP : 124 || Parent Gate : 8 || Pin : 28
-PIP : 125 || Parent Gate : 8 || Pin : 29
-PIP : 126 || Parent Gate : 8 || Pin : 30
-PIP : 127 || Parent Gate : 8 || Pin : 31
-PIP : 128 || Parent Gate : 8 || Pin : 32
-PIP : 129 || Parent Gate : 8 || Pin : 33
-PIP : 130 || Parent Gate : 8 || Pin : 34
-PIP : 131 || Parent Gate : 8 || Pin : 35
-PIP : 132 || Parent Gate : 8 || Pin : 36
-PIP : 133 || Parent Gate : 8 || Pin : 37
-PIP : 134 || Parent Gate : 8 || Pin : 39
-PIP : 135 || Parent Gate : 8 || Pin : 40
-PIP : 136 || Parent Gate : 8 || Pin : 41
-PIP : 137 || Parent Gate : 8 || Pin : 42
-PIP : 138 || Parent Gate : 8 || Pin : 44
-PIP : 139 || Parent Gate : 8 || Pin : 45
-PIP : 140 || Parent Gate : 8 || Pin : 46
-PIP : 141 || Parent Gate : 8 || Pin : 47
-PIP : 142 || Parent Gate : 8 || Pin : 48
-PIP : 143 || Parent Gate : 8 || Pin : 49
-PIP : 144 || Parent Gate : 8 || Pin : 51
-PIP : 145 || Parent Gate : 8 || Pin : 52
-PIP : 146 || Parent Gate : 8 || Pin : 53
-PIP : 147 || Parent Gate : 8 || Pin : 54
-PIP : 148 || Parent Gate : 8 || Pin : 55
-PIP : 149 || Parent Gate : 8 || Pin : 56
-PIP : 150 || Parent Gate : 8 || Pin : 57
-PIP : 151 || Parent Gate : 8 || Pin : 58
-PIP : 152 || Parent Gate : 8 || Pin : 59
-PIP : 153 || Parent Gate : 8 || Pin : 60
-PIP : 154 || Parent Gate : 8 || Pin : 61
-PIP : 155 || Parent Gate : 8 || Pin : 62
-PIP : 156 || Parent Gate : 8 || Pin : 63
-PIP : 157 || Parent Gate : 8 || Pin : 64
-PIP : 158 || Parent Gate : 8 || Pin : 65
-PIP : 159 || Parent Gate : 8 || Pin : 66
-PIP : 160 || Parent Gate : 8 || Pin : 67
-PIP : 161 || Parent Gate : 8 || Pin : 68
-PIP : 162 || Parent Gate : 8 || Pin : 69
-PIP : 163 || Parent Gate : 8 || Pin : 70
-PIP : 164 || Parent Gate : 8 || Pin : 71
-PIP : 165 || Parent Gate : 8 || Pin : 72
-PIP : 166 || Parent Gate : 9 || Pin : 1
-PIP : 167 || Parent Gate : 9 || Pin : 2
-PIP : 168 || Parent Gate : 9 || Pin : 3
-PIP : 169 || Parent Gate : 9 || Pin : 4
-PIP : 170 || Parent Gate : 9 || Pin : 5
-PIP : 171 || Parent Gate : 9 || Pin : 6
-PIP : 172 || Parent Gate : 9 || Pin : 7
-PIP : 173 || Parent Gate : 9 || Pin : 8
-PIP : 174 || Parent Gate : 9 || Pin : 9
-PIP : 175 || Parent Gate : 9 || Pin : 10
-PIP : 176 || Parent Gate : 9 || Pin : 11
-PIP : 177 || Parent Gate : 9 || Pin : 12
-PIP : 178 || Parent Gate : 9 || Pin : 13
-PIP : 179 || Parent Gate : 9 || Pin : 15
-PIP : 180 || Parent Gate : 9 || Pin : 16
-PIP : 181 || Parent Gate : 9 || Pin : 17
-PIP : 182 || Parent Gate : 9 || Pin : 18
-PIP : 183 || Parent Gate : 9 || Pin : 19
-PIP : 184 || Parent Gate : 9 || Pin : 20
-PIP : 185 || Parent Gate : 9 || Pin : 21
-PIP : 186 || Parent Gate : 9 || Pin : 22
-PIP : 187 || Parent Gate : 9 || Pin : 23
-PIP : 188 || Parent Gate : 9 || Pin : 24
-PIP : 189 || Parent Gate : 9 || Pin : 25
-PIP : 190 || Parent Gate : 9 || Pin : 26
-PIP : 191 || Parent Gate : 9 || Pin : 29
-PIP : 192 || Parent Gate : 9 || Pin : 30
-PIP : 193 || Parent Gate : 9 || Pin : 31
-PIP : 194 || Parent Gate : 9 || Pin : 32
-PIP : 195 || Parent Gate : 9 || Pin : 33
-PIP : 196 || Parent Gate : 9 || Pin : 34
-PIP : 197 || Parent Gate : 9 || Pin : 35
-PIP : 198 || Parent Gate : 9 || Pin : 36
-PIP : 199 || Parent Gate : 9 || Pin : 37
-PIP : 200 || Parent Gate : 9 || Pin : 38
-PIP : 201 || Parent Gate : 9 || Pin : 39
-PIP : 202 || Parent Gate : 9 || Pin : 40
-PIP : 203 || Parent Gate : 9 || Pin : 41
-PIP : 204 || Parent Gate : 9 || Pin : 42
-PIP : 205 || Parent Gate : 9 || Pin : 43
-PIP : 206 || Parent Gate : 9 || Pin : 44
-PIP : 207 || Parent Gate : 9 || Pin : 45
-PIP : 208 || Parent Gate : 9 || Pin : 46
-PIP : 209 || Parent Gate : 9 || Pin : 47
-PIP : 210 || Parent Gate : 9 || Pin : 48
-PIP : 211 || Parent Gate : 9 || Pin : 49
-PIP : 212 || Parent Gate : 9 || Pin : 50
-PIP : 213 || Parent Gate : 9 || Pin : 51
-PIP : 214 || Parent Gate : 9 || Pin : 52
-PIP : 215 || Parent Gate : 9 || Pin : 53
-PIP : 216 || Parent Gate : 9 || Pin : 54
-PIP : 217 || Parent Gate : 9 || Pin : 55
-PIP : 218 || Parent Gate : 9 || Pin : 56
-PIP : 219 || Parent Gate : 9 || Pin : 57
-PIP : 220 || Parent Gate : 9 || Pin : 58
-PIP : 221 || Parent Gate : 9 || Pin : 59
-PIP : 222 || Parent Gate : 9 || Pin : 60
-PIP : 223 || Parent Gate : 9 || Pin : 61
-PIP : 224 || Parent Gate : 9 || Pin : 62
-PIP : 225 || Parent Gate : 9 || Pin : 63
-PIP : 226 || Parent Gate : 9 || Pin : 64
-PIP : 227 || Parent Gate : 9 || Pin : 65
-PIP : 228 || Parent Gate : 9 || Pin : 66
-PIP : 229 || Parent Gate : 9 || Pin : 67
-PIP : 230 || Parent Gate : 9 || Pin : 68
-PIP : 231 || Parent Gate : 9 || Pin : 69
-PIP : 232 || Parent Gate : 9 || Pin : 70
-PIP : 233 || Parent Gate : 9 || Pin : 71
-PIP : 234 || Parent Gate : 9 || Pin : 72
-PIP : 235 || Parent Gate : 9 || Pin : 73
-PIP : 236 || Parent Gate : 10 || Pin : 1
-PIP : 237 || Parent Gate : 10 || Pin : 2
-PIP : 238 || Parent Gate : 10 || Pin : 3
-PIP : 239 || Parent Gate : 10 || Pin : 4
-PIP : 240 || Parent Gate : 10 || Pin : 6
-PIP : 241 || Parent Gate : 10 || Pin : 7
-PIP : 242 || Parent Gate : 10 || Pin : 8
-PIP : 243 || Parent Gate : 10 || Pin : 9
-PIP : 244 || Parent Gate : 10 || Pin : 10
-PIP : 245 || Parent Gate : 10 || Pin : 11
-PIP : 246 || Parent Gate : 10 || Pin : 12
-PIP : 247 || Parent Gate : 10 || Pin : 13
-PIP : 248 || Parent Gate : 10 || Pin : 14
-PIP : 249 || Parent Gate : 10 || Pin : 15
-PIP : 250 || Parent Gate : 10 || Pin : 16
-PIP : 251 || Parent Gate : 10 || Pin : 17
-PIP : 252 || Parent Gate : 10 || Pin : 18
-PIP : 253 || Parent Gate : 10 || Pin : 19
-PIP : 254 || Parent Gate : 10 || Pin : 20
-PIP : 255 || Parent Gate : 10 || Pin : 22
-PIP : 256 || Parent Gate : 10 || Pin : 23
-PIP : 257 || Parent Gate : 10 || Pin : 24
-PIP : 258 || Parent Gate : 10 || Pin : 25
-PIP : 259 || Parent Gate : 10 || Pin : 26
-PIP : 260 || Parent Gate : 10 || Pin : 27
-PIP : 261 || Parent Gate : 10 || Pin : 28
-PIP : 262 || Parent Gate : 10 || Pin : 29
-PIP : 263 || Parent Gate : 10 || Pin : 30
-PIP : 264 || Parent Gate : 10 || Pin : 31
-PIP : 265 || Parent Gate : 10 || Pin : 32
-PIP : 266 || Parent Gate : 10 || Pin : 33
-PIP : 267 || Parent Gate : 10 || Pin : 34
-PIP : 268 || Parent Gate : 10 || Pin : 35
-PIP : 269 || Parent Gate : 10 || Pin : 36
-PIP : 270 || Parent Gate : 10 || Pin : 38
-PIP : 271 || Parent Gate : 10 || Pin : 39
-PIP : 272 || Parent Gate : 10 || Pin : 41
-PIP : 273 || Parent Gate : 10 || Pin : 42
-PIP : 274 || Parent Gate : 10 || Pin : 43
-PIP : 275 || Parent Gate : 10 || Pin : 44
-PIP : 276 || Parent Gate : 10 || Pin : 46
-PIP : 277 || Parent Gate : 10 || Pin : 47
-PIP : 278 || Parent Gate : 10 || Pin : 48
-PIP : 279 || Parent Gate : 10 || Pin : 49
-PIP : 280 || Parent Gate : 10 || Pin : 50
-PIP : 281 || Parent Gate : 10 || Pin : 51
+PIP : 1 || Parent Gate : 1 || Pin : 1
+PIP : 2 || Parent Gate : 2 || Pin : 1
+PIP : 3 || Parent Gate : 2 || Pin : 2
+PIP : 4 || Parent Gate : 2 || Pin : 3
+PIP : 5 || Parent Gate : 2 || Pin : 4
+PIP : 6 || Parent Gate : 2 || Pin : 5
+PIP : 7 || Parent Gate : 2 || Pin : 6
+PIP : 8 || Parent Gate : 2 || Pin : 7
+PIP : 9 || Parent Gate : 2 || Pin : 8
+PIP : 10 || Parent Gate : 2 || Pin : 9
+PIP : 11 || Parent Gate : 2 || Pin : 10
+PIP : 12 || Parent Gate : 2 || Pin : 11
+PIP : 13 || Parent Gate : 2 || Pin : 12
+PIP : 14 || Parent Gate : 2 || Pin : 13
+PIP : 15 || Parent Gate : 2 || Pin : 14
+PIP : 16 || Parent Gate : 2 || Pin : 15
+PIP : 17 || Parent Gate : 2 || Pin : 16
+PIP : 18 || Parent Gate : 2 || Pin : 17
+PIP : 19 || Parent Gate : 2 || Pin : 18
+PIP : 20 || Parent Gate : 2 || Pin : 19
+PIP : 21 || Parent Gate : 2 || Pin : 20
+PIP : 22 || Parent Gate : 2 || Pin : 21
+PIP : 23 || Parent Gate : 2 || Pin : 22
+PIP : 24 || Parent Gate : 2 || Pin : 23
+PIP : 25 || Parent Gate : 2 || Pin : 24
+PIP : 26 || Parent Gate : 2 || Pin : 25
+PIP : 27 || Parent Gate : 2 || Pin : 26
+PIP : 28 || Parent Gate : 2 || Pin : 27
+PIP : 29 || Parent Gate : 2 || Pin : 28
+PIP : 30 || Parent Gate : 2 || Pin : 29
+PIP : 31 || Parent Gate : 2 || Pin : 30
+PIP : 32 || Parent Gate : 2 || Pin : 31
+PIP : 33 || Parent Gate : 2 || Pin : 32
+PIP : 34 || Parent Gate : 3 || Pin : 1
+PIP : 35 || Parent Gate : 3 || Pin : 2
+PIP : 36 || Parent Gate : 3 || Pin : 3
+PIP : 37 || Parent Gate : 4 || Pin : 1
+PIP : 38 || Parent Gate : 4 || Pin : 2
+PIP : 39 || Parent Gate : 4 || Pin : 3
+PIP : 40 || Parent Gate : 4 || Pin : 4
+PIP : 41 || Parent Gate : 4 || Pin : 5
+PIP : 42 || Parent Gate : 4 || Pin : 6
+PIP : 43 || Parent Gate : 4 || Pin : 7
+PIP : 44 || Parent Gate : 4 || Pin : 8
+PIP : 45 || Parent Gate : 4 || Pin : 9
+PIP : 46 || Parent Gate : 4 || Pin : 10
+PIP : 47 || Parent Gate : 4 || Pin : 11
+PIP : 48 || Parent Gate : 4 || Pin : 12
+PIP : 49 || Parent Gate : 4 || Pin : 13
+PIP : 50 || Parent Gate : 4 || Pin : 14
+PIP : 51 || Parent Gate : 4 || Pin : 15
+PIP : 52 || Parent Gate : 4 || Pin : 16
+PIP : 53 || Parent Gate : 4 || Pin : 17
+PIP : 54 || Parent Gate : 4 || Pin : 18
+PIP : 55 || Parent Gate : 4 || Pin : 19
+PIP : 56 || Parent Gate : 4 || Pin : 20
+PIP : 57 || Parent Gate : 4 || Pin : 21
+PIP : 58 || Parent Gate : 4 || Pin : 22
+PIP : 59 || Parent Gate : 4 || Pin : 23
+PIP : 60 || Parent Gate : 4 || Pin : 24
+PIP : 61 || Parent Gate : 4 || Pin : 25
+PIP : 62 || Parent Gate : 4 || Pin : 26
+PIP : 63 || Parent Gate : 4 || Pin : 27
+PIP : 64 || Parent Gate : 4 || Pin : 28
+PIP : 65 || Parent Gate : 4 || Pin : 29
+PIP : 66 || Parent Gate : 4 || Pin : 30
+PIP : 67 || Parent Gate : 4 || Pin : 31
+PIP : 68 || Parent Gate : 4 || Pin : 32
+PIP : 69 || Parent Gate : 4 || Pin : 33
+PIP : 70 || Parent Gate : 5 || Pin : 1
+PIP : 71 || Parent Gate : 5 || Pin : 2
+PIP : 72 || Parent Gate : 5 || Pin : 3
+PIP : 73 || Parent Gate : 5 || Pin : 4
+PIP : 74 || Parent Gate : 5 || Pin : 5
+PIP : 75 || Parent Gate : 5 || Pin : 6
+PIP : 76 || Parent Gate : 5 || Pin : 7
+PIP : 77 || Parent Gate : 5 || Pin : 8
+PIP : 78 || Parent Gate : 5 || Pin : 9
+PIP : 79 || Parent Gate : 6 || Pin : 1
+PIP : 80 || Parent Gate : 6 || Pin : 2
+PIP : 81 || Parent Gate : 6 || Pin : 3
+PIP : 82 || Parent Gate : 6 || Pin : 4
+PIP : 83 || Parent Gate : 7 || Pin : 1
+PIP : 84 || Parent Gate : 7 || Pin : 2
+PIP : 85 || Parent Gate : 7 || Pin : 3
+PIP : 86 || Parent Gate : 7 || Pin : 4
+PIP : 87 || Parent Gate : 7 || Pin : 5
+PIP : 88 || Parent Gate : 7 || Pin : 6
+PIP : 89 || Parent Gate : 7 || Pin : 7
+PIP : 90 || Parent Gate : 7 || Pin : 8
+PIP : 91 || Parent Gate : 7 || Pin : 9
+PIP : 92 || Parent Gate : 7 || Pin : 10
+PIP : 93 || Parent Gate : 7 || Pin : 11
+PIP : 94 || Parent Gate : 7 || Pin : 12
+PIP : 95 || Parent Gate : 7 || Pin : 13
+PIP : 96 || Parent Gate : 7 || Pin : 14
+PIP : 97 || Parent Gate : 7 || Pin : 15
+PIP : 98 || Parent Gate : 7 || Pin : 16
+PIP : 99 || Parent Gate : 7 || Pin : 17
+PIP : 100 || Parent Gate : 7 || Pin : 18
+PIP : 101 || Parent Gate : 7 || Pin : 19
+PIP : 102 || Parent Gate : 7 || Pin : 20
+PIP : 103 || Parent Gate : 7 || Pin : 21
+PIP : 104 || Parent Gate : 8 || Pin : 1
+PIP : 105 || Parent Gate : 8 || Pin : 2
+PIP : 106 || Parent Gate : 8 || Pin : 3
+PIP : 107 || Parent Gate : 8 || Pin : 4
+PIP : 108 || Parent Gate : 8 || Pin : 5
+PIP : 109 || Parent Gate : 8 || Pin : 6
+PIP : 110 || Parent Gate : 9 || Pin : 1
+PIP : 111 || Parent Gate : 9 || Pin : 2
+PIP : 112 || Parent Gate : 9 || Pin : 3
+PIP : 113 || Parent Gate : 9 || Pin : 4
+PIP : 114 || Parent Gate : 10 || Pin : 1
+PIP : 115 || Parent Gate : 10 || Pin : 2
+PIP : 116 || Parent Gate : 10 || Pin : 3
+PIP : 117 || Parent Gate : 10 || Pin : 4
+PIP : 118 || Parent Gate : 10 || Pin : 5
+PIP : 119 || Parent Gate : 10 || Pin : 6
+PIP : 120 || Parent Gate : 10 || Pin : 7
+PIP : 121 || Parent Gate : 10 || Pin : 8
+PIP : 122 || Parent Gate : 10 || Pin : 9
+PIP : 123 || Parent Gate : 10 || Pin : 10
+PIP : 124 || Parent Gate : 10 || Pin : 11
+PIP : 125 || Parent Gate : 10 || Pin : 12
+PIP : 126 || Parent Gate : 10 || Pin : 13
+PIP : 127 || Parent Gate : 10 || Pin : 14
+PIP : 128 || Parent Gate : 10 || Pin : 15
+PIP : 129 || Parent Gate : 10 || Pin : 16
+PIP : 130 || Parent Gate : 10 || Pin : 17
+PIP : 131 || Parent Gate : 10 || Pin : 18
+PIP : 132 || Parent Gate : 10 || Pin : 19
+PIP : 133 || Parent Gate : 10 || Pin : 20
+PIP : 134 || Parent Gate : 10 || Pin : 21
+PIP : 135 || Parent Gate : 10 || Pin : 22
+PIP : 136 || Parent Gate : 10 || Pin : 23
+PIP : 137 || Parent Gate : 10 || Pin : 24
+PIP : 138 || Parent Gate : 10 || Pin : 25
+PIP : 139 || Parent Gate : 10 || Pin : 26
+PIP : 140 || Parent Gate : 10 || Pin : 27
+PIP : 141 || Parent Gate : 10 || Pin : 28
+PIP : 142 || Parent Gate : 10 || Pin : 29
+PIP : 143 || Parent Gate : 10 || Pin : 30
+PIP : 144 || Parent Gate : 10 || Pin : 31
+PIP : 145 || Parent Gate : 10 || Pin : 32
+PIP : 146 || Parent Gate : 10 || Pin : 33
+PIP : 147 || Parent Gate : 10 || Pin : 34
+PIP : 148 || Parent Gate : 10 || Pin : 35
+PIP : 149 || Parent Gate : 10 || Pin : 36
+PIP : 150 || Parent Gate : 10 || Pin : 37
+PIP : 151 || Parent Gate : 10 || Pin : 38
+PIP : 152 || Parent Gate : 10 || Pin : 39
+PIP : 153 || Parent Gate : 10 || Pin : 40
+PIP : 154 || Parent Gate : 10 || Pin : 41
+PIP : 155 || Parent Gate : 10 || Pin : 42
+PIP : 156 || Parent Gate : 10 || Pin : 43
+PIP : 157 || Parent Gate : 10 || Pin : 44
+PIP : 158 || Parent Gate : 10 || Pin : 45
+PIP : 159 || Parent Gate : 10 || Pin : 46
+PIP : 160 || Parent Gate : 10 || Pin : 47
+PIP : 161 || Parent Gate : 10 || Pin : 48
+PIP : 162 || Parent Gate : 10 || Pin : 49
+PIP : 163 || Parent Gate : 10 || Pin : 50
+PIP : 164 || Parent Gate : 10 || Pin : 51
+PIP : 165 || Parent Gate : 10 || Pin : 52
+PIP : 166 || Parent Gate : 10 || Pin : 53
+PIP : 167 || Parent Gate : 10 || Pin : 54
+PIP : 168 || Parent Gate : 10 || Pin : 55
+PIP : 169 || Parent Gate : 10 || Pin : 56
+PIP : 170 || Parent Gate : 10 || Pin : 57
+PIP : 171 || Parent Gate : 10 || Pin : 58
+PIP : 172 || Parent Gate : 10 || Pin : 59
+PIP : 173 || Parent Gate : 10 || Pin : 60
+PIP : 174 || Parent Gate : 10 || Pin : 61
+PIP : 175 || Parent Gate : 10 || Pin : 62
+PIP : 176 || Parent Gate : 10 || Pin : 63
+PIP : 177 || Parent Gate : 10 || Pin : 64
+PIP : 178 || Parent Gate : 10 || Pin : 65
+PIP : 179 || Parent Gate : 10 || Pin : 66
+PIP : 180 || Parent Gate : 10 || Pin : 67
+PIP : 181 || Parent Gate : 10 || Pin : 68
+PIP : 182 || Parent Gate : 10 || Pin : 69
+PIP : 183 || Parent Gate : 10 || Pin : 70
+PIP : 184 || Parent Gate : 10 || Pin : 71
+PIP : 185 || Parent Gate : 10 || Pin : 72
+PIP : 186 || Parent Gate : 10 || Pin : 73
+PIP : 187 || Parent Gate : 10 || Pin : 74
+PIP : 188 || Parent Gate : 10 || Pin : 75
+PIP : 189 || Parent Gate : 10 || Pin : 76
+PIP : 190 || Parent Gate : 10 || Pin : 77
+PIP : 191 || Parent Gate : 10 || Pin : 78
+PIP : 192 || Parent Gate : 10 || Pin : 79
 
-POP : 1 || Parent Gate : 1 || Pin : 13
-POP : 2 || Parent Gate : 1 || Pin : 14
-POP : 3 || Parent Gate : 1 || Pin : 15
-POP : 4 || Parent Gate : 1 || Pin : 16
-POP : 5 || Parent Gate : 1 || Pin : 17
-POP : 6 || Parent Gate : 1 || Pin : 20
-POP : 7 || Parent Gate : 1 || Pin : 21
-POP : 8 || Parent Gate : 1 || Pin : 22
-POP : 9 || Parent Gate : 1 || Pin : 23
-POP : 10 || Parent Gate : 2 || Pin : 6
-POP : 11 || Parent Gate : 2 || Pin : 7
-POP : 12 || Parent Gate : 2 || Pin : 8
-POP : 13 || Parent Gate : 2 || Pin : 9
-POP : 14 || Parent Gate : 2 || Pin : 10
-POP : 15 || Parent Gate : 2 || Pin : 11
-POP : 16 || Parent Gate : 2 || Pin : 12
-POP : 17 || Parent Gate : 2 || Pin : 13
-POP : 18 || Parent Gate : 2 || Pin : 14
-POP : 19 || Parent Gate : 2 || Pin : 15
-POP : 20 || Parent Gate : 2 || Pin : 16
-POP : 21 || Parent Gate : 2 || Pin : 17
-POP : 22 || Parent Gate : 2 || Pin : 18
-POP : 23 || Parent Gate : 2 || Pin : 19
-POP : 24 || Parent Gate : 2 || Pin : 20
-POP : 25 || Parent Gate : 2 || Pin : 21
-POP : 26 || Parent Gate : 2 || Pin : 23
-POP : 27 || Parent Gate : 2 || Pin : 24
-POP : 28 || Parent Gate : 2 || Pin : 25
-POP : 29 || Parent Gate : 2 || Pin : 26
-POP : 30 || Parent Gate : 2 || Pin : 27
-POP : 31 || Parent Gate : 2 || Pin : 28
-POP : 32 || Parent Gate : 2 || Pin : 29
-POP : 33 || Parent Gate : 2 || Pin : 30
-POP : 34 || Parent Gate : 2 || Pin : 31
-POP : 35 || Parent Gate : 2 || Pin : 32
-POP : 36 || Parent Gate : 2 || Pin : 33
-POP : 37 || Parent Gate : 2 || Pin : 34
-POP : 38 || Parent Gate : 3 || Pin : 5
-POP : 39 || Parent Gate : 3 || Pin : 6
-POP : 40 || Parent Gate : 3 || Pin : 8
-POP : 41 || Parent Gate : 3 || Pin : 9
-POP : 42 || Parent Gate : 3 || Pin : 10
-POP : 43 || Parent Gate : 4 || Pin : 45
-POP : 44 || Parent Gate : 4 || Pin : 46
-POP : 45 || Parent Gate : 4 || Pin : 47
-POP : 46 || Parent Gate : 4 || Pin : 49
-POP : 47 || Parent Gate : 4 || Pin : 50
-POP : 48 || Parent Gate : 4 || Pin : 51
-POP : 49 || Parent Gate : 4 || Pin : 52
-POP : 50 || Parent Gate : 4 || Pin : 53
-POP : 51 || Parent Gate : 4 || Pin : 54
-POP : 52 || Parent Gate : 4 || Pin : 55
-POP : 53 || Parent Gate : 4 || Pin : 56
-POP : 54 || Parent Gate : 4 || Pin : 57
-POP : 55 || Parent Gate : 4 || Pin : 58
-POP : 56 || Parent Gate : 4 || Pin : 59
-POP : 57 || Parent Gate : 4 || Pin : 60
-POP : 58 || Parent Gate : 4 || Pin : 61
-POP : 59 || Parent Gate : 4 || Pin : 62
-POP : 60 || Parent Gate : 4 || Pin : 63
-POP : 61 || Parent Gate : 4 || Pin : 64
-POP : 62 || Parent Gate : 4 || Pin : 65
-POP : 63 || Parent Gate : 4 || Pin : 66
-POP : 64 || Parent Gate : 4 || Pin : 67
-POP : 65 || Parent Gate : 4 || Pin : 68
-POP : 66 || Parent Gate : 4 || Pin : 69
-POP : 67 || Parent Gate : 4 || Pin : 70
-POP : 68 || Parent Gate : 4 || Pin : 71
-POP : 69 || Parent Gate : 4 || Pin : 74
-POP : 70 || Parent Gate : 4 || Pin : 75
-POP : 71 || Parent Gate : 4 || Pin : 76
-POP : 72 || Parent Gate : 4 || Pin : 77
-POP : 73 || Parent Gate : 4 || Pin : 78
-POP : 74 || Parent Gate : 4 || Pin : 79
-POP : 75 || Parent Gate : 4 || Pin : 80
-POP : 76 || Parent Gate : 4 || Pin : 81
-POP : 77 || Parent Gate : 4 || Pin : 82
-POP : 78 || Parent Gate : 4 || Pin : 83
-POP : 79 || Parent Gate : 4 || Pin : 84
-POP : 80 || Parent Gate : 4 || Pin : 85
-POP : 81 || Parent Gate : 4 || Pin : 86
-POP : 82 || Parent Gate : 4 || Pin : 87
-POP : 83 || Parent Gate : 4 || Pin : 88
-POP : 84 || Parent Gate : 4 || Pin : 89
-POP : 85 || Parent Gate : 4 || Pin : 90
-POP : 86 || Parent Gate : 4 || Pin : 91
-POP : 87 || Parent Gate : 4 || Pin : 92
-POP : 88 || Parent Gate : 4 || Pin : 93
-POP : 89 || Parent Gate : 4 || Pin : 94
-POP : 90 || Parent Gate : 4 || Pin : 95
-POP : 91 || Parent Gate : 4 || Pin : 96
-POP : 92 || Parent Gate : 4 || Pin : 97
-POP : 93 || Parent Gate : 4 || Pin : 98
-POP : 94 || Parent Gate : 4 || Pin : 99
-POP : 95 || Parent Gate : 4 || Pin : 100
-POP : 96 || Parent Gate : 4 || Pin : 101
-POP : 97 || Parent Gate : 4 || Pin : 102
-POP : 98 || Parent Gate : 4 || Pin : 103
-POP : 99 || Parent Gate : 4 || Pin : 104
-POP : 100 || Parent Gate : 4 || Pin : 105
-POP : 101 || Parent Gate : 4 || Pin : 106
-POP : 102 || Parent Gate : 5 || Pin : 17
-POP : 103 || Parent Gate : 5 || Pin : 18
-POP : 104 || Parent Gate : 5 || Pin : 19
-POP : 105 || Parent Gate : 5 || Pin : 20
-POP : 106 || Parent Gate : 5 || Pin : 21
-POP : 107 || Parent Gate : 5 || Pin : 22
-POP : 108 || Parent Gate : 5 || Pin : 23
-POP : 109 || Parent Gate : 5 || Pin : 24
-POP : 110 || Parent Gate : 5 || Pin : 25
-POP : 111 || Parent Gate : 5 || Pin : 26
-POP : 112 || Parent Gate : 5 || Pin : 27
-POP : 113 || Parent Gate : 5 || Pin : 28
-POP : 114 || Parent Gate : 5 || Pin : 29
-POP : 115 || Parent Gate : 5 || Pin : 30
-POP : 116 || Parent Gate : 5 || Pin : 31
-POP : 117 || Parent Gate : 5 || Pin : 33
-POP : 118 || Parent Gate : 5 || Pin : 34
-POP : 119 || Parent Gate : 5 || Pin : 35
-POP : 120 || Parent Gate : 5 || Pin : 36
-POP : 121 || Parent Gate : 5 || Pin : 37
-POP : 122 || Parent Gate : 5 || Pin : 38
-POP : 123 || Parent Gate : 5 || Pin : 39
-POP : 124 || Parent Gate : 5 || Pin : 40
-POP : 125 || Parent Gate : 5 || Pin : 41
-POP : 126 || Parent Gate : 5 || Pin : 42
-POP : 127 || Parent Gate : 6 || Pin : 32
-POP : 128 || Parent Gate : 6 || Pin : 33
-POP : 129 || Parent Gate : 6 || Pin : 34
-POP : 130 || Parent Gate : 6 || Pin : 36
-POP : 131 || Parent Gate : 6 || Pin : 37
-POP : 132 || Parent Gate : 6 || Pin : 38
-POP : 133 || Parent Gate : 6 || Pin : 40
-POP : 134 || Parent Gate : 6 || Pin : 41
-POP : 135 || Parent Gate : 6 || Pin : 43
-POP : 136 || Parent Gate : 6 || Pin : 45
-POP : 137 || Parent Gate : 6 || Pin : 46
-POP : 138 || Parent Gate : 6 || Pin : 47
-POP : 139 || Parent Gate : 6 || Pin : 48
-POP : 140 || Parent Gate : 6 || Pin : 49
-POP : 141 || Parent Gate : 6 || Pin : 50
-POP : 142 || Parent Gate : 6 || Pin : 51
-POP : 143 || Parent Gate : 6 || Pin : 52
-POP : 144 || Parent Gate : 6 || Pin : 53
-POP : 145 || Parent Gate : 6 || Pin : 54
-POP : 146 || Parent Gate : 6 || Pin : 55
-POP : 147 || Parent Gate : 6 || Pin : 56
-POP : 148 || Parent Gate : 6 || Pin : 57
-POP : 149 || Parent Gate : 6 || Pin : 58
-POP : 150 || Parent Gate : 6 || Pin : 59
-POP : 151 || Parent Gate : 6 || Pin : 60
-POP : 152 || Parent Gate : 6 || Pin : 61
-POP : 153 || Parent Gate : 6 || Pin : 62
-POP : 154 || Parent Gate : 6 || Pin : 63
-POP : 155 || Parent Gate : 6 || Pin : 64
-POP : 156 || Parent Gate : 6 || Pin : 66
-POP : 157 || Parent Gate : 6 || Pin : 67
-POP : 158 || Parent Gate : 6 || Pin : 68
-POP : 159 || Parent Gate : 6 || Pin : 69
-POP : 160 || Parent Gate : 6 || Pin : 70
-POP : 161 || Parent Gate : 6 || Pin : 71
-POP : 162 || Parent Gate : 6 || Pin : 72
-POP : 163 || Parent Gate : 6 || Pin : 73
-POP : 164 || Parent Gate : 6 || Pin : 74
-POP : 165 || Parent Gate : 6 || Pin : 75
-POP : 166 || Parent Gate : 8 || Pin : 73
-POP : 167 || Parent Gate : 8 || Pin : 74
-POP : 168 || Parent Gate : 8 || Pin : 75
-POP : 169 || Parent Gate : 8 || Pin : 76
-POP : 170 || Parent Gate : 8 || Pin : 77
-POP : 171 || Parent Gate : 8 || Pin : 80
-POP : 172 || Parent Gate : 8 || Pin : 81
-POP : 173 || Parent Gate : 8 || Pin : 82
-POP : 174 || Parent Gate : 8 || Pin : 83
-POP : 175 || Parent Gate : 8 || Pin : 84
-POP : 176 || Parent Gate : 8 || Pin : 85
-POP : 177 || Parent Gate : 8 || Pin : 86
-POP : 178 || Parent Gate : 8 || Pin : 87
-POP : 179 || Parent Gate : 8 || Pin : 88
-POP : 180 || Parent Gate : 8 || Pin : 89
-POP : 181 || Parent Gate : 8 || Pin : 90
-POP : 182 || Parent Gate : 8 || Pin : 91
-POP : 183 || Parent Gate : 8 || Pin : 92
-POP : 184 || Parent Gate : 8 || Pin : 94
-POP : 185 || Parent Gate : 8 || Pin : 95
-POP : 186 || Parent Gate : 8 || Pin : 96
-POP : 187 || Parent Gate : 8 || Pin : 97
-POP : 188 || Parent Gate : 8 || Pin : 98
-POP : 189 || Parent Gate : 8 || Pin : 99
-POP : 190 || Parent Gate : 8 || Pin : 100
-POP : 191 || Parent Gate : 8 || Pin : 101
-POP : 192 || Parent Gate : 8 || Pin : 102
-POP : 193 || Parent Gate : 8 || Pin : 103
-POP : 194 || Parent Gate : 8 || Pin : 104
-POP : 195 || Parent Gate : 8 || Pin : 105
-POP : 196 || Parent Gate : 8 || Pin : 106
-POP : 197 || Parent Gate : 9 || Pin : 74
-POP : 198 || Parent Gate : 9 || Pin : 75
-POP : 199 || Parent Gate : 9 || Pin : 76
-POP : 200 || Parent Gate : 9 || Pin : 77
-POP : 201 || Parent Gate : 9 || Pin : 78
-POP : 202 || Parent Gate : 9 || Pin : 79
-POP : 203 || Parent Gate : 9 || Pin : 80
-POP : 204 || Parent Gate : 9 || Pin : 81
-POP : 205 || Parent Gate : 9 || Pin : 82
-POP : 206 || Parent Gate : 9 || Pin : 83
-POP : 207 || Parent Gate : 9 || Pin : 84
-POP : 208 || Parent Gate : 9 || Pin : 85
-POP : 209 || Parent Gate : 9 || Pin : 86
-POP : 210 || Parent Gate : 9 || Pin : 87
-POP : 211 || Parent Gate : 9 || Pin : 88
-POP : 212 || Parent Gate : 9 || Pin : 89
-POP : 213 || Parent Gate : 9 || Pin : 90
-POP : 214 || Parent Gate : 9 || Pin : 91
-POP : 215 || Parent Gate : 9 || Pin : 92
-POP : 216 || Parent Gate : 9 || Pin : 93
-POP : 217 || Parent Gate : 9 || Pin : 94
-POP : 218 || Parent Gate : 9 || Pin : 95
-POP : 219 || Parent Gate : 9 || Pin : 96
-POP : 220 || Parent Gate : 9 || Pin : 97
-POP : 221 || Parent Gate : 9 || Pin : 98
-POP : 222 || Parent Gate : 9 || Pin : 99
-POP : 223 || Parent Gate : 9 || Pin : 101
-POP : 224 || Parent Gate : 9 || Pin : 102
-POP : 225 || Parent Gate : 9 || Pin : 103
-POP : 226 || Parent Gate : 9 || Pin : 104
-POP : 227 || Parent Gate : 9 || Pin : 105
-POP : 228 || Parent Gate : 9 || Pin : 106
-POP : 229 || Parent Gate : 9 || Pin : 107
-POP : 230 || Parent Gate : 9 || Pin : 108
-POP : 231 || Parent Gate : 9 || Pin : 109
-POP : 232 || Parent Gate : 9 || Pin : 110
-POP : 233 || Parent Gate : 9 || Pin : 111
-POP : 234 || Parent Gate : 9 || Pin : 112
-POP : 235 || Parent Gate : 9 || Pin : 113
-POP : 236 || Parent Gate : 9 || Pin : 114
-POP : 237 || Parent Gate : 9 || Pin : 115
-POP : 238 || Parent Gate : 9 || Pin : 116
-POP : 239 || Parent Gate : 9 || Pin : 117
-POP : 240 || Parent Gate : 9 || Pin : 118
-POP : 241 || Parent Gate : 9 || Pin : 119
-POP : 242 || Parent Gate : 9 || Pin : 120
-POP : 243 || Parent Gate : 9 || Pin : 121
-POP : 244 || Parent Gate : 9 || Pin : 122
-POP : 245 || Parent Gate : 9 || Pin : 123
-POP : 246 || Parent Gate : 9 || Pin : 124
-POP : 247 || Parent Gate : 9 || Pin : 125
-POP : 248 || Parent Gate : 9 || Pin : 126
-POP : 249 || Parent Gate : 9 || Pin : 127
-POP : 250 || Parent Gate : 9 || Pin : 128
-POP : 251 || Parent Gate : 9 || Pin : 129
-POP : 252 || Parent Gate : 9 || Pin : 130
-POP : 253 || Parent Gate : 9 || Pin : 131
-POP : 254 || Parent Gate : 9 || Pin : 132
-POP : 255 || Parent Gate : 9 || Pin : 133
-POP : 256 || Parent Gate : 9 || Pin : 134
-POP : 257 || Parent Gate : 9 || Pin : 135
-POP : 258 || Parent Gate : 9 || Pin : 136
-POP : 259 || Parent Gate : 9 || Pin : 137
-POP : 260 || Parent Gate : 9 || Pin : 139
-POP : 261 || Parent Gate : 9 || Pin : 140
-POP : 262 || Parent Gate : 9 || Pin : 141
-POP : 263 || Parent Gate : 9 || Pin : 142
-POP : 264 || Parent Gate : 9 || Pin : 143
-POP : 265 || Parent Gate : 9 || Pin : 144
-POP : 266 || Parent Gate : 9 || Pin : 145
-POP : 267 || Parent Gate : 9 || Pin : 146
-POP : 268 || Parent Gate : 9 || Pin : 147
-POP : 269 || Parent Gate : 9 || Pin : 148
-POP : 270 || Parent Gate : 9 || Pin : 149
-POP : 271 || Parent Gate : 9 || Pin : 150
-POP : 272 || Parent Gate : 9 || Pin : 151
-POP : 273 || Parent Gate : 9 || Pin : 152
-POP : 274 || Parent Gate : 9 || Pin : 153
-POP : 275 || Parent Gate : 10 || Pin : 52
-POP : 276 || Parent Gate : 10 || Pin : 54
-POP : 277 || Parent Gate : 10 || Pin : 55
-POP : 278 || Parent Gate : 10 || Pin : 56
-POP : 279 || Parent Gate : 10 || Pin : 57
-POP : 280 || Parent Gate : 10 || Pin : 58
-POP : 281 || Parent Gate : 10 || Pin : 59
-POP : 282 || Parent Gate : 10 || Pin : 60
-POP : 283 || Parent Gate : 10 || Pin : 61
-POP : 284 || Parent Gate : 10 || Pin : 62
-POP : 285 || Parent Gate : 10 || Pin : 63
-POP : 286 || Parent Gate : 10 || Pin : 64
-POP : 287 || Parent Gate : 10 || Pin : 65
-POP : 288 || Parent Gate : 10 || Pin : 66
-POP : 289 || Parent Gate : 10 || Pin : 67
-POP : 290 || Parent Gate : 10 || Pin : 68
-POP : 291 || Parent Gate : 10 || Pin : 69
-POP : 292 || Parent Gate : 10 || Pin : 70
-POP : 293 || Parent Gate : 10 || Pin : 71
-POP : 294 || Parent Gate : 10 || Pin : 72
-POP : 295 || Parent Gate : 10 || Pin : 73
-POP : 296 || Parent Gate : 10 || Pin : 74
-POP : 297 || Parent Gate : 10 || Pin : 75
-POP : 298 || Parent Gate : 10 || Pin : 76
-POP : 299 || Parent Gate : 10 || Pin : 77
-POP : 300 || Parent Gate : 10 || Pin : 78
-POP : 301 || Parent Gate : 10 || Pin : 79
-POP : 302 || Parent Gate : 10 || Pin : 80
-POP : 303 || Parent Gate : 10 || Pin : 81
-POP : 304 || Parent Gate : 10 || Pin : 82
-POP : 305 || Parent Gate : 10 || Pin : 83
-POP : 306 || Parent Gate : 10 || Pin : 84
-POP : 307 || Parent Gate : 10 || Pin : 85
-POP : 308 || Parent Gate : 10 || Pin : 86
-POP : 309 || Parent Gate : 10 || Pin : 87
-POP : 310 || Parent Gate : 10 || Pin : 88
-POP : 311 || Parent Gate : 10 || Pin : 89
-POP : 312 || Parent Gate : 10 || Pin : 90
-POP : 313 || Parent Gate : 10 || Pin : 91
-POP : 314 || Parent Gate : 10 || Pin : 92
-POP : 315 || Parent Gate : 10 || Pin : 93
-POP : 316 || Parent Gate : 10 || Pin : 94
-POP : 317 || Parent Gate : 10 || Pin : 95
-POP : 318 || Parent Gate : 10 || Pin : 96
-POP : 319 || Parent Gate : 10 || Pin : 97
-POP : 320 || Parent Gate : 10 || Pin : 98
-POP : 321 || Parent Gate : 10 || Pin : 99
-POP : 322 || Parent Gate : 10 || Pin : 100
-POP : 323 || Parent Gate : 10 || Pin : 101
-POP : 324 || Parent Gate : 10 || Pin : 102
-POP : 325 || Parent Gate : 10 || Pin : 103
-POP : 326 || Parent Gate : 10 || Pin : 104
-POP : 327 || Parent Gate : 10 || Pin : 105
-POP : 328 || Parent Gate : 10 || Pin : 107
-POP : 329 || Parent Gate : 10 || Pin : 108
-POP : 330 || Parent Gate : 10 || Pin : 109
-POP : 331 || Parent Gate : 10 || Pin : 110
-POP : 332 || Parent Gate : 10 || Pin : 111
-POP : 333 || Parent Gate : 10 || Pin : 112
-POP : 334 || Parent Gate : 10 || Pin : 113
-POP : 335 || Parent Gate : 10 || Pin : 114
-POP : 336 || Parent Gate : 10 || Pin : 115
-POP : 337 || Parent Gate : 10 || Pin : 116
-POP : 338 || Parent Gate : 10 || Pin : 117
-POP : 339 || Parent Gate : 10 || Pin : 118
-POP : 340 || Parent Gate : 10 || Pin : 119
-POP : 341 || Parent Gate : 10 || Pin : 120
-POP : 342 || Parent Gate : 10 || Pin : 121
-POP : 343 || Parent Gate : 10 || Pin : 122
-POP : 344 || Parent Gate : 10 || Pin : 123
-POP : 345 || Parent Gate : 10 || Pin : 124
-POP : 346 || Parent Gate : 10 || Pin : 125
-POP : 347 || Parent Gate : 10 || Pin : 126
-POP : 348 || Parent Gate : 10 || Pin : 127
-POP : 349 || Parent Gate : 10 || Pin : 128
-POP : 350 || Parent Gate : 10 || Pin : 129
+POP : 1 || Parent Gate : 1 || Pin : 2
+POP : 2 || Parent Gate : 1 || Pin : 3
+POP : 3 || Parent Gate : 1 || Pin : 4
+POP : 4 || Parent Gate : 2 || Pin : 33
+POP : 5 || Parent Gate : 2 || Pin : 34
+POP : 6 || Parent Gate : 2 || Pin : 35
+POP : 7 || Parent Gate : 2 || Pin : 36
+POP : 8 || Parent Gate : 2 || Pin : 37
+POP : 9 || Parent Gate : 2 || Pin : 38
+POP : 10 || Parent Gate : 2 || Pin : 39
+POP : 11 || Parent Gate : 2 || Pin : 40
+POP : 12 || Parent Gate : 2 || Pin : 41
+POP : 13 || Parent Gate : 2 || Pin : 42
+POP : 14 || Parent Gate : 2 || Pin : 43
+POP : 15 || Parent Gate : 2 || Pin : 44
+POP : 16 || Parent Gate : 2 || Pin : 45
+POP : 17 || Parent Gate : 2 || Pin : 46
+POP : 18 || Parent Gate : 3 || Pin : 4
+POP : 19 || Parent Gate : 3 || Pin : 5
+POP : 20 || Parent Gate : 3 || Pin : 6
+POP : 21 || Parent Gate : 3 || Pin : 7
+POP : 22 || Parent Gate : 3 || Pin : 8
+POP : 23 || Parent Gate : 3 || Pin : 9
+POP : 24 || Parent Gate : 3 || Pin : 10
+POP : 25 || Parent Gate : 3 || Pin : 11
+POP : 26 || Parent Gate : 3 || Pin : 12
+POP : 27 || Parent Gate : 4 || Pin : 34
+POP : 28 || Parent Gate : 4 || Pin : 35
+POP : 29 || Parent Gate : 4 || Pin : 36
+POP : 30 || Parent Gate : 4 || Pin : 37
+POP : 31 || Parent Gate : 4 || Pin : 38
+POP : 32 || Parent Gate : 4 || Pin : 39
+POP : 33 || Parent Gate : 4 || Pin : 40
+POP : 34 || Parent Gate : 4 || Pin : 41
+POP : 35 || Parent Gate : 4 || Pin : 42
+POP : 36 || Parent Gate : 4 || Pin : 43
+POP : 37 || Parent Gate : 4 || Pin : 44
+POP : 38 || Parent Gate : 4 || Pin : 45
+POP : 39 || Parent Gate : 4 || Pin : 46
+POP : 40 || Parent Gate : 4 || Pin : 47
+POP : 41 || Parent Gate : 4 || Pin : 48
+POP : 42 || Parent Gate : 4 || Pin : 49
+POP : 43 || Parent Gate : 4 || Pin : 50
+POP : 44 || Parent Gate : 4 || Pin : 51
+POP : 45 || Parent Gate : 4 || Pin : 52
+POP : 46 || Parent Gate : 4 || Pin : 53
+POP : 47 || Parent Gate : 4 || Pin : 54
+POP : 48 || Parent Gate : 4 || Pin : 55
+POP : 49 || Parent Gate : 4 || Pin : 56
+POP : 50 || Parent Gate : 4 || Pin : 57
+POP : 51 || Parent Gate : 4 || Pin : 58
+POP : 52 || Parent Gate : 4 || Pin : 59
+POP : 53 || Parent Gate : 4 || Pin : 60
+POP : 54 || Parent Gate : 4 || Pin : 61
+POP : 55 || Parent Gate : 4 || Pin : 62
+POP : 56 || Parent Gate : 4 || Pin : 63
+POP : 57 || Parent Gate : 4 || Pin : 64
+POP : 58 || Parent Gate : 4 || Pin : 65
+POP : 59 || Parent Gate : 4 || Pin : 66
+POP : 60 || Parent Gate : 4 || Pin : 67
+POP : 61 || Parent Gate : 4 || Pin : 68
+POP : 62 || Parent Gate : 4 || Pin : 69
+POP : 63 || Parent Gate : 4 || Pin : 70
+POP : 64 || Parent Gate : 4 || Pin : 71
+POP : 65 || Parent Gate : 4 || Pin : 72
+POP : 66 || Parent Gate : 4 || Pin : 73
+POP : 67 || Parent Gate : 4 || Pin : 74
+POP : 68 || Parent Gate : 4 || Pin : 75
+POP : 69 || Parent Gate : 4 || Pin : 76
+POP : 70 || Parent Gate : 4 || Pin : 77
+POP : 71 || Parent Gate : 4 || Pin : 78
+POP : 72 || Parent Gate : 4 || Pin : 79
+POP : 73 || Parent Gate : 4 || Pin : 80
+POP : 74 || Parent Gate : 4 || Pin : 81
+POP : 75 || Parent Gate : 4 || Pin : 82
+POP : 76 || Parent Gate : 4 || Pin : 83
+POP : 77 || Parent Gate : 4 || Pin : 84
+POP : 78 || Parent Gate : 4 || Pin : 85
+POP : 79 || Parent Gate : 4 || Pin : 86
+POP : 80 || Parent Gate : 4 || Pin : 87
+POP : 81 || Parent Gate : 4 || Pin : 88
+POP : 82 || Parent Gate : 5 || Pin : 10
+POP : 83 || Parent Gate : 5 || Pin : 11
+POP : 84 || Parent Gate : 5 || Pin : 12
+POP : 85 || Parent Gate : 5 || Pin : 13
+POP : 86 || Parent Gate : 5 || Pin : 14
+POP : 87 || Parent Gate : 5 || Pin : 15
+POP : 88 || Parent Gate : 5 || Pin : 16
+POP : 89 || Parent Gate : 5 || Pin : 17
+POP : 90 || Parent Gate : 5 || Pin : 18
+POP : 91 || Parent Gate : 5 || Pin : 19
+POP : 92 || Parent Gate : 5 || Pin : 20
+POP : 93 || Parent Gate : 6 || Pin : 5
+POP : 94 || Parent Gate : 6 || Pin : 6
+POP : 95 || Parent Gate : 6 || Pin : 7
+POP : 96 || Parent Gate : 6 || Pin : 8
+POP : 97 || Parent Gate : 6 || Pin : 9
+POP : 98 || Parent Gate : 6 || Pin : 10
+POP : 99 || Parent Gate : 6 || Pin : 11
+POP : 100 || Parent Gate : 6 || Pin : 12
+POP : 101 || Parent Gate : 6 || Pin : 13
+POP : 102 || Parent Gate : 6 || Pin : 14
+POP : 103 || Parent Gate : 6 || Pin : 15
+POP : 104 || Parent Gate : 6 || Pin : 16
+POP : 105 || Parent Gate : 6 || Pin : 17
+POP : 106 || Parent Gate : 6 || Pin : 18
+POP : 107 || Parent Gate : 6 || Pin : 19
+POP : 108 || Parent Gate : 6 || Pin : 20
+POP : 109 || Parent Gate : 6 || Pin : 21
+POP : 110 || Parent Gate : 6 || Pin : 22
+POP : 111 || Parent Gate : 6 || Pin : 23
+POP : 112 || Parent Gate : 6 || Pin : 24
+POP : 113 || Parent Gate : 6 || Pin : 25
+POP : 114 || Parent Gate : 6 || Pin : 26
+POP : 115 || Parent Gate : 6 || Pin : 27
+POP : 116 || Parent Gate : 6 || Pin : 28
+POP : 117 || Parent Gate : 6 || Pin : 29
+POP : 118 || Parent Gate : 6 || Pin : 30
+POP : 119 || Parent Gate : 6 || Pin : 31
+POP : 120 || Parent Gate : 6 || Pin : 32
+POP : 121 || Parent Gate : 6 || Pin : 33
+POP : 122 || Parent Gate : 6 || Pin : 34
+POP : 123 || Parent Gate : 6 || Pin : 35
+POP : 124 || Parent Gate : 6 || Pin : 36
+POP : 125 || Parent Gate : 6 || Pin : 37
+POP : 126 || Parent Gate : 7 || Pin : 22
+POP : 127 || Parent Gate : 7 || Pin : 23
+POP : 128 || Parent Gate : 7 || Pin : 24
+POP : 129 || Parent Gate : 7 || Pin : 25
+POP : 130 || Parent Gate : 7 || Pin : 26
+POP : 131 || Parent Gate : 8 || Pin : 7
+POP : 132 || Parent Gate : 8 || Pin : 8
+POP : 133 || Parent Gate : 8 || Pin : 9
+POP : 134 || Parent Gate : 8 || Pin : 10
+POP : 135 || Parent Gate : 8 || Pin : 11
+POP : 136 || Parent Gate : 9 || Pin : 5
+POP : 137 || Parent Gate : 9 || Pin : 6
+POP : 138 || Parent Gate : 9 || Pin : 7
+POP : 139 || Parent Gate : 9 || Pin : 8
+POP : 140 || Parent Gate : 9 || Pin : 9
+POP : 141 || Parent Gate : 9 || Pin : 10
+POP : 142 || Parent Gate : 10 || Pin : 80
+POP : 143 || Parent Gate : 10 || Pin : 81
+POP : 144 || Parent Gate : 10 || Pin : 82
+POP : 145 || Parent Gate : 10 || Pin : 83
+POP : 146 || Parent Gate : 10 || Pin : 84
+POP : 147 || Parent Gate : 10 || Pin : 85
+POP : 148 || Parent Gate : 10 || Pin : 86
+POP : 149 || Parent Gate : 10 || Pin : 87
+POP : 150 || Parent Gate : 10 || Pin : 88
+POP : 151 || Parent Gate : 10 || Pin : 89
+POP : 152 || Parent Gate : 10 || Pin : 90
+POP : 153 || Parent Gate : 10 || Pin : 91
+POP : 154 || Parent Gate : 10 || Pin : 92
+POP : 155 || Parent Gate : 10 || Pin : 93
+POP : 156 || Parent Gate : 10 || Pin : 94
+POP : 157 || Parent Gate : 10 || Pin : 95
+POP : 158 || Parent Gate : 10 || Pin : 96
+POP : 159 || Parent Gate : 10 || Pin : 97
+POP : 160 || Parent Gate : 10 || Pin : 98
 
 ============================================== Critical Path Information ===============================================
 
