@@ -1,0 +1,8 @@
+No Loop Detected
+No Multiple Input Detected
+Initial Critical Path Delay: 767233
+New Critical Path Delay: 744498
+New Critical Path Delay: 744025
+New Critical Path Delay: 728823
+Final Critical Path Delay: 728823
+Total Run Time, Single Run_time, Iterations Ran:  27.77971435,  0.17508865, 155

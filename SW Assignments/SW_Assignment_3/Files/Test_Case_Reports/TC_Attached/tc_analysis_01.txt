@@ -1,0 +1,60 @@
+Total Gates Generated : 1000
+Total Pins Generated : 37870
+Total Wires Generated : 1500
+Initial Critical Path Delay: 199692
+Final Critical Path Delay: 175190
+Total Run Time, Single Run_time, Iterations Ran:  27.05422783,  0.35734701, 119
+Total Gates Generated : 1000
+Total Pins Generated : 36965
+Total Wires Generated : 2000
+Initial Critical Path Delay: 333713
+Final Critical Path Delay: 312752
+Total Run Time, Single Run_time, Iterations Ran:  27.12575245,  0.33237290, 116
+Total Gates Generated : 1000
+Total Pins Generated : 36630
+Total Wires Generated : 3000
+Initial Critical Path Delay: 771744
+Final Critical Path Delay: 706513
+Total Run Time, Single Run_time, Iterations Ran:  27.17481279,  0.40057516, 95
+Total Gates Generated : 1000
+Total Pins Generated : 38399
+Total Wires Generated : 4000
+Initial Critical Path Delay: 863935
+Final Critical Path Delay: 780257
+Total Run Time, Single Run_time, Iterations Ran:  27.05877376,  0.43347812, 80
+Total Gates Generated : 1000
+Total Pins Generated : 38351
+Total Wires Generated : 5000
+Initial Critical Path Delay: 1024297
+Final Critical Path Delay: 958974
+Total Run Time, Single Run_time, Iterations Ran:  27.15132260,  0.46576309, 75
+Total Gates Generated : 1000
+Total Pins Generated : 38791
+Total Wires Generated : 6000
+Initial Critical Path Delay: 1079564
+Final Critical Path Delay: 1031018
+Total Run Time, Single Run_time, Iterations Ran:  27.07808709,  0.54597497, 67
+Total Gates Generated : 1000
+Total Pins Generated : 38128
+Total Wires Generated : 7000
+Initial Critical Path Delay: 1255920
+Final Critical Path Delay: 1201199
+Total Run Time, Single Run_time, Iterations Ran:  27.07827735,  0.59971023, 57
+Total Gates Generated : 1000
+Total Pins Generated : 37689
+Total Wires Generated : 8000
+Initial Critical Path Delay: 1322669
+Final Critical Path Delay: 1270158
+Total Run Time, Single Run_time, Iterations Ran:  27.32079983,  0.65510654, 56
+Total Gates Generated : 1000
+Total Pins Generated : 38132
+Total Wires Generated : 9000
+Initial Critical Path Delay: 1378390
+Final Critical Path Delay: 1365715
+Total Run Time, Single Run_time, Iterations Ran:  27.25133824,  0.67232323, 54
+Total Gates Generated : 1000
+Total Pins Generated : 37604
+Total Wires Generated : 10000
+Initial Critical Path Delay: 1435088
+Final Critical Path Delay: 1385001
+Total Run Time, Single Run_time, Iterations Ran:  27.02138638,  0.69581151, 50

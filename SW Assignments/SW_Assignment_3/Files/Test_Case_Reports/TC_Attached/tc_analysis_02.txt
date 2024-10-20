@@ -1,0 +1,54 @@
+Total Gates Generated : 1000
+Total Pins Generated : 19442
+Total Wires Generated : 5000
+Initial Critical Path Delay: 992364
+Final Critical Path Delay: 940077
+Total Run Time, Single Run_time, Iterations Ran:  29.62896943,  0.28549281, 95
+Total Gates Generated : 1000
+Total Pins Generated : 21420
+Total Wires Generated : 5000
+Initial Critical Path Delay: 975391
+Final Critical Path Delay: 911687
+Total Run Time, Single Run_time, Iterations Ran:  29.58163071,  0.28781558, 95
+Total Gates Generated : 1000
+Total Pins Generated : 23951
+Total Wires Generated : 5000
+Initial Critical Path Delay: 998136
+Final Critical Path Delay: 957287
+Total Run Time, Single Run_time, Iterations Ran:  30.31014180,  0.33012141, 83
+Total Gates Generated : 1000
+Total Pins Generated : 26608
+Total Wires Generated : 5000
+Initial Critical Path Delay: 992451
+Final Critical Path Delay: 950183
+Total Run Time, Single Run_time, Iterations Ran:  29.44042015,  0.39339939, 69
+Total Gates Generated : 1000
+Total Pins Generated : 28321
+Total Wires Generated : 5000
+Initial Critical Path Delay: 982698
+Final Critical Path Delay: 927901
+Total Run Time, Single Run_time, Iterations Ran:  29.87930107,  0.47542015, 58
+Total Gates Generated : 1000
+Total Pins Generated : 30021
+Total Wires Generated : 5000
+Initial Critical Path Delay: 945565
+Final Critical Path Delay: 918187
+Total Run Time, Single Run_time, Iterations Ran:  29.47783875,  0.49494855, 55
+Total Gates Generated : 1000
+Total Pins Generated : 32199
+Total Wires Generated : 5000
+Initial Critical Path Delay: 997811
+Final Critical Path Delay: 974902
+Total Run Time, Single Run_time, Iterations Ran:  30.08426809,  0.53240808, 51
+Total Gates Generated : 1000
+Total Pins Generated : 34801
+Total Wires Generated : 5000
+Initial Critical Path Delay: 920263
+Final Critical Path Delay: 890199
+Total Run Time, Single Run_time, Iterations Ran:  30.01348138,  0.55302490, 50
+Total Gates Generated : 1000
+Total Pins Generated : 35847
+Total Wires Generated : 5000
+Initial Critical Path Delay: 1004481
+Final Critical Path Delay: 943705
+Total Run Time, Single Run_time, Iterations Ran:  30.24937916,  0.58912801, 38

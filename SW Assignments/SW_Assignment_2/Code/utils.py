@@ -319,7 +319,7 @@ def write_multi_case(kw,kw_multi):
             file.write(f"Test Cases for {kw["gate_freq"]} frequency of Gates || Varying Pins || Fixing Wires\n")
             tc_count = 0
             for a in range(1,21):
-                kw["ensure_wire_freq"] = 10_000*a
+                kw["ensure_wire_freqs"] = 100*a
                 tc_count += 1
                 tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],tc_count),kw,supress_time_out = True)
                 file.write(f"Test Case {tc_count} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")

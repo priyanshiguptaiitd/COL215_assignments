@@ -18,6 +18,7 @@ FP_IN = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\input.txt"
 FP_OUT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\output.txt"
 FP_REPORT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\report.txt"
 
+
 FP_IN_MULTI = r"SW Assignments\SW_Assignment_3\Files\Test_Cases\TC_Multi\Input"
 FP_OUT_MULTI = r"SW Assignments\SW_Assignment_3\Files\Test_Cases\TC_Multi\Output"
 FP_REPORT_MULTI = r"SW Assignments\SW_Assignment_3\Files\Test_Case_Reports\TC_Multi"
@@ -306,7 +307,7 @@ def generate_wires_2(gate_freq,is_done_left, left_edge_data, right_edge_data, br
         
     return wire_data.keys()  
 
-
+@ time_it
 def write_single_case(gate_freq,fpath,kw):
     """
     Writes a single test case to a file using generate_dimensions, generate_pin_positions,
@@ -367,7 +368,48 @@ def write_single_case(gate_freq,fpath,kw):
 
         return [gate_freq,pins_gen,len(wire_data)]
 
-# ======================== Helper Functions for Simulated Annealing ============================= #        
+@ time_it
+def write_multi_case(kw,kw_multi):
+    """
+    Writes multiple test cases to a file using generate_dimensions, generate_pin_positions,
+    and generate_wires methods on input parameters.
+
+    Args:
+        gate_freq (int): The frequency of the gate.
+        tc_count (int): The number of test cases to generate.
+        fpath (str): The file path to write the test cases.
+        kw (dict): A dictionary containing the parameters for test case generation.
+
+    Returns:
+        None
+    """
+    if(kw_multi["force_different_wires"]):
+        with open(FP_IN_MULTI+f"\\Special_Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
+            file.write(f"Test Cases for {kw["gate_freq"]} frequency of Gates || Varying Wires\n")
+            tc_count = 0
+            for b in [-2,-3,-4,-5,-6]:
+                for a in [9,8,7,6,5,4,3,2,1]:
+                    kw["br_prob"] = a*(10**b)
+                    tc_count += 1
+                    tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],tc_count),kw,supress_time_out = True)
+                    file.write(f"Test Case {tc_count} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+    elif(kw_multi["vary_pins"]):
+        with open(FP_IN_MULTI+f"\\Special_Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
+            file.write(f"Test Cases for {kw["gate_freq"]} frequency of Gates || Varying Pins || Fixing Wires\n")
+            tc_count = 0
+            for a in range(1,21):
+                kw["ensure_wire_freqs"] = 100*a
+                tc_count += 1
+                tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],tc_count),kw,supress_time_out = True)
+                file.write(f"Test Case {tc_count} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+
+    else:   
+        with open(FP_IN_MULTI+f"\\Report_{kw["gate_freq"]}_{kw_multi["tc_count"]}.txt","w") as file:
+            file.write(f"Generating {kw_multi["tc_count"]} Test Cases for {kw["gate_freq"]} frequency of Gates\n")
+            for i in range(1,kw_multi["tc_count"]+1):
+                tc_data,dummy_runtime = write_single_case(kw["gate_freq"],FP_MULTI_CASES_IN(kw["gate_freq"],i),kw,supress_time_out = True)
+                file.write(f"Test Case {i} | No of Gates = {tc_data[0]} | No. of Pins = {tc_data[1]} | No. of Wires = {tc_data[2]}\n")
+# ======================== xHelper Functions for Simulated Annealing ============================= #        
 
 IT_BOUND = 10**6
 
@@ -419,17 +461,104 @@ def left_cyclic_shift(n,shift):
 
 def right_cyclic_shift(n,shift):
     return (n >> shift) | (n << (len(bin(n))-2-shift))
+
+# ======================================== Test Case Analysis  ======================================== #
+
+def testcase_1():
+    data = []
+    with open(FP + r"\\tc_analysis_01.txt","r") as file:
+        lines = file.readlines()
+        for i in range(0,len(lines),6):
+            gfreq = int(((lines[i].strip()).split())[-1])
+            pfreq = int(((lines[i+1].strip()).split())[-1])
+            wfreq = int(((lines[i+2].strip()).split())[-1])
+            i_delay = int(((lines[i+3].strip()).split())[-1])
+            f_delay = int(((lines[i+4].strip()).split())[-1])
+            ld = (lines[i+5].strip()).split()
+            tot_rt, sin_rt, iter_ran = float(ld[-3].strip(',')),float(ld[-2].strip(',')),ld[-1] 
+
+            data.append((gfreq,pfreq,wfreq,i_delay,f_delay,tot_rt,sin_rt,iter_ran))
+            
+    x_data = [x[2] for x in data]
+    y_data = [x[6] for x in data]
+    
+    # Plot the data
+    # print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_data, y_data, marker='o', linestyle='-', color='b')
+    plt.xlabel('Number of Wires in Netlist')
+    plt.ylabel('Time of Packing [in s]')
+    plt.title('Time of One Packing V.S. Number of Wires [1000 Gates, ~ 38,000 Pins]')
+    plt.grid(True)
+    plt.show()
+
+def testcase_2():
+    data = []
+    with open(FP + r"\\tc_analysis_02.txt","r") as file:
+        lines = file.readlines()
+        for i in range(0,len(lines),6):
+            gfreq = int(((lines[i].strip()).split())[-1])
+            pfreq = int(((lines[i+1].strip()).split())[-1])
+            wfreq = int(((lines[i+2].strip()).split())[-1])
+            i_delay = int(((lines[i+3].strip()).split())[-1])
+            f_delay = int(((lines[i+4].strip()).split())[-1])
+            ld = (lines[i+5].strip()).split()
+            tot_rt, sin_rt, iter_ran = float(ld[-3].strip(',')),float(ld[-2].strip(',')),ld[-1] 
+
+            data.append((gfreq,pfreq,wfreq,i_delay,f_delay,tot_rt,sin_rt,iter_ran))
+            
+    x_data = [x[1] for x in data]
+    y_data = [x[6] for x in data]
+    
+    # Plot the data
+    # print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_data, y_data, marker='o', linestyle='-', color='r')
+    plt.xlabel('Number of Pins in Netlist')
+    plt.ylabel('Time of Packing [in s]')
+    plt.title('Time of One Packing V.S. Number of Pins [1000 Gates, 5000 Wires]')
+    plt.grid(True)
+    plt.show()
+
+def testcase_3():
+    data = []
+    with open(FP + r"\\tc_analysis_01.txt","r") as file:
+        lines = file.readlines()
+        for i in range(0,len(lines),6):
+            gfreq = int(((lines[i].strip()).split())[-1])
+            pfreq = int(((lines[i+1].strip()).split())[-1])
+            wfreq = int(((lines[i+2].strip()).split())[-1])
+            i_delay = int(((lines[i+3].strip()).split())[-1])
+            f_delay = int(((lines[i+4].strip()).split())[-1])
+            ld = (lines[i+5].strip()).split()
+            tot_rt, sin_rt, iter_ran = float(ld[-3].strip(',')),float(ld[-2].strip(',')),ld[-1] 
+
+            data.append((gfreq,pfreq,wfreq,i_delay,f_delay,tot_rt,sin_rt,iter_ran))
+            
+    x_data = [x[2] for x in data]
+    y_data = [x[4] for x in data]
+    
+    # Plot the data
+    # print(data)
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_data, y_data, marker='o', linestyle='-', color='m')
+    plt.xlabel('Number of Gates in Netlist')
+    plt.ylabel('Time of Packing [in s]')
+    plt.title('Time of One Packing V.S. Number of Gates [2000 Wires, Pins grow ~linearly with gates]')
+    plt.grid(True)
+    plt.show()
+
 # ====================================== __main__ for testing  ====================================== #
 
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq": 10,
+          "gate_freq": 934,
           "mode": "uniform",
-          "br_prob": 10**(-4),
+          "br_prob": 10**(-5),
           "dim_lo":1,
           "dim_hi":101,
           "wire_delay": 1,
-          "pin_density": 1.6,
+          "pin_density": 1.5,
           "max_pin_freq":6,
           "override_specs": True,
           "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
@@ -441,13 +570,13 @@ if(__name__ == "__main__"):
     
     kw_multi =  {
                     "tc_count" : 10,
-                    "force_different_wires" : False,
-                    "vary_pins" : True                
+                    "force_different_wires" : True, 
+                    "vary_pins" : False               
                 }
 
-    
-    write_single_case(kw["gate_freq"],FP_IN,kw)      
-    
+    # testcase_3()
+    write_single_case(kw["gate_freq"], FP_IN, kw, supress_time_out = True)      
+    # write_multi_case(kw,kw_multi,supress_time_out = True)
     # print(bin(35))  
     # print(right_cyclic_shift(35,2))
     # print(bin(568))

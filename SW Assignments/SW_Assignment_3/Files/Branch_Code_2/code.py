@@ -85,6 +85,7 @@ def re_write_vis():
     
     print("Input Written to input_vis.txt")
 
+@time_it
 def Loop_Pin_Check(fpath):
     gd = Parse_Input(fpath)
     # print(gd.gate_dag_from_to)
@@ -135,26 +136,29 @@ def solve_testcase():
 # ============================= __main__ for Testing Purposes ==================================== #    
     
 if(__name__ == "__main__"):
-    Loop_Pin_Check(FP_IN)
-    # iters_ran = 0
-    # gd_0, run_time = solve_testcase(supress_time_out = True)
-    # Parse_Output(gd_0,FP_OUT)
-    # gd_0.write_netlist_data(FP_REPORT, supress_time_out = True)
-    # print(f"Initial Critical Path Delay: {gd_0.max_delay}")
-    # prev_delay = gd_0.max_delay
-    # iters_ran += 1
-    # tot_run_time = run_time
-    # while (TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC) > tot_run_time:
-    #     iters_ran += 1
-    #     gd, rt = solve_testcase(supress_time_out = True)
-    #     tot_run_time += rt
-    #     run_time = rt if (rt > run_time) else run_time
-    #     if(gd.max_delay < prev_delay):
-    #         gd.write_netlist_data(FP_REPORT, supress_time_out = True)
-    #         print(f"New Critical Path Delay: {gd.max_delay}")
-    #         prev_delay = gd.max_delay
-    #         Parse_Output(gd,FP_OUT)
-    # print(f"Final Critical Path Delay: {prev_delay}")
-    # print(f"Total Run Time, Single Run_time, Iterations Ran: {tot_run_time : .8f}, {run_time : .8f}, {iters_ran}")
-    
-    # re_write_vis()
+    do_solve,rtlpcheck = Loop_Pin_Check(FP_IN,supress_time_out = True)
+    if(do_solve):
+        iters_ran,rtavg = 0,0
+        gd_0, run_time = solve_testcase(supress_time_out = True)
+        iters_ran, rtavg = 1, run_time
+        Parse_Output(gd_0,FP_OUT)
+        gd_0.write_netlist_data(FP_REPORT, supress_time_out = True)
+        print(f"Initial Critical Path Delay: {gd_0.max_delay}")
+        prev_delay = gd_0.max_delay
+        iters_ran += 1
+        tot_run_time = run_time
+        while (TIME_BOUND_TOTAL_SEC-TIME_BOUND_BUFFER_SEC) > tot_run_time:
+            iters_ran += 1
+            gd, rt = solve_testcase(supress_time_out = True)
+            tot_run_time += rt
+            rtavg += rt
+            run_time = rt if (rt > run_time) else run_time
+            if(gd.max_delay < prev_delay):
+                gd.write_netlist_data(FP_REPORT, supress_time_out = True)
+                print(f"New Critical Path Delay: {gd.max_delay}")
+                prev_delay = gd.max_delay
+                Parse_Output(gd,FP_OUT)
+        print(f"Final Critical Path Delay: {prev_delay}")
+        print(f"Total Run Time, Single Run_time, Iterations Ran: {tot_run_time+rtlpcheck: .8f}, {rtavg/iters_ran : .8f}, {iters_ran}")
+        
+        re_write_vis()
