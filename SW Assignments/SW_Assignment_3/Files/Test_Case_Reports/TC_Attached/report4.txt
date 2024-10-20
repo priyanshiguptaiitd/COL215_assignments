@@ -1,0 +1,3 @@
+Initial Critical Path Delay: 36718
+Final Critical Path Delay: 31496
+Total Run Time, Single Run_time, Iterations Ran:  27.01534915,  0.08145380, 1113

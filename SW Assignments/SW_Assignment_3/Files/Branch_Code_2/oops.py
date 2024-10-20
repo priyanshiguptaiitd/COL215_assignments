@@ -625,7 +625,7 @@ class Gate_Data:
         with open(fpath,"w") as file:
             s = str(self)
             file.write(s)
-        print("Netlist Data Written to File : ",fpath)
+        # print("Netlist Data Written to File : ",fpath)
 
 # ========================================== Simulated -- Annealing ========================================== #
 

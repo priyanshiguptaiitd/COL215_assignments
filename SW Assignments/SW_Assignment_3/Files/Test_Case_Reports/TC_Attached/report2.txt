@@ -1,0 +1,4 @@
+Total Gates : 48 || Total Pins : 270 || Total Wires : 121
+Initial Critical Path Delay: 22815
+Final Critical Path Delay: 20494
+Total Run Time, Single Run_time, Iterations Ran:  27.00170708,  0.05339313, 4617

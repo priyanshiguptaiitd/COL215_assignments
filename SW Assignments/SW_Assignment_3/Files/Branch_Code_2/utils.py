@@ -13,7 +13,7 @@ from matplotlib import pyplot as plt
 
 
 # ------------------------------------------ File Paths -------------------------------------------- #
-
+FP = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2"
 FP_IN = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\input.txt"
 FP_OUT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\output.txt"
 FP_REPORT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\report.txt"
@@ -46,8 +46,8 @@ VAR_PIN_POS_HI = 0.25
 
 # ------------------------------------- Implementation Bounds -------------------------------------- #
 
-TIME_BOUND_TOTAL_SEC = 20
-TIME_BOUND_BUFFER_SEC = 2
+TIME_BOUND_TOTAL_SEC = 30
+TIME_BOUND_BUFFER_SEC = 3
 IDEAL_PERT_ITER_HI = 6
 IDEAL_PERT_ITER_MED = 4
 IDEAL_PERT_ITER_LO = 2
@@ -194,7 +194,8 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
                         break
             continue
         
-        elif(g2 in comb_loops[g1] or g1 in comb_loops[g2]):
+        # elif(g2 in comb_loops[g1] or g1 in comb_loops[g2]):
+        elif(g2 in comb_loops[g1]):
             # print(f"Comb Loop Detected {g1} {g2}")
             if(ensure_wire_freq_bool):
                 if(len(wire_data) >= ensure_wire_freq):
@@ -219,6 +220,8 @@ def generate_wires(gate_freq,is_done_left,left_edge_data,right_edge_data,br_prob
             for g in comb_loops:
                 if(g2 in comb_loops[g]):
                     comb_loops[g].update(comb_loops[g2])
+            
+            # print(comb_loops)
             
             wires_generated += 1
             
@@ -400,7 +403,6 @@ def pseudo_copy_gate_data(gate_data):
     return bbox_width,bbox_height,max_wire_delay,gate_packing_data
 
 
- 
 # ====================================== Misc. Helper Functions ====================================== #
 
 def binary_len(n):
@@ -421,7 +423,7 @@ def right_cyclic_shift(n,shift):
 
 if(__name__ == "__main__"):
     kw = {
-          "gate_freq": 1000,
+          "gate_freq": 10,
           "mode": "uniform",
           "br_prob": 10**(-4),
           "dim_lo":1,
@@ -429,7 +431,7 @@ if(__name__ == "__main__"):
           "wire_delay": 1,
           "pin_density": 1.6,
           "max_pin_freq":6,
-          "override_specs": False,
+          "override_specs": True,
           "ensure_pins":False, ### May cause 40_000 pins overflow for largser gate frequencies
           "ensure_pins_freq": 10,
           "ensure_wire_freq_bool": False,
