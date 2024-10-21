@@ -9,22 +9,22 @@ architecture tb of tb_ROMSBOX is
 
     -- Component Declaration for the Unit Under Test (UUT)
     component ROM_SBOX
-        Generic ( DATA_WIDTH : integer := 16;
+        Generic ( DATA_WIDTH : integer := 8;
                   ADDR_WIDTH : integer := 8);
         Port ( addr : in STD_LOGIC_VECTOR(ADDR_WIDTH-1 downto 0);
                data_out : out STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) );
     end component;
 
     -- Signals for connecting to UUT
-    signal addr : STD_LOGIC_VECTOR(ADDR_WIDTH-1 downto 0) := (others => '0');
-    signal data_out : STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) := (others => '0');
+    signal addr : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    signal data_out : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
 
 begin
 
     -- Instantiate the Unit Under Test (UUT)
     uut: ROM_SBOX
         Generic map (
-            DATA_WIDTH => 16,
+            DATA_WIDTH => 8,
             ADDR_WIDTH => 8
         )
         Port map (

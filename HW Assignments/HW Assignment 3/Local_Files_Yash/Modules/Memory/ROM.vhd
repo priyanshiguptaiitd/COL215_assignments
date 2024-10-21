@@ -9,7 +9,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 entity ROM is
     
-    Generic ( DATA_WIDTH : integer := 16;  -- Data width -- Depending upon data of a single Entry  (number of bits)
+    Generic ( DATA_WIDTH : integer := 8;  -- Data width -- Depending upon data of a single Entry  (number of bits)
               ADDR_WIDTH : integer := 4   -- Address width -- Depending upon Number of Elements to be processed (number of bits)
     );
 

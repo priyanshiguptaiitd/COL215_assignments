@@ -17,8 +17,6 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -26,7 +24,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity RAM is
     generic(
         DATA_WIDTH : integer := 8;
-        ADDR_WIDTH : integer := 8
+        ADDR_WIDTH : integer := 4
     );
     Port ( clk      : in  std_logic;
            we       : in  std_logic;   
