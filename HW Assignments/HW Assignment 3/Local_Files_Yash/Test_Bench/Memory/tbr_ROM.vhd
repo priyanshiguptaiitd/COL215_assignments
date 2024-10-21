@@ -37,8 +37,8 @@ architecture tb of tbr_ROM is
     end component;
 
     -- Signals for connecting to UUT
-    signal addr : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
-    signal data_out : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+    signal addr : STD_LOGIC_VECTOR(4-1 downto 0) := (others => '0');
+    signal data_out : STD_LOGIC_VECTOR(16-1 downto 0) := (others => '0');
 
 begin
 

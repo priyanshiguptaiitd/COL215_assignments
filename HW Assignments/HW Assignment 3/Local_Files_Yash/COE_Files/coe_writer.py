@@ -16,12 +16,12 @@ def generate_coe_file(data, filename,n = 16):
     
     fname = r"HW Assignments\HW Assignment 3\Local_Files_Yash\COE_Files" + f"\\{filename}"
     with open(fname, 'w') as f:
-        f.write(f'memory_initialization_radix={n};\n')
+        f.write(f'memory_initialization_radix={16};\n')
         f.write('memory_initialization_vector=\n')
         for i in range(n):
             f.write('{:02X}'.format(data[i]))
             if i != len(data)-1:
-                if(i%8 == 7):
+                if(i%16 == 15):
                     f.write(',\n')
                 else:
                     f.write(', ')
@@ -29,7 +29,7 @@ def generate_coe_file(data, filename,n = 16):
                 f.write(';')
   
 if(__name__ == "__main__"):                  
-    generate_coe_file(gen_data(64), "rom.coe",64)
+    generate_coe_file(gen_data(256), "rom.coe",256)
     
     print("Done")
     pass
