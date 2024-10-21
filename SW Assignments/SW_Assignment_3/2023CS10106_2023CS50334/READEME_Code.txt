@@ -1,0 +1,17 @@
+This Readme has instructions for testing the test cases
+
+Use the the file "code.py" and ensure that the "input.txt" is located 
+within the same folder as the "code.py" file (Code Directory).
+
+The output file "output.txt" will be generated at the same place as the 
+"code.py" file (Code Directory).
+
+Note - That the "main.py" receives the input file path and 
+output file path from the "utils.py" file.
+It has the following specifications at the time of submission : 
+
+FP_IN = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\input.txt"
+FP_OUT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\output.txt"
+FP_REPORT = r"SW Assignments\SW_Assignment_3\Files\Branch_Code_2\report.txt"
+
+Please change all these variables appropriately for correct implementation.

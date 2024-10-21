@@ -1,0 +1,5 @@
+bounding_box 8 10
+critical_path g1.p1 g1.p3 g2.p1 g2.p2
+critical_path_delay 56
+g1 0 5
+g2 0 1

@@ -1,0 +1,10 @@
+memory_initialization_radix=64;
+memory_initialization_vector=
+18, BF, E9, E2, CA, F9, 2E, FF,
+56, 06, A6, AD, B9, B3, 63, BE,
+55, 5A, 3E, 2B, A5, 28, 14, 92,
+3B, EA, B3, 01, A1, E2, 51, 41,
+65, E9, 37, A6, A1, 53, BC, E6,
+EF, 23, 8F, FB, 60, 08, 17, 61,
+54, 6A, A5, 30, CC, 07, 13, 57,
+01, D1, 9C, 04, 7A, 82, 9B, 40;
