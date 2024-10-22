@@ -14,7 +14,7 @@ architecture behavioral of bitwise_xor is
 begin
 	process (input_a,input_b) 
 	begin
-        res <= input_a xor input_b
+        res<=input_a xor input_b;
 	end process;
 
 end architecture behavioral;
