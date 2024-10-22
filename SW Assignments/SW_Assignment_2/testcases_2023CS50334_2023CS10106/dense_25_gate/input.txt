@@ -1,0 +1,117 @@
+g1 10 8
+pins g1 0 2 0 5 10 3 10 6
+g2 12 7
+pins g2 0 1 0 4 12 3 12 6
+g3 9 10
+pins g3 0 3 0 7 9 4 9 9
+g4 11 9
+pins g4 0 2 0 5 11 5 11 3 11 6 11 8
+g5 8 6
+pins g5 0 1 0 4 8 3 8 5
+g6 14 12
+pins g6 0 3 0 9 14 5 14 8 14 10 0 11 0 12
+g7 7 5
+pins g7 0 1 7 3 7 4 0 5 0 4
+g8 13 8
+pins g8 0 2 0 6 0 7 13 4 13 7 13 8
+g9 6 9
+pins g9 0 3 0 6 6 5 6 8
+g10 15 10
+pins g10 0 4 0 7 0 9 0 10 0 6 0 8 15 5 15 8 15 10 15 7
+g11 10 7
+pins g11 0 2 0 5 10 3 10 6
+g12 9 11
+pins g12 0 4 0 8 0 11 9 6 9 10 9 3
+g13 12 8
+pins g13 0 3 0 6 12 4 12 7 12 8
+g14 7 6
+pins g14 0 2 7 4 7 5 7 2
+g15 10 9
+pins g15 0 1 0 5 10 3 10 7
+g16 11 7
+pins g16 0 2 0 5 11 3 11 6
+g17 8 10
+pins g17 0 3 0 7 8 4 8 9
+g18 14 9
+pins g18 0 2 0 5 14 3 14 7
+g19 9 8
+pins g19 0 1 0 4 0 6 0 7 9 3 9 6 9 7
+g20 13 10
+pins g20 0 3 0 7 13 5 13 9
+g21 12 7
+pins g21 0 2 0 5 12 3 12 6
+g22 10 11
+pins g22 0 4 0 8 0 5 0 6 10 5 10 10 10 11
+g23 7 5
+pins g23 0 1 0 4 7 3 7 4
+g24 9 9
+pins g24 0 2 0 5 0 6 0 7 0 8 0 9 9 2 9 4 9 6
+g25 11 10
+pins g25 0 3 0 7 0 9 0 10 0 5 0 8 11 5 11 9 11 10 11 7
+wire g1.p3 g2.p1
+wire g1.p4 g3.p1
+wire g2.p3 g5.p1
+wire g2.p4 g6.p1
+wire g3.p3 g7.p1
+wire g3.p4 g8.p1
+wire g4.p3 g9.p1
+wire g4.p4 g10.p1
+wire g4.p5 g10.p2
+wire g4.p6 g10.p3
+wire g5.p3 g11.p1
+wire g5.p4 g12.p1
+wire g6.p3 g11.p2
+wire g6.p4 g12.p2
+wire g6.p5 g12.p3
+wire g7.p2 g8.p2
+wire g7.p3 g24.p3
+wire g8.p4 g9.p2
+wire g8.p5 g10.p4
+wire g8.p6 g10.p5
+wire g9.p3 g10.p6
+wire g10.p6 g15.p1
+wire g10.p7 g20.p1
+wire g11.p3 g16.p1
+wire g11.p4 g21.p1
+wire g12.p3 g22.p1
+wire g12.p4 g22.p2
+wire g12.p5 g22.p3
+wire g13.p3 g5.p2
+wire g13.p4 g18.p1
+wire g13.p5 g18.p2
+wire g14.p3 g19.p1
+wire g14.p4 g19.p2
+wire g15.p3 g17.p1
+wire g15.p3 g25.p1
+wire g16.p3 g23.p1
+wire g16.p4 g23.p2
+wire g17.p3 g24.p1
+wire g18.p3 g19.p3
+wire g18.p4 g19.p4
+wire g19.p5 g24.p4
+wire g19.p6 g24.p5
+wire g20.p3 g25.p2
+wire g20.p4 g25.p3
+wire g21.p3 g22.p4
+wire g22.p4 g25.p4
+wire g22.p5 g25.p5
+wire g23.p3 g24.p6
+wire g24.p6 g25.p6
+wire g25.p7 g6.p6
+wire g25.p8 g7.p4
+wire g25.p9 g6.p7
+wire g25.p10 g7.p5
+wire g22.p7 g1.p1
+wire g22.p7 g1.p2
+wire g22.p7 g2.p2
+wire g22.p7 g3.p2
+wire g22.p6 g4.p1
+wire g22.p6 g4.p2
+wire g22.p6 g6.p2
+wire g22.p6 g8.p3
+wire g22.p6 g13.p2
+wire g22.p6 g13.p1
+wire g22.p6 g15.p2
+wire g22.p6 g16.p2
+wire g22.p6 g17.p2
+wire g22.p6 g21.p2

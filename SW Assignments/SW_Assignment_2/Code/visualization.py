@@ -17,7 +17,7 @@ import math
 
 import argparse
 import math
-PIN_LAMBDA = 10
+PIN_LAMBDA = 2.5
 # Function to parse the input data from input.txt
 def parse_input(data):
     gates = {}
@@ -214,7 +214,7 @@ class draw_gate_packing(Tk):
                         break
 
                 self.create_rectangle(x1, y1, x2, y2, outline="black", fill=color, width=1, alpha=0.5)
-                self.canvas.create_text(x1 + (x2 - x1) / 2, y1 + (y2 - y1) / 2, font=("Arial", int(0.5*grid_size)), text=g)
+                self.canvas.create_text(x1 + (x2 - x1) / 2, y1 + (y2 - y1) / 2, font=("Arial", int(0.2*grid_size)), text=g)
 
                 # Add current gate rectangle to list
                 gates_rects.append(current_rect)

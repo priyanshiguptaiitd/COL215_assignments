@@ -1,0 +1,51 @@
+g1 10 8
+pins g1 0 2 0 5 10 3 10 6
+g2 12 7
+pins g2 0 1 0 4 12 3 12 6
+g3 8 10
+pins g3 0 3 0 7 8 4 8 9
+g4 15 9
+pins g4 0 2 0 5 0 8 15 3 15 7
+g5 9 6
+pins g5 0 2 0 4 9 3 9 5 0 5
+g6 11 12
+pins g6 0 3 0 9 11 5 11 11
+g7 7 5
+pins g7 0 1 7 3 0 3
+g8 13 8
+pins g8 0 2 0 6 0 7 13 4 13 7
+g9 6 9
+pins g9 0 3 0 6 6 5 6 8
+g10 14 10
+pins g10 0 4 0 7 0 9 14 5 14 9
+g11 10 7
+pins g11 0 2 0 5 10 3 10 6 0 6
+g12 9 11
+pins g12 0 4 0 8 9 6 9 10
+wire g1.p3 g2.p1
+wire g1.p4 g2.p2
+wire g2.p3 g5.p1
+wire g2.p4 g6.p1
+wire g3.p3 g7.p1
+wire g3.p4 g8.p1
+wire g4.p4 g9.p1
+wire g4.p5 g10.p1
+wire g5.p3 g11.p1
+wire g5.p4 g12.p1
+wire g6.p3 g11.p2
+wire g6.p4 g12.p2
+wire g7.p2 g8.p2
+wire g8.p4 g9.p2
+wire g8.p5 g10.p2
+wire g9.p3 g10.p3
+wire g10.p4 g4.p3
+wire g10.p5 g3.p2
+wire g11.p3 g3.p1
+wire g12.p3 g4.p1
+wire g11.p4 g5.p2
+wire g10.p5 g8.p3
+wire g12.p3 g5.p5
+wire g10.p4 g7.p3
+wire g7.p2 g4.p2
+wire g7.p2 g11.p5
+wire g1.p1 g6.p2

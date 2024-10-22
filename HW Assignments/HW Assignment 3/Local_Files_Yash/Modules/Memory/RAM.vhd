@@ -28,9 +28,9 @@ entity RAM is
     );
     Port ( clk      : in  std_logic;
            we       : in  std_logic;   
-           addr     : in  std_logic_vector(ADDR_WIDTH-1 downto 0); -- Address for accessing BRAM
-           din      : in  std_logic_vector(DATA_WIDTH-1 downto 0); -- Data to write into BRAM
-           dout     : out std_logic_vector(DATA_WIDTH-1 downto 0)  -- Data read from BRAM
+           addr     : in  std_logic_vector(ADDR_WIDTH-1 downto 0); -- Address for accessing RAM
+           din      : in  std_logic_vector(DATA_WIDTH-1 downto 0); -- Data to write into RAM
+           dout     : out std_logic_vector(DATA_WIDTH-1 downto 0)  -- Data read from RAM
          );
 end RAM;
 

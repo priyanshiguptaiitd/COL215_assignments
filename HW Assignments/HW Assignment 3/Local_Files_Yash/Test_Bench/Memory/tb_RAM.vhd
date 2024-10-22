@@ -30,8 +30,9 @@ end tb_RAM;
 architecture Behavioral of tb_RAM is
     -- Component Declaration for the Unit Under Test (UUT)
     component RAM
+    
     Generic ( DATA_WIDTH : integer := 8;
-              ADDR_WIDTH : integer := 8);
+              ADDR_WIDTH : integer := 4);
     Port ( clk : in  STD_LOGIC;
            we  : in  STD_LOGIC;
            addr: in  STD_LOGIC_VECTOR (ADDR_WIDTH-1 downto 0);
@@ -41,7 +42,7 @@ architecture Behavioral of tb_RAM is
 
     -- Signals for UUT
     constant  data_width : integer := 8;
-    constant addr_width : integer := 8;
+    constant addr_width : integer := 4;
     signal clk : STD_LOGIC := '0';
     signal we  : STD_LOGIC := '0';
     signal addr: STD_LOGIC_VECTOR (addr_width -1 downto 0) := (others => '0');
@@ -83,24 +84,24 @@ begin
 
         -- Write '10101010' to address '00000001'
         we <= '1';
-        addr <= "00000001";
+        addr <= "0001";
         data_in <= "10101010";
         wait for clk_period;
         we <= '0';
 
         -- Read from address '00000001'
-        addr <= "00000001";
+        addr <= "0001";
         wait for clk_period;
 
         -- Write '01010101' to address '00000010'
-        addr <= "00000010";
+        addr <= "0010";
         data_in <= "01010101";
         we <= '1';
         wait for clk_period;
         we <= '0';
 
         -- Read from address '00000010'
-        addr <= "00000010";
+        addr <= "0010";
         wait for clk_period;
 
         -- End simulation
