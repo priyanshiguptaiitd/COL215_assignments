@@ -4,100 +4,121 @@ use ieee.numeric_std.all;
 
 entity gf256_array_multiply_sequential is
   generic (
-    S : integer := 4; -- Length of the arrays (can be changed)
-    N : integer := 16  -- Length of the arrays (can be changed)
+    S : integer := 4; -- Matrix dimension (4x4 matrix)
+    N : integer := 16 -- Total elements (S*S)
   );
   port (
-    clk     : in std_logic;                               -- Clock signal for sequential operations
-    start   : in std_logic;                               -- Start signal to begin multiplication
-    array_a : in std_logic_vector(8 * N - 1 downto 0);    -- Input array A (N x 8-bit elements)
-    array_b : in std_logic_vector(8 * N - 1 downto 0);    -- Input array B (N x 8-bit elements)
-    done    : out std_logic;                              -- Signal indicating completion
-    result  : out std_logic_vector(8 * N - 1 downto 0);    -- Output result array (N x 8-bit elements)
+    clk     : in std_logic;
+    start   : in std_logic;
+    array_a : in std_logic_vector(8 * N - 1 downto 0);
+    array_b : in std_logic_vector(8 * N - 1 downto 0);
+    done    : out std_logic;
+    result  : out std_logic_vector(8 * N - 1 downto 0);
+    -- Debug signals
     temp_res : out std_logic_vector(7 downto 0);
     temp_ae : out std_logic_vector(7 downto 0);
     temp_be : out std_logic_vector(7 downto 0);
     temp_lc : out integer
   );
-end entity gf256_array_multiply_sequential;
+end entity;
 
 architecture Behavioral of gf256_array_multiply_sequential is
-  -- Component declaration for GF(2^8) multiplier
   component gf256_multiply is
     port (
-      a       : in std_logic_vector(7 downto 0);  -- First 8-bit input
-      b       : in std_logic_vector(7 downto 0);  -- Second 8-bit input
-      result  : out std_logic_vector(7 downto 0)  -- Result of GF(2^8) multiplication
+      a      : in std_logic_vector(7 downto 0);
+      b      : in std_logic_vector(7 downto 0);
+      result : out std_logic_vector(7 downto 0)
     );
   end component;
 
-  -- Internal signals
-  signal processing : std_logic := '0';  -- Signal to indicate processing state
-  signal current_index : integer range 0 to N-1;  -- Index to track current element
-  signal current_index_rem : integer range 0 to S-1;  -- Internal signal to track current element
-  signal current_index_quo : integer range 0 to S-1;  -- Internal signal to track current element
-  signal a_index : integer range 0 to N-1;  -- Index to track current element of array A
-  signal b_index : integer range 0 to N-1;  -- Index to track current element of array B
-  signal a_element : std_logic_vector(7 downto 0);  -- Signal to hold current element of array A
-  signal b_element : std_logic_vector(7 downto 0);  -- Signal to hold current element of array B
+  type state_type is (IDLE, COMPUTING, COMPLETED);
+  signal current_state : state_type := IDLE;
+  
+  signal row : integer range 0 to S-1 := 0;
+  signal col : integer range 0 to S-1 := 0;
+  signal k   : integer range 0 to S-1 := 0;
+  signal first_mult : std_logic := '1';
+  
+  signal a_element : std_logic_vector(7 downto 0);
+  signal b_element : std_logic_vector(7 downto 0);
   signal temp_result : std_logic_vector(7 downto 0);
-  signal internal_result : std_logic_vector(8 * N - 1 downto 0) := (others => '0');  -- Array for the result
-  signal done_int : std_logic := '0';  -- Internal signal for completion
-  signal loop_count : integer range 0 to S-1;  -- Internal signal to track loop count
+  signal internal_result : std_logic_vector(8 * N - 1 downto 0) := (others => '0');
+  signal result_index : integer range 0 to N-1 := 0;
 
 begin
+  -- Calculate indices and select elements combinatorially
+  result_index <= row * S + col;
+  
+  a_element <= array_a((row * S + k) * 8 + 7 downto (row * S + k) * 8);
+  b_element <= array_b((k * S + col) * 8 + 7 downto (k * S + col) * 8);
 
-  -- Instantiate the GF(2^8) multiplier
-  UUT: gf256_multiply
+  -- GF(256) multiplier instantiation
+  GF_MULT: gf256_multiply
   port map (
-    a => a_element,  -- Select element from array A
-    b => b_element,  -- Select element from array B
-    result => temp_result  -- Output result for current pair
+    a => a_element,
+    b => b_element,
+    result => temp_result
   );
 
-  -- Sequential process to perform array multiplication
-  Index_Proc : process(clk)
+  -- Main process for matrix multiplication
+  process(clk)
   begin
-    if(rising_edge(clk) and done_int = '0') then
-        if (start = '1' and processing = '0') then
-          processing <= '1';  -- Set processing state
-          current_index <= 0;  -- Reset index
-          loop_count <= 0;  -- Reset loop count
-        elsif(processing = '1') then
-          if (current_index = N-1) then
-            processing <= '0';  -- Reset processing state
-            done_int <= '1';  -- Set done signal
-          else
-            if(loop_count = S-1) then
-              loop_count <= 0;  -- Reset loop count
-              current_index <= current_index + 1;  -- Increment index
-            else
-              loop_count <= loop_count + 1;  -- Increment loop count
-            end if;
+    if rising_edge(clk) then
+      case current_state is
+        when IDLE =>
+          if start = '1' then
+            current_state <= COMPUTING;
+            row <= 0;
+            col <= 0;
+            k <= 0;
+            first_mult <= '1';
+            internal_result <= (others => '0');
           end if;
-        end if;  
+
+        when COMPUTING =>
+          -- Accumulate result
+          if first_mult = '1' then
+            -- For the first multiplication of each element
+            internal_result(result_index * 8 + 7 downto result_index * 8) <= temp_result;
+            first_mult <= '0';
+          else
+            -- For subsequent multiplications
+            internal_result(result_index * 8 + 7 downto result_index * 8) <=
+              internal_result(result_index * 8 + 7 downto result_index * 8) xor temp_result;
+          end if;
+          
+          -- Update indices
+          if k = S-1 then
+            k <= 0;
+            first_mult <= '1';
+            if col = S-1 then
+              col <= 0;
+              if row = S-1 then
+                current_state <= COMPLETED;
+              else
+                row <= row + 1;
+              end if;
+            else
+              col <= col + 1;
+            end if;
+          else
+            k <= k + 1;
+          end if;
+
+        when COMPLETED =>
+          null;
+      end case;
     end if;
-  end process; 
-  
-  Calc_Proc : process(loop_count)
-  begin
-    current_index_rem <= current_index mod S;
-    current_index_quo <= current_index / S;
-    a_index <= current_index_quo*S + loop_count;
-    b_index <= current_index_rem + S*loop_count;
-    a_element <= array_a(a_index*8 + 7 downto a_index*8);
-    b_element <= array_b(b_index*8 + 7 downto b_index*8);
-    internal_result(current_index*8 + 7 downto current_index*8) <= internal_result(current_index*8 + 7 downto current_index*8) xor temp_result;
-
-    temp_res <= temp_result;
-    temp_ae <= a_element;
-    temp_be <= b_element;
-    temp_lc <= loop_count;
   end process;
-  
 
-  -- Assign final result and done signal
+  -- Output assignments
+  done <= '1' when current_state = COMPLETED else '0';
   result <= internal_result;
-  done <= done_int;
+  
+  -- Debug outputs
+  temp_res <= temp_result;
+  temp_ae <= a_element;
+  temp_be <= b_element;
+  temp_lc <= k;
 
 end Behavioral;
