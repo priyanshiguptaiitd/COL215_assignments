@@ -43,7 +43,7 @@ architecture Behavioral of gf256_array_multiply_sequential is
   signal temp_result : std_logic_vector(7 downto 0);
   signal internal_result : std_logic_vector(8 * N - 1 downto 0) := (others => '0');  -- Array for the result
   signal done_int : std_logic := '0';  -- Internal signal for completion
-  signal loop_count : integer range 0 to S-1;  -- Internal signal to track loop count
+  signal loop_count : integer range 0 to S-1 := 0;  -- Internal signal to track loop count
 
 begin
 
@@ -56,45 +56,54 @@ begin
   );
 
   -- Sequential process to perform array multiplication
-  Index_Proc : process(clk)
+  process (clk)
   begin
-    if(rising_edge(clk) and done_int = '0') then
-        if (start = '1' and processing = '0') then
-          processing <= '1';  -- Set processing state
-          current_index <= 0;  -- Reset index
-          loop_count <= 0;  -- Reset loop count
-        elsif(processing = '1') then
-          if (current_index = N-1) then
-            processing <= '0';  -- Reset processing state
-            done_int <= '1';  -- Set done signal
-          else
-            if(loop_count = S-1) then
-              loop_count <= 0;  -- Reset loop count
-              current_index <= current_index + 1;  -- Increment index
-            else
-              loop_count <= loop_count + 1;  -- Increment loop count
-            end if;
-          end if;
-        end if;  
-    end if;
-  end process; 
-  
-  Calc_Proc : process(loop_count)
-  begin
-    current_index_rem <= current_index mod S;
-    current_index_quo <= current_index / S;
-    a_index <= current_index_quo*S + loop_count;
-    b_index <= current_index_rem + S*loop_count;
-    a_element <= array_a(a_index*8 + 7 downto a_index*8);
-    b_element <= array_b(b_index*8 + 7 downto b_index*8);
-    internal_result(current_index*8 + 7 downto current_index*8) <= internal_result(current_index*8 + 7 downto current_index*8) xor temp_result;
+    if rising_edge(clk) and done_int = '0' then
+      if start = '1' and processing = '0' then
+        -- Start processing
+        processing <= '1';
+        current_index <= 0;
+        --current_index_rem <= current_index mod S;
+        --current_index_quo <= current_index / S;
+        
+        --a_index <= current_index_quo*S + loop_count;  -- Track index for array A
+        --b_index <= current_index_rem + S*loop_count;  -- Track index for array B
+        -- internal_result <= (others => '0');  -- Reset the internal result
+        -- done_int <= '0';
+      elsif processing = '1' then
+        -- Perform multiplication for the current index
+        current_index_rem <= current_index mod S;
+        current_index_quo <= current_index / S;
+        
+        a_index <= current_index_quo*S + loop_count;  -- Track index for array A
+        b_index <= current_index_rem + S*loop_count;  -- Track index for array B
 
-    temp_res <= temp_result;
-    temp_ae <= a_element;
-    temp_be <= b_element;
-    temp_lc <= loop_count;
+        -- Select the elements from array A and array B based on current_index
+        a_element <= array_a(8 * (a_index + 1) - 1 downto 8 * a_index);
+        b_element <= array_b(8 * (b_index + 1) - 1 downto 8 * b_index);
+        temp_ae <= a_element;
+        temp_be <= b_element;
+        temp_lc <= loop_count;
+        -- Store result of multiplication into the result array (accumulation using XOR)
+        internal_result(8 * (current_index + 1) - 1 downto 8 * current_index) <= internal_result(8 * (current_index + 1) - 1 downto 8 * current_index) xor temp_result;
+        
+        temp_res <= temp_result;
+        -- Move to the next element pair
+        if(loop_count < S-1) then
+          loop_count <= loop_count + 1;
+        else
+          loop_count <= 0;
+          if current_index < N-1 then
+            current_index <= current_index + 1;
+          else
+            -- All elements processed
+            processing <= '0';
+            done_int <= '1';  -- Indicate completion
+          end if;
+        end if;
+      end if;
+    end if;
   end process;
-  
 
   -- Assign final result and done signal
   result <= internal_result;
