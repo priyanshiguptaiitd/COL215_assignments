@@ -1,67 +1,70 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 21.10.2024 15:58:12
--- Design Name: 
--- Module Name: Inv_Sub_Bytes - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity Inv_Sub_Bytes is
-
     Generic ( 
-              DATA_WIDTH_SB : integer := 8;  -- Data width -- Depending upon data of a single Entry  (number of bits)
-              ADDR_WIDTH_SB : integer := 8   -- Address width -- Depending upon Number of Elements to be processed (number of bits)
+              S : integer := 8;  -- Data width (bits per entry)
+              N : integer := 16   -- Number of elements to be processed
             );
     
-    Port(
-            data_input : in std_logic_vector(ADDR_WIDTH_SB-1 downto 0);
-            data_output : out std_logic_vector(DATA_WIDTH_SB-1 downto 0)
+    Port(   
+            clk : in std_logic;
+            data_input : in std_logic_vector(S * N - 1 downto 0);
+            data_output : out std_logic_vector(S * N - 1 downto 0)
     );        
-    
 end Inv_Sub_Bytes;
 
 architecture Behavioral of Inv_Sub_Bytes is
+
     component ROM_SBOX
-    Generic ( DATA_WIDTH : integer := DATA_WIDTH_SB;  -- Data width -- Depending upon data of a single Entry  (number of bits)
-              ADDR_WIDTH : integer := ADDR_WIDTH_SB   -- Address width -- Depending upon Number of Elements to be processed (number of bits)
-    );
-    Port ( 
-            addr : in STD_LOGIC_VECTOR(ADDR_WIDTH_SB-1 downto 0);
-            data_out : out STD_LOGIC_VECTOR(DATA_WIDTH_SB-1 downto 0)
-    );
+        Generic ( 
+            DATA_WIDTH : integer := 8;
+            ADDR_WIDTH : integer := 8
+        );
+        Port ( 
+            addr : in STD_LOGIC_VECTOR(ADDR_WIDTH - 1 downto 0);
+            data_out : out STD_LOGIC_VECTOR(DATA_WIDTH - 1 downto 0)
+        );
     end component;
+
+    signal i : integer range 0 to N - 1 := 0;
+    signal is_done : std_logic := '0';
+    signal addr_in : std_logic_vector(7 downto 0);
+    signal data_o : std_logic_vector(7 downto 0);
+
 begin
+
     uut: ROM_SBOX
         Generic map (
-            DATA_WIDTH => DATA_WIDTH_SB,
-            ADDR_WIDTH => ADDR_WIDTH_SB
+            DATA_WIDTH => 8,
+            ADDR_WIDTH => 8
         )
         Port map (
-            addr => data_input,
-            data_out => data_output
+            addr => addr_in,
+            data_out => data_o
         );
+
+    -- Update addr_in based on the current byte being processed
+    addr_process: process(clk)
+    begin
+        if rising_edge(clk) and is_done = '0' then
+            addr_in <= data_input(8 * i + 7 downto 8 * i);  -- Extract byte for address lookup
+
+            if i < N - 1 then
+                i <= i + 1;
+            else
+                is_done <= '1';
+            end if;
+        end if;
+    end process;
+
+    -- Write the output based on data from ROM_SBOX
+    write_process : process(clk)
+    begin
+        if rising_edge(clk) and is_done = '0' then
+            data_output(8 * i + 7 downto 8 * i) <= data_o;  -- Assign output byte by byte
+        end if;
+    end process;
+
 end Behavioral;
