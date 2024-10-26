@@ -1,18 +1,18 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity MUX_4BIT is
+entity MUX_4BYTE is
     port(
         mux_s : in std_logic_vector(1 downto 0);
-        mux_d0 : in std_logic_vector(3 downto 0);
-        mux_d1 : in std_logic_vector(3 downto 0);
-        mux_d2 : in std_logic_vector(3 downto 0);
-        mux_d3 : in std_logic_vector(3 downto 0);
-        mux_out_to : out std_logic_vector(3 downto 0)
+        mux_d0 : in std_logic_vector(7 downto 0);
+        mux_d1 : in std_logic_vector(7 downto 0);
+        mux_d2 : in std_logic_vector(7 downto 0);
+        mux_d3 : in std_logic_vector(7 downto 0);
+        mux_out_to : out std_logic_vector(7 downto 0)
     );
-end MUX_4BIT;
+end MUX_4BYTE;
 
-architecture Behavioral of MUX_4BIT is
+architecture Behavioral of MUX_4BYTE is
 
 begin
     MUX_Process: process(mux_s, mux_d0, mux_d1, mux_d2, mux_d3)
@@ -27,7 +27,7 @@ begin
             when "11" =>
                 mux_out_to <= mux_d3;
             when others =>
-                mux_out_to <= "0000";
+                mux_out_to <= "00000000";
         end case;
     end process;    
 

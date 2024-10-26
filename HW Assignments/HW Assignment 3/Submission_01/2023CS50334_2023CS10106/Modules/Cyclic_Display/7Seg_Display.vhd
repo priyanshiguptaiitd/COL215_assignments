@@ -9,10 +9,10 @@ entity display_seven_seg is
         an : out STD_LOGIC_VECTOR (3 downto 0); -- Anodes signal for display
         seg : out STD_LOGIC_VECTOR (6 downto 0); -- Cathodes signal for display
         mux_sel_out : out STD_LOGIC_VECTOR (1 downto 0);
-        d0_out : out STD_LOGIC_VECTOR (3 downto 0);
-        d1_out : out STD_LOGIC_VECTOR (3 downto 0);
-        d2_out : out STD_LOGIC_VECTOR (3 downto 0);
-        d3_out : out STD_LOGIC_VECTOR (3 downto 0);
+        d0_out : out STD_LOGIC_VECTOR (7 downto 0);
+        d1_out : out STD_LOGIC_VECTOR (7 downto 0);
+        d2_out : out STD_LOGIC_VECTOR (7 downto 0);
+        d3_out : out STD_LOGIC_VECTOR (7 downto 0);
         tc_clk : out STD_LOGIC;
         timing_scroll_clk : out STD_LOGIC
 --        mess_out : out STD_LOGIC_VECTOR(127 downto 0)
@@ -30,40 +30,47 @@ architecture Behavioral of display_seven_seg is
             timing_circ_clk : out STD_LOGIC
         );
     end component;
-
-    component seven_seg_decoder_hex is
-        port (
-            dec_in : in std_logic_vector(3 downto 0);
-            dec_out : out std_logic_vector(6 downto 0)
+    
+    component ASCII_To_Seg is
+        Port (
+            ascii_char : in  STD_LOGIC_VECTOR (7 downto 0);
+            dec_out    : out STD_LOGIC_VECTOR (6 downto 0)
         );
     end component;
 
-    component MUX_4BIT is
+    -- component seven_seg_decoder_hex is
+    --     port (
+    --         dec_in : in std_logic_vector(3 downto 0);
+    --         dec_out : out std_logic_vector(6 downto 0)
+    --     );
+    -- end component;
+
+    component MUX_4BYTE is
         port(
             mux_s : in std_logic_vector(1 downto 0);
-            mux_d0 : in std_logic_vector(3 downto 0);
-            mux_d1 : in std_logic_vector(3 downto 0);
-            mux_d2 : in std_logic_vector(3 downto 0);
-            mux_d3 : in std_logic_vector(3 downto 0);
-            mux_out_to : out std_logic_vector(3 downto 0)
+            mux_d0 : in std_logic_vector(7 downto 0);
+            mux_d1 : in std_logic_vector(7 downto 0);
+            mux_d2 : in std_logic_vector(7 downto 0);
+            mux_d3 : in std_logic_vector(7 downto 0);
+            mux_out_to : out std_logic_vector(7 downto 0)
         );
     end component;
     
     constant N : integer := 10240000;
     signal mux_sel: std_logic_vector(1 downto 0);
-    signal mux_out_dec: std_logic_vector(3 downto 0);
-    signal d0: std_logic_vector(3 downto 0);
-    signal d1: std_logic_vector(3 downto 0);
-    signal d2: std_logic_vector(3 downto 0);
-    signal d3: std_logic_vector(3 downto 0);
+    signal mux_out_dec: std_logic_vector(7 downto 0);
+    signal d0: std_logic_vector(7 downto 0);
+    signal d1: std_logic_vector(7 downto 0);
+    signal d2: std_logic_vector(7 downto 0);
+    signal d3: std_logic_vector(7 downto 0);
     signal time_circ_clk : std_logic;
 --    signal message: std_logic_vector(127 downto 0);
     signal new_clk : STD_LOGIC := '0';
     signal counter : integer  := 0;
-    signal write_index_d3 : integer := 31;
-    signal write_index_d2 : integer := 30;
-    signal write_index_d1 : integer := 29;
-    signal write_index_d0 : integer := 28;
+    signal write_index_d3 : integer := 15;
+    signal write_index_d2 : integer := 14;
+    signal write_index_d1 : integer := 13;
+    signal write_index_d0 : integer := 12;
  
     
 begin
@@ -91,7 +98,7 @@ begin
         timing_circ_clk => time_circ_clk
     );
 
-    MUX_Block : MUX_4BIT port map (
+    MUX_Block : MUX_4BYTE port map (
         mux_s => mux_sel,
         mux_d0 => d0,
         mux_d1 => d1,
@@ -100,10 +107,11 @@ begin
         mux_out_to => mux_out_dec
     );
 
-    Decoder_Block : seven_seg_decoder_hex port map (
-        dec_in => mux_out_dec,
+    Decoder_Block_ASCII : ASCII_To_Seg port map (
+        ascii_char => mux_out_dec,
         dec_out => seg
-    );  
+    );
+  
 
     NEW_CLK_PROC: process(clock_in, reset_timer)
     begin
@@ -128,31 +136,31 @@ begin
 --            d2 <= message(123 downto 120);
 --            d1 <= message(119 downto 116);
 --            d0 <= message(115 downto 112);
-              d3 <= input_d(4*write_index_d3+3 downto 4*write_index_d3);
-              d2 <= input_d(4*write_index_d2+3 downto 4*write_index_d2);
-              d1 <= input_d(4*write_index_d1+3 downto 4*write_index_d1);
-              d0 <= input_d(4*write_index_d0+3 downto 4*write_index_d0);
+              d3 <= input_d(8*write_index_d3+7 downto 8*write_index_d3);
+              d2 <= input_d(8*write_index_d2+7 downto 8*write_index_d2);
+              d1 <= input_d(8*write_index_d1+7 downto 8*write_index_d1);
+              d0 <= input_d(8*write_index_d0+7 downto 8*write_index_d0);
               
               if(write_index_d3 = 0) then
-                write_index_d3 <= 31;
+                write_index_d3 <= 15;
               else
                 write_index_d3 <= write_index_d3-1;
               end if;
               
               if(write_index_d2 = 0) then
-                write_index_d2 <= 31;
+                write_index_d2 <= 15;
               else
                 write_index_d2 <= write_index_d2-1;
               end if;
               
               if(write_index_d1 = 0) then
-                write_index_d1 <= 31;
+                write_index_d1 <= 15;
               else
                 write_index_d1 <= write_index_d1-1;
               end if;  
               
               if(write_index_d0 = 0) then
-                write_index_d0 <= 31;
+                write_index_d0 <= 15;
               else
                 write_index_d0 <= write_index_d0-1;
               end if;
@@ -163,6 +171,3 @@ begin
     
 
 end Behavioral;
-
-
-

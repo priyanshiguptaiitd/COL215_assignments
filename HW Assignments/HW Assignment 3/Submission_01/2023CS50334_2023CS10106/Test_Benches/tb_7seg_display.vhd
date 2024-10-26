@@ -13,10 +13,10 @@ architecture tb of tb_7Seg_Display is
             an : out STD_LOGIC_VECTOR (3 downto 0); -- Anodes signal for display
             seg : out STD_LOGIC_VECTOR (6 downto 0); -- Cathodes signal for display
             mux_sel_out : out STD_LOGIC_VECTOR (1 downto 0);
-            d0_out : out STD_LOGIC_VECTOR(3 downto 0);
-            d1_out : out STD_LOGIC_VECTOR(3 downto 0);
-            d2_out : out STD_LOGIC_VECTOR(3 downto 0);
-            d3_out : out STD_LOGIC_VECTOR(3 downto 0);
+            d0_out : out STD_LOGIC_VECTOR(7 downto 0);
+            d1_out : out STD_LOGIC_VECTOR(7 downto 0);
+            d2_out : out STD_LOGIC_VECTOR(7 downto 0);
+            d3_out : out STD_LOGIC_VECTOR(7 downto 0);
             tc_clk : out STD_LOGIC;
             timing_scroll_clk : out STD_LOGIC
 --            mess_out : out STD_LOGIC_VECTOR(127 downto 0)
@@ -27,10 +27,10 @@ architecture tb of tb_7Seg_Display is
     signal clock_in : std_logic := '0';
     signal reset_timer : std_logic := '0';
     signal input_d : STD_LOGIC_VECTOR(127 downto 0);
-    signal d0_out : std_logic_vector(3 downto 0);
-    signal d1_out : std_logic_vector(3 downto 0);
-    signal d2_out : std_logic_vector(3 downto 0);
-    signal d3_out : std_logic_vector(3 downto 0);
+    signal d0_out : std_logic_vector(7 downto 0);
+    signal d1_out : std_logic_vector(7 downto 0);
+    signal d2_out : std_logic_vector(7 downto 0);
+    signal d3_out : std_logic_vector(7 downto 0);
     signal tc_clk_out : std_logic ;
     signal tc_scroll_clk : std_logic;
     signal an : std_logic_vector(3 downto 0);
@@ -73,6 +73,6 @@ begin
     end process;
     reset_timer <= '0';
     -- Stimulus process to provide input and reset signals
-    input_d <= x"0123456789ABCDEF0123456789ABCDEF";
+    input_d <= x"3031323334404142434497989964576d";
     
 end tb;
