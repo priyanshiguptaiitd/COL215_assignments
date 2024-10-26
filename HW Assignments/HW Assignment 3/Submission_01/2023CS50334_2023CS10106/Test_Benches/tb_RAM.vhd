@@ -79,7 +79,7 @@ begin
     begin		
         -- Test Case 1: Write '10101010' to address '0001' and read back
         we <= '1';
-        addr <= "0001";
+        addr <= "0000";
         data_in <= "10101010";
         wait for clk_period;
         we <= '0';

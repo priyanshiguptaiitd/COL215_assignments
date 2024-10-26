@@ -25,7 +25,7 @@ architecture Behavioral of display_seven_seg is
         );
     end component;
 
-    component seven_seg_decoder_decimal is
+    component seven_seg_decoder_hex is
         port (
             dec_in : in std_logic_vector(3 downto 0);
             dec_out : out std_logic_vector(6 downto 0)
@@ -63,7 +63,7 @@ begin
         mux_out_to => mux_out_dec
     );
 
-    Decoder_Block : seven_seg_decoder_decimal port map (
+    Decoder_Block : seven_seg_decoder_hex port map (
         dec_in => mux_out_dec,
         dec_out => seg
     );  
