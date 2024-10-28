@@ -1,3 +1,24 @@
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 21.10.2024 14:48:38
+-- Design Name: 
+-- Module Name: ROM_SBOX - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -21,7 +42,7 @@ end ROM_SBOX;
 
 architecture Behavioral of ROM_SBOX is       
 
-    component dist_mem_gen_SBOX                                        -- Component Declaration -- This is the name of the IP Block memory on the Board
+    component dist_mem_gen_1                                        -- Component Declaration -- This is the name of the IP Block memory on the Board
         Port ( a : in STD_LOGIC_VECTOR(ADDR_WIDTH-1 downto 0);                               -- Which is pre-loaded with test-case data 
                spo : out STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0));
     end component;
@@ -31,8 +52,9 @@ architecture Behavioral of ROM_SBOX is
     
 begin
 
-    UDATA : dist_mem_gen_SBOX port map ( a => address_internal, spo => data_out_internal);
+    UDATA : dist_mem_gen_1 port map ( a => address_internal, spo => data_out_internal);
     address_internal <= addr;
     data_out <= data_out_internal;
     
 end Behavioral;    
+

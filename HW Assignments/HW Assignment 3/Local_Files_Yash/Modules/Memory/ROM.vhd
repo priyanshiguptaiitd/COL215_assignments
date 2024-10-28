@@ -9,7 +9,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 entity ROM is
     
-    Generic ( DATA_WIDTH : integer := 8;  -- Data width -- Depending upon data of a single Entry  (number of bits)
+    Generic ( DATA_WIDTH : integer := 16;  -- Data width -- Depending upon data of a single Entry  (number of bits)
               ADDR_WIDTH : integer := 4   -- Address width -- Depending upon Number of Elements to be processed (number of bits)
     );
 
@@ -19,10 +19,10 @@ entity ROM is
       );
 end ROM;
 
-architecture Behavioral of ROM is       
+architecture Behavioral of ROM is
 
-    component dist_mem_gen_0                                        -- Component Declaration -- This is the name of the IP Block memory on the Board
-        Port ( a : in STD_LOGIC_VECTOR(ADDR_WIDTH-1 downto 0);                               -- Which is pre-loaded with test-case data 
+    component dist_mem_gen_0
+        Port ( a : in STD_LOGIC_VECTOR(ADDR_WIDTH-1 downto 0);
                spo : out STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0));
     end component;
 
