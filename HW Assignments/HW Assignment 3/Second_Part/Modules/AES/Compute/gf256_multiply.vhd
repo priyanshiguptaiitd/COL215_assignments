@@ -6,6 +6,7 @@ entity gf256_multiply is
   port (
     a       : in std_logic_vector(7 downto 0);  -- First 8-bit input
     b       : in std_logic_vector(7 downto 0);  -- Second 8-bit input
+    ctrl_gf256     : in std_logic; 
     result  : out std_logic_vector(7 downto 0)  -- Result of GF(2^8) multiplication
   );
 end entity gf256_multiply;
@@ -40,9 +41,13 @@ architecture Behavioral of gf256_multiply is
 
 begin
   -- Call the GF(2^8) multiplication function
-  process (a, b)
+  process (a, b, ctrl_gf256)
   begin
-    result <= gf256_mult(a, b);
+    if(ctrl_gf256 = '1') then
+      result <= gf256_mult(a, b);
+    else
+      result <= (others => '0');
+    end if;
   end process;
   
 end architecture Behavioral;
