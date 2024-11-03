@@ -94,6 +94,7 @@ begin
         variable seed1, seed2 : positive;
         variable rand : real;
         variable int_rand : integer;
+    
     begin
         -- Initialize RAM with random values
         we_ram <= '1';  -- Enable writing
@@ -122,7 +123,7 @@ begin
             -- Trigger Inverse SubBytes
             ctrl_isb <= '1';
             wait for CLK_PERIOD;
-            ctrl_isb <= '0';
+            ctrl_isb <= '0';s
             
             -- Write back transformed value
             we_ram <= '1';
