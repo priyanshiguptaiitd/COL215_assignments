@@ -14,7 +14,7 @@ def generate_coe_file(data, filename,n = 16):
     
     assert n%8 == 0, "Data width must be a multiple of 8"
     
-    fname = r"HW Assignments\HW Assignment 3\Local_Files_Yash\COE_Files" + f"\\{filename}"
+    fname = r"HW Assignments\HW Assignment 3\Second_Part\COE_Files" + f"\\{filename}"
     with open(fname, 'w') as f:
         f.write(f'memory_initialization_radix={16};\n')
         f.write('memory_initialization_vector=\n')
@@ -29,7 +29,7 @@ def generate_coe_file(data, filename,n = 16):
                 f.write(';')
   
 if(__name__ == "__main__"):                  
-    generate_coe_file(gen_data(256), "rom.coe",256)
+    generate_coe_file(gen_data(256), "rom_01.coe",256)
     
     print("Done")
     pass
