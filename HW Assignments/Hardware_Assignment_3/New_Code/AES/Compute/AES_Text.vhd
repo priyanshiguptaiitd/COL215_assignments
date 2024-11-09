@@ -4,45 +4,46 @@ use IEEE.NUMERIC_STD.ALL;
 
 -- Accepts an 8-bit Address as input and returns the corresponding value from the S-Box
 
-entity AES_Key is
+entity AES_Text is
     Generic ( 
-              S : integer := 1;  -- Data width (bits per entry)
-              N : integer := 8  -- Number of elements to be processed
+              S : integer := 4;  -- Input Data width (bits per entry)
+              N : integer := 8  -- Output Data width (bits per entry)
             );
     
     Port(   
             -- clk : in std_logic;
-            data_input : in std_logic_vector(S * N - 1 downto 0);
+            data_input : in std_logic_vector(S - 1 downto 0);
             en : in std_logic;
-            data_output : out std_logic_vector(S * N - 1 downto 0)
+            data_output : out std_logic_vector(N - 1 downto 0)
     );
 
-end AES_Key;
+end AES_Text;
 
-architecture Behavioral of AES_Key is
+architecture Behavioral of AES_Text is
 
-    component ROM_Key
-        Generic ( 
-            DATA_WIDTH : integer := 8;
-            ADDR_WIDTH : integer := 8
+    component ROM_Text is
+    
+        Generic ( DATA_WIDTH : integer := 8;  
+                  ADDR_WIDTH : integer := 4   
         );
+    
         Port ( 
-            addr : in STD_LOGIC_VECTOR(ADDR_WIDTH - 1 downto 0);
-            data_out : out STD_LOGIC_VECTOR(DATA_WIDTH - 1 downto 0)
-        );
+            addr : in STD_LOGIC_VECTOR(ADDR_WIDTH-1 downto 0);
+            data_out : out STD_LOGIC_VECTOR(DATA_WIDTH-1 downto 0)
+          );
     end component;
 
     -- signal i : integer range 0 to N - 1 := 0;
     -- signal is_done : std_logic := '0';
-    signal addr_in : std_logic_vector(7 downto 0) := (others => '0');
+    signal addr_in : std_logic_vector(3 downto 0) := (others => '0');
     signal data_out : std_logic_vector(7 downto 0) := (others => '0');
 
 begin
     
-    uut: ROM_Key
+    uut: ROM_Text
         Generic map (
             DATA_WIDTH => 8,
-            ADDR_WIDTH => 8
+            ADDR_WIDTH => 4
         )
         Port map (
             addr => addr_in,

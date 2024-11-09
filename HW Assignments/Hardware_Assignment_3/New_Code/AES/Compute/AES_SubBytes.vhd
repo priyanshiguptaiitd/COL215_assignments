@@ -7,7 +7,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity AES_SubBytes is
     Generic ( 
               S : integer := 1;  -- Data width (bits per entry)
-              N : integer := 7   -- Number of elements to be processed
+              N : integer := 8   -- Number of elements to be processed
             );
     
     Port(   
@@ -49,12 +49,7 @@ begin
             data_out => data_out
         );
     
-    addr_process: process
-    begin
-        if en = '1' then
-            addr_in <= data_input;  -- Extract byte for address lookup
-            data_output <= data_out;  -- Assign output byte by byte
-        end if;
-    end process;
+    addr_in <= data_input;  -- Extract byte for address lookup
+    data_output <= data_out;  -- Assign output byte by byte
     
 end Behavioral;

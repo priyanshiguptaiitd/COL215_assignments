@@ -14,7 +14,7 @@ entity AES_MixColumns is
     port (
         en : in std_logic;
         input_data_a : in std_logic_vector(8 * S - 1 downto 0);  -- Input array (N x 8-bit elements, 16 bytes)
-        input_data_b : in std_logic_vector(8 * S - 1 downto 0) -- Number of bytes to shift (Must lie from 0 to S-1)
+        input_data_b : in std_logic_vector(8 * S - 1 downto 0); -- Number of bytes to shift (Must lie from 0 to S-1)
         output_data : out std_logic_vector(8 - 1 downto 0) -- Output result array (1 Byte)
     );
 
@@ -37,10 +37,10 @@ architecture inv_mix_cols of AES_MixColumns is
 
 begin
 
-    uut_0 : AES_GF_256 port map (input_data_a(7 downto 0), input_data_b(7 downto 0), td_0);
-    uut_1 : AES_GF_256 port map (input_data_a(15 downto 8), input_data_b(15 downto 8), td_1);
-    uut_2 : AES_GF_256 port map (input_data_a(23 downto 16), input_data_b(23 downto 16), td_2);
-    uut_3 : AES_GF_256 port map (input_data_a(31 downto 24), input_data_b(31 downto 24), td_3);
+    uut_0 : AES_GF_256 port map (a => input_data_a(7 downto 0), b => input_data_b(7 downto 0), result => td_0);
+    uut_1 : AES_GF_256 port map (a => input_data_a(15 downto 8), b => input_data_b(15 downto 8), result => td_1);
+    uut_2 : AES_GF_256 port map (a => input_data_a(23 downto 16), b => input_data_b(23 downto 16),result => td_2);
+    uut_3 : AES_GF_256 port map (a => input_data_a(31 downto 24),b => input_data_b(31 downto 24), result => td_3);
 
     process (en, td_0, td_1, td_2, td_3)
     begin
