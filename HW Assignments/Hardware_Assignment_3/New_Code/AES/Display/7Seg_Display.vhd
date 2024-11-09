@@ -7,14 +7,14 @@ entity display_seven_seg is
         reset_timer : in STD_LOGIC; -- Reset signal (Resetting the internal signals to known states)
         input_d: in STD_LOGIC_VECTOR(127 downto 0);
         an : out STD_LOGIC_VECTOR (3 downto 0); -- Anodes signal for display
-        seg : out STD_LOGIC_VECTOR (6 downto 0); -- Cathodes signal for display
-        mux_sel_out : out STD_LOGIC_VECTOR (1 downto 0);
-        d0_out : out STD_LOGIC_VECTOR (7 downto 0);
-        d1_out : out STD_LOGIC_VECTOR (7 downto 0);
-        d2_out : out STD_LOGIC_VECTOR (7 downto 0);
-        d3_out : out STD_LOGIC_VECTOR (7 downto 0);
-        tc_clk : out STD_LOGIC;
-        timing_scroll_clk : out STD_LOGIC
+        seg : out STD_LOGIC_VECTOR (6 downto 0) -- Cathodes signal for display
+        -- mux_sel_out : out STD_LOGIC_VECTOR (1 downto 0);
+        -- d0_out : out STD_LOGIC_VECTOR (7 downto 0);
+        -- d1_out : out STD_LOGIC_VECTOR (7 downto 0);
+        -- d2_out : out STD_LOGIC_VECTOR (7 downto 0);
+        -- d3_out : out STD_LOGIC_VECTOR (7 downto 0);
+        -- tc_clk : out STD_LOGIC;
+        -- timing_scroll_clk : out STD_LOGIC
 --        mess_out : out STD_LOGIC_VECTOR(127 downto 0)
     );
 end display_seven_seg;
@@ -75,14 +75,14 @@ architecture Behavioral of display_seven_seg is
     
 begin
     
-    mux_sel_out <= mux_sel;
-    tc_clk <= time_circ_clk;
-    timing_scroll_clk <= new_clk;
---    mess_out <= message;
-    d0_out <= d0;
-    d1_out <= d1;
-    d2_out <= d2;
-    d3_out <= d3;
+--     mux_sel_out <= mux_sel;
+--     tc_clk <= time_circ_clk;
+--     timing_scroll_clk <= new_clk;
+-- --    mess_out <= message;
+--     d0_out <= d0;
+--     d1_out <= d1;
+--     d2_out <= d2;
+--     d3_out <= d3;
     
 --    Message_INIT : process(input_d)
 --    begin

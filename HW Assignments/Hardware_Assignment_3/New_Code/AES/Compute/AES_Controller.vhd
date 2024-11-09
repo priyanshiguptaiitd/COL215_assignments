@@ -10,8 +10,8 @@ entity AES_Controller is
            reset : in STD_LOGIC;
            start : in STD_LOGIC;
            result : out STD_LOGIC_VECTOR(127 downto 0);
-           temp_res : out std_logic_vector(127 downto 0);
-           temp_key : out std_logic_vector(127 downto 0);
+        --    temp_res : out std_logic_vector(127 downto 0);
+        --    temp_key : out std_logic_vector(127 downto 0);
            done : out STD_LOGIC);
 
 end AES_Controller;
@@ -182,8 +182,8 @@ architecture Behavioral of AES_Controller is
 -- Controller Logic Begins Here
 
 begin
-temp_res <= round_data;
-temp_key <= round_key;
+-- temp_res <= round_data;
+-- temp_key <= round_key;
 ----------------------------------------------------------------------------------------------------
 -- Instantiate AES_ShiftRows
 
