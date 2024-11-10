@@ -46,33 +46,14 @@ begin
         -- hold reset state for 100 ns.
         wait for 100 ns;  
 
-        -- Test case 1
-        data_input <= "0000";
-        en <= '1';
-        wait for 10 ns;
-        en <= '0';
-        wait for 10 ns;
-
-        -- Test case 2
-        data_input <= "0001";
-        en <= '1';
-        wait for 10 ns;
-        en <= '0';
-        wait for 10 ns;
-
-        -- Test case 3
-        data_input <= "0010";
-        en <= '1';
-        wait for 10 ns;
-        en <= '0';
-        wait for 10 ns;
-
-        -- Test case 4
-        data_input <= "0011";
-        en <= '1';
-        wait for 10 ns;
-        en <= '0';
-        wait for 10 ns;
+        -- Test cases using a for loop
+        for i in 0 to 31 loop
+            data_input <= std_logic_vector(to_unsigned(i, 4));
+            en <= '1';
+            wait for 10 ns;
+            en <= '0';
+            wait for 10 ns;
+        end loop;
 
         -- Add more test cases as needed
 

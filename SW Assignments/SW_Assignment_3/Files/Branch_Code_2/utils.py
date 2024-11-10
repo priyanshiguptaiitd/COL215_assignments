@@ -575,7 +575,7 @@ if(__name__ == "__main__"):
                 }
 
     # testcase_3()
-    write_single_case(kw["gate_freq"], FP_IN, kw, supress_time_out = True)      
+    # write_single_case(kw["gate_freq"], FP_IN, kw, supress_time_out = True)      
     # write_multi_case(kw,kw_multi,supress_time_out = True)
     # print(bin(35))  
     # print(right_cyclic_shift(35,2))

@@ -10,14 +10,8 @@ entity AES_Controller is
            reset : in STD_LOGIC;
            start : in STD_LOGIC;
            result : out STD_LOGIC_VECTOR(127 downto 0);
-           an : out STD_LOGIC_VECTOR(3 downto 0);
-           seg : out STD_LOGIC_VECTOR(6 downto 0);
-           temp_res : out std_logic_vector(127 downto 0);
---           td0_out : out STD_LOGIC_VECTOR (7 downto 0);
---           td1_out : out STD_LOGIC_VECTOR (7 downto 0);
---           td2_out : out STD_LOGIC_VECTOR (7 downto 0);
---           td3_out : out STD_LOGIC_VECTOR (7 downto 0);
-           temp_key : out std_logic_vector(127 downto 0);
+--           temp_res : out std_logic_vector(127 downto 0);
+--           temp_key : out std_logic_vector(127 downto 0);
            done : out STD_LOGIC);
 
 end AES_Controller;
@@ -64,7 +58,7 @@ architecture Behavioral of AES_Controller is
     signal output_ARK : std_logic_vector(7 downto 0);
     signal ark_ready : std_logic := '0';   
     signal en_ARK : std_logic;
-    signal ark_counter : integer := 0;  
+    signal ark_counter : integer range 0 to 15 := 0;  
     
 ----------------------------------------------------------------------------------------------------
 -- Component Declaration for AES_SubBytes
@@ -104,8 +98,7 @@ architecture Behavioral of AES_Controller is
         --           temp_outisb : out std_logic_vector(7 downto 0);
         --           temp_input_data_a_MC : out std_logic_vector(31 downto 0);
         --           temp_input_data_b_MC : out std_logic_vector(31 downto 0);
-        --           temp_output_data_MC : out std_logic_vector(7 downto 0); 
-                          
+        --           temp_output_data_MC : out std_logic_vector(7 downto 0);           
                 result : out std_logic_vector(127 downto 0);
                 done : out std_logic
             );
@@ -143,7 +136,7 @@ architecture Behavioral of AES_Controller is
     signal en_key : std_logic;
     signal key_ready : std_logic := '0';
     
-    signal key_counter : integer := 0;
+    signal key_counter : integer range 0 to 15 := 0;
 
 ----------------------------------------------------------------------------------------------------
 -- Component Declaration for AES_Text
@@ -169,38 +162,15 @@ architecture Behavioral of AES_Controller is
         signal en_text : std_logic;
 
         signal text_ready : std_logic := '0';
-        signal text_counter : integer := 0;
-
-----------------------------------------------------------------------------------------------------
--- Component Declaration for AES_Display_Seven_Seg
-
-    component display_seven_seg is
-        Port (
-            clock_in : in STD_LOGIC; -- 100 MHz input clock
-            reset_timer : in STD_LOGIC; -- Reset signal (Resetting the internal signals to known states)
-            input_d: in STD_LOGIC_VECTOR(127 downto 0);
-            an : out STD_LOGIC_VECTOR (3 downto 0); -- Anodes signal for display
-            seg : out STD_LOGIC_VECTOR (6 downto 0) -- Cathodes signal for display
---            d0_out : out STD_LOGIC_VECTOR (7 downto 0);
---            d1_out : out STD_LOGIC_VECTOR (7 downto 0);
---            d2_out : out STD_LOGIC_VECTOR (7 downto 0);
---            d3_out : out STD_LOGIC_VECTOR (7 downto 0)
-        );
-    end component;
-
-    signal display_signal : std_logic_vector(127 downto 0) := x"72492d18f3cd879021f7cac19d1ca67c";
-    signal display_counter : integer := 0;
---    signal display_reset : std_logic := '1';
-    constant display_counter_max : integer := 1600000000;
+        signal text_counter : integer range 0 to 15 := 0;
 
 ----------------------------------------------------------------------------------------------------
 -- AES FSM Signals begin here
 
-    type state_type is (S0, PrepareData, PrepareKey, AddRoundKey, InvShiftRows , InvSubBytes, RoundLogic, FinalAddRoundKey, Display, SF);
+    type state_type is (S0, PrepareData, PrepareKey, AddRoundKey, InvShiftRows , InvSubBytes, RoundLogic, FinalAddRoundKey, SF);
     
     signal state : state_type;
     signal round_counter : integer range 0 to 9 := 0;
-    signal multi_round_counter : integer := 0;
     signal round_key : std_logic_vector(127 downto 0);
     signal round_data : std_logic_vector(127 downto 0);
     signal we_done : std_logic := '0';
@@ -212,8 +182,8 @@ architecture Behavioral of AES_Controller is
 -- Controller Logic Begins Here
 
 begin
-temp_res <= round_data;
-temp_key <= round_key;
+--temp_res <= round_data;
+--temp_key <= round_key;
 ----------------------------------------------------------------------------------------------------
 -- Instantiate AES_ShiftRows
 
@@ -293,31 +263,13 @@ temp_key <= round_key;
             );
 
 ----------------------------------------------------------------------------------------------------
--- Instantiate display_seven_seg
 
-    uut_display : display_seven_seg
-
-    port map (
-            clock_in => clk,
-            reset_timer => reset,
-            input_d => display_signal,
-            an => an,
-            seg => seg
---            d0_out => td0_out,
---            d1_out => td1_out,
---            d2_out => td2_out,
---            d3_out => td3_out
-            );
-
-    
-----------------------------------------------------------------------------------------------------s
     process(clk, reset)
     begin
         if reset = '1' then
 
             state <= S0;
             round_counter <= 0;
-            multi_round_counter <= 0;
             round_data <= (others => '0');
             round_key <= (others => '0');
             we_done <= '0';
@@ -343,7 +295,7 @@ temp_key <= round_key;
             -- shift_bytes_SR <= 0;
 
             done <= '0';
-            display_signal <= x"30313233343536373839414243444546";
+             
         
         elsif rising_edge(clk) then
 
@@ -351,13 +303,13 @@ temp_key <= round_key;
 
                 when S0 =>
 
-                    if (start = '1' and we_done = '0') then
+                    if (start = '1' and we_done = '0') then 
                         state <= PrepareData;
                     end if;
                 
                 when PrepareData =>
+
                     if(text_counter < 16) then
---                        done <= '1';
                         if(text_ready = '0') then
                             input_text <= std_logic_vector(to_unsigned(text_counter, 4));
                             en_text <= '1';
@@ -369,8 +321,6 @@ temp_key <= round_key;
                             text_counter <= text_counter + 1;
                         end if;
                     else
---                        display_signal <= round_data;
-                        result <= round_data;
                         text_counter <= 0;
                         state <= PrepareKey;
                     end if;
@@ -378,7 +328,7 @@ temp_key <= round_key;
                 when PrepareKey =>
                     if(key_counter < 16) then
                         if(key_ready = '0') then
-                            input_key <= std_logic_vector(to_unsigned(16*(9-round_counter) + key_counter, 8));
+                            input_key <= std_logic_vector(to_unsigned(16*(round_counter) + key_counter, 8));
                             en_key <= '1';
                             key_ready <= '1';
                         else
@@ -416,7 +366,6 @@ temp_key <= round_key;
                             start_round <= '0';
                             start_process_round <= "00";
                             round_data <= result_round;
-                            result <= result_round;
                             state <= PrepareKey;
                         end if;
                     end if;
@@ -451,7 +400,7 @@ temp_key <= round_key;
                             en_SR <= '0';
                             sr_ready <= '0';
                             ark_counter <= ark_counter + 1;
-                            round_data(127-32*(ark_counter) downto 96-32*(ark_counter)) <= output_SR;                            
+                            round_data(127-32*(ark_counter) downto 96-32*(ark_counter)) <= output_SR;
                         end if;
                     else
                         result <= round_data;
@@ -472,7 +421,6 @@ temp_key <= round_key;
                             sb_ready <= '0';
                             round_data(127-(ark_counter*8) downto 120-(ark_counter*8)) <= output_SB;
                             ark_counter <= ark_counter + 1;
-                            result <= round_data;
                         end if;
                      else
                         result <= round_data;
@@ -494,27 +442,16 @@ temp_key <= round_key;
                             ark_counter <= ark_counter + 1;
                         end if;
                     else
-                        result <= round_data;                        
+                        result <= round_data;
                         ark_counter <= 0;
-                        done <= '1';
-                        display_signal <= round_data;
-                        we_done <= '1';
-                        state <= Display;
+                        state <= SF;
                     end if;
                 
-
-                when Display =>
-                    if(display_counter < display_counter_max) then
-                        display_counter <= display_counter + 1;
-                    else
-                        display_counter <= 0;
-                        state <= SF;
-                       display_signal <= x"46336232663830334642394234653366";
-                    end if;
-
                 when SF =>
+                    we_done <= '1';
+                    done <= '1';
                     state <= S0;
-                    
+
                 when others =>
                     state <= S0;
 

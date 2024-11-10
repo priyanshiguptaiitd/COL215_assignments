@@ -32,7 +32,7 @@ architecture Behavioral of AES_Display is
     end component;
 
     signal display_signal : std_logic_vector(127 downto 0) := (others => '0');
-    
+    signal control_done : std_logic := '0';
 
 ----------------------------------------------------------------------------------------------------
 -- Component Declaration for 7SegmentDisplay
@@ -48,14 +48,26 @@ architecture Behavioral of AES_Display is
         );
     end component;
 
+    signal to_be_display_signal : std_logic_vector(127 downto 0) := x"30313233343536373839414243444546";
+
 ----------------------------------------------------------------------------------------------------
- 
+
 begin
 
 ----------------------------------------------------------------------------------------------------
 -- Instantiation of AES_Controller
 
-    U_AES_Controller: AES_Controller port map (clk => clk, reset => reset, start => start, result => display_signal , done => done);
-    U_display_seven_seg: display_seven_seg port map (clock_in => clk, reset_timer => reset, input_d => display_signal, an => an, seg => seg);
+    U_AES_Controller: AES_Controller port map (clk => clk, reset => reset, start => start, result => display_signal , done => control_done);
+    U_display_seven_seg: display_seven_seg port map (clock_in => clk, reset_timer => reset, input_d => to_be_display_signal, an => an, seg => seg);
+
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if control_done = '1' then
+                done <= '1';
+                to_be_display_signal <= display_signal;
+            end if;
+        end if;
+    end process;
 
 end Behavioral;

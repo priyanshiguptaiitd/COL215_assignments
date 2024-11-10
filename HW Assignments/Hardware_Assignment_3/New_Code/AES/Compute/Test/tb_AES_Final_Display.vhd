@@ -4,13 +4,13 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.numeric_std.ALL;
 
-entity tb_AES_Display is
-end tb_AES_Display;
+entity tb_AES_Final_Display is
+end tb_AES_Final_Display;
 
-architecture Behavioral of tb_AES_Display is
+architecture Behavioral of tb_AES_Final_Display is
 
-    -- Component Declaration for AES_Display
-    component AES_Display is
+    -- Component Declaration for the Unit Under Test (UUT)
+    component AES_FDisplay is
         Port ( clk : in STD_LOGIC;
                reset : in STD_LOGIC;
                start : in STD_LOGIC;
@@ -20,7 +20,7 @@ architecture Behavioral of tb_AES_Display is
             );
     end component;
 
-    -- Signals for connecting to the AES_Display
+    -- Signals for connecting to UUT
     signal clk : STD_LOGIC := '0';
     signal reset : STD_LOGIC := '0';
     signal start : STD_LOGIC := '0';
@@ -34,7 +34,7 @@ architecture Behavioral of tb_AES_Display is
 begin
 
     -- Instantiate the Unit Under Test (UUT)
-    UUT: AES_Display port map (
+    uut: AES_FDisplay port map (
         clk => clk,
         reset => reset,
         start => start,
@@ -59,18 +59,19 @@ begin
         reset <= '1';
         wait for 100 ns;
         reset <= '0';
+        
+        wait for clk_period*10;
+        
+        -- Start the AES display process
+        start <= '1'; 
 
-        wait for 10 ns;
-        start <= '1';
-        wait for 10 ns;
-        start <= '0';
-
+        wait for clk_period*10;
         -- Wait for the done signal
         wait until done = '1';
-
-        -- Insert further stimulus here if needed
-
-        -- Wait for global reset to finish
+        
+        -- Add any additional stimulus here
+        
+        -- End simulation
         wait;
     end process;
 
