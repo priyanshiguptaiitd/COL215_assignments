@@ -251,13 +251,13 @@ begin
 
                         case j_mc is
                             when 0 =>
-                                input_data_b_MC <= temp1(127 downto 120) & temp1(95 downto 88) & temp1(63 downto 56) & temp1(31 downto 24) ;
+                                input_data_b_MC <= temp1(127 downto 96);
                             when 1 =>
-                                input_data_b_MC <= temp1(119 downto 112) & temp1(87 downto 80) & temp1(55 downto 48) & temp1(23 downto 16);
+                                input_data_b_MC <= temp1(95 downto 64);
                             when 2 =>
-                                input_data_b_MC <= temp1(111 downto 104) & temp1(79 downto 72) & temp1(47 downto 40) & temp1(15 downto 8);
+                                input_data_b_MC <= temp1(63 downto 32);
                             when 3 =>
-                                input_data_b_MC <= temp1(103 downto 96) & temp1(71 downto 64) & temp1(39 downto 32) & temp1(7 downto 0);
+                                input_data_b_MC <= temp1(31 downto 0);
                         end case;
 
                         en_MC <= '1';
@@ -265,7 +265,7 @@ begin
                     else
                         en_MC <= '0';
                         mc_ready <= '0';
-                        temp(127-(init_counter*8) downto 120-(init_counter*8)) <= output_data_MC;
+                        temp(127-(8*i_mc + 32*j_mc) downto 120-(8*i_mc + 32*j_mc)) <= output_data_MC;
                         init_counter <= init_counter + 1;
                         if(j_mc = 3) then
                             j_mc <= 0;
