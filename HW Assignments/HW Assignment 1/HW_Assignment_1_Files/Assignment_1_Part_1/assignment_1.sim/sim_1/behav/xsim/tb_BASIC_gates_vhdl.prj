@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../assignment_1.srcs/sources_1/new/BASIC_gates.vhd" \
-"../../../../assignment_1.srcs/sources_1/new/tb_BASIC_gates.vhd" \
-
-# Do not sort compile order
-nosort
