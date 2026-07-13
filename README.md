@@ -8,8 +8,8 @@ The repository has been documented and organized around assignment-level README 
 
 | Section | Description |
 | --- | --- |
-| [Software Assignments](./SW%20Assignments/Readme.md) | Algorithmic placement and timing-analysis assignments implemented in Python. |
-| [Hardware Assignments](./HW%20Assignments/Readme.md) | VHDL/FPGA assignments targeting the Basys 3 board. |
+| [Software Assignments](./SW%20Assignments/README.md) | Algorithmic placement and timing-analysis assignments implemented in Python. |
+| [Hardware Assignments](./HW%20Assignments/README.md) | VHDL/FPGA assignments targeting the Basys 3 board. |
 | [Final Submissions](./2023CS50334_2023CS10106) | Submitted archives, reports, source files, and supporting artifacts. |
 | [VHDL Resources](./VHDL_Resources) | Shared/reference VHDL material used during the hardware assignments. |
 
